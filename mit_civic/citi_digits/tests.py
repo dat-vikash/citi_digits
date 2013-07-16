@@ -22,5 +22,9 @@ class IndexTest(LiveServerTestCase):
 
         #Verify nav bar
         body = self.browser.find_element_by_tag_name('body')
-        self.assertIn('Maps',body.text)
+        assert "Maps" in body.text
+        assert "Interviews" in body.text
+        assert "About" in body.text
+        assert "Sign Up" in body.text
+        assert "Login" in body.text
 
