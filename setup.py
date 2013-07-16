@@ -3,6 +3,8 @@ from setuptools import setup, find_packages
 
 required_modules = [
     "django == 1.5.1",
+    "selenium == 2.33.0",
+    "mock == 1.0.1",
     ]
 
 
