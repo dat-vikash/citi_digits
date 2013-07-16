@@ -1,8 +1,8 @@
 #python noise
 *.pyc
-/build
-/dist
-/*.egg-info
+build/
+dist/
+*.egg-info
 
 #django noise
 /media
