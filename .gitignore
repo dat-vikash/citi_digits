@@ -4,6 +4,8 @@
 /dist
 /*.egg-info
 
+#django noise
+/media
 
 #intellij noise
 .idea
