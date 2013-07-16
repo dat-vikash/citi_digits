@@ -1,10 +1,13 @@
 from django.conf.urls import patterns, include, url
+from django.conf import settings
 
 # Uncomment the next two lines to enable the admin:
 # from django.contrib import admin
 # admin.autodiscover()
 
 urlpatterns = patterns('',
+        url(r'^$', 'citi_digits.views.index', name='home'),
+
     # Examples:
     # url(r'^$', 'mit_civic.views.home', name='home'),
     # url(r'^mit_civic/', include('mit_civic.foo.urls')),
@@ -15,3 +18,9 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
 )
+
+if settings.DEBUG:
+    urlpatterns += (
+        url(r'^media/(.*)$', 'django.views.static.serve',
+                    {'document_root': settings.MEDIA_ROOT}),
+    )
