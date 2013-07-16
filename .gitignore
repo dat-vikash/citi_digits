@@ -1,0 +1,11 @@
+#python noise
+*.pyc
+/build
+/dist
+/*.egg-info
+
+
+#intellij noise
+.idea
+.iml
+.ipr
