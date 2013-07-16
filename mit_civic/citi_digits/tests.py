@@ -5,9 +5,24 @@ when you run "manage.py test".
 """
 
 from django.test import LiveServerTestCase
+from unittest import TestCase
 from selenium import webdriver
+from django.test import Client
 
-class IndexTest(LiveServerTestCase):
+
+# Unit Tests
+class IndexUnitTest(TestCase):
+    def setUp(self):
+        self.client = Client()
+
+    def test_index(self):
+        response = self.client.get("/")
+        self.assertEqual(response.status_code, 200)
+
+
+# Functional Tests
+
+class IndexFunctionalTest(LiveServerTestCase):
 
     def setUp(self):
         self.browser = webdriver.Firefox()
