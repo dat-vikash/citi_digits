@@ -1,0 +1,42 @@
+/*
+ * Overrides for navbar
+*/
+
+.navbar .nav .divider-vertical{
+    background-color: #000000;
+    border-right: 2px solid #000000;
+    height: 15px;
+    margin-top: 10px;
+    margin-right: 1px;
+    margin-left: 1px;
+ }
+
+.navbar .nav a{
+  font-size: 12px;
+  font-family: "Helvetica Neue";
+  color: rgb( 2, 95, 241 );
+  line-height: 1.417;
+  text-align: left;
+  font-weight:400;
+}
+
+.navbar .nav>li>a{
+    padding: 10px 10px 10px;
+}
+
+.navbar .nav>.active>a,
+.navbar .nav>.active>a:hover,
+.navbar .nav>.active>a:focus{
+    color: rgb(119,155,245);
+    background-color: transparent;
+    box-shadow: none;
+}
+
+/*
+ Container overrides
+*/
+
+.container {
+    margin-left: 1%;
+}
+

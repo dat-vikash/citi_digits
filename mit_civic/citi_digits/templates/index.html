@@ -8,7 +8,8 @@
     <meta name="author" content="">
 
     <!-- styles -->
-    <link href="{{ STATIC_URL }}css/bootstrap.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/main.css" rel="stylesheet">
     <style>
       body {
         padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
@@ -20,19 +21,23 @@
 
   <body>
 
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
         <div class="container">
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#">Maps</a></li>
-              <li><a href="#about">Interviews</a></li>
-              <li><a href="#contact">About</a></li>
+              <li class="active"><a href="#map">MAP</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#interviews">INTERVIEWS</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#about">ABOUT</a></li>
+              <li class="divider-vertical"></li>
+              <li><a href="#tours">TOURS</a></li>
             </ul>
           </div><!--/.nav-collapse -->
-        </div>
-      </div>
-    </div>
+        </div><!-- container -->
+      </div> <!-- navbar-inner -->
+    </div><!--nav-bar -->
 
     <div class="container">
 
