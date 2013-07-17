@@ -40,6 +40,9 @@ class IndexFunctionalTest(LiveServerTestCase):
         assert "MAPS" in body.text
         assert "INTERVIEWS" in body.text
         assert "ABOUT" in body.text
+        assert "SIGN UP" in body.text
+        assert "LOGIN" in body.text
+        assert "City Digits: Local Lotto" in body.text
 
     def test_should_load_maps_view_when_map_is_clicked(self):
         #Open browser and go to site root

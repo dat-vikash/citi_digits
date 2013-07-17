@@ -32,6 +32,18 @@
     box-shadow: none;
 }
 
+.navbar .brand {
+    max-height: 40px;
+    overflow: visible;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 16%;
+    font-size: 30px;
+    margin-top:6px;
+    color: rgb( 2, 95, 241 );
+    font-family: "Helvetica Neue";
+}
+
 /*
  Container overrides
 */
@@ -39,4 +51,5 @@
 .container {
     margin-left: 1%;
 }
+
 
