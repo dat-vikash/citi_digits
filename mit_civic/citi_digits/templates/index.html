@@ -9,6 +9,7 @@
 
     <!-- styles -->
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
+    <link href="{{ STATIC_URL }}css/bootstrap-responsive.min.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/main.css" rel="stylesheet">
     <style>
       body {
@@ -26,13 +27,13 @@
         <div class="container">
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#map">MAP</a></li>
+              <li class="active"><a href="#map" data-toggle="tab">MAP</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#interviews">INTERVIEWS</a></li>
+              <li><a href="#interviews" data-toggle="tab">INTERVIEWS</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#about">ABOUT</a></li>
+              <li><a href="#about" data-toggle="tab">ABOUT</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#tours">TOURS</a></li>
+              <li><a href="#tours" data-toggle="tab">TOURS</a></li>
             </ul>
           </div><!--/.nav-collapse -->
         </div><!-- container -->
@@ -40,10 +41,12 @@
     </div><!--nav-bar -->
 
     <div class="container">
-
-      <h1>MIT Civic Citi Digits</h1>
-      <p>TODO.</p>
-
+        <div class="tab-content">
+            <div class="tab-pane active" id="map">TODO: MAPS</div><!-- tab-pane map -->
+            <div class="tab-pane" id="interviews">TODO: INTERVIEWS</div><!-- tab-pane interviews -->
+            <div class="tab-pane" id="about">TODO: ABOUT</div><!-- tab-pane about -->
+            <div class="tab-pane" id="tours">TODO: TOURS</div><!-- tab-pane tours -->
+         </div> <!-- tab-content -->
     </div> <!-- /container -->
 
     <!--  javascript
