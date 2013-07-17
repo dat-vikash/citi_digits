@@ -37,9 +37,45 @@ class IndexFunctionalTest(LiveServerTestCase):
 
         #Verify nav bar
         body = self.browser.find_element_by_tag_name('body')
-        assert "Maps" in body.text
-        assert "Interviews" in body.text
-        assert "About" in body.text
-        assert "Sign Up" in body.text
-        assert "Login" in body.text
+        assert "MAPS" in body.text
+        assert "INTERVIEWS" in body.text
+        assert "ABOUT" in body.text
+
+    def test_should_load_maps_view_when_map_is_clicked(self):
+        #Open browser and go to site root
+        self.browser.get(self.live_server_url)
+        element = self.browser.find_element_by_link_text("MAP")
+        element.click()
+        div = self.browser.find_element_by_id('map')
+        assert div.is_displayed() is True
+        assert "TODO: MAP" in div.text
+
+    def test_should_load_interviews_view_when_interview_is_clicked(self):
+        #Open browser and go to site root
+        self.browser.get(self.live_server_url)
+        element = self.browser.find_element_by_link_text("INTERVIEWS")
+        element.click()
+        div = self.browser.find_element_by_id('interviews')
+        assert div.is_displayed() is True
+        assert "TODO: INTERVIEWS" in div.text
+
+    def test_should_load_about_view_when_about_is_clicked(self):
+        #Open browser and go to site root
+        self.browser.get(self.live_server_url)
+        element = self.browser.find_element_by_link_text("ABOUT")
+        element.click()
+        div = self.browser.find_element_by_id('about')
+        assert div.is_displayed() is True
+        assert "TODO: ABOUT" in div.text
+
+    def test_should_load_tours_view_when_tours_is_clicked(self):
+        #Open browser and go to site root
+        self.browser.get(self.live_server_url)
+        element = self.browser.find_element_by_link_text("TOURS")
+        element.click()
+        div = self.browser.find_element_by_id('tours')
+        assert div.is_displayed() is True
+        assert "TODO: TOURS" in div.text
+
+
 
