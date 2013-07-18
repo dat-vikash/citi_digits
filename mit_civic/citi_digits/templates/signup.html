@@ -1,0 +1,70 @@
+<form class="well signup-form" method="post" action="/signup/">
+  <div class="modal-header">
+    <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
+       <img src="{{ STATIC_URL }}/img/modal_close.png"/>
+    </button>
+    <h3>Teacher Sign Up</h3>
+  </div><!-- modal-header -->
+  <div class="modal-body">
+      <div class="fieldInfoWrapper">
+          <h6>Create an account.</h6>
+          <p>Enter your email and password, which you will use when logging into your account. This information will be private.</p>
+      </div><!-- fieldInfoWrapper -->
+       {% csrf_token %}
+      {{ form.non_field_errors }}
+     <div class="fieldGroup">
+         <div class="fieldWrapper pull-left">
+            {{ form.firstName.errors }}
+            {{ form.firstName }}
+        </div>
+        <div class="fieldWrapper pull-right">
+            {{ form.lastName.errors }}
+            {{ form.lastName }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.email.errors }}
+            {{ form.email }}
+        </div>
+        <div class="fieldWrapper">
+            {{ form.password.errors }}
+            {{ form.password }}
+        </div>
+     </div><!-- fieldGroup -->
+      <div class="fieldInfoWrapper">
+          <p>Enter the name and location of your school. This information will be private.</p>
+      </div><!-- fieldInfoWrapper -->
+          <div class="fieldGroup">
+           <div class="fieldWrapper">
+            {{ form.schoolName.errors }}
+            {{ form.schoolName }}
+          </div>
+          <div class="fieldWrapper">
+            {{ form.schoolAddress.errors }}
+            {{ form.schoolAddress }}
+          </div>
+          <div class="fieldWrapper pull-left">
+            {{ form.schoolCity.errors }}
+            {{ form.schoolCity }}
+         </div>
+         <div class="fieldWrapper pull-right">
+            {{ form.schoolState.errors }}
+            {{ form.schoolState }}
+         </div>
+      </div><!-- fieldGroup -->
+      <div class="fieldInfoWrapper">
+          <h6>Create a public username for your class.</h6>
+          <p>This can be your name, ie <i>Ms. Jones' Class</i>, the name of your school, ie <i>PS1</i>, or a team name of your choosing.</p>
+      </div><!-- fieldInfoWrapper -->
+      <div class="fieldGroup">
+          <div class="fieldWrapper">
+            {{ form.teamName.errors }}
+            {{ form.teamName }}
+          </div>
+      </div>
+
+
+  </div> <!-- modal-body -->
+  <div class="modal-footer">
+       <input class="btn btn-primary" type="button" value="Next" />
+  </div>
+</form>

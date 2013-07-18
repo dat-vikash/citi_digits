@@ -78,17 +78,53 @@
     margin-left: 1%;
 }
 
+/*
+ Bootstrap Modal Overrides
+*/
 
-/*.LOGIN_______SIGN_UP {*/
-  /*font-size: 12px;*/
-  /*font-family: "Neutraface2Text";*/
-  /*color: rgb( 163, 171, 181 );*/
-  /*line-height: 1.417;*/
-  /*text-align: right;*/
-  /*position: absolute;*/
-  /*left: 747.848px;*/
-  /*top: 32.992px;*/
-  /*width: 100px;*/
-  /*height: 10px;*/
-  /*z-index: 1026;*/
-/*}*/
+#signUpModal .modal-body {
+	max-height: 400px;
+}
+
+.modal-header h3 {
+    text-align: center;
+    color: rgb(255,255,255);
+}
+
+.modal-body .fieldInfoWrapper h6{
+    text-align: center;
+}
+.modal-body .fieldInfoWrapper p{
+    text-align: center;
+    color: rgb(255,255,255);
+}
+
+.modal-body .fieldGroup{
+    width:450px;
+    margin-right:auto;
+    margin-left:auto;
+    text-align: center;
+}
+
+.modal-close {
+    position: absolute;
+    margin: 0;
+    top: -23px; /* half height of "X" image, just for nice placing*/
+    right: -23px; /* half width of "X" image, just for nice placing*/
+    opacity: 0.9;
+}
+
+.modal-close:hover {
+    opacity: 1;
+}
+
+/*
+ Sign Up form
+*/
+.well {
+    background-color: rgb(3,95,242);
+}
+
+.well .modal-footer {
+    background-color: rgb(3,95,242);
+}

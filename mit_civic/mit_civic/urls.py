@@ -6,7 +6,8 @@ from django.conf import settings
 # admin.autodiscover()
 
 urlpatterns = patterns('',
-        url(r'^$', 'citi_digits.views.index', name='home'),
+        url(r'^$', 'citi_digits.views.index', name='index'),
+        url(r'^signup/$', 'citi_digits.views.signUp', name='signup'),
 
     # Examples:
     # url(r'^$', 'mit_civic.views.home', name='home'),
