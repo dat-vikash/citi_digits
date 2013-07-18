@@ -953,10 +953,10 @@
   body {
     padding-top: 0;
   }
-  .navbar-fixed-top,
-  .navbar-fixed-bottom {
-    position: static;
-  }
+  /*.navbar-fixed-top,*/
+  /*.navbar-fixed-bottom {*/
+    /*position: static;*/
+  /*}*/
   .navbar-fixed-top {
     margin-bottom: 20px;
   }
@@ -983,15 +983,15 @@
     float: none;
     margin: 0 0 10px;
   }
-  .nav-collapse .nav > li {
-    float: none;
-  }
+  /*.nav-collapse .nav > li {*/
+    /*float: none;*/
+  /*}*/
   .nav-collapse .nav > li > a {
     margin-bottom: 2px;
   }
-  .nav-collapse .nav > .divider-vertical {
-    display: none;
-  }
+  /*.nav-collapse .nav > .divider-vertical {*/
+    /*display: none;*/
+  /*}*/
   .nav-collapse .nav .nav-header {
     color: #777777;
     text-shadow: none;
@@ -1089,7 +1089,7 @@
   }
   .nav-collapse,
   .nav-collapse.collapse {
-    height: 0;
+    /*height: 0;*/
     overflow: hidden;
   }
   .navbar .btn-navbar {

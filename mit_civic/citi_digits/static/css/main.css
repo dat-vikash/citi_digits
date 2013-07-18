@@ -1,6 +1,10 @@
 /*
  * Overrides for navbar
 */
+.navbar .nav{
+    float: left;
+    margin: 0 10px 0;
+}
 
 .navbar .nav .divider-vertical{
     background-color: #000000;
@@ -43,6 +47,11 @@
     color: rgb( 2, 95, 241 );
     font-family: "Helvetica Neue";
 }
+
+.nav-collapse .nav > li > a,
+  .nav-collapse .dropdown-menu a {
+    font-weight: 400;
+  }
 
 /*
  Container overrides
