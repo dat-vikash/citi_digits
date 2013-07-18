@@ -100,11 +100,16 @@
 }
 
 .modal-body .fieldGroup{
-    width:450px;
+    /*width:450px;*/
     margin-right:auto;
     margin-left:auto;
     text-align: center;
 }
+
+.fieldGroup table.center {
+    margin-left:auto;
+    margin-right:auto;
+ }
 
 .modal-close {
     position: absolute;

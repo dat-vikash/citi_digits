@@ -6,14 +6,14 @@ from django.contrib.localflavor.us.us_states import STATE_CHOICES
 
 
 class SignUpForm(forms.Form):
-    firstName = forms.CharField(initial="First Name", max_length=5)
-    lastName = forms.CharField(initial="Last Name")
-    password = forms.CharField(initial="Password")
-    email = forms.EmailField(initial="Email")
-    schoolName = forms.CharField(initial="School Name")
-    schoolAddress = forms.CharField(initial="School Address")
-    schoolCity = forms.CharField(initial="City")
-    schoolState = USStateField(initial="State", widget=forms.Select(
-        choices=STATE_CHOICES))
-    teamName = forms.CharField(initial="Class Name")
+    firstName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class':'input-small'}))
+    lastName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class':'input-small'}))
+    password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
+    schoolName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Name'}))
+    schoolAddress = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Address'}))
+    schoolCity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'City','class':'input-small'}))
+    schoolState = USStateField(widget=forms.Select(
+        choices=STATE_CHOICES,attrs={'placeholder':'State', 'class':'input-small'}))
+    teamName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Class Name'}))
     teams = forms.CharField()

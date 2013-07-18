@@ -13,44 +13,76 @@
        {% csrf_token %}
       {{ form.non_field_errors }}
      <div class="fieldGroup">
-         <div class="fieldWrapper pull-left">
-            {{ form.firstName.errors }}
-            {{ form.firstName }}
-        </div>
-        <div class="fieldWrapper pull-right">
-            {{ form.lastName.errors }}
-            {{ form.lastName }}
-        </div>
-        <div class="fieldWrapper">
-            {{ form.email.errors }}
-            {{ form.email }}
-        </div>
-        <div class="fieldWrapper">
-            {{ form.password.errors }}
-            {{ form.password }}
-        </div>
+         <table class="center">
+             <tr>
+                 <td>
+                     <div class="fieldWrapper">
+                        {{ form.firstName.errors }}
+                        {{ form.firstName }}
+                     </div>
+                 </td>
+                 <td>
+                     <div class="fieldWrapper">
+                        {{ form.lastName.errors }}
+                        {{ form.lastName }}
+                     </div>
+                 </td>
+             </tr><!-- tr -->
+             <tr>
+                 <td colspan="2">
+                     <div class="fieldWrapper">
+                        {{ form.email.errors }}
+                        {{ form.email }}
+                     </div>
+                 </td>
+             </tr><!--tr -->
+             <tr>
+                 <td colspan="2">
+                    <div class="fieldWrapper">
+                        {{ form.password.errors }}
+                        {{ form.password }}
+                    </div>
+                 </td>
+             </tr><!-- tr -->
+         </table><!-- table -->
      </div><!-- fieldGroup -->
       <div class="fieldInfoWrapper">
           <p>Enter the name and location of your school. This information will be private.</p>
       </div><!-- fieldInfoWrapper -->
           <div class="fieldGroup">
-           <div class="fieldWrapper">
-            {{ form.schoolName.errors }}
-            {{ form.schoolName }}
-          </div>
-          <div class="fieldWrapper">
-            {{ form.schoolAddress.errors }}
-            {{ form.schoolAddress }}
-          </div>
-          <div class="fieldWrapper pull-left">
-            {{ form.schoolCity.errors }}
-            {{ form.schoolCity }}
-         </div>
-         <div class="fieldWrapper pull-right">
-            {{ form.schoolState.errors }}
-            {{ form.schoolState }}
-         </div>
-      </div><!-- fieldGroup -->
+              <table class="center">
+                  <tr>
+                      <td colspan="2">
+                          <div class="fieldWrapper">
+                            {{ form.schoolName.errors }}
+                            {{ form.schoolName }}
+                          </div>
+                      </td>
+                  </tr><!-- tr -->
+                  <tr>
+                      <td colspan="2">
+                          <div class="fieldWrapper">
+                            {{ form.schoolAddress.errors }}
+                            {{ form.schoolAddress }}
+                          </div>
+                      </td>
+                  </tr><!-- tr -->
+                  <tr>
+                      <td>
+                          <div class="fieldWrapper">
+                            {{ form.schoolCity.errors }}
+                            {{ form.schoolCity }}
+                         </div>
+                      </td>
+                      <td>
+                          <div class="fieldWrapper">
+                            {{ form.schoolState.errors }}
+                            {{ form.schoolState }}
+                         </div>
+                      </td>
+                  </tr><!-- tr -->
+              </table><!-- table -->
+          </div><!-- fieldGroup -->
       <div class="fieldInfoWrapper">
           <h6>Create a public username for your class.</h6>
           <p>This can be your name, ie <i>Ms. Jones' Class</i>, the name of your school, ie <i>PS1</i>, or a team name of your choosing.</p>
@@ -61,8 +93,6 @@
             {{ form.teamName }}
           </div>
       </div>
-
-
   </div> <!-- modal-body -->
   <div class="modal-footer">
        <input class="btn btn-primary" type="button" value="Next" />
