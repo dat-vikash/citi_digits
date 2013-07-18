@@ -19,7 +19,20 @@
     }); // display the modal on url load
         });
         return false; // prevent the click propagation
-    });
+ });
+
+/*
+ * Sign Up workflow logic
+ */
+$("#signUpModal").on("click", ".workflow_1_click", function (ev) {
+    ev.preventDefault(); // prevent navigation
+    console.log("WORKDUP");
+    //hide sign up workflow part 1
+    $("#signUpModal #workflow_1").hide();
+    $("#signUpModal #workflow_2").show();
+    $("#signUpModal .workflow_1_click").hide();
+});
+
 
 //    $('.contact-form').live('submit', function() {
 //        $.ajax({

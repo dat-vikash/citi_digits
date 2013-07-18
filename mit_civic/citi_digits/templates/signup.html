@@ -6,95 +6,100 @@
     <h3>Teacher Sign Up</h3>
   </div><!-- modal-header -->
   <div class="modal-body">
-      <div class="fieldInfoWrapper">
-          <h6>Create an account.</h6>
-          <p>Enter your email and password, which you will use when logging into your account. This information will be private.</p>
-      </div><!-- fieldInfoWrapper -->
-       {% csrf_token %}
-      {{ form.non_field_errors }}
-     <div class="fieldGroup">
-         <table class="center">
-             <tr>
-                 <td>
-                     <div class="fieldWrapper">
-                        {{ form.firstName.errors }}
-                        {{ form.firstName }}
-                     </div>
-                 </td>
-                 <td>
-                     <div class="fieldWrapper">
-                        {{ form.lastName.errors }}
-                        {{ form.lastName }}
-                     </div>
-                 </td>
-             </tr><!-- tr -->
-             <tr>
-                 <td colspan="2">
-                     <div class="fieldWrapper">
-                        {{ form.email.errors }}
-                        {{ form.email }}
-                     </div>
-                 </td>
-             </tr><!--tr -->
-             <tr>
-                 <td colspan="2">
-                    <div class="fieldWrapper">
-                        {{ form.password.errors }}
-                        {{ form.password }}
-                    </div>
-                 </td>
-             </tr><!-- tr -->
-         </table><!-- table -->
-     </div><!-- fieldGroup -->
-      <div class="fieldInfoWrapper">
-          <p>Enter the name and location of your school. This information will be private.</p>
-      </div><!-- fieldInfoWrapper -->
+      <div id="workflow_1">
+          <div class="fieldInfoWrapper">
+              <h6>Create an account.</h6>
+              <p>Enter your email and password, which you will use when logging into your account. This information will be private.</p>
+          </div><!-- fieldInfoWrapper -->
+           {% csrf_token %}
+          {{ form.non_field_errors }}
           <div class="fieldGroup">
-              <table class="center">
-                  <tr>
-                      <td colspan="2">
-                          <div class="fieldWrapper">
-                            {{ form.schoolName.errors }}
-                            {{ form.schoolName }}
-                          </div>
-                      </td>
-                  </tr><!-- tr -->
-                  <tr>
-                      <td colspan="2">
-                          <div class="fieldWrapper">
-                            {{ form.schoolAddress.errors }}
-                            {{ form.schoolAddress }}
-                          </div>
-                      </td>
-                  </tr><!-- tr -->
-                  <tr>
-                      <td>
-                          <div class="fieldWrapper">
-                            {{ form.schoolCity.errors }}
-                            {{ form.schoolCity }}
+             <table class="center">
+                 <tr>
+                     <td>
+                         <div class="fieldWrapper">
+                            {{ form.firstName.errors }}
+                            {{ form.firstName }}
                          </div>
-                      </td>
-                      <td>
-                          <div class="fieldWrapper">
-                            {{ form.schoolState.errors }}
-                            {{ form.schoolState }}
+                     </td>
+                     <td>
+                         <div class="fieldWrapper">
+                            {{ form.lastName.errors }}
+                            {{ form.lastName }}
                          </div>
-                      </td>
-                  </tr><!-- tr -->
-              </table><!-- table -->
-          </div><!-- fieldGroup -->
-      <div class="fieldInfoWrapper">
-          <h6>Create a public username for your class.</h6>
-          <p>This can be your name, ie <i>Ms. Jones' Class</i>, the name of your school, ie <i>PS1</i>, or a team name of your choosing.</p>
-      </div><!-- fieldInfoWrapper -->
-      <div class="fieldGroup">
-          <div class="fieldWrapper">
-            {{ form.teamName.errors }}
-            {{ form.teamName }}
+                     </td>
+                 </tr><!-- tr -->
+                 <tr>
+                     <td colspan="2">
+                         <div class="fieldWrapper">
+                            {{ form.email.errors }}
+                            {{ form.email }}
+                         </div>
+                     </td>
+                 </tr><!--tr -->
+                 <tr>
+                     <td colspan="2">
+                        <div class="fieldWrapper">
+                            {{ form.password.errors }}
+                            {{ form.password }}
+                        </div>
+                     </td>
+                 </tr><!-- tr -->
+             </table><!-- table -->
+         </div><!-- fieldGroup -->
+          <div class="fieldInfoWrapper">
+              <p>Enter the name and location of your school. This information will be private.</p>
+          </div><!-- fieldInfoWrapper -->
+              <div class="fieldGroup">
+                  <table class="center">
+                      <tr>
+                          <td colspan="2">
+                              <div class="fieldWrapper">
+                                {{ form.schoolName.errors }}
+                                {{ form.schoolName }}
+                              </div>
+                          </td>
+                      </tr><!-- tr -->
+                      <tr>
+                          <td colspan="2">
+                              <div class="fieldWrapper">
+                                {{ form.schoolAddress.errors }}
+                                {{ form.schoolAddress }}
+                              </div>
+                          </td>
+                      </tr><!-- tr -->
+                      <tr>
+                          <td>
+                              <div class="fieldWrapper">
+                                {{ form.schoolCity.errors }}
+                                {{ form.schoolCity }}
+                             </div>
+                          </td>
+                          <td>
+                              <div class="fieldWrapper">
+                                {{ form.schoolState.errors }}
+                                {{ form.schoolState }}
+                             </div>
+                          </td>
+                      </tr><!-- tr -->
+                  </table><!-- table -->
+              </div><!-- fieldGroup -->
+          <div class="fieldInfoWrapper">
+              <h6>Create a public username for your class.</h6>
+              <p>This can be your name, ie <i>Ms. Jones' Class</i>, the name of your school, ie <i>PS1</i>, or a team name of your choosing.</p>
+          </div><!-- fieldInfoWrapper -->
+          <div class="fieldGroup">
+              <div class="fieldWrapper">
+                {{ form.teamName.errors }}
+                {{ form.teamName }}
+              </div>
           </div>
+      </div><!-- #div workflow_1 -->
+      <div id="workflow_2" class="hide">
+          I'm workflow 2!
       </div>
   </div> <!-- modal-body -->
   <div class="modal-footer">
-       <input class="btn btn-primary" type="button" value="Next" />
+      <button class="btn btn-primary workflow_1_click" aria-hidden="true">Next</button>
   </div>
 </form>
