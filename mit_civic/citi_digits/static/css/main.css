@@ -1,11 +1,27 @@
 /*
+  Bootstrap Overrides
+*/
+
+@media (max-width: 979px){
+.navbar .nav-collapse .nav.pull-right {
+    float: right;
+}
+}
+
+/*
  * Overrides for navbar
 */
+
+
 .navbar .nav{
     float: left;
     margin: 0 10px 0;
 }
 
+.navbar .nav-collapse .nav.pull-right {
+    float: right;
+
+}
 .navbar .nav .divider-vertical{
     background-color: #000000;
     border-right: 2px solid #000000;
@@ -41,7 +57,7 @@
     overflow: visible;
     padding-top: 0;
     padding-bottom: 0;
-    padding-left: 16%;
+    padding-left: 10%;
     font-size: 30px;
     margin-top:6px;
     color: rgb( 2, 95, 241 );
@@ -51,7 +67,8 @@
 .nav-collapse .nav > li > a,
   .nav-collapse .dropdown-menu a {
     font-weight: 400;
-  }
+}
+
 
 /*
  Container overrides
@@ -62,3 +79,16 @@
 }
 
 
+/*.LOGIN_______SIGN_UP {*/
+  /*font-size: 12px;*/
+  /*font-family: "Neutraface2Text";*/
+  /*color: rgb( 163, 171, 181 );*/
+  /*line-height: 1.417;*/
+  /*text-align: right;*/
+  /*position: absolute;*/
+  /*left: 747.848px;*/
+  /*top: 32.992px;*/
+  /*width: 100px;*/
+  /*height: 10px;*/
+  /*z-index: 1026;*/
+/*}*/
