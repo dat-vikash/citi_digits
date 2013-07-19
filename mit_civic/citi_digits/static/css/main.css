@@ -82,8 +82,11 @@
  Bootstrap Modal Overrides
 */
 
-#signUpModal .modal-body {
-	max-height: 400px;
+.errorlist {
+    color: red;
+}
+#signUpModal {
+	max-height: 0px;
 }
 
 .modal-header h3 {

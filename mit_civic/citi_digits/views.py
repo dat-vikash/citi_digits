@@ -1,4 +1,6 @@
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.template.response import TemplateResponse
 import forms
 
@@ -7,7 +9,8 @@ def index(request):
     """
      Loads base index
     """
-    return TemplateResponse(request,'index.html')
+    return render_to_response('index.html', {},
+                   context_instance=RequestContext(request))
 
 def signUp(request):
     """
@@ -22,15 +25,11 @@ def signUp(request):
             return HttpResponse(200) # Redirect after POST
         else:
             print("FORM NOT VALID")
-            for field in form.errors.keys():
-                print "ValidationError: %s[%s] <- \"%s\" %s" % (
-                    '',
-                    field,
-                    form.data[field],
-                    form.errors[field].as_text()
-                )
+            return render_to_response('signup.html', {'form': form},
+                   context_instance=RequestContext(request))
         pass
     elif request.method == 'GET':
         #Load Sign up form
         form = forms.SignUpForm()
-        return TemplateResponse(request,'signup.html',{'form':form})
+        return render_to_response('signup.html', {'form': form},
+                   context_instance=RequestContext(request))

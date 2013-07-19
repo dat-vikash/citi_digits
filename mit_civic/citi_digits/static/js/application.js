@@ -57,7 +57,7 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
  */
 $('#signUpModal').on("click", ".add_team", function (ev) {
     ev.preventDefault(); // prevent navigation
-    $('#workflow_2').append('<div class="team">' +
+    $('#workflow_2').append('<div class="team row-fluid">' +
               '<div class="input-append">' +
                 '<input class="input-large" type="text" placeholder="Team" id="team_name" name="team_name[]">' +
                 '<span class="add-on"><span class="caret"></span></span>' +
@@ -81,41 +81,25 @@ $('#signUpModal').on("click", ".submit", function (ev) {
     ev.preventDefault(); // prevent navigation
     //get request url
     var request_url = $('#sign_up_form').attr('action');
-    console.log("SUBMITTING: " + request_url);
     // get all the inputs into an array.
-//    var $inputs = $('#sign_up_form :input');
     var values = {};
-$.each($('#sign_up_form').serializeArray(), function(i, field) {
+    $.each($('#sign_up_form').serializeArray(), function(i, field) {
     values[field.name] = field.value;
 });
     console.log(values);
     //do post
     $.ajax({
      url: request_url,
+     type:'POST',
      dataType: "jsonp",
      success: function(data){
        console.log("SUCCESS POST");
      },
-     error: function(event, xhr, status, error){
-       console.log("error: " + error);
+     error: function(data){
+         console.log(data.responseText);
+          $("#signUpModal").html(data.responseText);
      }
   });
     //prevent click propagation
     return false;
 });
-
-
-
-//$('#myTable tr:last').after('<tr>...</tr><tr>...</tr>');
-//    $('.contact-form').live('submit', function() {
-//        $.ajax({
-//            type: $(this).attr('method'),
-//            url: this.action,
-//            data: $(this).serialize(),
-//            context: this,
-//            success: function(data, status) {
-//                $('#contactModal').html(data);
-//            }
-//        });
-//        return false;
-//    });
