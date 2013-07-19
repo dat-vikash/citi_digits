@@ -15,5 +15,4 @@ class SignUpForm(forms.Form):
     schoolCity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'City','class':'input-small'}))
     schoolState = USStateField(widget=forms.Select(
         choices=STATE_CHOICES,attrs={'placeholder':'State', 'class':'input-small'}))
-    teamName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Class Name'}))
-    teams = forms.CharField()
+    className = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Class Name'}))

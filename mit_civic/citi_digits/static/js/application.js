@@ -41,15 +41,14 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
     if(!teamName){
         teamName = "Team";
     }
-
-    //get student count
-//    $("div").attr('id').replace(/button/, '')
+    //get student count for team
     var student_count = $(this).closest(".team").find(".student").length + 1;
-//    console.log($(this).closest("div").find("#team_name").val());
+    //create input strings
     var studentFirstNameInput = '<input class="input-medium student" type="text" placeholder="Student First Name" name="teams[' +
         teamName+'][' + student_count +'][name]">';
     var studentPassword = '<input class="input-medium" type="text" placeholder="Password" name="teams[' +
         teamName+'][' + student_count +'][password]">';
+    //apply input strings
     $(this).parent().parent().parent().prepend('<tr><td>' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
 });
 
@@ -60,7 +59,7 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
     ev.preventDefault(); // prevent navigation
     $('#workflow_2').append('<div class="team">' +
               '<div class="input-append">' +
-                '<input class="input-large" type="text" placeholder="Team" id="team_name_1">' +
+                '<input class="input-large" type="text" placeholder="Team" id="team_name" name="team_name[]">' +
                 '<span class="add-on"><span class="caret"></span></span>' +
               '</div>'+
               '<table>'+
@@ -74,6 +73,36 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
     //prevent click propagation
     return false;
 });
+
+/*
+ * This function defines how to handle a workflow submission
+ */
+//$('#signUpModal').on("click", ".submit", function (ev) {
+//    ev.preventDefault(); // prevent navigation
+//    //get request url
+//    var request_url = $('#sign_up_form').attr('action');
+//    console.log("SUBMITTING: " + request_url);
+//    // get all the inputs into an array.
+////    var $inputs = $('#sign_up_form :input');
+//    var values = {};
+//$.each($('#sign_up_form').serializeArray(), function(i, field) {
+//    values[field.name] = field.value;
+//});
+//    console.log(values);
+//    //do post
+//    $.ajax({
+//     url: request_url,
+//     dataType: "jsonp",
+//     success: function(data){
+//       console.log("SUCCESS POST");
+//     },
+//     error: function(event, xhr, status, error){
+//       console.log("error: " + error);
+//     }
+//  });
+//    //prevent click propagation
+//    return false;
+//});
 
 
 

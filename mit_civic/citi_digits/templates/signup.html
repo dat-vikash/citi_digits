@@ -90,24 +90,29 @@
           </div><!-- fieldInfoWrapper -->
           <div class="fieldGroup">
               <div class="fieldWrapper">
-                {{ form.teamName.errors }}
-                {{ form.teamName }}
+                {{ form.className.errors }}
+                {{ form.className }}
               </div>
           </div>
       </div><!-- #div workflow_1 -->
       <div id="workflow_2" class="hide row-fluid">
+          <div class="fieldInfoWrapper">
+              <h6>Create accounts for your students.</h6>
+              <p>Split your class into teams composed of around 2-4 students. Provide students with their names and passwords, exactly as you have entered them, to
+              log on to the site. The student names you enter will be public.</p>
+          </div><!-- fieldInfoWrapper -->
           <div class="team">
               <div class="input-append">
                 <input class="input-large" type="text" placeholder="Team" id="team_name">
                 <span class="add-on"><span class="caret"></span></span>
-              </div>
+              </div> <!--div -->
               <table>
                   <tr>
                       <td colspan="2">
                           <label class="add_student">+ Add a student to this team</label>
                       </td>
                   </tr>
-              </table>
+              </table><!--table -->
           </div><!-- team -->
       </div><!-- #div workflow 2-->
   </div> <!-- modal-body -->
@@ -116,5 +121,6 @@
         <button class="btn workflow_2_add_team hide add_team" aria-hidden="true">Add a Team</button>
       </div>
       <button class="btn btn-primary workflow_1_click" aria-hidden="true">Next</button>
+      <button class="btn workflow_2_add_team hide submit" aria-hidden="true">Submit</button>
   </div>
 </form>
