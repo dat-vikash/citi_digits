@@ -1,3 +1,4 @@
+import json
 from django.http import HttpResponse
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -22,7 +23,9 @@ def signUp(request):
         form  = forms.SignUpForm(request.POST)
         if form.is_valid(): # All validation rules pass
             print("FORM VALID")
-            return HttpResponse(200) # Redirect after POST
+            json_data = json.dumps({"HTTPRESPONSE":200})
+            # json data is just a JSON string now.
+            return HttpResponse(json_data, mimetype="application/json")
         else:
             print("FORM NOT VALID")
             for field in form.errors.keys():

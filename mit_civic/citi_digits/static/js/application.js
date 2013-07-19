@@ -86,15 +86,18 @@ $('#signUpModal').on("click", ".submit", function (ev) {
     $.each($('#sign_up_form').serializeArray(), function(i, field) {
     values[field.name] = field.value;
 });
-    console.log(values);
     //do post
     $.ajax({
      url: request_url,
      type:'POST',
-     dataType: "jsonp",
+     dataType: "json",
      data: values,
      success: function(data){
        console.log("SUCCESS POST");
+       //show success page
+       $("#signUpModal #workflow_2").hide();
+       $("#signUpModal .workflow_2_add_team").hide();
+       $("#signUpModal #workflow_3").show();
      },
      error: function(data){
          console.log(data.responseText);
