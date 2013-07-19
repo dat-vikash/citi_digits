@@ -77,32 +77,32 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
 /*
  * This function defines how to handle a workflow submission
  */
-//$('#signUpModal').on("click", ".submit", function (ev) {
-//    ev.preventDefault(); // prevent navigation
-//    //get request url
-//    var request_url = $('#sign_up_form').attr('action');
-//    console.log("SUBMITTING: " + request_url);
-//    // get all the inputs into an array.
-////    var $inputs = $('#sign_up_form :input');
-//    var values = {};
-//$.each($('#sign_up_form').serializeArray(), function(i, field) {
-//    values[field.name] = field.value;
-//});
-//    console.log(values);
-//    //do post
-//    $.ajax({
-//     url: request_url,
-//     dataType: "jsonp",
-//     success: function(data){
-//       console.log("SUCCESS POST");
-//     },
-//     error: function(event, xhr, status, error){
-//       console.log("error: " + error);
-//     }
-//  });
-//    //prevent click propagation
-//    return false;
-//});
+$('#signUpModal').on("click", ".submit", function (ev) {
+    ev.preventDefault(); // prevent navigation
+    //get request url
+    var request_url = $('#sign_up_form').attr('action');
+    console.log("SUBMITTING: " + request_url);
+    // get all the inputs into an array.
+//    var $inputs = $('#sign_up_form :input');
+    var values = {};
+$.each($('#sign_up_form').serializeArray(), function(i, field) {
+    values[field.name] = field.value;
+});
+    console.log(values);
+    //do post
+    $.ajax({
+     url: request_url,
+     dataType: "jsonp",
+     success: function(data){
+       console.log("SUCCESS POST");
+     },
+     error: function(event, xhr, status, error){
+       console.log("error: " + error);
+     }
+  });
+    //prevent click propagation
+    return false;
+});
 
 
 
