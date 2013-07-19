@@ -92,6 +92,7 @@ $('#signUpModal').on("click", ".submit", function (ev) {
      url: request_url,
      type:'POST',
      dataType: "jsonp",
+     data: values,
      success: function(data){
        console.log("SUCCESS POST");
      },

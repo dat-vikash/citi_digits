@@ -25,6 +25,13 @@ def signUp(request):
             return HttpResponse(200) # Redirect after POST
         else:
             print("FORM NOT VALID")
+            for field in form.errors.keys():
+                print "ValidationError: %s[%s] <- \"%s\" %s" % (
+                    '',
+                    field,
+                    '',
+                    form.errors[field].as_text()
+                )
             return render_to_response('signup.html', {'form': form},
                    context_instance=RequestContext(request))
         pass
