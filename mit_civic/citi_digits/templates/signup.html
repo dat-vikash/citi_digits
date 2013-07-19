@@ -1,4 +1,4 @@
-<form class="well signup-form" method="post" action="/signup/">
+<form id="sign_up_form" class="well signup-form" method="post" action="/signup/">
   <div class="modal-header">
     <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
        <img src="{{ STATIC_URL }}/img/modal_close.png"/>
@@ -95,11 +95,26 @@
               </div>
           </div>
       </div><!-- #div workflow_1 -->
-      <div id="workflow_2" class="hide">
-          I'm workflow 2!
-      </div>
+      <div id="workflow_2" class="hide row-fluid">
+          <div class="team">
+              <div class="input-append">
+                <input class="input-large" type="text" placeholder="Team" id="team_name">
+                <span class="add-on"><span class="caret"></span></span>
+              </div>
+              <table>
+                  <tr>
+                      <td colspan="2">
+                          <label class="add_student">+ Add a student to this team</label>
+                      </td>
+                  </tr>
+              </table>
+          </div><!-- team -->
+      </div><!-- #div workflow 2-->
   </div> <!-- modal-body -->
   <div class="modal-footer">
+      <div class="span6">
+        <button class="btn workflow_2_add_team hide add_team" aria-hidden="true">Add a Team</button>
+      </div>
       <button class="btn btn-primary workflow_1_click" aria-hidden="true">Next</button>
   </div>
 </form>
