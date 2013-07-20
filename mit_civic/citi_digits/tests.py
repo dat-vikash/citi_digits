@@ -9,9 +9,61 @@ from django.test import LiveServerTestCase
 from unittest import TestCase
 from selenium import webdriver
 from django.test import Client
-from models import School
+from models import *
 
 # Model Unit Tests
+
+class TeamUnitTest(TestCase):
+
+    def setUp(self):
+        self.NAME = "BLUE"
+        self.SCHOOL = School.objects.create()
+        self.TEACHER = Teacher.objects.create(school=self.SCHOOL)
+        self.team = Team.objects.create(id=1,name=self.NAME,teacher=self.TEACHER)
+
+    def tearDown(self):
+        self.team.delete()
+
+    def test_should_retrieve_correct_team(self):
+        team = Team.objects.get(pk=1)
+        self.assertEquals(team.name,self.NAME,"Team name does not match")
+        self.assertEquals(team.teacher,self.TEACHER,"Teacher does not match")
+
+    def test_should_raise_integrity_error_for_empty_team(self):
+        team = Team(teacher=self.TEACHER)
+        self.assertRaises(IntegrityError,team.save())
+
+    def test_should_raise_integrity_error_for_name_greater_than_max(self):
+        team = Team(teacher=self.TEACHER,name="thisistoomany")
+        self.assertRaises(IntegrityError,team.save())
+
+
+class TeacherUnitTest(TestCase):
+    def setUp(self):
+        self.FIRST_NAME = "Fname"
+        self.LAST_NAME = "Lname"
+        self.EMAIL = "TEST@TEST.COM"
+        self.PASSWORD = Teacher.encryptPassword(self.LAST_NAME,"PASSWORD")
+        self.SCHOOL = School.objects.create()
+        self.CLASS_NAME = "Test Class"
+        self.teacher = Teacher.objects.create(id=1,firstName=self.FIRST_NAME,lastName=self.LAST_NAME,email=self.EMAIL,
+                                              password=self.PASSWORD,school=self.SCHOOL,className=self.CLASS_NAME)
+
+    def tearDown(self):
+        self.teacher.delete()
+
+    def test_should_retrieve_correct_teacher(self):
+        teacher = Teacher.objects.get(pk=1)
+        self.assertEquals(teacher.firstName,self.FIRST_NAME,"First name does not match")
+        self.assertEquals(teacher.lastName,self.LAST_NAME,"Last name does not match")
+        self.assertEquals(teacher.email,self.EMAIL,"Email does not match")
+        self.assertEquals(teacher.password,self.PASSWORD,"Password does not match")
+        self.assertEquals(teacher.school,self.SCHOOL,"School does not match")
+        self.assertEquals(teacher.className,self.CLASS_NAME,"Class name does not match")
+
+    def test_should_raise_integrity_error_for_empty_teacher(self):
+        teacher = Teacher(school=self.SCHOOL)
+        self.assertRaises(IntegrityError,teacher.save())
 
 
 class SchoolUnitTest(TestCase):

@@ -14,22 +14,26 @@ class School(models.Model):
         return school
 
 class Teacher(models.Model):
-    firstName = models.CharField(max_length=255)
-    lastName = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255)
-    password = models.CharField(max_length=128)
-    school = models.ForeignKey(School)
+    firstName = models.CharField(max_length=255, null=False)
+    lastName = models.CharField(max_length=255,null=False)
+    email = models.EmailField(max_length=255,null=False)
+    password = models.CharField(max_length=128,null=False)
+    school = models.ForeignKey(School,null=False)
+    className = models.CharField(max_length=255,null=False)
 
-    def encryptPassword(self,raw_password):
+    @staticmethod
+    def encryptPassword(salt, raw_password):
         """
           This function encrypts the user's password using a salt and a sha512 hexdigest in the format
           hexdigest({salt}password)
         """
         import hashlib
-        salt = self.lastName
         hexDigest = hashlib.sha512('{%s}%s'%(salt,raw_password))
-        self.password = "$s" % (hexDigest.hexdigest())
-        return self.password
+        password = hexDigest.hexdigest()
+        return password
 
-# class Team(models.Model):
+class Team(models.Model):
+    name = models.CharField(max_length=6,null=False)
+    teacher = models.ForeignKey(Teacher,null=False)
+
 
