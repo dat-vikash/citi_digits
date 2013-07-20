@@ -99,22 +99,24 @@
       <div id="workflow_2" class="row-fluid hide">
           <div class="fieldInfoWrapper">
               <h5>Create accounts for your students.</h5>
-              <p>Split your class into teams composed of around 2-4 students. Provide students with their names and passwords, exactly as you have entered them, to
+              <p>Split your class into teams composed of around 2-4 students. Provide students with their names and passwords, exactly as you've entered them, to
               log on to the site. The student names you enter will be public.</p>
           </div><!-- fieldInfoWrapper -->
-          <div class="team row-fluid">
-              <div class="input-append">
-                <input class="input-large" type="text" placeholder="Team" id="team_name">
-                <span class="add-on"><span class="caret"></span></span>
-              </div> <!--div -->
-              <table>
-                  <tr>
-                      <td colspan="2">
-                          <label class="add_student">+ Add a student to this team</label>
-                      </td>
-                  </tr>
-              </table><!--table -->
-          </div><!-- team -->
+          <div class="row-fluid">
+              <div class="team ">
+                  <div class="input-append">
+                    <input class="sign_up_large" type="text" placeholder="Team" id="team_name">
+                    <span class="add-on"><span class="caret"></span></span>
+                  </div> <!--div -->
+                  <table>
+                      <tr>
+                          <td colspan="2">
+                              <label class="add_student">+ Add a student to this team</label>
+                          </td>
+                      </tr>
+                  </table><!--table -->
+              </div><!-- team -->
+          </div>
       </div><!-- #div workflow 2-->
       <div id="workflow_3" class="row-fluid hide">
           <div class="fieldInfoWrapper">
@@ -125,7 +127,8 @@
       </div>
   </div> <!-- modal-body -->
   <div class="modal-footer">
-      <div class="span6">
+      <button class="btn workflow_2_add_team hide back pull-left" aria-hidden="true">Back</button>
+      <div class="span4">
         <button class="btn workflow_2_add_team hide add_team" aria-hidden="true">Add a Team</button>
       </div>
       <button class="btn btn-primary workflow_1_click sign_up_form_next" aria-hidden="true">Next</button>

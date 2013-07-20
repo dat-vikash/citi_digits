@@ -34,6 +34,16 @@ $("#signUpModal").on("click", ".workflow_1_click", function (ev) {
     $("#signUpModal .workflow_2_add_team").show();
 });
 
+$("#signUpModal").on("click", ".back", function (ev) {
+    ev.preventDefault(); // prevent navigation
+    //show sign up workflow part 1
+    $("#signUpModal #workflow_1").show();
+    $("#signUpModal .workflow_1_click").show();
+    //hide workflow 2
+    $("#signUpModal #workflow_2").hide();
+    $("#signUpModal .workflow_2_add_team").hide();
+});
+
 $('#signUpModal').on("click", ".add_student", function (ev) {
     ev.preventDefault(); // prevent navigation
     //get team name
@@ -44,12 +54,12 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
     //get student count for team
     var student_count = $(this).closest(".team").find(".student").length + 1;
     //create input strings
-    var studentFirstNameInput = '<input class="input-medium student" type="text" placeholder="Student First Name" name="teams[' +
+    var studentFirstNameInput = '<input class="sign_up_medium student" type="text" placeholder="Student First Name" name="teams[' +
         teamName+'][' + student_count +'][name]">';
-    var studentPassword = '<input class="input-medium" type="text" placeholder="Password" name="teams[' +
+    var studentPassword = '<input class="sign_up_medium" type="text" placeholder="Password" name="teams[' +
         teamName+'][' + student_count +'][password]">';
     //apply input strings
-    $(this).parent().parent().parent().prepend('<tr><td>' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
+    $(this).parent().parent().parent().prepend('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
 });
 
 /*
@@ -57,9 +67,9 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
  */
 $('#signUpModal').on("click", ".add_team", function (ev) {
     ev.preventDefault(); // prevent navigation
-    $('#workflow_2').append('<div class="team row-fluid">' +
+    $('#workflow_2 .row-fluid').append('<div class="team">' +
               '<div class="input-append">' +
-                '<input class="input-large" type="text" placeholder="Team" id="team_name" name="team_name[]">' +
+                '<input class="sign_up_large" type="text" placeholder="Team" id="team_name" name="team_name[]">' +
                 '<span class="add-on"><span class="caret"></span></span>' +
               '</div>'+
               '<table>'+

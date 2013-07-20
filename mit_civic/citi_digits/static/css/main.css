@@ -138,6 +138,15 @@
     box-shadow: 5px 5px 5px 1px #181818;
 }
 
+#signUpModal #workflow_2 .row-fluid {
+    margin-left: 50px;
+}
+
+#signUpModal #workflow_2 .team {
+    width: 400px;
+    display: inline-block;
+}
+
 #signUpModal .modal-header{
     padding-bottom: 5px;
 }
