@@ -28,6 +28,7 @@ class Team(models.Model):
 class Student(models.Model):
     firstName = models.CharField(max_length=255,null=False)
     password = models.CharField(max_length=128,null=False)
+    team = models.ForeignKey(Team)
 
 
 

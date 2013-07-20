@@ -14,6 +14,31 @@ from service import MembershipService
 
 # Model Unit Tests
 
+class StudentUnitTest(TestCase):
+
+    def setUp(self):
+        self.FIRST_NAME = "TEST FIRST NAME"
+        self.PASSWORD = MembershipService.encryptPassword(self.FIRST_NAME,"PASSWORD")
+        self.SCHOOL = School.objects.create()
+        self.TEACHER = Teacher.objects.create(school=self.SCHOOL)
+        self.TEAM = Team.objects.create(teacher=self.TEACHER)
+        self.student = Student.objects.create(id=1,firstName=self.FIRST_NAME,team=self.TEAM)
+
+    def tearDown(self):
+        self.student.delete()
+        self.TEAM.delete()
+        self.TEACHER.delete()
+        self.SCHOOL.delete()
+
+    def test_should_retrieve_correct_student(self):
+        student = Student.objects.get(pk=1)
+        self.assertEquals(student.firstName,self.FIRST_NAME)
+        self.assertEquals(student.team,self.TEAM)
+
+    def test_should_raise_integrity_error_for_empty_student(self):
+        student = Student(team=self.TEAM)
+        self.assertRaises(IntegrityError,student.save())
+
 class TeamUnitTest(TestCase):
 
     def setUp(self):
@@ -24,6 +49,8 @@ class TeamUnitTest(TestCase):
 
     def tearDown(self):
         self.team.delete()
+        self.TEACHER.delete()
+        self.SCHOOL.delete()
 
     def test_should_retrieve_correct_team(self):
         team = Team.objects.get(pk=1)
@@ -52,6 +79,7 @@ class TeacherUnitTest(TestCase):
 
     def tearDown(self):
         self.teacher.delete()
+        self.SCHOOL.delete()
 
     def test_should_retrieve_correct_teacher(self):
         teacher = Teacher.objects.get(pk=1)
