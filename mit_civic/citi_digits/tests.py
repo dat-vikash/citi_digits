@@ -3,14 +3,46 @@ This file contains both unit tests and functional tests for the citi digits appl
 when you run "manage.py test".
 
 """
+from django.db import IntegrityError
 
 from django.test import LiveServerTestCase
 from unittest import TestCase
 from selenium import webdriver
 from django.test import Client
+from models import School
+
+# Model Unit Tests
 
 
-# Unit Tests
+class SchoolUnitTest(TestCase):
+
+    def setUp(self):
+        self.NAME = "Test School"
+        self.ADDRESS = "123 Lane"
+        self.CITY = "New York"
+        self.STATE = "NY"
+        self.school = School.objects.create(id=1,name=self.NAME,address=self.ADDRESS,city=self.CITY,state=self.STATE)
+
+    def tearDown(self):
+        self.school.delete()
+
+    def test_should_retrieve_correct_school(self):
+        school = School.objects.get(pk=1)
+        self.assertEquals(school.name,self.NAME,"School name does not match")
+        self.assertEquals(school.address,self.ADDRESS,"Address does not match")
+        self.assertEquals(school.city,self.CITY, "City does not match")
+        self.assertEquals(school.state,self.STATE,"State does not match")
+
+    def test_should_raise_integrity_error_for_empty_school(self):
+        school = School()
+        self.assertRaises(IntegrityError,school.save())
+
+    def test_should_raise_integrity_error_for_state_length(self):
+        self.school.state = "NEW YORK"
+        self.assertRaises(IntegrityError,self.school.save())
+
+
+# Views Unit Tests
 class IndexUnitTest(TestCase):
     def setUp(self):
         self.client = Client()
