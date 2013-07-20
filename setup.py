@@ -5,7 +5,8 @@ required_modules = [
     "django == 1.5.1",
     "selenium == 2.33.0",
     "mock == 1.0.1",
-    'south == 0.8.1',
+    "south == 0.8.1",
+    "MySQL-python",
     ]
 
 

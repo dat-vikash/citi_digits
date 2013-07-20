@@ -1,6 +1,7 @@
 """
  This class contains services for domain entities
 """
+from django.db import transaction
 
 class MembershipService():
     """
@@ -17,3 +18,5 @@ class MembershipService():
         hexDigest = hashlib.sha512('{%s}%s'%(salt,raw_password))
         password = hexDigest.hexdigest()
         return password
+
+
