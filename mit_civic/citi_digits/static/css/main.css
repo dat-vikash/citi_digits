@@ -138,15 +138,27 @@
     box-shadow: 5px 5px 5px 1px #181818;
 }
 
-
+#signUpModal .modal-header{
+    padding-bottom: 5px;
+}
 
 .modal-header h3 {
     text-align: center;
     color: rgb(255,255,255);
 }
 
-.modal-body .fieldInfoWrapper h6{
+.modal-body #first  {
+    padding-top: 0px;
+    padding-bottom: 10px;
+}
+.modal-body .fieldInfoWrapper {
+    padding-top: 30px;
+    padding-bottom: 10px;
+}
+
+.modal-body .fieldInfoWrapper h5{
     text-align: center;
+    font-weight: bold;
 }
 .modal-body .fieldInfoWrapper p{
     text-align: center;
