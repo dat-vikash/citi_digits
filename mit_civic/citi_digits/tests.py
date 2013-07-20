@@ -10,6 +10,7 @@ from unittest import TestCase
 from selenium import webdriver
 from django.test import Client
 from models import *
+from service import MembershipService
 
 # Model Unit Tests
 
@@ -43,7 +44,7 @@ class TeacherUnitTest(TestCase):
         self.FIRST_NAME = "Fname"
         self.LAST_NAME = "Lname"
         self.EMAIL = "TEST@TEST.COM"
-        self.PASSWORD = Teacher.encryptPassword(self.LAST_NAME,"PASSWORD")
+        self.PASSWORD = MembershipService.encryptPassword(self.LAST_NAME,"PASSWORD")
         self.SCHOOL = School.objects.create()
         self.CLASS_NAME = "Test Class"
         self.teacher = Teacher.objects.create(id=1,firstName=self.FIRST_NAME,lastName=self.LAST_NAME,email=self.EMAIL,
