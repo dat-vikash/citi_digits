@@ -5,6 +5,19 @@
  */
 
 /*
+  On DOM load handlers
+ */
+
+$().ready(new function(){
+    init();
+});
+
+function init(){
+    var basemap = "datvikash.map-ljevuky7";
+    var map = L.mapbox.map('map', basemap);
+}
+
+/*
   Handle Sign Up, Login, Logout
  */
  $(".membership").click(function(ev) {

@@ -240,3 +240,18 @@
 .well .modal-footer {
     background-color: rgb(3,95,242);
 }
+
+
+/*
+  Map styles
+*/
+
+#map {
+    position:absolute;
+    top:0;
+    bottom:0;
+    width:100%;
+    height: 100%;
+    margin-left: -20px;
+    margin-top: 40px;
+}
