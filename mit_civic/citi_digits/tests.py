@@ -9,6 +9,7 @@ from django.test import LiveServerTestCase
 from unittest import TestCase
 from selenium import webdriver
 from django.test import Client
+from selenium.webdriver.support import ui
 from models import *
 from service import MembershipService
 
@@ -134,6 +135,26 @@ class IndexUnitTest(TestCase):
 
 
 # Functional Tests
+
+class SignUpFunctionalTest(LiveServerTestCase):
+
+    def setUp(self):
+        self.browser = webdriver.Firefox()
+        self.browser.implicitly_wait(3)
+
+    def tearDown(self):
+        self.browser.quit()
+
+    def test_should_load_sign_up_modal(self):
+        #Open browser and go to site root
+        self.browser.get(self.live_server_url)
+        #click sign up
+        element = self.browser.find_element_by_link_text("SIGN UP")
+        element.click()
+        #switch to modal
+        body= self.browser.find_element_by_id("signUpModal")
+        assert "Teacher Sign Up" in body.text
+
 
 class IndexFunctionalTest(LiveServerTestCase):
 

@@ -1,5 +1,5 @@
 # Django settings for mit_civic project.
-import os
+import os, sys
 
 #Determine project root
 PROJECT_ROOT = os.path.dirname(__file__)
@@ -14,6 +14,7 @@ ADMINS = (
 
 MANAGERS = ADMINS
 
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql', # Add 'postgresql_psycopg2', 'mysql', 'sqlite3' or 'oracle'.
@@ -25,6 +26,12 @@ DATABASES = {
         'PORT': '',                      # Set to empty string for default.
     }
 }
+
+if 'test' in sys.argv:
+    DATABASES['default'] = {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase'
+    }
 
 # Hosts/domain names that are valid for this site; required if DEBUG is False
 # See https://docs.djangoproject.com/en/1.5/ref/settings/#allowed-hosts
