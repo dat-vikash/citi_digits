@@ -104,9 +104,18 @@
           </div><!-- fieldInfoWrapper -->
           <div class="row-fluid">
               <div class="team ">
-                  <div class="input-append">
-                    <input class="sign_up_large" type="text" placeholder="Team" id="team_name">
-                    <span class="add-on"><span class="caret"></span></span>
+                  <div class="styled-select">
+                      <select class="sign_up_large" id="team_name">
+                          <option value="base">Team</option>
+                          <option value="BLUE">Blue</option>
+                          <option value="AQUA">Aqua</option>
+                          <option value="PINK">Pink</option>
+                          <option value="PURPLE">Purple</option>
+                          <option value="GREEN">Green</option>
+                          <option value="ORANGE">Orange</option>
+                          <option value="YELLOW">Yellow</option>
+                          <option value="RED">Red</option>
+                      </select>
                   </div> <!--div -->
                   <table>
                       <tr>
@@ -134,11 +143,11 @@
       </div>
   </div> <!-- modal-body -->
   <div class="modal-footer">
-      <button class="btn workflow_2_add_team hide back pull-left" aria-hidden="true">Back</button>
+      <button class="btn workflow_2_add_team hide back pull-left sign_up_form_button" aria-hidden="true">Back</button>
       <div class="span4">
-        <button class="btn workflow_2_add_team hide add_team" aria-hidden="true">Add a Team</button>
+        <button class="btn workflow_2_add_team hide add_team sign_up_form_button" aria-hidden="true">Add a Team</button>
       </div>
-      <button class="btn btn-primary workflow_1_click sign_up_form_next" aria-hidden="true">Next</button>
-      <button class="btn workflow_2_add_team hide submit" aria-hidden="true">Submit</button>
+      <button class="btn btn-primary workflow_1_click sign_up_form_button" aria-hidden="true">Next</button>
+      <button class="btn workflow_2_add_team hide submit sign_up_form_button" aria-hidden="true">Submit</button>
   </div>
 </form>

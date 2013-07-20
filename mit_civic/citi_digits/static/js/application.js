@@ -68,9 +68,9 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
 $('#signUpModal').on("click", ".add_team", function (ev) {
     ev.preventDefault(); // prevent navigation
     $('#workflow_2 .row-fluid').append('<div class="team">' +
-              '<div class="input-append">' +
-                '<input class="sign_up_large" type="text" placeholder="Team" id="team_name" name="team_name[]">' +
-                '<span class="add-on"><span class="caret"></span></span>' +
+              '<div class="styled-select">' +
+                '<select class="sign_up_large" id="team_name"><option value="base">Team</option><option value="BLUE">Blue</option><option value="AQUA">Aqua</option><option value="PINK">Pink</option>'+
+                '<option value="PURPLE">Purple</option><option value="GREEN">Green</option><option value="ORANGE">Orange</option><option value="YELLOW">Yellow</option><option value="RED">Red</option></select>' +
               '</div>'+
               '<table>'+
                   '<tr>' +
@@ -103,6 +103,7 @@ $('#signUpModal').on("click", ".submit", function (ev) {
     $.each($('#sign_up_form').serializeArray(), function(i, field) {
     values[field.name] = field.value;
 });
+
     //do post
     $.ajax({
      url: request_url,

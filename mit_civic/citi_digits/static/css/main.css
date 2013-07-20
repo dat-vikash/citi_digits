@@ -82,6 +82,25 @@
  Bootstrap Modal Overrides
 */
 
+.styled-select select {
+   background: #ffffff;
+   width: 268px;
+   padding: 5px;
+   font-size: 16px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+/*.styled-select {*/
+   /*width: 240px;*/
+   /*height: 34px;*/
+   /*overflow: hidden;*/
+   /*background: url(select_arrow.png) no-repeat right #ddd;*/
+   /*border: 1px solid #ccc;*/
+   /*}*/
 .errorlist {
     color: red;
 }
@@ -131,11 +150,16 @@
     border-radius: 0px;
 }
 
-#sign_up_form .sign_up_form_next{
-    width: 100px;
-    background-color: #808080;
+#sign_up_form .sign_up_form_button{
+    color: #000000;
+    width: 110px;
+    background-color: #a9a9a9;
     background-image: none;
     box-shadow: 5px 5px 5px 1px #181818;
+}
+
+#sign_up_form label {
+    color: #a9a9a9;
 }
 
 #signUpModal #workflow_2 .row-fluid {
