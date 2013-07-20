@@ -92,6 +92,7 @@
 #sign_up_form {
     margin: 0px;
     padding: 5px;
+    border: none;
 }
 
 #sign_up_form hr {
@@ -117,15 +118,26 @@
 
 #sign_up_form .sign_up_large{
     width: 326px;
+    border-radius: 0px;
 }
 
 #sign_up_form .sign_up_medium{
     width: 150px;
+    border-radius: 0px;
 }
 
 #sign_up_form .sign_up_row_buffer{
     padding-right: 10px;
+    border-radius: 0px;
 }
+
+#sign_up_form .sign_up_form_next{
+    width: 100px;
+    background-color: #808080;
+    background-image: none;
+    box-shadow: 5px 5px 5px 1px #181818;
+}
+
 
 
 .modal-header h3 {
@@ -157,7 +169,7 @@
     box-shadow: none;
     border-top: none;
     border-bottom: none;
-    padding: 0px;
+    /*padding: 0px;*/
 
 }
 
