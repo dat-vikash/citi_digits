@@ -47,17 +47,15 @@ $("#signUpModal").on("click", ".back", function (ev) {
 $('#signUpModal').on("click", ".add_student", function (ev) {
     ev.preventDefault(); // prevent navigation
     //get team name
-    var teamName = $(this).closest("div").find("#team_name").val();
-    if(!teamName){
-        teamName = "Team";
-    }
+    var teamCount = $(this).closest("div").find("#team_name").attr('name');
+
     //get student count for team
     var student_count = $(this).closest(".team").find(".student").length + 1;
     //create input strings
-    var studentFirstNameInput = '<input class="sign_up_medium student" type="text" placeholder="Student First Name" name="teams[' +
-        teamName+'][' + student_count +'][name]">';
-    var studentPassword = '<input class="sign_up_medium" type="text" placeholder="Password" name="teams[' +
-        teamName+'][' + student_count +'][password]">';
+    var studentFirstNameInput = '<input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name[' +
+        teamCount+'][ ]">';
+    var studentPassword = '<input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' +
+        teamCount+'][]">';
     //apply input strings
     $(this).parent().parent().parent().prepend('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
 });
@@ -67,18 +65,21 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
  */
 $('#signUpModal').on("click", ".add_team", function (ev) {
     ev.preventDefault(); // prevent navigation
+    //get team count
+    var teamCount = $("#workflow_2").find(".team").length;
+
     $('#workflow_2 .row-fluid').append('<div class="team">' +
               '<div class="styled-select">' +
-                '<select class="sign_up_large" id="team_name"><option value="base">Team</option><option value="BLUE">Blue</option><option value="AQUA">Aqua</option><option value="PINK">Pink</option>'+
+                '<select class="sign_up_large" id="team_name" name="team_name[]"><option value="base">Team</option><option value="BLUE">Blue</option><option value="AQUA">Aqua</option><option value="PINK">Pink</option>'+
                 '<option value="PURPLE">Purple</option><option value="GREEN">Green</option><option value="ORANGE">Orange</option><option value="YELLOW">Yellow</option><option value="RED">Red</option></select>' +
               '</div>'+
               '<table>'+
                   '<tr>' +
-                          '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name"></td>' +
-                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password"></td></tr>' +
+                          '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name['+teamCount +'][]"></td>' +
+                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' + teamCount +'][]"></td></tr>' +
                       '<tr>' +
-                          '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name"></td>' +
-                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password"></td></tr><tr>' +
+                          '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name['+ teamCount+'][]"></td>' +
+                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password['+ teamCount +'][]"></td></tr><tr>' +
                       '</tr>' +
                   '<tr>' +
                       '<td colspan="2">' +
@@ -100,9 +101,11 @@ $('#signUpModal').on("click", ".submit", function (ev) {
     var request_url = $('#sign_up_form').attr('action');
     // get all the inputs into an array.
     var values = {};
-    $.each($('#sign_up_form').serializeArray(), function(i, field) {
-    values[field.name] = field.value;
-});
+    values = $('#sign_up_form').serializeArray();
+
+
+    console.log("VALUES!");
+    console.log(values);
 
     //do post
     $.ajax({

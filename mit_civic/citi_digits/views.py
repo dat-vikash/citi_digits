@@ -22,6 +22,9 @@ def signUp(request):
         #bound the form
         form  = forms.SignUpForm(request.POST)
         if form.is_valid(): # All validation rules pass
+            for field in request.body :
+                print "field " + field
+                print "val " + request.POST[field]
             print("FORM VALID")
             json_data = json.dumps({"HTTPRESPONSE":200})
             # json data is just a JSON string now.
