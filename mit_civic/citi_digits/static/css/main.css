@@ -89,6 +89,45 @@
 	max-height: 0px;
 }
 
+#sign_up_form {
+    margin: 0px;
+    padding: 5px;
+}
+
+#sign_up_form hr {
+  border: 1;
+  width: 200px;
+  margin-top: -1px;
+  margin-left: 39%;
+  color: rgb(255,255,255);
+
+}
+
+#sign_up_form select {
+     /*background: transparent;*/
+   /*width: 268px;*/
+   /*padding: 5px;*/
+   /*font-size: 16px;*/
+   /*line-height: 1;*/
+   /*border: 0;*/
+   /*border-radius: 0;*/
+   /*height: 34px;*/
+   /*-webkit-appearance: normal;*/
+}
+
+#sign_up_form .sign_up_large{
+    width: 326px;
+}
+
+#sign_up_form .sign_up_medium{
+    width: 150px;
+}
+
+#sign_up_form .sign_up_row_buffer{
+    padding-right: 10px;
+}
+
+
 .modal-header h3 {
     text-align: center;
     color: rgb(255,255,255);
@@ -113,6 +152,14 @@
     margin-left:auto;
     margin-right:auto;
  }
+
+.modal-footer, .modal-header {
+    box-shadow: none;
+    border-top: none;
+    border-bottom: none;
+    padding: 0px;
+
+}
 
 .modal-close {
     position: absolute;

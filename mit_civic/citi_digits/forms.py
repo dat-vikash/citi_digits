@@ -6,13 +6,13 @@ from django.contrib.localflavor.us.us_states import STATE_CHOICES
 
 
 class SignUpForm(forms.Form):
-    firstName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class':'input-small'}))
-    lastName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class':'input-small'}))
-    password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password'}))
-    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email'}))
-    schoolName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Name'}))
-    schoolAddress = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Address'}))
-    schoolCity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'City','class':'input-small'}))
+    firstName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'First Name', 'class':'sign_up_medium'}))
+    lastName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Last Name', 'class':'sign_up_medium'}))
+    password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password','class':'sign_up_large'}))
+    email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email','class':'sign_up_large'}))
+    schoolName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Name','class':'sign_up_large'}))
+    schoolAddress = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Address','class':'sign_up_large'}))
+    schoolCity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'City','class':'sign_up_medium'}))
     schoolState = USStateField(widget=forms.Select(
-        choices=STATE_CHOICES,attrs={'placeholder':'State', 'class':'input-small'}))
-    className = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Class Name'}))
+        choices=STATE_CHOICES,attrs={'placeholder':'State', 'class':'sign_up_medium'}))
+    className = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Class Name','class':'sign_up_large'}))

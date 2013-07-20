@@ -5,6 +5,7 @@
        <img src="{{ STATIC_URL }}/img/modal_close.png"/>
     </button>
     <h3>Teacher Sign Up</h3>
+    <hr width="100px">
   </div><!-- modal-header -->
   <div class="modal-body">
       <div id="workflow_1">
@@ -16,7 +17,7 @@
           <div class="fieldGroup">
              <table class="center">
                  <tr>
-                     <td>
+                     <td class="sign_up_row_buffer">
                          <div class="fieldWrapper">
                             {{ form.firstName.errors }}
                             {{ form.firstName }}
@@ -69,7 +70,7 @@
                           </td>
                       </tr><!-- tr -->
                       <tr>
-                          <td>
+                          <td class="sign_up_row_buffer">
                               <div class="fieldWrapper">
                                 {{ form.schoolCity.errors }}
                                 {{ form.schoolCity }}
