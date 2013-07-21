@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>City Digits, from Civic Data Design Lab</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
@@ -30,13 +30,13 @@
         <div class="container">
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#map" data-toggle="tab">MAP</a></li>
+              <li class="active"><a href="#map-tab" data-toggle="tab">MAP</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#interviews" data-toggle="tab">INTERVIEWS</a></li>
+              <li><a href="#interviews-tab" data-toggle="tab">INTERVIEWS</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#about" data-toggle="tab">ABOUT</a></li>
+              <li><a href="#about-tab" data-toggle="tab">ABOUT</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#tours" data-toggle="tab">TOURS</a></li>
+              <li><a href="#tours-tab" data-toggle="tab">TOURS</a></li>
             </ul>
             <h4 class="brand">City Digits: Local Lotto</h4>
             <ul class="nav pull-right">
@@ -52,10 +52,14 @@
     <div class="container-fluid">
         <div class="modal hide" id="signUpModal"></div>
         <div class="tab-content">
-            <div class="tab-pane active" id="map">TODO: MAPS</div><!-- tab-pane map -->
-            <div class="tab-pane" id="interviews">TODO: INTERVIEWS</div><!-- tab-pane interviews -->
-            <div class="tab-pane" id="about">TODO: ABOUT</div><!-- tab-pane about -->
-            <div class="tab-pane" id="tours">TODO: TOURS</div><!-- tab-pane tours -->
+            <div class="tab-pane active" id="map-tab">
+                <div id="map-nav" class="map-nav"></div><!-- map-nav -->
+{#                <ul id='map-ui'></ul><!-- map-ui -->#}
+                <div class="map-content" id="map"></div><!-- map div -->
+            </div><!-- tab-pane map -->
+            <div class="tab-pane" id="interviews-tab">TODO: INTERVIEWS</div><!-- tab-pane interviews -->
+            <div class="tab-pane" id="about-tab">TODO: ABOUT</div><!-- tab-pane about -->
+            <div class="tab-pane" id="tours-tab">TODO: TOURS</div><!-- tab-pane tours -->
          </div> <!-- tab-content -->
     </div> <!-- /container -->
 

@@ -8,6 +8,7 @@ from django.conf import settings
 urlpatterns = patterns('',
         url(r'^$', 'citi_digits.views.index', name='index'),
         url(r'^signup/$', 'citi_digits.views.signUp', name='signup'),
+        url(r'^map/nav/$', 'citi_digits.views.mapNavigation', name='mav_nav'),
 
     # Examples:
     # url(r'^$', 'mit_civic.views.home', name='home'),

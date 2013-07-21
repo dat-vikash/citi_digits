@@ -70,3 +70,10 @@ def signUp(request):
         form = forms.SignUpForm()
         return render_to_response('signup.html', {'form': form},
                    context_instance=RequestContext(request))
+
+
+def mapNavigation(request):
+    """
+      Loads the map navigation elements
+    """
+    return render_to_response('map_navigation.html')
