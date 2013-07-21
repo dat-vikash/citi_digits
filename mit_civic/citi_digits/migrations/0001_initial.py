@@ -24,7 +24,6 @@ class Migration(SchemaMigration):
             ('firstName', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('lastName', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('email', self.gf('django.db.models.fields.EmailField')(max_length=255)),
-            ('password', self.gf('django.db.models.fields.CharField')(max_length=128)),
             ('school', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['citi_digits.School'])),
             ('className', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
@@ -42,10 +41,22 @@ class Migration(SchemaMigration):
         db.create_table(u'citi_digits_student', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
             ('firstName', self.gf('django.db.models.fields.CharField')(max_length=255)),
-            ('password', self.gf('django.db.models.fields.CharField')(max_length=128)),
             ('team', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['citi_digits.Team'])),
         ))
         db.send_create_signal(u'citi_digits', ['Student'])
+
+        # Adding model 'CityDigitsUser'
+        db.create_table(u'citi_digits_citydigitsuser', (
+            (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('password', self.gf('django.db.models.fields.CharField')(max_length=128)),
+            ('last_login', self.gf('django.db.models.fields.DateTimeField')(default=datetime.datetime.now)),
+            ('role', self.gf('django.db.models.fields.CharField')(max_length=7)),
+            ('username', self.gf('django.db.models.fields.CharField')(unique=True, max_length=255)),
+            ('entityId', self.gf('django.db.models.fields.IntegerField')()),
+            ('is_admin', self.gf('django.db.models.fields.BooleanField')(default=False)),
+            ('is_active', self.gf('django.db.models.fields.BooleanField')(default=True)),
+        ))
+        db.send_create_signal(u'citi_digits', ['CityDigitsUser'])
 
 
     def backwards(self, orm):
@@ -61,8 +72,22 @@ class Migration(SchemaMigration):
         # Deleting model 'Student'
         db.delete_table(u'citi_digits_student')
 
+        # Deleting model 'CityDigitsUser'
+        db.delete_table(u'citi_digits_citydigitsuser')
+
 
     models = {
+        u'citi_digits.citydigitsuser': {
+            'Meta': {'object_name': 'CityDigitsUser'},
+            'entityId': ('django.db.models.fields.IntegerField', [], {}),
+            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'is_admin': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
+            'role': ('django.db.models.fields.CharField', [], {'max_length': '7'}),
+            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '255'})
+        },
         u'citi_digits.school': {
             'Meta': {'object_name': 'School'},
             'address': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
@@ -75,7 +100,6 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Student'},
             'firstName': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'team': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['citi_digits.Team']"})
         },
         u'citi_digits.teacher': {
@@ -85,7 +109,6 @@ class Migration(SchemaMigration):
             'firstName': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'lastName': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
-            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
             'school': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['citi_digits.School']"})
         },
         u'citi_digits.team': {

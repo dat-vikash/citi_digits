@@ -105,6 +105,10 @@ TEMPLATE_LOADERS = (
 #     'django.template.loaders.eggs.Loader',
 )
 
+AUTH_USER_MODEL = 'citi_digits.CityDigitsUser'
+
+AUTHENTICATION_BACKENDS = ( 'citi_digits.backends.CityDigitsBackend', )
+
 MIDDLEWARE_CLASSES = (
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -136,6 +140,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'citi_digits',
     'south',
+    # 'citidigits.models.CityDigitsUser',
     # Uncomment the next line to enable the admin:
     # 'django.contrib.admin',
     # Uncomment the next line to enable admin documentation:

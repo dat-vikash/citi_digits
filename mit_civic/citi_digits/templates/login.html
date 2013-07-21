@@ -9,6 +9,7 @@
   </div><!-- modal-header -->
   <div class="modal-body">
       <div id="workflow_1">
+          {{ form.non_field_errors }}
           <div class="fieldGroup">
               <table>
                   <tr>
@@ -42,6 +43,6 @@
       </div><!--workflow_1-->
   </div> <!-- modal-body -->
   <div class="modal-footer">
-      <button class="btn pull-left form_button" aria-hidden="true">Login</button>
+      <button class="btn pull-left form_button submit" aria-hidden="true">Login</button>
   </div>
 </form>

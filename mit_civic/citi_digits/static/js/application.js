@@ -155,7 +155,7 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
 });
 
 /*
- * This function defines how to handle a workflow submission
+ * This function defines how to handle a sign up  workflow submission
  */
 $('#signUpModal').on("click", ".submit", function (ev) {
     ev.preventDefault(); // prevent navigation
@@ -185,6 +185,39 @@ $('#signUpModal').on("click", ".submit", function (ev) {
      error: function(data){
          console.log(data.responseText);
           $("#signUpModal").html(data.responseText);
+     }
+  });
+    //prevent click propagation
+    return false;
+});
+
+/*
+ * This function defines how to handle a login workflow submission
+ */
+$('#loginModal').on("click", ".submit", function (ev) {
+    ev.preventDefault(); // prevent navigation
+    //get request url
+    var request_url = $('#login_form').attr('action');
+    // get all the inputs into an array.
+    var values = {};
+    values = $('#login_form').serializeArray();
+
+
+    console.log("VALUES!");
+    console.log(values);
+
+    //do post
+    $.ajax({
+     url: request_url,
+     type:'POST',
+     dataType: "json",
+     data: values,
+     success: function(data){
+       console.log("SUCCESS POST");
+     },
+     error: function(data){
+         console.log(data.responseText);
+          $("#loginModal").html(data.responseText);
      }
   });
     //prevent click propagation

@@ -1,11 +1,13 @@
 import json
+import django
 from django.db import transaction
 from django.http import HttpResponse, QueryDict
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import forms
-from models import School, Teacher, Team, Student
+from models import School, Teacher, Team, Student, CityDigitsUser
 from service import MembershipService
+from django.contrib.auth import login as auth_login
 
 
 def index(request):
@@ -32,10 +34,13 @@ def signUp(request):
                             city=formData.get('schoolCity'),state=formData.get('schoolState'))
             teacher = Teacher.objects.create(firstName=formData.get('firstName'),lastName=formData.get('lastName'),
                               email=formData.get('email'), className=formData.get('className'),school=school)
-            #set password
-            teacher.password = MembershipService.encryptPassword(teacher.lastName,formData.get('password'))
             school.save()
             teacher.save()
+            #create auth user for teacher
+            cityUser = CityDigitsUser(role="TEACHER", username=teacher.email,
+                                      password=MembershipService.encryptPassword(teacher.email,formData.get('password')),
+                                      entityId=teacher.id)
+            cityUser.save()
 
             #create teams and students entities
             teamIdx = 0;
@@ -46,10 +51,14 @@ def signUp(request):
                 studentIdx = 0;
                 for studentName in formData.getlist("student_name[%s][]"%teamIdx):
                     #get password
-                    password = MembershipService.encryptPassword(studentName,formData.getlist("student_name[%s][]"%teamIdx)[studentIdx])
+                    password = MembershipService.encryptPassword(studentName,formData.getlist("student_password[%s][]"%teamIdx)[studentIdx])
                     #get name
-                    student = Student.objects.create(firstName=studentName,team=team,password=password)
+                    student = Student.objects.create(firstName=studentName,team=team)
                     student.save()
+                    #create auth user for student
+                    print "student password: " + password
+                    authUser = CityDigitsUser(role="STUDENT",username=student.firstName,password=password,entityId=student.id)
+                    authUser.save()
                     #update index
                     studentIdx = studentIdx + 1
 
@@ -84,7 +93,35 @@ def login(request):
       Handles user login
     """
     if request.method == 'POST':
-        pass
+        #get bound form
+        form = forms.LoginForm(request.POST)
+        if form.is_valid():
+            #attempt to find user username and password
+            role = form.cleaned_data["role"]
+            username = form.cleaned_data["username"]
+            password = form.cleaned_data["password"]
+            user = MembershipService.authenticate(role,username,password)
+
+            #check for authenticated user
+            if user is not None:
+                if user.is_active:
+                    auth_login(request,user)
+                    return HttpResponse(200)
+                else:
+                    #setup errors to display back to user
+                    errors = django.forms.util.ErrorList()
+                    errors = form._errors.setdefault(
+                    django.forms.forms.NON_FIELD_ERRORS, errors)
+                    errors.append('Sorry, this user account is disabled.')
+                    return render_to_response('login.html',{'form':form},context_instance=RequestContext(request))
+            else:
+                #setup errors
+                errors = django.forms.util.ErrorList()
+                errors = form._errors.setdefault(
+                django.forms.forms.NON_FIELD_ERRORS, errors)
+                errors.append('Username/Password Not Found.')
+                return render_to_response('login.html',{'form':form},context_instance=RequestContext(request))
+
     elif request.method == 'GET':
         #Load login form
         form = forms.LoginForm()
