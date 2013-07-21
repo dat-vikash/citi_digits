@@ -82,6 +82,10 @@
  Bootstrap Modal Overrides
 */
 
+.styled-select {
+    text-align: left;
+}
+
 .styled-select select {
    background: #ffffff;
    width: 268px;
@@ -94,13 +98,6 @@
    -webkit-appearance: none;
    }
 
-/*.styled-select {*/
-   /*width: 240px;*/
-   /*height: 34px;*/
-   /*overflow: hidden;*/
-   /*background: url(select_arrow.png) no-repeat right #ddd;*/
-   /*border: 1px solid #ccc;*/
-   /*}*/
 .errorlist {
     color: red;
 }
@@ -123,18 +120,6 @@
 
 }
 
-#sign_up_form select {
-     /*background: transparent;*/
-   /*width: 268px;*/
-   /*padding: 5px;*/
-   /*font-size: 16px;*/
-   /*line-height: 1;*/
-   /*border: 0;*/
-   /*border-radius: 0;*/
-   /*height: 34px;*/
-   /*-webkit-appearance: normal;*/
-}
-
 #sign_up_form .sign_up_large{
     width: 326px;
     border-radius: 0px;
@@ -150,7 +135,7 @@
     border-radius: 0px;
 }
 
-#sign_up_form .sign_up_form_button{
+.form_button{
     color: #000000;
     width: 110px;
     background-color: #a9a9a9;
@@ -246,7 +231,31 @@
     background-color: rgb(3,95,242);
 }
 
+/*
+   Login Form
+*/
+#loginModal {
+    max-height: 0px;
+}
 
+#login_form {
+    border: none;
+}
+
+#login_form hr{
+    margin-left: 130px;
+    margin-top: 0px;
+}
+
+#login_form .sign_up_large{
+    width: 326px;
+    border-radius: 0px;
+}
+
+#login_form .sign_up_medium{
+    width: 150px;
+    border-radius: 0px;
+}
 /*
   Map styles
 */

@@ -77,3 +77,15 @@ def mapNavigation(request):
       Loads the map navigation elements
     """
     return render_to_response('map_navigation.html')
+
+
+def login(request):
+    """
+      Handles user login
+    """
+    if request.method == 'POST':
+        pass
+    elif request.method == 'GET':
+        #Load login form
+        form = forms.LoginForm()
+        return render_to_response('login.html',{'form':form},context_instance=RequestContext(request))

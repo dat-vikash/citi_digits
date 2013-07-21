@@ -69,6 +69,20 @@ function init_map(){
         return false; // prevent the click propagation
  });
 
+ $(".membership-login").click(function(ev) {
+        ev.preventDefault(); // prevent navigation
+        var url = $(this).data("form"); // get the contact form url
+        $("#loginModal").load(url, function() { // load the url into the modal
+            $(this).modal('show').css({
+                  width: '400px',
+                  'margin-left': function () {
+            return -($(this).width() / 2);
+        }
+    }); // display the modal on url load
+        });
+        return false; // prevent the click propagation
+ });
+
 /*
  * Sign Up workflow logic
  */
