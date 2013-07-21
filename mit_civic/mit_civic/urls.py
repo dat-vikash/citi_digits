@@ -9,6 +9,7 @@ urlpatterns = patterns('',
         url(r'^$', 'citi_digits.views.index', name='index'),
         url(r'^signup/$', 'citi_digits.views.signUp', name='signup'),
         url(r'^login/$', 'citi_digits.views.login', name='login'),
+        url(r'^logout/$', 'citi_digits.views.logout', name='logout'),
         url(r'^map/nav/$', 'citi_digits.views.mapNavigation', name='mav_nav'),
 
     # Examples:

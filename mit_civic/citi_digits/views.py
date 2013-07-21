@@ -8,12 +8,14 @@ import forms
 from models import School, Teacher, Team, Student, CityDigitsUser
 from service import MembershipService
 from django.contrib.auth import login as auth_login
+from django.contrib.auth import logout as auth_logout
 
 
 def index(request):
     """
      Loads base index
     """
+    current_user = request.user
     return render_to_response('index.html', {},
                    context_instance=RequestContext(request))
 
@@ -121,8 +123,19 @@ def login(request):
                 django.forms.forms.NON_FIELD_ERRORS, errors)
                 errors.append('Username/Password Not Found.')
                 return render_to_response('login.html',{'form':form},context_instance=RequestContext(request))
+        else:
+            return render_to_response('login.html',{'form':form},context_instance=RequestContext(request))
+
 
     elif request.method == 'GET':
         #Load login form
         form = forms.LoginForm()
         return render_to_response('login.html',{'form':form},context_instance=RequestContext(request))
+
+def logout(request):
+    """
+     Handles user logout
+    """
+    print("IN LOGOUT")
+    auth_logout(request)
+    return HttpResponse(200)

@@ -83,6 +83,14 @@ function init_map(){
         return false; // prevent the click propagation
  });
 
+ $(".membership-logout").click(function(ev) {
+        ev.preventDefault(); // prevent navigation
+        var url = $(this).data("form"); // get the contact form url
+        $("#loginModal").load(url); // display the modal on url load
+        return false; // prevent the click propagation
+ });
+
+
 /*
  * Sign Up workflow logic
  */
@@ -213,7 +221,9 @@ $('#loginModal').on("click", ".submit", function (ev) {
      dataType: "json",
      data: values,
      success: function(data){
-       console.log("SUCCESS POST");
+         //update view
+         $("#loginModal").hide();
+         window.location.reload();
      },
      error: function(data){
          console.log(data.responseText);

@@ -39,11 +39,25 @@
               <li><a href="#tours-tab" data-toggle="tab">TOURS</a></li>
             </ul>
             <h4 class="brand">City Digits: Local Lotto</h4>
-            <ul class="nav pull-right">
-                <li><a class="membership" href="#" data-form="/signup">SIGN UP</a></li>
-                <li class="divider-vertical"></li>
-                <li><a href="" class="membership-login" data-form="/login">LOGIN</a></li>
-            </ul>
+            {% if user.is_authenticated %}
+              <div id="logged_in_nav_bar">
+                <ul class="nav pull-right">
+                    <li><a class="" href="#">Add Interview</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="" class="">Welcome</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="" class="membership-logout" data-form="/logout">LOGOUT</a></li>
+                </ul><!-- ul -->
+              </div><!-- logged_in_nav_bar -->
+            {% else %}
+              <div id="login_nav_bar">
+                <ul class="nav pull-right">
+                    <li><a class="membership" href="#" data-form="/signup">SIGN UP</a></li>
+                    <li class="divider-vertical"></li>
+                    <li><a href="" class="membership-login" data-form="/login">LOGIN</a></li>
+                </ul><!-- ul -->
+              </div><!-- login_nav_bar -->
+            {% endif %}
           </div><!--/.nav-collapse -->
         </div><!-- container -->
       </div> <!-- navbar-inner -->
