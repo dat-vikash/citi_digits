@@ -211,13 +211,13 @@
 .modal-close {
     position: absolute;
     margin: 0;
-    top: -23px; /* half height of "X" image, just for nice placing*/
-    right: -23px; /* half width of "X" image, just for nice placing*/
+    top: -14px;
+    right: -6px;
     opacity: 0.9;
 }
 
 .modal-close:hover {
-    opacity: 1;
+    opacity: 100;
 }
 
 /*
