@@ -42,7 +42,7 @@
             {% if user.is_authenticated %}
               <div id="logged_in_nav_bar">
                 <ul class="nav pull-right">
-                    <li><a class="" href="#">Add Interview</a></li>
+                    <li><button class="btn interview-button" aria-hidden="true" id="add-interview" data-form="/interview/new/">Add Interview</button></li>
                     <li class="divider-vertical"></li>
                     <li><a href="" class="membership-logout" data-form="/logout">LOGOUT</a></li>
                 </ul><!-- ul -->
@@ -64,6 +64,7 @@
     <div class="container-fluid">
         <div class="modal hide" id="signUpModal"></div><!--sign up modal -->
         <div class="modal hide" id="loginModal"></div><!-- login modal -->
+        <div class="modal hide" id="addInterviewModal"></div><!-- add interview modal -->
         <div class="tab-content">
             <div class="tab-pane active" id="map-tab">
                 <div id="map-nav" class="map-nav"></div><!-- map-nav -->

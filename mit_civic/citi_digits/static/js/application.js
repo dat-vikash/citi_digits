@@ -57,7 +57,7 @@ function init_map(){
  */
  $(".membership").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the contact form url
+        var url = $(this).data("form"); // get the  form url
         $("#signUpModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
                   width: '900px',
@@ -71,7 +71,7 @@ function init_map(){
 
  $(".membership-login").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the contact form url
+        var url = $(this).data("form"); // get the  form url
         $("#loginModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
                   width: '400px',
@@ -85,10 +85,21 @@ function init_map(){
 
  $(".membership-logout").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the contact form url
+        var url = $(this).data("form"); // get the form url
         $("#loginModal").load(url); // display the modal on url load
         return false; // prevent the click propagation
  });
+
+/*
+   Add an Interview
+ */
+
+$("#add-interview").click(function(ev){
+   ev.preventDefault();  //prevent navigation
+   var url = $(this).data("form"); //get the form url
+   $("#addInterviewModal").load(url); //display modal
+    return false; //prevent click propagation
+});
 
 
 /*
