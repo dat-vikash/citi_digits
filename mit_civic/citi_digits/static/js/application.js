@@ -110,6 +110,33 @@ $("#add-interview").click(function(ev){
     return false; //prevent click propagation
 });
 
+/*
+  Add a player interview
+ */
+
+
+$("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
+    ev.preventDefault(); // prevent navigation
+    var url = $(this).data("form"); //get the form url
+    $("#addInterviewModal").load(url);
+    return false;
+});
+
+//$("#addInterviewModal #add-player-interview").click(function(ev){
+//   ev.preventDefault();  //prevent navigation
+//   var url = $(this).data("form"); //get the form url
+//    console.log("IN ADD PLAYER");
+////   $("#addInterviewModal").load(url, function() { // load the url into the modal
+////            $(this).modal('show').css({
+////                  width: 'auto',
+////                  'max-width':'30%',
+////                  'margin-left': function () {
+////            return -($(this).width() / 2);
+////        }
+////    }); // display the modal on url load
+////   }); //display modal
+//    return false; //prevent click propagation
+//});
 
 /*
  * Sign Up workflow logic

@@ -11,7 +11,9 @@ urlpatterns = patterns('',
         url(r'^login/$', 'citi_digits.views.login', name='login'),
         url(r'^logout/$', 'citi_digits.views.logout', name='logout'),
         url(r'^map/nav/$', 'citi_digits.views.mapNavigation', name='mav_nav'),
-        url(r'^interview/new/$', 'citi_digits.views.interview_select', name='interview_select'),
+        url(r'^interview/new/$', 'citi_digits.views.interviewSelect', name='interview_select'),
+        url(r'^interview/player/$', 'citi_digits.views.interviewPlayer', name='interview_player'),
+        url(r'^interview/retailer/$', 'citi_digits.views.interviewRetailer', name='interview_retailer'),
 
     # Examples:
     # url(r'^$', 'mit_civic.views.home', name='home'),

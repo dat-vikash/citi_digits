@@ -141,8 +141,19 @@ def logout(request):
     return HttpResponse(200)
 
 
-def interview_select(request):
+def interviewSelect(request):
     """
        Interview Select
     """
     return render_to_response('interview_selector.html',context_instance=RequestContext(request))
+
+def interviewPlayer(request):
+    """
+      Handles player interview form
+    """
+    if request.method == "POST":
+        pass
+    elif request.method == "GET":
+        #Load interview form
+        form = forms.PlayerInterviewForm()
+        return render_to_response('player_interview.html',{'form':form},context_instance=RequestContext(request))

@@ -23,3 +23,15 @@ class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name or Email','class':'sign_up_large'}))
     password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password','class':'sign_up_large'}))
 
+
+class PlayerInterviewForm(forms.Form):
+    firstName = forms.CharField(widget=forms.TextInput())
+    buyLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('2','No')))
+    whyOrWhyNot = forms.FileField()
+    wonLottery = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('2','No')))
+    mostWonAmount = forms.CharField(widget=forms.TextInput())
+    averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput())
+    wonJackpotQuestion = forms.FileField()
+    photo = forms.FileField()
+
+
