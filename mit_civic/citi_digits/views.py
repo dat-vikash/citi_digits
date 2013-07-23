@@ -139,3 +139,10 @@ def logout(request):
     print("IN LOGOUT")
     auth_logout(request)
     return HttpResponse(200)
+
+
+def interview_select(request):
+    """
+       Interview Select
+    """
+    return render_to_response('interview_selector.html',context_instance=RequestContext(request))

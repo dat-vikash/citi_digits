@@ -97,7 +97,16 @@ function init_map(){
 $("#add-interview").click(function(ev){
    ev.preventDefault();  //prevent navigation
    var url = $(this).data("form"); //get the form url
-   $("#addInterviewModal").load(url); //display modal
+    console.log("ADD INTERVIEW");
+   $("#addInterviewModal").load(url, function() { // load the url into the modal
+            $(this).modal('show').css({
+                  width: 'auto',
+                  'max-width':'30%',
+                  'margin-left': function () {
+            return -($(this).width() / 2);
+        }
+    }); // display the modal on url load
+   }); //display modal
     return false; //prevent click propagation
 });
 

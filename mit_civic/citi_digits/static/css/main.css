@@ -327,6 +327,46 @@
  * Interview related stylings
  */
 
+#addInterviewModal {
+    background-color: #B0B6BD;
+    padding-bottom: 1%;
+}
+
+#addInterviewModal p{
+    text-align: center;
+    color: #3F3F3F;
+    font-size: 10pt;
+}
+
+#addInterviewModal h3 {
+    text-align: center;
+    color: #3F3F3F;
+    font-size: 14pt;
+    text-underline-position: below;
+    text-decoration:underline;
+}
+
+#addInterviewModal hr{
+    /*margin-left: 130px;*/
+    width: 70%;
+    margin: 0px 0;
+    margin-top: -10px;
+    border-color: #3F3F3F;
+}
+
+#addInterviewModal .modal-footer{
+    background-color: #B0B6BD;
+}
+
+#addInterviewModal .interview-button{
+    background-color: #025FF1;
+    background-image: none;
+    color: #FFFFFF;
+    font-size: 13px;
+    width: 155px;
+    box-shadow: rgba(0, 0, 0, 0.4);
+}
+
 .interview-button {
     background-color: #025FF1;
     background-image: none;
@@ -340,3 +380,5 @@
     background-color: #024CC1;
     color: #FFFFFF;
 }
+
+#
