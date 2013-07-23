@@ -31,23 +31,29 @@
     margin-left: 1px;
  }
 
-.navbar .nav a{
+.navbar .nav>li>a{
   font-size: 12px;
   font-family: "Helvetica Neue";
-  color: rgb( 2, 95, 241 );
+  color: #3F3F3F;
   line-height: 1.417;
   text-align: left;
   font-weight:400;
+  padding: 10px 10px 10px;
 }
 
-.navbar .nav>li>a{
-    padding: 10px 10px 10px;
+.navbar .nav>li>a:hover{
+    color: #B0B6BD;
 }
 
-.navbar .nav>.active>a,
+.navbar .nav>.active>a {
+    color: #025FF1;
+    background-color: transparent;
+    box-shadow: none;
+}
+
 .navbar .nav>.active>a:hover,
 .navbar .nav>.active>a:focus{
-    color: rgb(119,155,245);
+
     background-color: transparent;
     box-shadow: none;
 }
