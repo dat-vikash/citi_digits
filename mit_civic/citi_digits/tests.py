@@ -19,7 +19,6 @@ class StudentUnitTest(TestCase):
 
     def setUp(self):
         self.FIRST_NAME = "TEST FIRST NAME"
-        self.PASSWORD = MembershipService.encryptPassword(self.FIRST_NAME,"PASSWORD")
         self.SCHOOL = School.objects.create()
         self.TEACHER = Teacher.objects.create(school=self.SCHOOL)
         self.TEAM = Team.objects.create(teacher=self.TEACHER)
@@ -72,11 +71,10 @@ class TeacherUnitTest(TestCase):
         self.FIRST_NAME = "Fname"
         self.LAST_NAME = "Lname"
         self.EMAIL = "TEST@TEST.COM"
-        self.PASSWORD = MembershipService.encryptPassword(self.LAST_NAME,"PASSWORD")
         self.SCHOOL = School.objects.create()
         self.CLASS_NAME = "Test Class"
         self.teacher = Teacher.objects.create(id=1,firstName=self.FIRST_NAME,lastName=self.LAST_NAME,email=self.EMAIL,
-                                              password=self.PASSWORD,school=self.SCHOOL,className=self.CLASS_NAME)
+                                              school=self.SCHOOL,className=self.CLASS_NAME)
 
     def tearDown(self):
         self.teacher.delete()
@@ -87,7 +85,6 @@ class TeacherUnitTest(TestCase):
         self.assertEquals(teacher.firstName,self.FIRST_NAME,"First name does not match")
         self.assertEquals(teacher.lastName,self.LAST_NAME,"Last name does not match")
         self.assertEquals(teacher.email,self.EMAIL,"Email does not match")
-        self.assertEquals(teacher.password,self.PASSWORD,"Password does not match")
         self.assertEquals(teacher.school,self.SCHOOL,"School does not match")
         self.assertEquals(teacher.className,self.CLASS_NAME,"Class name does not match")
 
@@ -183,7 +180,7 @@ class IndexFunctionalTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         element = self.browser.find_element_by_link_text("MAP")
         element.click()
-        div = self.browser.find_element_by_id('map')
+        div = self.browser.find_element_by_id('map-tab')
         assert div.is_displayed() is True
         assert "TODO: MAP" in div.text
 
@@ -192,7 +189,7 @@ class IndexFunctionalTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         element = self.browser.find_element_by_link_text("INTERVIEWS")
         element.click()
-        div = self.browser.find_element_by_id('interviews')
+        div = self.browser.find_element_by_id('interviews-tab')
         assert div.is_displayed() is True
         assert "TODO: INTERVIEWS" in div.text
 
@@ -201,7 +198,7 @@ class IndexFunctionalTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         element = self.browser.find_element_by_link_text("ABOUT")
         element.click()
-        div = self.browser.find_element_by_id('about')
+        div = self.browser.find_element_by_id('about-tab')
         assert div.is_displayed() is True
         assert "TODO: ABOUT" in div.text
 
@@ -210,7 +207,7 @@ class IndexFunctionalTest(LiveServerTestCase):
         self.browser.get(self.live_server_url)
         element = self.browser.find_element_by_link_text("TOURS")
         element.click()
-        div = self.browser.find_element_by_id('tours')
+        div = self.browser.find_element_by_id('tours-tab')
         assert div.is_displayed() is True
         assert "TODO: TOURS" in div.text
 
