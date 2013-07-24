@@ -127,9 +127,19 @@ $("#add-interview").click(function(ev){
 
 $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
     ev.preventDefault(); // prevent navigation
-    console.log("click");
     var url = $(this).data("form"); //get the form url
-    $("#addInterviewModal").load(url);
+    $("#addInterviewModal").load(url,function() { // load the url into the modal
+            $(this).modal('show').css({
+                 width: '95%',
+                 'max-width':'100%',
+                  height:'100%',
+                    'max-height':'100%',
+                    'top':'1%',
+                  'margin-left': function () {
+            return window.pageXOffset-($(this).width() / 2);
+        }
+    }); // display the modal on url load
+   });
     return false;
 });
 
