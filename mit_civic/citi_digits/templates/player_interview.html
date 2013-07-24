@@ -4,12 +4,153 @@
 <div class="interview-header">
 <h3>Add a Player Interview</h3>
 </div><!-- interview-header -->
+    <form id="add_interview_form" class="well interview-form" method="post" action="/interview/player/">
 <div class="modal-body">
-  <div id="workflow">
-      {{ form.as_p }}
-  </div><!--workflow-->
+    <div id="workflow">
+        <div class="column_1">
+            <div class="fieldWrapper">
+                {{ form.firstName.errors }}
+                <label for="id_firstName">What is the player's first name?</label>
+                {{ form.firstName }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.buyLotteryTickets.errors }}
+                <label for="id_buyLotteryTickets_0">Do you ever buy lottery tickets?</label>
+                {{ form.buyLotteryTickets }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.whyOrWhyNot.errors }}
+                <label for="id_whyOrWhyNot">Why or why not?</label>
+                {{ form.whyOrWhyNot }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.wonLottery.errors }}
+                <label for="id_wonLottery_0">Have you ever won the lottery?</label>
+                {{ form.wonLottery }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.mostWonAmount.errors }}
+                <label for="id_mostWonAmount">What is the most you've won?</label>
+                ${{ form.mostWonAmount }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.averageSpentOnLotteryPerWeek.errors }}
+                <label for="id_mostWonAmount">How much do you spend on the lottery in an average week?</label>
+                ${{ form.averageSpentOnLotteryPerWeek }}
+            </div>
+            <div class="fieldWrapper">
+                {{ form.wonJackpotQuestion.errors }}
+                <label for="id_mostWonAmount">What would you do if you won?</label>
+                {{ form.wonJackpotQuestion }}
+                <span>Add an Audio recording</span>
+            </div>
+            <div class="fieldWrapper">
+                {{ form.photo.errors }}
+                <label for="id_mostWonAmount">Add photo</label>
+                {{ form.photo }}
+            </div>
+        </div><!-- column_1 -->
+        <div class="column_2">
+            <div class="fieldWrapper">
+                {{ form.location.errors }}
+                <label for="id_mostWonAmount">Location</label>
+                {{ form.location }}
+            </div>
+        </div>
+    </div>
+
+{#  <div id="workflow">#}
+{#      {{ form.non_field_errors }}#}
+{#      <table class="center">#}
+{#          <tr>#}
+{#              <td colspan="2"><h5>What is the player's first name?</h5></td>#}
+{#              <td><h5>Location</h5></td>#}
+{#          </tr>#}
+{#          <tr>#}
+{#              <td colspan="2">#}
+{#                  {{ form.firstName.errors }}#}
+{#                  {{ form.firstName }}#}
+{#              </td>#}
+{#              <td>#}
+{#                {{ form.location.errors }}#}
+{#                  {{ form.location }}#}
+{#                  IMG#}
+{#              </td>#}
+{#          </tr>#}
+{#          <tr>#}
+{#              <td colspan="2"><h5>Do you ever buy lottery tickets?</h5> </td>#}
+{#          </tr>#}
+{#          <tr>#}
+{#              <td colspan="3">#}
+{#                  <div>#}
+{#                    {{ form.buyLotteryTickets.errors }}#}
+{#                  {{ form.buyLotteryTickets }}#}
+{#                  </div>#}
+{##}
+{#              </td>#}
+{#          </tr>#}
+{##}
+{#      </table>#}
+
+{#    {{ form.as_table }}#}
+
+{#  </div><!--workflow-->#}
 </div> <!-- modal-body -->
+</form>
 {#<div class="modal-footer">#}
 {#  <button class="btn interview-button pull-left" aria-hidden="true" id="add-player-interview" data-form="/interview/player/">Add Player Interview</button>#}
 {#  <button class="btn interview-button pull-right" aria-hidden="true" id="add-retailer-interview" data-form="/interview/retailer/">Add Retailer Interview</button>#}
-</div>
+{#</div>#}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+{#    <label for="id_firstName">Firstname:</label><input id="id_firstName" name="firstName" type="text">#}
+{#<label for="id_buyLotteryTickets_0">Buylotterytickets:</label><ul>#}
+{#<li><label for="id_buyLotteryTickets_0"><input id="id_buyLotteryTickets_0" name="buyLotteryTickets" type="radio" value="1"> Yes</label></li>#}
+{#<li><label for="id_buyLotteryTickets_1"><input id="id_buyLotteryTickets_1" name="buyLotteryTickets" type="radio" value="0"> No</label></li>#}
+{#</ul>#}
+{#<label for="id_whyOrWhyNot">Whyorwhynot:</label><input id="id_whyOrWhyNot" name="whyOrWhyNot" type="file">#}
+{#<label for="id_wonLottery_0">Wonlottery:</label><ul>#}
+{#<li><label for="id_wonLottery_0"><input id="id_wonLottery_0" name="wonLottery" type="radio" value="1"> Yes</label></li>#}
+{#<li><label for="id_wonLottery_1"><input id="id_wonLottery_1" name="wonLottery" type="radio" value="0"> No</label></li>#}
+{#</ul>#}
+{#<label for="id_mostWonAmount">Mostwonamount:</label><input id="id_mostWonAmount" name="mostWonAmount" type="text">#}
+{#<label for="id_averageSpentOnLotteryPerWeek">Averagespentonlotteryperweek:</label><input id="id_averageSpentOnLotteryPerWeek" name="averageSpentOnLotteryPerWeek" type="text">#}
+{#<label for="id_wonJackpotQuestion">Wonjackpotquestion:</label><input id="id_wonJackpotQuestion" name="wonJackpotQuestion" type="file">#}
+{#<label for="id_photo">Photo:</label><input id="id_photo" name="photo" type="file">#}
+{#<label for="id_location">Location:</label><input id="id_location" name="location" type="text">#}
+{##}
+{#  </div>#}

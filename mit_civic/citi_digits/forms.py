@@ -1,3 +1,6 @@
+from django.utils.encoding import force_unicode
+from django.utils.safestring import mark_safe
+
 __author__ = 'vikashdat'
 
 from django import forms
@@ -26,12 +29,13 @@ class LoginForm(forms.Form):
 
 class PlayerInterviewForm(forms.Form):
     firstName = forms.CharField(widget=forms.TextInput())
-    buyLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('2','No')))
+    buyLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
     whyOrWhyNot = forms.FileField()
-    wonLottery = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('2','No')))
+    wonLottery = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
     mostWonAmount = forms.CharField(widget=forms.TextInput())
     averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput())
     wonJackpotQuestion = forms.FileField()
     photo = forms.FileField()
+    location = forms.CharField(widget=forms.TextInput())
 
 
