@@ -34,7 +34,6 @@ function init_map(){
     //show map ui nav
     $("#map-nav").load("/map/nav/");
 //    var ui = document.getElementById('map-ui');
-
 //
 //    //add layers
 //        L.mapbox.tileLayer('').addTo(map);
