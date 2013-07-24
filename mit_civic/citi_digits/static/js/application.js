@@ -60,9 +60,13 @@ function init_map(){
         var url = $(this).data("form"); // get the  form url
         $("#signUpModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
-                  width: '900px',
+                  width: '100%',
+                 'max-width':'934px',
+                  height:'100%',
+                    'max-height':'670px',
+                    'top':'1%',
                   'margin-left': function () {
-            return -($(this).width() / 2);
+            return window.pageXOffset-($(this).width() / 2);
         }
     }); // display the modal on url load
         });
@@ -74,9 +78,10 @@ function init_map(){
         var url = $(this).data("form"); // get the  form url
         $("#loginModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
-                  width: '400px',
+                  width: '100%',
+
                   'margin-left': function () {
-            return -($(this).width() / 2);
+            return window.pageXOffset -($(this).width() / 2);
         }
     }); // display the modal on url load
         });

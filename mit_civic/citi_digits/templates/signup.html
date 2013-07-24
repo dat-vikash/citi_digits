@@ -1,13 +1,13 @@
-<form id="sign_up_form" class="well signup-form" method="post" action="/signup/">
-               {% csrf_token %}
-  <div class="modal-header">
-    <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
+<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
        <img src="{{ STATIC_URL }}/img/close.png"/>
     </button>
+<form id="sign_up_form" class="well signup-form" method="post" action="/signup/">
+               {% csrf_token %}
+  <div class="modal-body">
+      <div class="sign-header">
     <h3>Teacher Sign Up</h3>
     <hr width="100px">
   </div><!-- modal-header -->
-  <div class="modal-body">
       <div id="workflow_1">
           <div class="fieldInfoWrapper" id="first">
               <h5>Create an account.</h5>
@@ -48,6 +48,8 @@
                  </tr><!-- tr -->
              </table><!-- table -->
          </div><!-- fieldGroup -->
+          <br>
+          <br>
           <div class="fieldInfoWrapper">
               <p>Enter the name and location of your school. This information will be private.</p>
           </div><!-- fieldInfoWrapper -->
@@ -85,6 +87,8 @@
                       </tr><!-- tr -->
                   </table><!-- table -->
               </div><!-- fieldGroup -->
+          <br>
+          <br>
           <div class="fieldInfoWrapper">
               <h5>Create a public username for your class.</h5>
               <p>This can be your name, ie <i>Ms. Jones' Class</i>, the name of your school, ie <i>PS1</i>, or a team name of your choosing.</p>
@@ -141,13 +145,15 @@
                   vero aliquam interpretaris id vix. Mel ad quidam insolens. Cu amet suas deleniti vis, quod definitionem quo ad. Affert discere alterum ad eum, at mei audiam intellegebat definitiones.</p>
           </div><!-- fieldInfoWrapper -->
       </div>
-  </div> <!-- modal-body -->
-  <div class="modal-footer">
-      <button class="btn workflow_2_add_team hide back pull-left form_button" aria-hidden="true">Back</button>
-      <div class="span4">
-        <button class="btn workflow_2_add_team hide add_team form_button" aria-hidden="true">Add a Team</button>
-      </div>
-      <button class="btn btn-primary workflow_1_click form_button" aria-hidden="true">Next</button>
-      <button class="btn workflow_2_add_team hide submit form_button" aria-hidden="true">Submit</button>
+      <div class="signup-footer">
+          <div class="text-center">
+                    <button class="btn workflow_2_add_team hide back pull-left form_button" aria-hidden="true">Back</button>
+
+                   <button class="btn workflow_2_add_team hide add_team form_button " aria-hidden="true">Add a Team</button>
+                    <button class="btn workflow_2_add_team pull-right hide submit form_button" aria-hidden="true">Submit</button>
+
+          </div>
+      <button class="btn btn-primary pull-right  workflow_1_click form_button" aria-hidden="true">Next</button>
   </div>
+  </div> <!-- modal-body -->
 </form>

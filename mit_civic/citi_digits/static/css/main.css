@@ -111,10 +111,15 @@
 	max-height: 0px;
 }
 
+#signUpModal .workflow_1_click {
+    margin-right: 10%;
+}
+
 #sign_up_form {
     margin: 0px;
-    padding: 5px;
+    /*padding: 5px;*/
     border: none;
+    height: inherit;
 }
 
 #sign_up_form hr {
@@ -122,9 +127,9 @@
   width: 200px;
   margin-top: -1px;
   margin-left: 39%;
-  color: rgb(255,255,255);
-
+  color: #ffffff;
 }
+
 
 #sign_up_form .sign_up_large{
     width: 326px;
@@ -162,18 +167,36 @@
     display: inline-block;
 }
 
-#signUpModal .modal-header{
+#signUpModal .signup-header{
     padding-bottom: 5px;
 }
 
-.modal-header h3 {
+#signUpModal .signup-footer {
+   position:static;
+   bottom:0;
+   width:100%;
+}
+
+.sign-header h3 {
+    font-family: Apercu;
+    font-weight: bold;
+    font-size: 30px;
+    color:  #FFFFFF;
     text-align: center;
-    color: rgb(255,255,255);
+    line-height: 10px;
+    margin-top: 3%;
+
 }
 
 .modal-body {
     overflow-x: hidden;
     overflow-y: scroll;
+    height: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    padding: 0px;
+    font-size: 12px;
+    font-family: Apercu;
 }
 
 .modal-body #first  {
@@ -181,7 +204,7 @@
     padding-bottom: 10px;
 }
 .modal-body .fieldInfoWrapper {
-    padding-top: 30px;
+    /*padding-top: 30px;*/
     padding-bottom: 10px;
 }
 
@@ -215,7 +238,7 @@
 }
 
 .modal-close {
-    position: absolute;
+    position: relative;
     margin: 0;
     top: -14px;
     right: -6px;
