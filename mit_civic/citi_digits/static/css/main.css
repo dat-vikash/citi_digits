@@ -438,11 +438,11 @@
 }
 
 #add_interview_form .column_1 {
-    float: left;
-    margin-left: 20px;
+    /*float: left;*/
+    margin-left: 50px;
 }
 
 #add_interview_form .column_2 {
-    float: right;
-    margin-right: 20px;
+    /*float: right;*/
+    /*margin-right: 20px;*/
 }
