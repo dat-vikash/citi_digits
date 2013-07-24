@@ -446,3 +446,34 @@
     /*float: right;*/
     /*margin-right: 20px;*/
 }
+
+/*#add_interview_form .fieldWrapper ul{*/
+    /*list-style: none;*/
+        /*list-style-type: none;*/
+
+/*}*/
+
+#add_interview_form .fieldWrapper {
+    padding: 5px;
+}
+
+#add_interview_form .fieldWrapper ul label{
+    display: inline;
+    /*list-style-type: none;*/
+    padding-right: 10px;
+    clear:none;
+    padding: 2px 1em 0 0;
+}
+
+#add_interview_form .fieldWrapper ul li{
+    display: inline;
+    list-style-type: none;
+}
+
+/*#add_interview_form .fieldWrapper ul li input.radio{*/
+    /*float:left; clear:none; margin: 2px 0 0 2px;*/
+/*}*/
+
+/*#add_interview_form .fieldWrapper input[type=file] input.file {*/
+    /**/
+/*}*/
