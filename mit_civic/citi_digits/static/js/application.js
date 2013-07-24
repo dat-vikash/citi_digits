@@ -78,10 +78,13 @@ function init_map(){
         var url = $(this).data("form"); // get the  form url
         $("#loginModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
-                  width: '100%',
-
+                 width: '100%',
+                 'max-width':'400px',
+                  height:'100%',
+                    'max-height':'320px',
+                    'top':'1%',
                   'margin-left': function () {
-            return window.pageXOffset -($(this).width() / 2);
+            return window.pageXOffset-($(this).width() / 2);
         }
     }); // display the modal on url load
         });

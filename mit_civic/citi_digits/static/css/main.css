@@ -167,17 +167,13 @@
     display: inline-block;
 }
 
-#signUpModal .signup-header{
-    padding-bottom: 5px;
-}
-
 #signUpModal .signup-footer {
    position:static;
    bottom:0;
    width:100%;
 }
 
-.sign-header h3 {
+.citi-header h3 {
     font-family: Apercu;
     font-weight: bold;
     font-size: 30px;
@@ -268,7 +264,10 @@
 }
 
 #login_form {
+    margin: 0px;
+    /*padding: 5px;*/
     border: none;
+    height: inherit;
 }
 
 #login_form hr{
