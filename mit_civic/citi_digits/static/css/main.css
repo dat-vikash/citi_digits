@@ -167,7 +167,7 @@
     display: inline-block;
 }
 
-#signUpModal .signup-footer {
+#signUpModal .citi-footer {
    position:static;
    bottom:0;
    width:100%;
@@ -354,36 +354,62 @@
     padding-bottom: 1%;
 }
 
+
 #addInterviewModal p{
     text-align: center;
     color: #3F3F3F;
-    font-size: 10pt;
+    font-size: 15px;
+    padding-right: 45px;
+    padding-left: 45px;
 }
 
 #addInterviewModal h3 {
+    font-family: Apercu;
+    font-weight: bold;
+    font-size: 30px;
+    color:  #3F3F3F;
     text-align: center;
-    color: #3F3F3F;
-    font-size: 14pt;
-    text-underline-position: below;
-    text-decoration:underline;
+    line-height: 10px;
+    margin-top: 3%;
+    /*text-decoration: underline;*/
+    /*text-align: center;*/
+    /*color: #3F3F3F;*/
+    /*font-size: 30px;*/
+    /*text-underline-position: below;*/
+    /*text-decoration:underline;*/
 }
 
 #addInterviewModal hr{
     /*margin-left: 130px;*/
-    width: 70%;
-    margin: 0px 0;
-    margin-top: -10px;
-    border-color: #3F3F3F;
+    /*width: 70%;*/
+    /*margin: 0px 0;*/
+    /*margin-top: -10px;*/
+    /*border-color: #3F3F3F;*/
+    border: 1;
+  width: 220px;
+  margin-top: -1px;
+  margin-left: 20%;
+  border-color: #3F3F3F;
 }
 
-#addInterviewModal .modal-footer{
+#addInterviewModal .interview-footer{
     background-color: #B0B6BD;
 }
 
-#addInterviewModal .interview-button{
-    background-color: #025FF1;
-    background-image: none;
-    color: #FFFFFF;
+#addInterviewModal .interview-footer .pull-left{
+    margin-left: 35px;
+}
+
+#addInterviewModal .interview-footer .pull-right{
+    margin-right: 35px;
+}
+
+#addInterviewModal .interview-footer img .pull-left{
+    /*float:;*/
+    margin-right: 35px;
+}
+
+#addInterviewModal .interview-footer .interview-button{
     font-size: 13px;
     width: 155px;
     box-shadow: rgba(0, 0, 0, 0.4);

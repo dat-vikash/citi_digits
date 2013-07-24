@@ -1,16 +1,29 @@
-<div class="interview-header">
     <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
         <img src="{{ STATIC_URL }}/img/close.png"/>
     </button>
+<div class="interview-header">
 <h3>Add an Interview</h3>
+<hr>
 </div><!-- interview-header -->
+    <br>
 <div class="modal-body">
   <div id="workflow">
       <p>Do people in your neighborhood play the lottery? How do your neighbors think the lottery affects the neighborhood?
       Add an interview and join the conversation.</p>
   </div><!--workflow-->
+    <br>
+    <br>
+<div class="interview-footer">
+    <div class="row-fluid">
+        <div class="span1"></div>
+        <div class="span2"></div>
+        <div class="span2"><img src="{{ STATIC_URL }}/img/playermarker_blue.png"/></div>
+        <div class="span3"></div>
+        <div class="span2"><img src="{{ STATIC_URL }}/img/playermarker_blue.png"/></div>
+        <div class="span1"></div>
+        <div class="span1"></div>
+    </div>
+          <button class="btn interview-button pull-left" aria-hidden="true" id="add-player-interview" data-form="/interview/player/">Add Player Interview</button>
+          <button class="btn interview-button pull-right" aria-hidden="true" id="add-retailer-interview" data-form="/interview/retailer/">Add Retailer Interview</button>
+    </div>
 </div> <!-- modal-body -->
-<div class="modal-footer">
-  <button class="btn interview-button pull-left" aria-hidden="true" id="add-player-interview" data-form="/interview/player/">Add Player Interview</button>
-  <button class="btn interview-button pull-right" aria-hidden="true" id="add-retailer-interview" data-form="/interview/retailer/">Add Retailer Interview</button>
-</div>
