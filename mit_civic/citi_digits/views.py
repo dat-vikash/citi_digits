@@ -197,7 +197,9 @@ def interviewPlayer(request):
     elif request.method == "GET":
         #Load interview form
         form = forms.PlayerInterviewForm()
-        return render_to_response('player_interview.html', {'form': form}, context_instance=RequestContext(request))
+        #get student team
+        team = MembershipService.findStudentForId(request.user.entityId).team.name
+        return render_to_response('player_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
 
 
 

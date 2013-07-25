@@ -162,23 +162,49 @@ function geoLocationMe(){
     if (navigator.geolocation) {
         var interview_thumb_map = L.mapbox.map('interview-map-thumb', 'sw2279.NYCLotto');
          interview_thumb_map.locate();
+        //get student's team
+        var team = $("#addInterviewModal #team").val();
+        console.log("team :" + "/static/img/playermarker_" + team.toLowerCase() + ".png");
 
         // Once we've got a position, zoom and center the map
         // on it, and add a single marker.
         interview_thumb_map.on('locationfound', function(e) {
-            interview_thumb_map.fitBounds(e.bounds);
 
-            interview_thumb_map.markerLayer.setGeoJSON({
+            var geoJson = [{
                 type: "Feature",
                 geometry: {
                     type: "Point",
                     coordinates: [e.latlng.lng, e.latlng.lat]
                 },
-                properties: {
-                    'marker-color': '#000',
-                    'marker-symbol': 'star-stroked'
-                }
+                "properties": {
+                    "title": "Small kitten",
+                    "icon": {
+                        "iconUrl": "/static/img/playermarker_" + team.toLowerCase() +".png",
+                        "iconSize": [50, 50], // size of the icon
+                        "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+                        "popupAnchor": [0, -25]  // point from which the popup should open relative to the iconAnchor
+                     }
+                }}
+            ];
+
+            // Set a custom icon on each marker based on feature properties
+            interview_thumb_map.markerLayer.on('layeradd', function(e) {
+                var marker = e.layer,
+                    feature = marker.feature;
+
+                marker.setIcon(L.icon(feature.properties.icon));
             });
+
+
+            interview_thumb_map.fitBounds(e.bounds);
+
+            interview_thumb_map.markerLayer.setGeoJSON(geoJson);
+
+            //update lat/long for form submission
+            $("#addInterviewModal #id_latitude").val(e.latlng.lat);
+            $("#addInterviewModal #id_longitude").val(e.latlng.lat);
+
+
         });
     } else {
         console.log('not supported');
