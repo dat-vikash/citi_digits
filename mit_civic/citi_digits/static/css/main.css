@@ -470,6 +470,10 @@
     list-style-type: none;
 }
 
+#add_interview_form #interview-map-thumb{
+    height: 160px;
+    width: 160px;
+}
 /*#add_interview_form .fieldWrapper ul li input.radio{*/
     /*float:left; clear:none; margin: 2px 0 0 2px;*/
 /*}*/

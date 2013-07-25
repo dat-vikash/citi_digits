@@ -148,9 +148,42 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
             return window.pageXOffset-($(this).width() / 2);
         }
     }); // display the modal on url load
+        //geo located
+        geoLocationMe();
    });
     return false;
 });
+
+function error(msg) {
+  console.log(msg);
+}
+
+function geoLocationMe(){
+    if (navigator.geolocation) {
+        var interview_thumb_map = L.mapbox.map('interview-map-thumb', 'sw2279.NYCLotto');
+         interview_thumb_map.locate();
+
+        // Once we've got a position, zoom and center the map
+        // on it, and add a single marker.
+        interview_thumb_map.on('locationfound', function(e) {
+            interview_thumb_map.fitBounds(e.bounds);
+
+            interview_thumb_map.markerLayer.setGeoJSON({
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [e.latlng.lng, e.latlng.lat]
+                },
+                properties: {
+                    'marker-color': '#000',
+                    'marker-symbol': 'star-stroked'
+                }
+            });
+        });
+    } else {
+        console.log('not supported');
+    }
+}
 
 $("#addInterviewModal").on("change", "input[name=buyLotteryTickets]:radio", function(ev){
     if ($("input[name=buyLotteryTickets]:radio")[0].checked) {
