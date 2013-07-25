@@ -187,7 +187,9 @@ def interviewPlayer(request):
             #Create interview
             interview = Interview(student=student, location=location, interviewType=interviewType, entityId=entity.id)
             interview.save()
-            return HttpResponse("200")
+            #return response
+            json_data = json.dumps({"HTTPRESPONSE": 200})
+            return HttpResponse(json_data, mimetype="application/json")
         else:
             print("FORM ERRORS")
             for e in form.errors:

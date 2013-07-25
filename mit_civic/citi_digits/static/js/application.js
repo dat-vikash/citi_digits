@@ -381,3 +381,26 @@ $('#loginModal').on("click", ".submit", function (ev) {
     return false;
 });
 
+/*
+ * This function defines how to handle a interview workflow submission
+ */
+$('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
+    event.preventDefault();
+//    get request url
+    var request_url = $('#add_interview_form').attr('action');
+
+    $("#add_interview_form").ajaxSubmit({
+        url:request_url, // the file to call
+        success: function(response) {
+            //update view
+         $("#addInterviewModal #workflow").hide();
+         $("#addInterviewModal #success-message").show();
+        },
+        error: function(data){
+          $("#addInterviewModal").html(data.responseText);
+     }
+    });
+
+    return false;
+
+});
