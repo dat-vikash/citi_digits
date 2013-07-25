@@ -1,5 +1,4 @@
-from django.utils.encoding import force_unicode
-from django.utils.safestring import mark_safe
+from django.conf import settings
 
 __author__ = 'vikashdat'
 
@@ -35,7 +34,7 @@ class PlayerInterviewForm(forms.Form):
     mostWonAmount = forms.CharField(widget=forms.TextInput())
     averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput())
     wonJackpotQuestion = forms.FileField()
-    photo = forms.FileField()
+    photo = forms.ImageField()
     location = forms.CharField(widget=forms.TextInput())
 
 

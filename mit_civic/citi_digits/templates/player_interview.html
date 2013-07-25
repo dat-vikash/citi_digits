@@ -14,7 +14,7 @@
                 <label for="id_firstName">What is the player's first name?</label>
                 {{ form.firstName }}
             </div>
-            <div class="fieldWrapper">
+            <div class="fieldWrapper" id="buyLotteryTickets">
                 {{ form.buyLotteryTickets.errors }}
                 <label for="id_buyLotteryTickets_0">Do you ever buy lottery tickets?</label>
                 {{ form.buyLotteryTickets }}
@@ -24,12 +24,12 @@
                 <label for="id_whyOrWhyNot">Why or why not?</label>
                 {{ form.whyOrWhyNot }}
             </div>
-            <div class="fieldWrapper">
+            <div class="fieldWrapper hide" id="wonLottery">
                 {{ form.wonLottery.errors }}
                 <label for="id_wonLottery_0">Have you ever won the lottery?</label>
                 {{ form.wonLottery }}
             </div>
-            <div class="fieldWrapper">
+            <div class="fieldWrapper hide" id="mostWonAmount">
                 {{ form.mostWonAmount.errors }}
                 <label for="id_mostWonAmount">What is the most you've won?</label>
                 ${{ form.mostWonAmount }}
@@ -51,7 +51,8 @@
                 {{ form.photo }}
             </div>
                 <div class="fieldWrapper">
-                <button class="btn btn-primary interview-button" aria-hidden="true">Submit</button>
+{#                <button class="btn btn-primary interview-button" aria-hidden="true">Submit</button>#}
+                <button class="btn submit interview-button" aria-hidden="true" id="interviewSubmit">Submit</button>
             </div>
            </div><!-- span 6 -->
 {#        </div><!-- column_1 -->#}
@@ -66,57 +67,3 @@
   </div><!-- workflow -->
 </div> <!-- modal-body -->
 </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-{#    <label for="id_firstName">Firstname:</label><input id="id_firstName" name="firstName" type="text">#}
-{#<label for="id_buyLotteryTickets_0">Buylotterytickets:</label><ul>#}
-{#<li><label for="id_buyLotteryTickets_0"><input id="id_buyLotteryTickets_0" name="buyLotteryTickets" type="radio" value="1"> Yes</label></li>#}
-{#<li><label for="id_buyLotteryTickets_1"><input id="id_buyLotteryTickets_1" name="buyLotteryTickets" type="radio" value="0"> No</label></li>#}
-{#</ul>#}
-{#<label for="id_whyOrWhyNot">Whyorwhynot:</label><input id="id_whyOrWhyNot" name="whyOrWhyNot" type="file">#}
-{#<label for="id_wonLottery_0">Wonlottery:</label><ul>#}
-{#<li><label for="id_wonLottery_0"><input id="id_wonLottery_0" name="wonLottery" type="radio" value="1"> Yes</label></li>#}
-{#<li><label for="id_wonLottery_1"><input id="id_wonLottery_1" name="wonLottery" type="radio" value="0"> No</label></li>#}
-{#</ul>#}
-{#<label for="id_mostWonAmount">Mostwonamount:</label><input id="id_mostWonAmount" name="mostWonAmount" type="text">#}
-{#<label for="id_averageSpentOnLotteryPerWeek">Averagespentonlotteryperweek:</label><input id="id_averageSpentOnLotteryPerWeek" name="averageSpentOnLotteryPerWeek" type="text">#}
-{#<label for="id_wonJackpotQuestion">Wonjackpotquestion:</label><input id="id_wonJackpotQuestion" name="wonJackpotQuestion" type="file">#}
-{#<label for="id_photo">Photo:</label><input id="id_photo" name="photo" type="file">#}
-{#<label for="id_location">Location:</label><input id="id_location" name="location" type="text">#}
-{##}
-{#  </div>#}

@@ -71,3 +71,35 @@ class CityDigitsUser(AbstractBaseUser):
 
     def get_short_name(self):
         return self.username
+
+
+class Location(models.Model):
+    """
+      Location model
+    """
+    latitude = models.FloatField()
+    longitude = models.FloatField()
+    address = models.CharField(max_length=255)
+
+class InterviewPlayer():
+    """
+      Player Interview model
+    """
+    firstName = models.CharField(max_length=255)
+    do_you_ever_buy_lottery_tickets = models.BooleanField()
+    why_or_why_not_audio = models.FilePathField()
+    have_you_ever_won_the_lottery = models.BooleanField()
+    most_won = models.DecimalField
+    money_spent_on_lottery_in_average_week = models.DecimalField
+    jackpot_audio = models.FilePathField()
+    photo = models.FilePathField()
+
+
+class Interview(models.Model):
+    """
+      Interview model
+    """
+    student = models.ForeignKey(Student,null=False)
+    location = models.ForeignKey(Location,null=False)
+    interviewType = models.CharField(max_length=8,null=False)
+    entityId = models.IntegerField(null=False)

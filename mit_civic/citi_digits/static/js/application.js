@@ -152,21 +152,32 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
     return false;
 });
 
-//$("#addInterviewModal #add-player-interview").click(function(ev){
-//   ev.preventDefault();  //prevent navigation
-//   var url = $(this).data("form"); //get the form url
-//    console.log("IN ADD PLAYER");
-////   $("#addInterviewModal").load(url, function() { // load the url into the modal
-////            $(this).modal('show').css({
-////                  width: 'auto',
-////                  'max-width':'30%',
-////                  'margin-left': function () {
-////            return -($(this).width() / 2);
-////        }
-////    }); // display the modal on url load
-////   }); //display modal
-//    return false; //prevent click propagation
-//});
+$("#addInterviewModal").on("change", "input[name=buyLotteryTickets]:radio", function(ev){
+    if ($("input[name=buyLotteryTickets]:radio")[0].checked) {
+            //YES
+            $('#wonLottery').show();
+        }
+        else if($("input[name=buyLotteryTickets]:radio")[1].checked){
+            //NO
+            $("#wonLottery").hide();
+
+        }
+    }
+);
+
+$("#addInterviewModal").on("change", "input[name=wonLottery]:radio", function(ev){
+    if ($("input[name=wonLottery]:radio")[0].checked) {
+            //YES
+            $('#mostWonAmount').show();
+        }
+        else if($("input[name=wonLottery]:radio")[1].checked){
+            //NO
+            $("#mostWonAmount").hide();
+
+        }
+    }
+);
+
 
 /*
  * Sign Up workflow logic
@@ -310,3 +321,4 @@ $('#loginModal').on("click", ".submit", function (ev) {
     //prevent click propagation
     return false;
 });
+
