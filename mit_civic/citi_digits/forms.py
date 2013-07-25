@@ -30,11 +30,13 @@ class PlayerInterviewForm(forms.Form):
     firstName = forms.CharField(widget=forms.TextInput())
     buyLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
     whyOrWhyNot = forms.FileField()
-    wonLottery = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
-    mostWonAmount = forms.CharField(widget=forms.TextInput())
+    wonLottery = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')),required=False)
+    mostWonAmount = forms.CharField(widget=forms.TextInput(),required=False)
     averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput())
     wonJackpotQuestion = forms.FileField()
     photo = forms.ImageField()
-    location = forms.CharField(widget=forms.TextInput())
+    location = forms.CharField(widget=forms.TextInput(),required=False)
+    latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
+    longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
 
 

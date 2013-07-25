@@ -3,6 +3,8 @@
 """
 from django.contrib.auth import authenticate
 from django.db import transaction
+from models import Student
+
 
 class MembershipService():
     """
@@ -27,5 +29,13 @@ class MembershipService():
         """
         user = authenticate(role=role,username=username,password=MembershipService.encryptPassword(username,password))
         return user
+
+    @staticmethod
+    def findStudentForId(id):
+        """
+          This function returns a student based on Id
+        """
+        entity = Student.objects.get(pk=id)
+        return entity
 
 

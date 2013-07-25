@@ -7,6 +7,7 @@ required_modules = [
     "mock == 1.0.1",
     "south == 0.8.1",
     "MySQL-python",
+    "PIL == 1.1.7"
     ]
 
 

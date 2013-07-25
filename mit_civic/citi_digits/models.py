@@ -77,22 +77,22 @@ class Location(models.Model):
     """
       Location model
     """
-    latitude = models.FloatField()
-    longitude = models.FloatField()
+    latitude = models.CharField(max_length=255,null=True)
+    longitude = models.CharField(max_length=255,null=True)
     address = models.CharField(max_length=255)
 
-class InterviewPlayer():
+class InterviewPlayer(models.Model):
     """
       Player Interview model
     """
     firstName = models.CharField(max_length=255)
     do_you_ever_buy_lottery_tickets = models.BooleanField()
-    why_or_why_not_audio = models.FilePathField()
+    why_or_why_not_audio = models.FileField(upload_to="audio/%Y_%m_%d_%h_%M_%s")
     have_you_ever_won_the_lottery = models.BooleanField()
-    most_won = models.DecimalField
-    money_spent_on_lottery_in_average_week = models.DecimalField
-    jackpot_audio = models.FilePathField()
-    photo = models.FilePathField()
+    most_won = models.DecimalField(decimal_places=2,max_digits=10)
+    money_spent_on_lottery_in_average_week = models.DecimalField(decimal_places=2,max_digits=10)
+    jackpot_audio = models.FileField(upload_to="audio/%Y_%m_%d_%h_%M_%s")
+    photo = models.FileField(upload_to="photo/%Y_%m_%d_%h_%M_%s")
 
 
 class Interview(models.Model):
