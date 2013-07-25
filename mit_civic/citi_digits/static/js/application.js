@@ -129,8 +129,12 @@ $("#add-interview").click(function(ev){
                     'max-height':'320px',
                     'top':'1%',
                   'margin-left': function () {
-            return window.pageXOffset-($(this).width() / 2);
-        }
+                      if ($(window).width() < 934){
+                          return window.pageXOffset;
+                      }else{
+                        return window.pageXOffset-($(this).width() / 2);
+                      }
+                    }
     }); // display the modal on url load
    }); //display modal
     return false; //prevent click propagation

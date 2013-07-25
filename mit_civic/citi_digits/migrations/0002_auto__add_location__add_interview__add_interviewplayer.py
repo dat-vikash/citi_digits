@@ -11,8 +11,8 @@ class Migration(SchemaMigration):
         # Adding model 'Location'
         db.create_table(u'citi_digits_location', (
             (u'id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('latitude', self.gf('django.db.models.fields.FloatField')()),
-            ('longitude', self.gf('django.db.models.fields.FloatField')()),
+            ('latitude', self.gf('django.db.models.fields.CharField')(max_length=255, null=True)),
+            ('longitude', self.gf('django.db.models.fields.CharField')(max_length=255, null=True)),
             ('address', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
         db.send_create_signal(u'citi_digits', ['Location'])
@@ -34,8 +34,8 @@ class Migration(SchemaMigration):
             ('do_you_ever_buy_lottery_tickets', self.gf('django.db.models.fields.BooleanField')(default=False)),
             ('why_or_why_not_audio', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
             ('have_you_ever_won_the_lottery', self.gf('django.db.models.fields.BooleanField')(default=False)),
-            ('most_won', self.gf('django.db.models.fields.DecimalField')(max_digits=10, decimal_places=2)),
-            ('money_spent_on_lottery_in_average_week', self.gf('django.db.models.fields.DecimalField')(max_digits=10, decimal_places=2)),
+            ('most_won', self.gf('django.db.models.fields.CharField')(max_length=255)),
+            ('money_spent_on_lottery_in_average_week', self.gf('django.db.models.fields.CharField')(max_length=255)),
             ('jackpot_audio', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
             ('photo', self.gf('django.db.models.fields.files.FileField')(max_length=100)),
         ))
@@ -80,8 +80,8 @@ class Migration(SchemaMigration):
             'have_you_ever_won_the_lottery': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
             'jackpot_audio': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
-            'money_spent_on_lottery_in_average_week': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
-            'most_won': ('django.db.models.fields.DecimalField', [], {'max_digits': '10', 'decimal_places': '2'}),
+            'money_spent_on_lottery_in_average_week': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
+            'most_won': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             'photo': ('django.db.models.fields.files.FileField', [], {'max_length': '100'}),
             'why_or_why_not_audio': ('django.db.models.fields.files.FileField', [], {'max_length': '100'})
         },
@@ -89,8 +89,8 @@ class Migration(SchemaMigration):
             'Meta': {'object_name': 'Location'},
             'address': ('django.db.models.fields.CharField', [], {'max_length': '255'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'latitude': ('django.db.models.fields.FloatField', [], {}),
-            'longitude': ('django.db.models.fields.FloatField', [], {})
+            'latitude': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'}),
+            'longitude': ('django.db.models.fields.CharField', [], {'max_length': '255', 'null': 'True'})
         },
         u'citi_digits.school': {
             'Meta': {'object_name': 'School'},
