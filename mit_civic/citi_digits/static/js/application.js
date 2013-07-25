@@ -60,19 +60,26 @@ function init_map(){
         $("#signUpModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
                   width: '100%',
-                 'max-width':'934px',
+                 'max-width': function () {
+                     if ($(window).width() < 934){
+                         return .90 * $(window).width();
+                     }else{
+                         return '934px';
+                     }
+                 },
                   height:'100%',
-//                    'max-height':'670px',
                     'top':'1%',
                   'margin-left': function () {
-            return window.pageXOffset-($(this).width() / 2);
-        },
+                      if ($(window).width() < 934){
+                          return window.pageXOffset;
+                      }else{
+                        return window.pageXOffset-($(this).width() / 2);
+                      }
+                    },
                 'max-height': function () {
                     if ($(window).height() < 670){
-                        console.log("HEIGHT LESS THAN 670");
                         return .90 * $(window).height() ;
                     }else{
-                        console.log("HEIGHT MORE THAN 670");
                         return '670px';
                     }
                 }
