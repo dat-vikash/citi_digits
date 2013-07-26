@@ -45,7 +45,7 @@ class RetailerInterviewForm(forms.Form):
     whyOrWhyNot = forms.FileField()
     customersPerDay = forms.CharField(widget=forms.TextInput(),required=False)
     percentageCustomers = forms.CharField(widget=forms.TextInput(),required=False)
-    amountPerVisit = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1-TICKET','1-ticket'),('2-5-TICKETS','2-5 tickets'),
+    amountPerVisit = forms.ChoiceField(required=False,widget=forms.RadioSelect(),choices=(('1-TICKET','1-ticket'),('2-5-TICKETS','2-5 tickets'),
                                                                              ('6-10-TICKETS','6-10 tickets'),('11-OR-MORE-TICKETS',
                                                                               '11 or more tickets')))
     goodForNeighborhoodQuestion = forms.FileField()

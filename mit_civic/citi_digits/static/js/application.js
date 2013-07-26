@@ -269,6 +269,23 @@ $("#addInterviewModal").on("change", "input[name=wonLottery]:radio", function(ev
     }
 );
 
+$("#addInterviewModal").on("change", "input[name=sellLotteryTickets]:radio", function(ev){
+    if ($("input[name=sellLotteryTickets]:radio")[0].checked) {
+            //YES
+            $('#customersPerDay').show();
+            $("#percentageCustomers").show();
+            $("#amountPerVisit").show();
+        }
+        else if($("input[name=sellLotteryTickets]:radio")[1].checked){
+            //NO
+            $("#customersPerDay").hide();
+            $("#percentageCustomers").hide();
+            $("#amountPerVisit").show();
+        }
+    }
+);
+
+
 
 /*
  * Sign Up workflow logic
