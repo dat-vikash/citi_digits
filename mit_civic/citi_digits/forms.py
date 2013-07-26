@@ -39,4 +39,17 @@ class PlayerInterviewForm(forms.Form):
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
 
-
+class RetailerInterviewForm(forms.Form):
+    storeName = forms.CharField(widget=forms.TextInput())
+    sellLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
+    whyOrWhyNot = forms.FileField()
+    customersPerDay = forms.CharField(widget=forms.TextInput(),required=False)
+    percentageCustomers = forms.CharField(widget=forms.TextInput(),required=False)
+    amountPerVisit = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1-TICKET','1-ticket'),('2-5-TICKETS','2-5 tickets'),
+                                                                             ('6-10-TICKETS','6-10 tickets'),('11-OR-MORE-TICKETS',
+                                                                              '11 or more tickets')))
+    goodForNeighborhoodQuestion = forms.FileField()
+    photo = forms.ImageField()
+    location = forms.CharField(widget=forms.TextInput(),required=False)
+    latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
+    longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)

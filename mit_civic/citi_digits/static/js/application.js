@@ -165,6 +165,27 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
     return false;
 });
 
+$("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
+    ev.preventDefault(); // prevent navigation
+    var url = $(this).data("form"); //get the form url
+    $("#addInterviewModal").load(url,function() { // load the url into the modal
+            $(this).modal('show').css({
+                 width: '95%',
+                 'max-width':'100%',
+                  height:'100%',
+                    'max-height':'100%',
+                    'top':'1%',
+                  'margin-left': function () {
+            return window.pageXOffset-($(this).width() / 2);
+        }
+    }); // display the modal on url load
+        //geo located
+        geoLocationMe();
+   });
+    return false;
+});
+
+
 function error(msg) {
   console.log(msg);
 }
@@ -213,7 +234,7 @@ function geoLocationMe(){
 
             //update lat/long for form submission
             $("#addInterviewModal #id_latitude").val(e.latlng.lat);
-            $("#addInterviewModal #id_longitude").val(e.latlng.lat);
+            $("#addInterviewModal #id_longitude").val(e.latlng.lng);
 
 
         });

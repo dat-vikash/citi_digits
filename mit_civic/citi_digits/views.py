@@ -5,7 +5,7 @@ from django.http import HttpResponse, QueryDict
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import forms
-from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer
+from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer
 from service import MembershipService
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -170,22 +170,19 @@ def interviewPlayer(request):
             location = Location(latitude=form.cleaned_data['latitude'], longitude=form.cleaned_data["longitude"],
                                 address=form.cleaned_data["location"])
             location.save()
-            #Get interview type
-            interviewType = request.POST['interview_type']
             #Create player profile
             entity = None
-            if interviewType == "PLAYER":
-                entity = InterviewPlayer(firstName=form.cleaned_data["firstName"],
-                                         do_you_ever_buy_lottery_tickets=form.cleaned_data["buyLotteryTickets"],
-                                         why_or_why_not_audio=request.FILES['whyOrWhyNot'],
-                                         have_you_ever_won_the_lottery=form.cleaned_data["wonLottery"],
-                                         most_won=float(form.cleaned_data["mostWonAmount"]),
-                                         money_spent_on_lottery_in_average_week=float(form.cleaned_data["averageSpentOnLotteryPerWeek"]),
-                                         jackpot_audio=request.FILES["wonJackpotQuestion"],
-                                         photo=request.FILES["photo"])
-                entity.save()
+            entity = InterviewPlayer(firstName=form.cleaned_data["firstName"],
+                                     do_you_ever_buy_lottery_tickets=form.cleaned_data["buyLotteryTickets"],
+                                     why_or_why_not_audio=request.FILES['whyOrWhyNot'],
+                                     have_you_ever_won_the_lottery=form.cleaned_data["wonLottery"],
+                                     most_won=float(form.cleaned_data["mostWonAmount"]),
+                                     money_spent_on_lottery_in_average_week=float(form.cleaned_data["averageSpentOnLotteryPerWeek"]),
+                                     jackpot_audio=request.FILES["wonJackpotQuestion"],
+                                     photo=request.FILES["photo"])
+            entity.save()
             #Create interview
-            interview = Interview(student=student, location=location, interviewType=interviewType, entityId=entity.id)
+            interview = Interview(student=student, location=location, interviewType="PLAYER", entityId=entity.id)
             interview.save()
             #return response
             json_data = json.dumps({"HTTPRESPONSE": 200})
@@ -205,11 +202,48 @@ def interviewPlayer(request):
 
 
 
+@transaction.autocommit
+def interviewRetailer(request):
+    """
+      Handles retailer interview form
+    """
+    if request.method == "POST":
+        #Bound form
+        form = forms.RetailerInterviewForm(request.POST, request.FILES)
+        if form.is_valid():
+            #Save interview related information
+            #Get student
+            student = MembershipService.findStudentForId(request.user.entityId)
+            #Create location
+            location = Location(latitude=form.cleaned_data['latitude'], longitude=form.cleaned_data["longitude"],
+                                address=form.cleaned_data["location"])
+            location.save()
+            #Create retailer profile
+            entity = None
+            entity = InterviewRetailer(storeName=form.cleaned_data["storeName"],
+                                     do_you_sell_lottery_tickets=form.cleaned_data["sellLotteryTickets"],
+                                     why_or_why_not_audio=request.FILES['whyOrWhyNot'],
+                                     customers_in_a_day=form.cleaned_data["customersPerDay"],
+                                     percentage_buy_lottery_tickets=float(form.cleaned_data["percentageCustomers"]),
+                                     amount_tickets_bought_per_visit=form.cleaned_data["amountPerVisit"],
+                                     why_or_why_not_lottery_neighborhood_audio=request.FILES["goodForNeighborhoodQuestion"],
+                                     photo=request.FILES["photo"])
+            entity.save()
+            #Create interview
+            interview = Interview(student=student, location=location, interviewType="RETAILER", entityId=entity.id)
+            interview.save()
+            #return response
+            json_data = json.dumps({"HTTPRESPONSE": 200})
+            return HttpResponse(json_data, mimetype="application/json")
+        else:
+            print("FORM ERRORS")
+            for e in form.errors:
+                print e
+            return render_to_response('retailer_interview.html', {'form': form}, context_instance=RequestContext(request))
 
-        #  do_you_ever_buy_lottery_tickets = models.BooleanField()
-        # why_or_why_not_audio = models.FilePathField()
-        # have_you_ever_won_the_lottery = models.BooleanField()
-        # most_won = models.DecimalField
-        # money_spent_on_lottery_in_average_week = models.DecimalField
-        # jackpot_audio = models.FilePathField()
-        # photo = models.FilePathField()
+    elif request.method == "GET":
+        #Load interview form
+        form = forms.RetailerInterviewForm()
+        #get student team
+        team = MembershipService.findStudentForId(request.user.entityId).team.name
+        return render_to_response('retailer_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
