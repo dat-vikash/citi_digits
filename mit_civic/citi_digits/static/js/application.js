@@ -225,7 +225,17 @@ function geoLocationMe(){
                     feature = marker.feature;
 
                 marker.setIcon(L.icon(feature.properties.icon));
+                marker.dragging.enable();
+
+                marker.on('dragend', function(e){
+                  //update coordinates
+                    $("#addInterviewModal #id_latitude").val(e.target._latlng.lat);
+                    $("#addInterviewModal #id_longitude").val(e.target._latlng.lng);
+                 console.log(e.target._latlng);
+                });
             });
+
+
 
 
             interview_thumb_map.fitBounds(e.bounds);
