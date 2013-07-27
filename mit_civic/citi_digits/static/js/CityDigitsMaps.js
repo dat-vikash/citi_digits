@@ -43,6 +43,9 @@ CityDigitsMap.prototype.loadLayers =  function (){
     this.neighborhoodLayer.on('mouseout', function(e) {
         self.mapMouseOut(e);
     });
+    this.neighborhoodLayer.on('click', function(e) {
+        self.mapMouseMove(e);
+    });
 }
 
 CityDigitsMap.prototype.resizeMap = function(){
