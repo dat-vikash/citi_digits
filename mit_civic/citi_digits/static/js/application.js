@@ -9,47 +9,12 @@
  */
 
 $().ready(new function(){
-    init_map();
-    resize_map();
+    var myMap = new CityDigitsMap();
+    myMap.resizeMap();
+    myMap.loadLayers();
+
 });
 
-/*
-  Mapbox.js related functionality
- */
-
-function resize_map(){
-    $("#map").height( $(window).height()-$(".navbar").height());
-}
-
-function init_map(){
-    //load map
-    var basemap = "sw2279.NYCLotto";
-    var map = L.mapbox.map('map', basemap);
-
-    //disable unwanted events
-    map.touchZoom.disable();
-    map.doubleClickZoom.disable();
-    map.scrollWheelZoom.disable();
-
-    //show map ui nav
-    $("#map-nav").load("/map/nav/");
-//    var ui = document.getElementById('map-ui');
-//
-//    //add layers
-//        L.mapbox.tileLayer('').addTo(map);
-//
-//    // Create a simple layer switcher that toggles layers on
-//    // and off.
-//    var item = document.createElement('li');
-//    var link = document.createElement('a');
-//
-//    link.href = '#';
-//    link.className = 'active';
-//    link.innerHTML = "TEST LAYER";
-//    item.appendChild(link);
-//    ui.appendChild(item);
-
-}
 
 /*
   Handle Sign Up, Login, Logout
@@ -209,7 +174,7 @@ function geoLocationMe(){
                     coordinates: [e.latlng.lng, e.latlng.lat]
                 },
                 "properties": {
-                    "title": "Small kitten",
+                    "title": "Interview",
                     "icon": {
                         "iconUrl": "/static/img/playermarker_" + team.toLowerCase() +".png",
                         "iconSize": [50, 50], // size of the icon
