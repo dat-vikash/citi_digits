@@ -653,28 +653,28 @@ background-color: #6122FC;
 */
 
 #AVG_SPEND .percent_income_spent .q1 {
-fill: #E7D6FC;
-background-color: #E7D6FC;
+fill: #EEFC9C;
+background-color: #EEFC9C;
     margin-right: -4px;
 }
 #AVG_SPEND .percent_income_spent .q2 {
-fill: #DDA4FC;
-background-color: #DDA4FC;
+fill: #B0FC95;
+background-color: #B0FC95;
     margin-right: -4px;
 }
 #AVG_SPEND .percent_income_spent .q3 {
-fill: #CA6BF2;
-background-color: #CA6BF2;
+fill: #60FD7C;
+background-color: #60FD7C;
     margin-right: -4px;
 }
 #AVG_SPEND .percent_income_spent .q4 {
-fill: #9518ED;
-background-color: #9518ED;
+fill: #00EC66;
+background-color: #00EC66;
     margin-right: -4px;
 }
 #AVG_SPEND .percent_income_spent .q5 {
-fill: #6122FC;
-background-color: #6122FC;
+fill: #00B95C;
+background-color: #00B95C;
 }
 
 #AVG_SPEND #legend-labels{
