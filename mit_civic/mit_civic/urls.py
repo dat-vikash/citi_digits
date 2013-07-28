@@ -14,6 +14,7 @@ urlpatterns = patterns('',
         url(r'^interview/new/$', 'citi_digits.views.interviewSelect', name='interview_select'),
         url(r'^interview/player/$', 'citi_digits.views.interviewPlayer', name='interview_player'),
         url(r'^interview/retailer/$', 'citi_digits.views.interviewRetailer', name='interview_retailer'),
+        url(r'^popup/(?P<layer>.+)/(?P<neighborhood>.+)/$','citi_digits.views.popup',name='popup'),
 
     # Examples:
     # url(r'^$', 'mit_civic.views.home', name='home'),

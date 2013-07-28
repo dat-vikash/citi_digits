@@ -733,3 +733,40 @@ background-color: #EECAE5;
 	font-size: 12px;
     display: inline-block;
 }
+
+.map-ui-popup-1 {
+    z-index: 100;
+    background-color: #FFFFFF;
+    float: right;
+    position: relative;
+    height: 320px;
+    width: 250px;
+    border-radius: 5px;
+    margin-right: 5%;
+    margin-top: 1%;
+}
+
+.map-ui-popup-2 {
+    z-index: 100;
+    background-color: #FFFFFF;
+    float: right;
+    position: relative;
+    height: 320px;
+    width: 250px;
+    border-radius: 5px;
+    margin-top: 27%;
+    left: 20.8%;
+}
+
+.div-close {
+    position: relative;
+    margin: 0;
+    top: -14px;
+    right: -6px;
+    z-index: 101;
+    opacity: 0.9;
+}
+
+.div-close:hover {
+    opacity: 100;
+}

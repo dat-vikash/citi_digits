@@ -8,26 +8,41 @@
   On DOM load handlers
  */
 var map_popups = [];
+var map_count = 0;
 $().ready(new function(){
     var myMap = new CityDigitsMap();
     myMap.resizeMap();
     myMap.loadLayers();
 
     //mav nav
+    map_popups.push($("#map-popup-1"));
+    map_popups.push($("#map-popup-2"));
+
+    $(".tab-content").height=$(window).height();
 });
 
 function showMapPopUp(ev){
-    console.log("POP UP");
+    var idx= null;
     //get which layer is active
     var activeLayer = $(".map-ui li.active").attr("id");
-    console.log("ACTIVE LAYER: " + activeLayer);
     //get layer properties
     //get layer
     var layer = ev.layer;
     //pass properties to webservice to construct popup
+    console.log("sfgsdgf " + map_popups[0].is(":visible") );
     //determine which popup is currently shown
-    //if [1] then show [2]
-    //if [1] and [2], load into [1]
+    if (map_count % 2 == 0){
+        idx = 0;
+    }else{
+        idx=1;
+    }
+    map_count = map_count + 1;
+    //load into [0]
+    map_popups[idx].load("/popup/"+activeLayer+"/"+layer.feature.properties.N_Name+"/");
+    map_popups[idx].show();
+    map_popups[idx].on("click",".div-close",function(event){
+    map_popups[idx].innerHTML="";
+    map_popups[idx].hide();});
 
 }
 
@@ -458,3 +473,7 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
 
 });
 
+
+$("#map-ui-popup-1").on("click","button",function(event){
+    console.log("CLOSEE1");
+});

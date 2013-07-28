@@ -247,3 +247,11 @@ def interviewRetailer(request):
         #get student team
         team = MembershipService.findStudentForId(request.user.entityId).team.name
         return render_to_response('retailer_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
+
+
+def popup(request,layer,neighborhood):
+    """
+
+    """
+    if request.method == "GET":
+        return render_to_response('map_popup.html',{'neighborhood':neighborhood},context_instance=RequestContext(request))

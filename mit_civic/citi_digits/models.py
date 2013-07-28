@@ -112,16 +112,6 @@ class InterviewRetailer(models.Model):
     amount_tickets_bought_per_visit = models.CharField(max_length=50)
     why_or_why_not_lottery_neighborhood_audio = models.FileField(upload_to="audio/%Y_%m_%d_%h_%M_%s")
     photo = models.FileField(upload_to="photo/%Y_%m_%d_%h_%M_%s")
-#
-# - Do you sell lottery tickets? (yes/no)
-# - Why or why not? (add media)
-# If 'Do you sell lottery tickets?' = yes:
-# - About how many customers do you have in an average day? (integer)
-# - What percentage of your customers buy lottery tickets? (integer)
-# - About how many tickets do people usually buy in one visit?
-# (check boxes: 1 ticket, 2-5 tickets, 6-10 tickets, 11 or more tickets)
-# - Do you think the lottery is good for this neighborhood? Why or why not? (add media)
-# - Add photo (add media)
 
 
 class Interview(models.Model):
