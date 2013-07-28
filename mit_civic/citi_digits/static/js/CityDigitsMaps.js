@@ -5,8 +5,8 @@ function CityDigitsMap() {
 
     //load map
     var basemap = "sw2279.NYCLotto";
-    this.map = L.mapbox.map('map', basemap);
 
+    this.map = L.mapbox.map('map', basemap);
     //set params
     this.height = $(window).height()-$(".navbar").height();
     this.width = $(window).width();
@@ -45,6 +45,8 @@ CityDigitsMap.prototype.loadLayers =  function (){
     });
     this.neighborhoodLayer.on('click', function(e) {
         self.mapMouseMove(e);
+        //load popup
+        showMapPopUp();
     });
 }
 

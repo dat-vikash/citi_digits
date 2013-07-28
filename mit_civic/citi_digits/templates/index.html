@@ -14,6 +14,7 @@
     <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
+    <link rel="stylesheet" href="//f.fontdeck.com/s/css/zH28mslJNSfrEtk/N8vkA5GMvEQ/DOMAIN_NAME/35051.css" type="text/css" />
     <link href="{{ STATIC_URL }}css/main.css" rel="stylesheet">
     <style>
       body {
@@ -67,8 +68,9 @@
         <div class="modal hide" id="addInterviewModal"></div><!-- add interview modal -->
         <div class="tab-content">
             <div class="tab-pane active" id="map-tab">
-                <div id="map-nav" class="map-nav"></div><!-- map-nav -->
-{#                <ul id='map-ui'></ul><!-- map-ui -->#}
+                <div id="map-nav" class="map-nav map-ui"></div><!-- map-nav -->
+                <div id="map-popup-1" class="map-popup"></div><!-- mav popup 1-->
+                <div id="map-popup-2" class="map-popup"></div><!-- mav popup 2-->
                 <div class="map-content" id="map"></div><!-- map div -->
             </div><!-- tab-pane map -->
             <div class="tab-pane" id="interviews-tab">TODO: INTERVIEWS</div><!-- tab-pane interviews -->

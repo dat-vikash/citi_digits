@@ -1,20 +1,45 @@
-<div id="map-nav-content" class="map-ui">
-    <h6>VIEW MAP</h6>
-    <ul>
-        <li>
-            <a href="">% INCOME SPENT ON LOTTERY</a>
-        </li>
-        <li>
-            <a href="">MEDIAN INCOMES</a>
-        </li>
-        <li>
-            <a href="">AVERAGE WINNINGS</a>
-        </li>
-        <li>
-            <a href="">AVERAGE SPENDING</a>
-        </li>
-        <li>
-            <a href="">NET GAIN OR LOSS</a>
-        </li>
-    </ul>
-</div>
+<h6>VIEW MAP</h6>
+<ul id="map-nav-list">
+    <li class="active">
+        <a href="#">% INCOME SPENT ON LOTTERY</a>
+        <div id="map-ui-subnav-content">
+            <div id="map-legend">
+                <div id="legend-squares" class="percent_income_spent">
+                    <div class="legend-square q1"></div>
+                    <div class="legend-square q2"></div>
+                    <div class="legend-square q3"></div>
+                    <div class="legend-square q4"></div>
+                    <div class="legend-square q5"></div>
+                </div>
+                <div id="legend-labels">
+                    <p class="legend-label" style="left: 0px;">0%</p>
+                    <p class="legend-label" style="left: 19%;">0.5%</p>
+                    <p class="legend-label" style="left: 38%;">1.5%</p>
+                    <p class="legend-label" style="left: 57%;">2%</p>
+                    <p class="legend-label" style="left: 76%;">3%</p>
+                    <p class="legend-label" style="left: 95%;">15%</p>
+                </div>
+            </div>
+        </div>
+    </li>
+    <li>
+        <a href="#">MEDIAN INCOMES</a>
+        <div id="map-ui-subnav-content" class="hide">
+        </div>
+    </li>
+    <li>
+        <a href="#">AVERAGE WINNINGS</a>
+        <div id="map-ui-subnav-content" class="hide">
+        </div>
+    </li>
+    <li>
+        <a href="#">AVERAGE SPENDING</a>
+        <div id="map-ui-subnav-content" class="hide">
+        </div>
+    </li>
+    <li>
+        <a href="#">NET GAIN OR LOSS</a>
+        <div id="map-ui-subnav-content" class="hide">
+        </div>
+    </li>
+</ul>

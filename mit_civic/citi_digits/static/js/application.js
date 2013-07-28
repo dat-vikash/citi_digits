@@ -7,13 +7,38 @@
 /*
   On DOM load handlers
  */
-
+var map_popups = [];
 $().ready(new function(){
     var myMap = new CityDigitsMap();
     myMap.resizeMap();
     myMap.loadLayers();
 
+    //mav nav
 });
+
+function showMapPopUp(ev){
+    console.log("POP UP");
+    //get which layer is active
+    //get layer properties
+    //get layer
+    var layer = ev.layer;
+    //pass properties to webservice to construct popup
+    //determine which popup is currently shown
+    //if [1] then show [2]
+    //if [1] and [2], load into [1]
+
+}
+
+$(".map-ui").on("click","li", function (e) {
+    e.preventDefault();
+    $(".map-ui li.active #map-ui-subnav-content").hide();
+    $(".map-ui li.active").removeClass("active");
+     $(this).closest("li").addClass("active");
+    $(".map-ui li.active #map-ui-subnav-content").show();
+    return false;
+});
+
+
 
 
 /*
@@ -149,6 +174,8 @@ $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
    });
     return false;
 });
+
+
 
 
 function error(msg) {
@@ -428,3 +455,4 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
     return false;
 
 });
+

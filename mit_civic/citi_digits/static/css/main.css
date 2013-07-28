@@ -33,7 +33,7 @@
 
 .navbar .nav>li>a{
   font-size: 12px;
-  font-family: "Helvetica Neue";
+  font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
   color: #3F3F3F;
   line-height: 1.417;
   text-align: left;
@@ -174,7 +174,7 @@
 }
 
 .citi-header h3 {
-    font-family: Apercu;
+    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-weight: bold;
     font-size: 30px;
     color:  #FFFFFF;
@@ -192,7 +192,7 @@
     max-width: 100%;
     padding: 0px;
     font-size: 12px;
-    font-family: Apercu;
+    font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
 }
 
 .modal-body #first  {
@@ -299,17 +299,16 @@
 
 .map-ui {
     position: absolute;
-    top: 110px;
+    top: 10%;
     /*left: 10px;*/
+    width: 250px;
     margin: 0;
     padding: 0;
     z-index: 100;
-    background: rgb(63,63,63);
+    background: #3f3f3f;
     color: #696969;
     text-align: center;
-    /*display: block;*/
-
-
+    font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
 }
 
 .map-ui ul {
@@ -322,28 +321,54 @@
     list-type: none;
     margin: 0;
     margin-left: -12%;
-}
-.map-ui a {
-    /*font: normal 13px/18px 'Helvetica Neue', Helvetica, sans-serif;*/
-    /*background: #FFF;*/
-    display: block;
-    margin: 0;
-    padding: 0;
     border: 1px solid #BBB;
     border-top-width: 1px;
     border-bottom-width: 1px;
-    /*min-width: 138px;*/
     padding: 10px;
+}
+.map-ui a {
+    font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    display: block;
+    margin: 0;
+    padding: 0;
     text-decoration: none;
     color: #ffffff;
 }
 
-.map-ui a.active {
-    background: #3887BE;
+.map-ui li.active {
+    background: #FFFFFF;
+    color: #3F3F3F;
     border-color: #3887BE;
     border-top-color: #FFF;
-    color: #ffffff;
 }
+
+.map-ui li:hover{
+    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    /*background: #FFFFFF;*/
+    color: #3F3F3F;
+        background: #777777;
+
+    /*border-color: #3887BE;*/
+    /*border-top-color: #FFF;*/
+}
+
+.map-ui li.active:hover{
+    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    /*background: #FFFFFF;*/
+    color: #3F3F3F;
+        background: #FFFFFF;
+
+    /*border-color: #3887BE;*/
+    /*border-top-color: #FFF;*/
+}
+
+.map-ui li.active a{
+    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #3F3F3F;
+    /*border-color: #3887BE;*/
+    /*border-top-color: #FFF;*/
+}
+
 
 /*
  * Interview related stylings
@@ -364,7 +389,7 @@
 }
 
 #addInterviewModal h3 {
-    font-family: Apercu;
+    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-weight: bold;
     font-size: 30px;
     color:  #3F3F3F;
@@ -474,10 +499,55 @@
     height: 160px;
     width: 160px;
 }
-/*#add_interview_form .fieldWrapper ul li input.radio{*/
-    /*float:left; clear:none; margin: 2px 0 0 2px;*/
-/*}*/
 
-/*#add_interview_form .fieldWrapper input[type=file] input.file {*/
-    /**/
-/*}*/
+
+#map-ui-subnav-content #legend-squares {
+	/*height:37px;*/
+	opacity: .7;
+}
+
+#map-ui-subnav-content .legend-square {
+	/*width: 20%;*/
+    width: 37px;
+	height: 13px;
+	display: inline-block;
+}
+
+#map-ui-subnav-content .percent_income_spent .q1 {
+fill: #b2eaee;
+background-color: #b2eaee;
+    margin-right: -4px;
+}
+#map-ui-subnav-content .percent_income_spent .q2 {
+fill: #79CADA;
+background-color: #79CADA;
+    margin-right: -4px;
+}
+#map-ui-subnav-content .percent_income_spent .q3 {
+fill: #42B7BD;
+background-color: #42B7BD;
+    margin-right: -4px;
+}
+#map-ui-subnav-content .percent_income_spent .q4 {
+fill: #4794D4;
+background-color: #4794D4;
+    margin-right: -4px;
+}
+#map-ui-subnav-content .percent_income_spent .q5 {
+fill: #526CD9;
+background-color: #526CD9;
+}
+
+#map-ui-subnav-content #legend-labels{
+    position: relative;
+}
+
+#map-ui-subnav-content p.legend-label {
+	color: #3F3F3F;
+	width: 70px;
+	margin: 0 0 0 -40px;
+	top: 5px;
+	text-align: center;
+	font-size: 12px;
+    display: inline-block;
+}
