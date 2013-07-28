@@ -309,6 +309,7 @@
     color: #696969;
     text-align: center;
     font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    box-shadow: 5px 5px 15px;
 }
 
 .map-ui ul {
@@ -744,7 +745,8 @@ background-color: #EECAE5;
     width: 250px;
     border-radius: 5px;
     /*margin-right: 5%;*/
-    margin-top: 1%;
+    margin-top: 3%;
+    box-shadow: 5px 5px 15px;
 }
 
 .map-ui-popup-2 {
@@ -758,6 +760,7 @@ background-color: #EECAE5;
     border-radius: 5px;
     /*margin-top: 27%;*/
     /*left: 20.8%;*/
+    box-shadow: 5px 5px 15px;
 }
 
 .div-close {
@@ -771,4 +774,16 @@ background-color: #EECAE5;
 
 .div-close:hover {
     opacity: 100;
+}
+
+#map-popup-header p{
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    font-size: 20px;
+    color: #3F3F3F;
+}
+
+#map-popup-header p.description{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    font-size: 13px;
+    color: #3F3F3F;
 }

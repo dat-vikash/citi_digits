@@ -42,12 +42,22 @@ function showMapPopUp(ev){
     }
     map_count = map_count + 1;
     //load into [0]
-    map_popups[idx].load("/popup/"+activeLayer+"/"+layer.feature.properties.N_Name+"/");
+    url = getPopupUrlFrom(activeLayer,layer.feature.properties);
+    console.log("ulr: " + url);
+
+    map_popups[idx].load(url);
     map_popups[idx].show();
     map_popups[idx].on("click",".div-close",function(event){
     map_popups[idx].innerHTML="";
     map_popups[idx].hide();});
+//    loadGraph();
 
+}
+
+function getPopupUrlFrom(activeLayer,properties){
+        name = properties.N_Name.toString().split(' ').join('_');
+        return "/popup/"+activeLayer+"/"+name+"/"+properties.PERINC10+"/"+properties.EV_DOL+"/" +
+            properties.Daily_Sale+"/"+properties.Daily_Win+"/"+properties.Daily_Inco+"/"+properties.Net_Win +"/";
 }
 
 $(".map-ui").on("click","li", function (e) {
@@ -91,7 +101,7 @@ $(".map-ui").on("click","li", function (e) {
         }).addTo(MY_MAP.map);
     }
 
-    //readd mosue events
+    //re-add mosue events
     mainLayer.on('mouseover', function(e) {
         MY_MAP.mapMouseMove(e);
     });
@@ -529,3 +539,13 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
 $("#map-ui-popup-1").on("click","button",function(event){
     console.log("CLOSEE1");
 });
+
+function loadGraph(){
+
+    //get div
+//    / Creates canvas 640 × 480 at 10, 50
+var r = Raphael("map-popup-graphic", 193, 20);
+// Creates pie chart at with center at 145, 200,
+// radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
+r.barchart(0,0,230,30,[10]);
+}

@@ -249,9 +249,33 @@ def interviewRetailer(request):
         return render_to_response('retailer_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
 
 
-def popup(request,layer,neighborhood):
+def popup(request,layer,neighborhood,perin,dol,sale,win,income,netwin):
     """
 
     """
     if request.method == "GET":
-        return render_to_response('map_popup.html',{'neighborhood':neighborhood},context_instance=RequestContext(request))
+        if layer == "PERCENT_INCOME":
+            neighborhood =  neighborhood.replace("_"," ");
+            amountSpent = (100 * (float(perin)/100))
+            return render_to_response('map_popup_percent_income.html',{'neighborhood':neighborhood,
+                'percent':perin, 'amountSpent':amountSpent},context_instance=RequestContext(request))
+        if layer == "MEDIAN_INCOME":
+            neighborhood =  neighborhood.replace("_"," ");
+            amountSpent = (100 * (float(perin)/100))
+            return render_to_response('map_popup_percent_income.html',{'neighborhood':neighborhood,
+                'percent':perin, 'amountSpent':amountSpent},context_instance=RequestContext(request))
+        if layer == "NET_GAIN_LOSS":
+            neighborhood =  neighborhood.replace("_"," ");
+            return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood,
+                'won':win, 'spent':sale},context_instance=RequestContext(request))
+        if layer == "AVG_SPEND":
+            neighborhood =  neighborhood.replace("_"," ");
+            return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood,
+                'won':win, 'spent':sale},context_instance=RequestContext(request))
+        if layer == "AVG_WIN":
+            neighborhood =  neighborhood.replace("_"," ");
+            return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood,
+                'won':win, 'spent':sale},context_instance=RequestContext(request))
+
+
+
