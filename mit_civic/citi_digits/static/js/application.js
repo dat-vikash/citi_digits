@@ -62,34 +62,47 @@ $(".map-ui").on("click","li", function (e) {
     //set fillcolor based on id and properties
     if(layerId == "PERCENT_INCOME"){
         MY_MAP.map.removeLayer(mainLayer);
-        MY_MAP.map.addLayer(L.geoJson(nyc_neighborhoods,{
+        mainLayer =L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForPercentIncome
-        }));
+        }).addTo(MY_MAP.map);
     }
     if(layerId == "MEDIAN_INCOME"){
         MY_MAP.map.removeLayer(mainLayer);
-        MY_MAP.map.addLayer(L.geoJson(nyc_neighborhoods,{
+       mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForMedianIncome
-        }));
+        }).addTo(MY_MAP.map);
     }
     if(layerId == "AVG_WIN"){
         MY_MAP.map.removeLayer(mainLayer);
-        MY_MAP.map.addLayer(L.geoJson(nyc_neighborhoods,{
+       mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForAverageWin
-        }));
+        }).addTo(MY_MAP.map);
     }
     if(layerId == "AVG_SPEND"){
         MY_MAP.map.removeLayer(mainLayer);
-        MY_MAP.map.addLayer(L.geoJson(nyc_neighborhoods,{
+       mainLayer = L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForAverageSpend
-        }));
+        }).addTo(MY_MAP.map);
     }
     if(layerId == "NET_GAIN_LOSS"){
         MY_MAP.map.removeLayer(mainLayer);
-        MY_MAP.map.addLayer(L.geoJson(nyc_neighborhoods,{
+       mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForNetWinLoss
-        }));
+        }).addTo(MY_MAP.map);
     }
+
+    //readd mosue events
+    mainLayer.on('mouseover', function(e) {
+        MY_MAP.mapMouseMove(e);
+    });
+    mainLayer.on('mouseout', function(e) {
+        MY_MAP.mapMouseOut(e);
+    });
+    mainLayer.on('click', function(e) {
+        MY_MAP.mapMouseMove(e);
+        //load popup
+        showMapPopUp(e);
+    });
 
     return false;
 });
