@@ -809,3 +809,33 @@ background-color: #EECAE5;
     box-shadow: 5px 5px 5px 1px #696969;
     float: left;
 }
+
+.popup-explain-header {
+    background-color: #00c9c8;
+    text-align: center;
+
+}
+
+#mapPopupModal {
+        background-color: #00c9c8;
+
+
+}
+
+#mapPopupModal .even{
+    background-color: #00c9c8;
+    text-align: center;
+}
+
+#mapPopupModal .odd{
+    background-color: #025ff1;
+    text-align: center;
+}
+
+.popup-explain-header p{
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    font-size: 30px;
+    color: #FFFFFF;
+    text-decoration: underline;
+
+}
