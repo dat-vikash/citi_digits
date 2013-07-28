@@ -46,7 +46,7 @@ CityDigitsMap.prototype.loadLayers =  function (){
     this.neighborhoodLayer.on('click', function(e) {
         self.mapMouseMove(e);
         //load popup
-        showMapPopUp();
+        showMapPopUp(e);
     });
 }
 

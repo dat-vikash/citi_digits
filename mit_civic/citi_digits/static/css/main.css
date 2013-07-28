@@ -500,6 +500,9 @@
     width: 160px;
 }
 
+/*
+  MAP UP LEGENDS
+*/
 
 #map-ui-subnav-content #legend-squares {
 	/*height:37px;*/
@@ -513,36 +516,84 @@
 	display: inline-block;
 }
 
-#map-ui-subnav-content .percent_income_spent .q1 {
+/*
+ Percent Income legend
+*/
+
+#PERCENT_INCOME .percent_income_spent .q1 {
 fill: #b2eaee;
 background-color: #b2eaee;
     margin-right: -4px;
 }
-#map-ui-subnav-content .percent_income_spent .q2 {
+#PERCENT_INCOME .percent_income_spent .q2 {
 fill: #79CADA;
 background-color: #79CADA;
     margin-right: -4px;
 }
-#map-ui-subnav-content .percent_income_spent .q3 {
+#PERCENT_INCOME .percent_income_spent .q3 {
 fill: #42B7BD;
 background-color: #42B7BD;
     margin-right: -4px;
 }
-#map-ui-subnav-content .percent_income_spent .q4 {
+#PERCENT_INCOME .percent_income_spent .q4 {
 fill: #4794D4;
 background-color: #4794D4;
     margin-right: -4px;
 }
-#map-ui-subnav-content .percent_income_spent .q5 {
+#PERCENT_INCOME .percent_income_spent .q5 {
 fill: #526CD9;
 background-color: #526CD9;
 }
 
-#map-ui-subnav-content #legend-labels{
+#PERCENT_INCOME #legend-labels{
     position: relative;
 }
 
-#map-ui-subnav-content p.legend-label {
+#PERCENT_INCOME p.legend-label {
+	color: #3F3F3F;
+	width: 70px;
+	margin: 0 0 0 -40px;
+	top: 5px;
+	text-align: center;
+	font-size: 12px;
+    display: inline-block;
+}
+
+
+/*
+ Median Income legend
+*/
+
+#MEDIAN_INCOME .percent_income_spent .q1 {
+fill: #D2F7F0;
+background-color: #D2F7F0;
+    margin-right: -4px;
+}
+#MEDIAN_INCOME .percent_income_spent .q2 {
+fill: #8DEFE3;
+background-color: #8DEFE3;
+    margin-right: -4px;
+}
+#MEDIAN_INCOME .percent_income_spent .q3 {
+fill: #28E5E0;
+background-color: #28E5E0;
+    margin-right: -4px;
+}
+#MEDIAN_INCOME .percent_income_spent .q4 {
+fill: #00C9C8;
+background-color: #00C9C8;
+    margin-right: -4px;
+}
+#MEDIAN_INCOME .percent_income_spent .q5 {
+fill: #00A1B7;
+background-color: #00A1B7;
+}
+
+#MEDIAN_INCOME #legend-labels{
+    position: relative;
+}
+
+#MEDIAN_INCOME p.legend-label {
 	color: #3F3F3F;
 	width: 70px;
 	margin: 0 0 0 -40px;

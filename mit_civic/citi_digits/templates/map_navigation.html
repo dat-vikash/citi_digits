@@ -1,6 +1,6 @@
 <h6>VIEW MAP</h6>
 <ul id="map-nav-list">
-    <li class="active">
+    <li class="active" id="PERCENT_INCOME">
         <a href="#">% INCOME SPENT ON LOTTERY</a>
         <div id="map-ui-subnav-content">
             <div id="map-legend">
@@ -22,22 +22,39 @@
             </div>
         </div>
     </li>
-    <li>
+    <li id="MEDIAN_INCOME">
         <a href="#">MEDIAN INCOMES</a>
         <div id="map-ui-subnav-content" class="hide">
+            <div id="map-legend">
+                <div id="legend-squares" class="percent_income_spent">
+                    <div class="legend-square q1"></div>
+                    <div class="legend-square q2"></div>
+                    <div class="legend-square q3"></div>
+                    <div class="legend-square q4"></div>
+                    <div class="legend-square q5"></div>
+                </div>
+                <div id="legend-labels">
+                    <p class="legend-label" style="left: 0px;">$0</p>
+                    <p class="legend-label" style="left: 19%;">$100</p>
+                    <p class="legend-label" style="left: 38%;">$140</p>
+                    <p class="legend-label" style="left: 57%;">$170</p>
+                    <p class="legend-label" style="left: 76%;">$220</p>
+                    <p class="legend-label" style="left: 95%;">$450</p>
+                </div>
+            </div>
         </div>
     </li>
-    <li>
+    <li id="AVG_WIN">
         <a href="#">AVERAGE WINNINGS</a>
         <div id="map-ui-subnav-content" class="hide">
         </div>
     </li>
-    <li>
+    <li id="AVG_SPEND">
         <a href="#">AVERAGE SPENDING</a>
         <div id="map-ui-subnav-content" class="hide">
         </div>
     </li>
-    <li>
+    <li id="NET_GAIN_LOSS">
         <a href="#">NET GAIN OR LOSS</a>
         <div id="map-ui-subnav-content" class="hide">
         </div>

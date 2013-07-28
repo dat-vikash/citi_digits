@@ -19,6 +19,8 @@ $().ready(new function(){
 function showMapPopUp(ev){
     console.log("POP UP");
     //get which layer is active
+    var activeLayer = $(".map-ui li.active").attr("id");
+    console.log("ACTIVE LAYER: " + activeLayer);
     //get layer properties
     //get layer
     var layer = ev.layer;
