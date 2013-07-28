@@ -602,3 +602,134 @@ background-color: #00A1B7;
 	font-size: 12px;
     display: inline-block;
 }
+
+/*
+ Average Winnings legend
+*/
+
+#AVG_WIN .percent_income_spent .q1 {
+fill: #E7D6FC;
+background-color: #E7D6FC;
+    margin-right: -4px;
+}
+#AVG_WIN .percent_income_spent .q2 {
+fill: #DDA4FC;
+background-color: #DDA4FC;
+    margin-right: -4px;
+}
+#AVG_WIN .percent_income_spent .q3 {
+fill: #CA6BF2;
+background-color: #CA6BF2;
+    margin-right: -4px;
+}
+#AVG_WIN .percent_income_spent .q4 {
+fill: #9518ED;
+background-color: #9518ED;
+    margin-right: -4px;
+}
+#AVG_WIN .percent_income_spent .q5 {
+fill: #6122FC;
+background-color: #6122FC;
+}
+
+#AVG_WIN #legend-labels{
+    position: relative;
+}
+
+#AVG_WIN p.legend-label {
+	color: #3F3F3F;
+	width: 70px;
+	margin: 0 0 0 -40px;
+	top: 5px;
+	text-align: center;
+	font-size: 12px;
+    display: inline-block;
+}
+
+
+
+/*
+ Average Spending legend
+*/
+
+#AVG_SPEND .percent_income_spent .q1 {
+fill: #E7D6FC;
+background-color: #E7D6FC;
+    margin-right: -4px;
+}
+#AVG_SPEND .percent_income_spent .q2 {
+fill: #DDA4FC;
+background-color: #DDA4FC;
+    margin-right: -4px;
+}
+#AVG_SPEND .percent_income_spent .q3 {
+fill: #CA6BF2;
+background-color: #CA6BF2;
+    margin-right: -4px;
+}
+#AVG_SPEND .percent_income_spent .q4 {
+fill: #9518ED;
+background-color: #9518ED;
+    margin-right: -4px;
+}
+#AVG_SPEND .percent_income_spent .q5 {
+fill: #6122FC;
+background-color: #6122FC;
+}
+
+#AVG_SPEND #legend-labels{
+    position: relative;
+}
+
+#AVG_SPEND p.legend-label {
+	color: #3F3F3F;
+	width: 70px;
+	margin: 0 0 0 -40px;
+	top: 5px;
+	text-align: center;
+	font-size: 12px;
+    display: inline-block;
+}
+
+/*
+ Net Gain/Loss legend
+*/
+
+#NET_GAIN_LOSS .percent_income_spent .q1 {
+fill: #BF46B1;
+background-color: #BF46B1;
+    margin-right: -4px;
+}
+#NET_GAIN_LOSS .percent_income_spent .q2 {
+fill: #E1DBC8;
+background-color: #E1DBC8;
+    margin-right: -4px;
+}
+#NET_GAIN_LOSS .percent_income_spent .q3 {
+fill: #DE88C8;
+background-color: #DE88C8;
+    margin-right: -4px;
+}
+#NET_GAIN_LOSS .percent_income_spent .q4 {
+fill: #E5AFD8;
+background-color: #E5AFD8;
+    margin-right: -4px;
+}
+#NET_GAIN_LOSS .percent_income_spent .q5 {
+fill: #EECAE5;
+background-color: #EECAE5;
+}
+
+#NET_GAIN_LOSS #legend-labels{
+    position: relative;
+}
+
+#NET_GAIN_LOSS p.legend-label {
+	color: #3F3F3F;
+	width: 70px;
+	margin: 0 0 0 -40px;
+	top: 5px;
+	text-align: center;
+	font-size: 12px;
+    display: inline-block;
+}
