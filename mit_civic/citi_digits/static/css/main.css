@@ -770,8 +770,8 @@ background-color: #EECAE5;
 .div-close {
     position: relative;
     margin: 0;
-    top: -14px;
-    right: -6px;
+    top: -30px;
+    right: -25px;
     z-index: 101;
     opacity: 0.9;
 }
@@ -817,9 +817,7 @@ background-color: #EECAE5;
 }
 
 #mapPopupModal {
-        background-color: #00c9c8;
-
-
+    background-color: #00c9c8;
 }
 
 #mapPopupModal .even{
