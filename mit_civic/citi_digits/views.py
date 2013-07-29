@@ -284,3 +284,60 @@ def mathExplain(request,neighborhood,spent):
 
 
 
+def loadGeoJsonInterviews(request):
+    """
+
+    """
+    #get all interviews
+    allInterview = Interview.objects.all()
+    geoJson = {"type":"FeatureCollection",
+               "features":[]}
+
+    #create features
+    for interview in allInterview:
+        geoJson["features"].append({"type":"Feature","geometry":{"type":"Point","coordinates":[interview.location.longitude,interview.location.latitude]},
+                                    "properties":{
+                                        "icon": {
+                                            "iconUrl": "/static/img/playermarker_" + interview.student.team.name.lower() +".png",
+                                            "iconSize": [50, 50],
+                                            "iconAnchor": [25, 25],
+                                            "popupAnchor": [0, -25] }
+                                    }})
+
+    return HttpResponse(json.dumps(geoJson), content_type="application/json")
+
+
+
+# { "type": "FeatureCollection",
+#   "features": [
+#     { "type": "Feature",
+#       "geometry": {"type": "Point", "coordinates": [102.0, 0.5]},
+#       "properties": {"prop0": "value0"}
+#       },
+#     { "type": "Feature",
+#       "geometry": {
+#         "type": "LineString",
+#         "coordinates": [
+#           [102.0, 0.0], [103.0, 1.0], [104.0, 0.0], [105.0, 1.0]
+#           ]
+#         },
+#       "properties": {
+#         "prop0": "value0",
+#         "prop1": 0.0
+#         }
+#       },
+#     { "type": "Feature",
+#        "geometry": {
+#          "type": "Polygon",
+#          "coordinates": [
+#            [ [100.0, 0.0], [101.0, 0.0], [101.0, 1.0],
+#              [100.0, 1.0], [100.0, 0.0] ]
+#            ]
+#        },
+#        "properties": {
+#          "prop0": "value0",
+#          "prop1": {"this": "that"}
+#          }
+#        }
+#      ]
+#    }

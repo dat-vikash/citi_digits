@@ -23,6 +23,7 @@ $().ready(new function(){
     map_popups.push($("#map-popup-2"));
 
     $(".tab-content").height=$(window).height();
+    loadInterviews();
 });
 
 function showMapPopUp(ev){
@@ -567,4 +568,26 @@ var r = Raphael("map-popup-graphic", 193, 20);
 // Creates pie chart at with center at 145, 200,
 // radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
 r.barchart(0,0,230,30,[10]);
+}
+
+function loadInterviews(){
+    var geoJson = null;
+    $.ajax({
+        type:'GET',
+        url: 'interview/geoJson/',
+        success: function(data){
+            console.log("GOT INTERVIEW DATA");
+            console.log(data);
+            geoJson = data;
+            var markerLayer = L.mapbox.markerLayer().addTo(MY_MAP.map);
+                         // Set a custom icon on each marker based on feature properties
+            markerLayer.on('layeradd', function(e) {
+                var marker = e.layer,
+                    feature = marker.feature;
+                marker.setIcon(L.icon(feature.properties.icon));
+            });
+            markerLayer.setGeoJSON(geoJson);
+
+        }
+    });
 }
