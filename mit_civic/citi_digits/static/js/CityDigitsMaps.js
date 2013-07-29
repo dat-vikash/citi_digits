@@ -6,7 +6,8 @@ function CityDigitsMap() {
     //load map
     var basemap = "sw2279.NYCLotto";
 
-    this.map = L.mapbox.map('map', basemap);
+    //where brooklyn at?!
+    this.map = L.mapbox.map('map', basemap).setView([40.6500,-73.9500], 13);;
     //set params
     this.height = $(window).height()-$(".navbar").height();
     this.width = $(window).width();
