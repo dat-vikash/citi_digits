@@ -560,6 +560,13 @@ $("#map-ui-popup-1").on("click","button",function(event){
     console.log("CLOSEE1");
 });
 
+$("#interviews").click(function(e){
+    //start interview load
+    loadInterviewsWithPagination(1);
+});
+
+
+
 function loadGraph(){
 
     //get div
@@ -590,6 +597,17 @@ function loadInterviews(){
             markerLayer.setGeoJSON(geoJson);
             markers.addLayer(markerLayer);
             MY_MAP.map.addLayer(markers);
+        }
+    });
+}
+
+function loadInterviewsWithPagination(offset){
+    console.log("loadinterviewwithpagination");
+    $.ajax({
+        type: 'GET',
+        url: 'interview/list/'+offset+'/',
+        success: function(data){
+            $("#interviews-tab").html(data);
         }
     });
 }

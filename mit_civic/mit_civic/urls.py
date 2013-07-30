@@ -17,6 +17,7 @@ urlpatterns = patterns('',
         url(r'^popup/(?P<layer>.+)/(?P<neighborhood>.+)/(?P<perin>.+)/(?P<dol>.+)/(?P<sale>.+)/(?P<win>.+)/(?P<income>.+)/(?P<netwin>.+)/$','citi_digits.views.popup',name='popup'),
         url(r'^mathematical_explain/(?P<neighborhood>.+)/(?P<spent>.+)/$', 'citi_digits.views.mathExplain', name='math_explaination'),
         url(r'^interview/geoJson/$', 'citi_digits.views.loadGeoJsonInterviews', name='geojson'),
+        url(r'^interview/list/(?P<offset>.+)/$', 'citi_digits.views.interviewList', name='interview_list'),
 
 
     # Examples:

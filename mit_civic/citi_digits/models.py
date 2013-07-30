@@ -122,3 +122,13 @@ class Interview(models.Model):
     location = models.ForeignKey(Location, null=False)
     interviewType = models.CharField(max_length=8, null=False)
     entityId = models.IntegerField(null=False)
+    created_at = models.DateTimeField(auto_now_add = True,null=False)
+
+    def getInterview(self):
+        """
+
+        """
+        if self.interviewType == "RETAILER":
+            return InterviewRetailer.objects.get(pk=self.entityId)
+        if self.interviewType == "PLAYER":
+            return InterviewPlayer.objects.get(pk=self.entityId)
