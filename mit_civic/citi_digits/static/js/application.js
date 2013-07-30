@@ -579,7 +579,8 @@ function loadInterviews(){
             console.log("GOT INTERVIEW DATA");
             console.log(data);
             geoJson = data;
-            var markerLayer = L.mapbox.markerLayer().addTo(MY_MAP.map);
+            var markers = new L.MarkerClusterGroup();
+            var markerLayer = L.mapbox.markerLayer();
                          // Set a custom icon on each marker based on feature properties
             markerLayer.on('layeradd', function(e) {
                 var marker = e.layer,
@@ -587,7 +588,8 @@ function loadInterviews(){
                 marker.setIcon(L.icon(feature.properties.icon));
             });
             markerLayer.setGeoJSON(geoJson);
-
+            markers.addLayer(markerLayer);
+            MY_MAP.map.addLayer(markers);
         }
     });
 }

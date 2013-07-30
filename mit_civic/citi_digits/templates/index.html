@@ -6,6 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="">
+      <link rel="stylesheet" href="{{ STATIC_URL }}css/MarkerCluster.css" />
+<link rel="stylesheet" href="{{ STATIC_URL }}css/MarkerCluster.Default.css" />
+<!--[if lte IE 8]>
+  <link rel="stylesheet" href="/mapbox.js/assets/MarkerCluster.Default.ie.css" />
+<![endif]-->
+
 
     <!-- styles -->
      <!--[if lte IE 8]>
@@ -94,6 +100,7 @@
     <!-- Placed at the end of the document so the pages load faster -->
 
     <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <script src="{{ STATIC_URL }}/js/leaflet.markercluster.js"></script>
     <script src="{{ STATIC_URL }}/js/jquery.js"></script>
     <script src="{{ STATIC_URL }}/js/jquery.form.min.js"></script>
     <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
