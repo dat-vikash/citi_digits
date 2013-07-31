@@ -316,3 +316,12 @@ def interviewList(request,offset):
 
     #render
     return render_to_response('interviews.html',{'interviews':interviews},context_instance=RequestContext(request))
+
+def interviewDetails(request,id):
+    """
+        Interview details
+    """
+    #get interview from id
+    interview = Interview.objects.get(pk=id)
+    (long,lat)=(interview.location.longitude,interview.location.latitude)
+    return render_to_response('interview_details.html',{'interview':interview,'long':long,'lat':lat},context_instance=RequestContext(request))

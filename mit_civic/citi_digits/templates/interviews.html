@@ -4,7 +4,7 @@
 <div id="toolbar"></div><!-- toolbar-->
 <div id="interview-content" class="container-fluid">
     {% for interview in interviews %}
-        <div class="interview-stub row-fluid">
+        <div class="interview-stub row-fluid" id="{{ interview.id }}">
             {% if interview.interviewType == 'PLAYER' %}
                 <p class="interviewee-name">{{ interview.getInterview.firstName }}</p>
             {% else %}

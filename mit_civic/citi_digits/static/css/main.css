@@ -501,6 +501,11 @@
     width: 160px;
 }
 
+#map-thumb {
+    height: 160px;
+    width: 160px;
+}
+
 /*
   MAP UP LEGENDS
 */
@@ -888,3 +893,10 @@ background-color: #EECAE5;
     margin-top: -10%;
 }
 
+/*
+Interview colors
+*/
+
+.interview-detail-team-green{
+    background-color: #00ec66;
+}

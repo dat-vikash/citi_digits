@@ -18,6 +18,7 @@ urlpatterns = patterns('',
         url(r'^mathematical_explain/(?P<neighborhood>.+)/(?P<spent>.+)/$', 'citi_digits.views.mathExplain', name='math_explaination'),
         url(r'^interview/geoJson/$', 'citi_digits.views.loadGeoJsonInterviews', name='geojson'),
         url(r'^interview/list/(?P<offset>.+)/$', 'citi_digits.views.interviewList', name='interview_list'),
+        url(r'^interview/(?P<id>.+)/$', 'citi_digits.views.interviewDetails', name='interview_details'),
 
 
     # Examples:

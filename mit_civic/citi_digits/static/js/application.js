@@ -262,6 +262,61 @@ function error(msg) {
   console.log(msg);
 }
 
+function loadMapThumb(){
+        console.log("oneasdfa");
+
+    var interview_thumb_map = L.mapbox.map('map-thumb', 'sw2279.NYCLotto');
+    var markerLayer = L.mapbox.markerLayer();
+
+    console.log("one");
+    //get lat/long from hidden divs
+    var lat = $("#lat").html();
+    var long = $("#long").html();
+    var team = $("#team-name").html();
+    console.log(lat + "_" + long+"_"+team);
+    var geoJson = [{
+                type: "Feature",
+                geometry: {
+                    type: "Point",
+                    coordinates: [long, lat]
+                },
+                "properties": {
+                    "title": "Interview",
+                    "icon": {
+                        "iconUrl": "/static/img/playermarker_" + team.toLowerCase() +".png",
+                        "iconSize": [50, 50], // size of the icon
+                        "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
+                        "popupAnchor": [0, -25]  // point from which the popup should open relative to the iconAnchor
+                     }
+                }}
+            ];
+
+
+                         // Set a custom icon on each marker based on feature properties
+     markerLayer.on('layeradd', function(e) {
+                var marker = e.layer,
+                    feature = marker.feature;
+                marker.setIcon(L.icon(feature.properties.icon));
+            });
+            markerLayer.setGeoJSON(geoJson);
+            interview_thumb_map.addLayer(markerLayer);
+        console.log("two");
+
+//    // Set a custom icon on each marker based on feature properties
+//            interview_thumb_map.markerLayer.on('layeradd', function(e) {
+//                var marker = e.layer,
+//                    feature = marker.feature;
+//
+//                marker.setIcon(L.icon(feature.properties.icon));
+//            });
+//    interview_thumb_map.fitBounds(interview_thumb_map.markerLayer.getBounds());
+//    interview_thumb_map.markerLayer.setGeoJSON(geoJson).add;
+
+
+
+
+}
+
 function geoLocationMe(){
     if (navigator.geolocation) {
         var interview_thumb_map = L.mapbox.map('interview-map-thumb', 'sw2279.NYCLotto');
@@ -565,7 +620,26 @@ $("#interviews").click(function(e){
     loadInterviewsWithPagination(1);
 });
 
+$("#interviews-tab").on("click",".interview-stub",function(event){
+   console.log("HERRO");
+   var url = "/interview/" + $(this).attr("id") + "/"; //interview id from div#id
+    $("#interviewDetails").load(url,function() { // load the url into the modal
+            $(this).modal('show').css({
+                 width: '95%',
+                 'max-width':'95%',
+                  height:'95%',
+                    'max-height':'95%',
+                    'top':'1%',
+                  'margin-left': function () {
+            return window.pageXOffset-($(this).width() / 2);
+        }
+    }); // display the modal on url load
 
+   });
+    $("#interviewDetails").on("shown",function(){
+            loadMapThumb();
+        });
+});
 
 function loadGraph(){
 
@@ -608,6 +682,9 @@ function loadInterviewsWithPagination(offset){
         url: 'interview/list/'+offset+'/',
         success: function(data){
             $("#interviews-tab").html(data);
+
         }
     });
+
 }
+

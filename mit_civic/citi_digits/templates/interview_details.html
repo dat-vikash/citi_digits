@@ -1,0 +1,67 @@
+<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
+    <img src="{{ STATIC_URL }}/img/close.png"/>
+</button>
+<div id="interview-details-header" class="interview-detail-team-{{ interview.student.team.name.lower }}">
+    <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team ">
+    <p class="interviewee-by-description "><b>By:</b> {{ interview.student.team.name }} team,{{ interview.student.team.teacher.className }}
+    <br>
+    {{ interview.created_at }}</p>
+</div><!-- interview details header -->
+<div id="interview-details">
+{% if interview.interviewType == 'PLAYER' %}
+    <div class="span12">
+        <p class="interviewee-name">{{ interview.getInterview.firstName }}</p>
+    </div><!-- name -->
+    <div class="span4">
+        <p class="interview-details-label">Do you ever buy lottery tickets?</p>
+        <p>{{ interview.getInterview.do_you_ever_buy_lottery_tickets|yesno:"Yes,No" }}</p>
+        <p class="interview-details-label">Why or why not?</p>
+        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio>
+        <p class="interview-details-label">Have you ever won the lottery?</p>
+        {{ interview.getInterview.have_you_ever_won_the_lottery|yesno:"Yes,No" }}
+        <p class="interview-details-label">What is the most you've ever won?</p>
+        {{ interview.getInterview.most_won }}
+        <p class="interview-details-label">How much do you spend on lottery in an average week?</p>
+        {{ interview.getInterview.money_spent_on_lottery_in_average_week }}
+        <p class="interview-details-label">What would you do if you won the jackpot?</p>
+        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.jackpot_audio }}" preload="auto" controls></audio>
+    </div><!-- form questions-->
+    <div class="span6">
+        <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
+    </div><!-- image -->
+    <div id="map-thumb">
+        <div id="long" class="hidden">{{ long }}</div>
+        <div id="lat" class="hidden">{{ lat }}</div>
+        <div id="team-name" class="hidden">{{ interview.student.team.name.lower }}</div>
+
+    </div><!-- map thumb -->
+{% else %}
+    <div class="span12">
+        <p class="interviewee-name">{{ interview.getInterview.storeName }}</p>
+    </div><!-- name -->
+    <div class="span4">
+        <p class="interview-details-label">Do you sell lottery tickets?</p>
+        <p>{{ interview.getInterview.do_you_sell_lottery_tickets|yesno:"Yes,No" }}</p>
+        <p class="interview-details-label">Why or why not?</p>
+        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio>
+        <p class="interview-details-label">About how many customers do you have in an average day?</p>
+        {{ interview.getInterview.customers_in_a_day}}
+        <p class="interview-details-label">What percentage of your customers buy lottery tickets?</p>
+        {{ interview.getInterview.percentage_buy_lottery_tickets }}
+        <p class="interview-details-label">About how many tickets do people usually buy in one visit?</p>
+        {{ interview.getInterview.amount_tickets_bought_per_visit }}
+        <p class="interview-details-label">Do you think the lottery is good for this neighborhood? Why or why not?</p>
+        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_lottery_neighborhood_audio }}" preload="auto" controls></audio>
+    </div><!-- form questions-->
+    <div class="span6">
+        <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
+    </div><!-- image -->
+    <div id="map-thumb" class="span2">
+        <div id="long" class="hidden">{{ long }}</div>
+        <div id="lat" class="hidden">{{ lat }}</div>
+        <div id="team-name" class="hidden">{{ interview.student.team.name.lower }}</div>
+
+    </div><!-- map thumb -->
+{% endif %}
+</div><!-- interview details -->
+<div id="interview-details-comments"></div><!-- interview comments -->
