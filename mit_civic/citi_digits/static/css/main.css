@@ -1,3 +1,7 @@
+body {
+    background-color: #B0B6BD ;
+}
+
 /*
   Bootstrap Overrides
 */
@@ -899,4 +903,32 @@ Interview colors
 
 .interview-detail-team-green{
     background-color: #00ec66;
+}
+
+.interview-detail-team-blue{
+    background-color: #025ff1;
+}
+
+.interview-detail-team-aqua{
+    background-color: #00c9c8;
+}
+
+.interview-detail-team-pink{
+    background-color: #ff26d6;
+}
+
+.interview-detail-team-purple{
+    background-color: #9518ed;
+}
+
+.interview-detail-team-orange{
+    background-color: orange;
+}
+
+.interview-detail-team-yellow{
+    background-color: yellow;
+}
+
+.interview-detail-team-red{
+    background-color: red;
 }
