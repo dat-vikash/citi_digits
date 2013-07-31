@@ -651,6 +651,39 @@ var r = Raphael("map-popup-graphic", 193, 20);
 r.barchart(0,0,230,30,[10]);
 }
 
+$('#interviewDetails').on("click", "button", function(event) {
+    event.preventDefault();
+//    get request url
+    var request_url = $(this).data("form");
+
+    console.log("request url: " + request_url);
+    // get all the inputs into an array.
+    var values = {'name':$('#comment-name').val(),
+                    'comment':$('#comment-message').val()};
+    console.log(values);
+
+//do post
+    $.ajax({
+     url: request_url,
+     type:'POST',
+     dataType: "json",
+     data: values,
+     success: function(data){
+       console.log("SUCCESS POST");
+       //show success page
+      console.log("comment created");
+     },
+     error: function(data){
+         console.log("ERROR CREATING COMMENT");
+         console.log(data.responseText);
+
+     }
+  });
+
+    return false;
+
+});
+
 function loadInterviews(){
     var geoJson = null;
     $.ajax({

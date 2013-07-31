@@ -132,3 +132,12 @@ class Interview(models.Model):
             return InterviewRetailer.objects.get(pk=self.entityId)
         if self.interviewType == "PLAYER":
             return InterviewPlayer.objects.get(pk=self.entityId)
+
+class InterviewComment(models.Model):
+    """
+     Interview Comment
+    """
+    name = models.CharField(max_length=255,null=False)
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True,null=False)
+    interview = models.ForeignKey(Interview)

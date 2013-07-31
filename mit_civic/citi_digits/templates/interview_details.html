@@ -7,7 +7,7 @@
     <br>
     {{ interview.created_at }}</p>
 </div><!-- interview details header -->
-<div id="interview-details">
+<div id="interview-details" class="row">
 {% if interview.interviewType == 'PLAYER' %}
     <div class="span12">
         <p class="interviewee-name">{{ interview.getInterview.firstName }}</p>
@@ -64,4 +64,25 @@
     </div><!-- map thumb -->
 {% endif %}
 </div><!-- interview details -->
-<div id="interview-details-comments"></div><!-- interview comments -->
+<div id="interview-details-comments" class="">
+    <p class="comment-header">Comments</p>
+    {% for comment in comments %}
+        <div class="row">
+            <div class="span3">
+                {{ comment.name }}
+{#                {{ interview.student.team.teacher.className }}#}
+                {{ comment.created_at }}
+            </div>
+            <div class="span9">
+                {{ comment.comment }}
+            </div>
+        </div>
+    {% endfor %}
+    <p class="comment-header">Leave a Comment</p>
+    <form id="comment-form">
+        <input type="text" id="comment-name" placeholder="Name"><br>
+        <textarea id="comment-message" placeholder="Comment"></textarea>
+        <br>
+        <button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true">Submit</button>
+    </form>
+</div><!-- interview comments -->

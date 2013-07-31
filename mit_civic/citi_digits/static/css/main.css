@@ -897,6 +897,16 @@ background-color: #EECAE5;
     margin-top: -10%;
 }
 
+#interview-details-comments{
+    text-align: center;
+    background-color: #B0B6BD;
+}
+
+#interviewDetails {
+    overflow-y: scroll;
+overflow-x: hidden;
+}
+
 /*
 Interview colors
 */

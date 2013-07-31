@@ -5,10 +5,11 @@ from django.http import HttpResponse, QueryDict
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import forms
-from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer
+from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer, InterviewComment
 from service import MembershipService
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
+from django.utils.html import escape
 
 
 def index(request):
@@ -323,5 +324,33 @@ def interviewDetails(request,id):
     """
     #get interview from id
     interview = Interview.objects.get(pk=id)
+    comments = InterviewComment.objects.filter(interview=interview)
     (long,lat)=(interview.location.longitude,interview.location.latitude)
-    return render_to_response('interview_details.html',{'interview':interview,'long':long,'lat':lat},context_instance=RequestContext(request))
+    return render_to_response('interview_details.html',{'interview':interview,'long':long,'lat':lat,
+                                                        'comments':comments},context_instance=RequestContext(request))
+
+
+@transaction.autocommit
+def comment(request,id):
+    """
+      Posts a comment to an interview
+    """
+    if request.method == 'POST':
+        #get variables
+        print request.POST
+        name = request.POST.get('name',None)
+        message = escape(request.POST.get('comment',''))
+        print "NAME: " + name
+
+        if name is not None:
+            #get interview
+            interview = Interview.objects.get(pk=id)
+            #create comment
+            comment = InterviewComment(name=name,comment=message,interview=interview)
+            #persist comment
+            comment.save()
+            return HttpResponse(json.dumps({"HTTPRESPONSE": 200}), content_type="application/json")
+        else:
+            print "name is none"
+            return HttpResponse(json.dumps({"HTTPRESPONSE": 500}), content_type="application/json")
+
