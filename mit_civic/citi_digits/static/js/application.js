@@ -34,7 +34,6 @@ function showMapPopUp(ev){
     //get layer
     var layer = ev.layer;
     //pass properties to webservice to construct popup
-    console.log("sfgsdgf " + map_popups[0].is(":visible") );
     //determine which popup is currently shown
     if (map_count % 2 == 0){
         idx = 0;
@@ -46,12 +45,95 @@ function showMapPopUp(ev){
     url = getPopupUrlFrom(activeLayer,layer.feature.properties);
     console.log("ulr: " + url);
 
-    map_popups[idx].load(url);
+    map_popups[idx].load(url, function(){
+        drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.EV_DOL);
+    });
     map_popups[idx].show();
     map_popups[idx].on("click",".div-close",function(event){
     map_popups[idx].innerHTML="";
     map_popups[idx].hide();});
-//    loadGraph();
+    //load graph
+
+
+}
+
+function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
+    console.log("IN HERE");
+    var data = [medianIncome,percentIncome];
+    console.log(data);
+     var chart = d3.select("#map-popup-" + popupId + " #map-popup-graphic").append("svg")
+     .attr("class", "chart")
+     .attr("width", 190)
+//         .attr("y",20)
+     .attr("height", 100);
+
+
+    var x = d3.scale.linear()
+     .domain([0, 500])
+     .range([0, 500]);
+
+    chart.selectAll("rect")
+     .data(data)
+   .enter().append("rect")
+     .attr("width", x)
+        .attr("y",25)
+     .attr("height", 20);
+
+//    chart.selectAll("rect")
+//     .data(data)
+//   .enter().append("foreignObject")
+//     .attr("x", x)
+//     .attr("y", function(d,i) { if(i==0){ return 10;}else{return 65;}})
+//        .attr("width",70)
+//        .attr("height",20)
+//        .append("xhtml:div")
+//        .append("p")
+////     .attr("dx", -3) // padding-right
+////     .attr("dy", ".35em") // vertical-align: middle
+////     .attr("text-anchor", "end") // text-align: right
+//     .text(function(d,i){
+//        if (i==0){
+//            return "$" + d + " median household income per day";
+//        }else{return "no"+d;}});
+
+
+chart.selectAll("text")
+     .data(data)
+   .enter().append("text")
+    .attr("class","graph-tooltip")
+     .attr("x", x)
+     .attr("y", function(d,i) { if(i==0){ return 10;}else{return 65;}})
+    .attr("width",50)
+    .attr("height",20)
+//     .attr("dx", -3) // padding-right
+//     .attr("dy", ".35em") // vertical-align: middle
+//     .attr("text-anchor", "end") // text-align: right
+        .append("tspan")
+     .text(function(d,i){
+        if (i==0){
+            return "$" + d;
+        }else{return d + "%";}});
+
+// chart.selectAll("line")
+//     .data(x.ticks(20))
+//   .enter().append("line")
+//     .attr("x1", x)
+//     .attr("x2", x)
+//     .attr("y1", 0)
+//     .attr("y2", 20)
+//     .style("stroke", "#ccc");
+//
+//
+//   chart.selectAll(".rule")
+//    .data(x.ticks(20))
+//   .enter().append("text")
+//     .attr("class", "rule")
+//     .attr("x", x)
+//     .attr("y", 30)
+//     .attr("dy", -3)
+//     .attr("text-anchor", "right")
+//     .text(String);
+
 
 }
 

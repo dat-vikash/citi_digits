@@ -17,10 +17,10 @@
      <!--[if lte IE 8]>
     <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.ie.css' rel='stylesheet' >
     <![endif]-->
-    <link href='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.css' rel='stylesheet' />
+    <link href='{{ STATIC_URL }}/css/mapbox.css' rel='stylesheet' />
     <link href="{{ STATIC_URL }}css/bootstrap.min.css" rel="stylesheet">
     <link href="{{ STATIC_URL }}css/bootstrap-responsive.css" rel="stylesheet">
-    <link rel="stylesheet" href="//f.fontdeck.com/s/css/zH28mslJNSfrEtk/N8vkA5GMvEQ/DOMAIN_NAME/35051.css" type="text/css" />
+{#    <link rel="stylesheet" href="//f.fontdeck.com/s/css/zH28mslJNSfrEtk/N8vkA5GMvEQ/DOMAIN_NAME/35051.css" type="text/css" />#}
     <link href="{{ STATIC_URL }}css/main.css" rel="stylesheet">
     <style>
       body {
@@ -100,10 +100,11 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 
-    <script src='http://api.tiles.mapbox.com/mapbox.js/v1.3.1/mapbox.js'></script>
+    <script src='{{ STATIC_URL }}/js/mapbox.js'></script>
     <script src="{{ STATIC_URL }}/js/leaflet.markercluster.js"></script>
     <script src="{{ STATIC_URL }}/js/jquery.js"></script>
     <script src="{{ STATIC_URL }}/js/jquery.form.min.js"></script>
+    <script src="{{ STATIC_URL }}/js/d3.v3.min.js" charset="utf-8"></script>
     <script src="{{ STATIC_URL }}/js/bootstrap.min.js"></script>
     <script src="{{ STATIC_URL }}/js/raphael-min.js"></script>
     <script src="{{ STATIC_URL }}/js/g.raphael-min.js"></script>

@@ -942,3 +942,24 @@ Interview colors
 .interview-detail-team-red{
     background-color: red;
 }
+
+
+.chart rect {
+   stroke: white;
+   /*fill: steelblue;*/
+ }
+
+.chart rect {
+  fill-opacity: 1;
+  fill: #025ff1;
+}
+
+.chart rect:first-child {
+  fill: #00c9c8;
+}
+
+.chart .graph-tooltip{
+  font-size: 13px;
+  font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    word-wrap: break-word;
+}
