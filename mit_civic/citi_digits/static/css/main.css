@@ -943,20 +943,19 @@ Interview colors
     background-color: red;
 }
 
+.chart {
+    padding: 3%;
+}
+
+.chart .rule {
+    font-size: 10px;
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    text-align: left;
+}
 
 .chart rect {
    stroke: white;
-   /*fill: #;*/
  }
-
-/*.chart rect {*/
-  /*fill-opacity: 1;*/
-  /*fill: #B0B6BD;*/
-/*}*/
-
-/*.chart rect:first-child {*/
-  /*fill: #00c9c8;*/
-/*}*/
 
 .chart rect:nth-child(1){
     fill-opacity: .7;
@@ -965,12 +964,12 @@ Interview colors
 
 .chart rect:nth-child(2){
     fill-opacity: 1;
-  fill: #025ff1;
+  fill: #00c9c8;
 }
 
 .chart rect:nth-child(3){
     fill-opacity: 1;
-  fill: #00c9c8;
+  fill: #025ff1;
 }
 
 

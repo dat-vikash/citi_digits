@@ -74,7 +74,7 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
 
     var x = d3.scale.linear()
      .domain([0, 500])
-     .range([1, 190]);
+     .range([4, 190]);
 
     chart.selectAll("rect")
      .data(data)
@@ -89,98 +89,36 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
 //  .scale(x)
 //  .tickValues(ticks);
 
-//    svg.append("g")
+//    chart.append("g")
 //		.attr("class", "axis")
-//		.call(myAxis)
-//		.attr("transform","translate(100,100)");
+//		.call(myAxis);
+////		.attr("transform","translate(100,100)");
 
 
-//    chart.selectAll("line")
-//     .data(x.ticks(10))
-//   .enter().append("line")
-//     .attr("x1", x)
-//     .attr("x2", x)
-//     .attr("y1", 4)
-//     .attr("y2", 24)
-//     .style("stroke", "#ccc");
-//
-//
-//    chart.selectAll(".rule")
-//2     .data(x.ticks(20))
-//3   .enter().append("text")
-//4     .attr("class", "rule")
-//5     .attr("x", x)
-//6     .attr("y", 0)
-//7     .attr("dy", -3)
-//8     .attr("text-anchor", "middle")
-//9     .text(function(d,i){if (d % 100){return "$"+d;}});
+    chart.selectAll("line")
+     .data(x.ticks(10))
+   .enter().append("line")
+     .attr("x1", x)
+     .attr("x2", x)
+     .attr("y1", 4)
+     .attr("y2", 24)
+     .style("stroke", "#ffffff");
+
+
+    chart.selectAll(".rule")
+     .data(x.ticks(10))
+   .enter().append("text")
+     .attr("class", "rule")
+     .attr("x", x)
+        .attr("dx",-10)
+     .attr("y", 27)
+     .attr("dy", 7)
+        .attr("text-anchor", "start")
+     .text(function(d,i){ if(i%2==0 && i!=0){return "$"+d;}});
 
     //draw bottom tooltip
     $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b>" + data[2].toFixed(1) + "%</b> income spent on lottery (or $" +(data[2].toFixed(1)) +
     "out of every $100.");
-
-//    chart.append("foreignObject")
-//        .attr("width", 190)
-//        .attr("height", 20)
-//        .append("xhtml:div")
-//        .style("class", "bubble'")
-//        .html('$' + data[0] + " median household income per day.");
-
-//    chart.selectAll("rect")
-//     .data(data)
-//   .enter().append("foreignObject")
-//     .attr("x", x)
-//     .attr("y", function(d,i) { if(i==0){ return 10;}else{return 65;}})
-//        .attr("width",70)
-//        .attr("height",20)
-//        .append("xhtml:div")
-//        .append("p")
-////     .attr("dx", -3) // padding-right
-////     .attr("dy", ".35em") // vertical-align: middle
-////     .attr("text-anchor", "end") // text-align: right
-//     .text(function(d,i){
-//        if (i==0){
-//            return "$" + d + " median household income per day";
-//        }else{return "no"+d;}});
-
-
-
-
-//chart.selectAll("text")
-//     .data(data)
-//   .enter().append("text")
-//    .attr("class","graph-tooltip")
-//     .attr("x", x)
-//     .attr("y", function(d,i) { if(i==0){ return 10;}else{return 65;}})
-//    .attr("width",50)
-//    .attr("height",20)
-////     .attr("dx", -3) // padding-right
-////     .attr("dy", ".35em") // vertical-align: middle
-////     .attr("text-anchor", "end") // text-align: right
-//     .text(function(d,i){
-//        if (i==0){
-//            return "$" + d;
-//        }else{return d + "%";}});
-
-// chart.selectAll("line")
-//     .data(x.ticks(20))
-//   .enter().append("line")
-//     .attr("x1", x)
-//     .attr("x2", x)
-//     .attr("y1", 0)
-//     .attr("y2", 20)
-//     .style("stroke", "#ccc");
-//
-//
-//   chart.selectAll(".rule")
-//    .data(x.ticks(20))
-//   .enter().append("text")
-//     .attr("class", "rule")
-//     .attr("x", x)
-//     .attr("y", 30)
-//     .attr("dy", -3)
-//     .attr("text-anchor", "right")
-//     .text(String);
 
 
 }
