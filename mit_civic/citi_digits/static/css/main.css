@@ -946,20 +946,133 @@ Interview colors
 
 .chart rect {
    stroke: white;
-   /*fill: steelblue;*/
+   /*fill: #;*/
  }
 
-.chart rect {
-  fill-opacity: 1;
+/*.chart rect {*/
+  /*fill-opacity: 1;*/
+  /*fill: #B0B6BD;*/
+/*}*/
+
+/*.chart rect:first-child {*/
+  /*fill: #00c9c8;*/
+/*}*/
+
+.chart rect:nth-child(1){
+    fill-opacity: .7;
+  fill: #B0B6BD;
+}
+
+.chart rect:nth-child(2){
+    fill-opacity: 1;
   fill: #025ff1;
 }
 
-.chart rect:first-child {
+.chart rect:nth-child(3){
+    fill-opacity: 1;
   fill: #00c9c8;
 }
 
-.chart .graph-tooltip{
-  font-size: 13px;
+
+#median_income_graph_text{
+  display: inline-block;
+}
+
+
+
+.bubble-median_income_graph_text
+{
+    font-size: 13px;
   font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
-    word-wrap: break-word;
+    color: #B0B6BD;
+position: relative;
+width: 150px;
+height: 40px;
+padding: 2px;
+background: #FFFFFF;
+border: #00C9C8 solid 2px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+}
+
+.bubble-median_income_graph_text  b
+{
+    font-size: 13px;
+  font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #00c9c8;
+}
+
+.bubble-median_income_graph_text :after
+{
+content: "";
+position: absolute;
+bottom: -8px;
+left: 71px;
+border-style: solid;
+border-width: 8px 6px 0;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.bubble-median_income_graph_text :before
+{
+content: "";
+position: absolute;
+top: 46px;
+left: 70px;
+border-style: solid;
+border-width: 9px 7px 0;
+border-color: #00C9C8 transparent;
+display: block;
+width: 0;
+z-index: 0;
+}
+
+
+.bubble-percent_income_graph_text
+{
+     font-size: 13px;
+  font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #B0B6BD;
+position: relative;
+width: 155px;
+height: 40px;
+padding: 2px;
+background: #FFFFFF;
+border: #025FF1 solid 2px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+    margin-left: 7%;
+}
+
+.bubble-percent_income_graph_text:after
+{
+content: "";
+position: absolute;
+top: -8px;
+left: 6px;
+border-style: solid;
+border-width: 0 6px 8px;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.bubble-percent_income_graph_text:before
+{
+content: "";
+position: absolute;
+top: -11px;
+left: 5px;
+border-style: solid;
+border-width: 0 7px 9px;
+border-color: #025FF1 transparent;
+display: block;
+width: 0;
+z-index: 0;
 }

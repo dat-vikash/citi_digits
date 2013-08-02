@@ -59,25 +59,72 @@ function showMapPopUp(ev){
 
 function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
     console.log("IN HERE");
-    var data = [medianIncome,percentIncome];
+    var data = [500,medianIncome,percentIncome];
     console.log(data);
-     var chart = d3.select("#map-popup-" + popupId + " #map-popup-graphic").append("svg")
+
+    //draw top tooltip
+    $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + data[1].toFixed(2) + "</b> median household income per day.");
+
+    //draw graph
+     var chart = d3.select("#map-popup-" + popupId + " #map-popup-graphic-holder").append("svg")
      .attr("class", "chart")
      .attr("width", 190)
-//         .attr("y",20)
-     .attr("height", 100);
+     .attr("height", 30);
 
 
     var x = d3.scale.linear()
      .domain([0, 500])
-     .range([0, 500]);
+     .range([1, 190]);
 
     chart.selectAll("rect")
      .data(data)
    .enter().append("rect")
      .attr("width", x)
-        .attr("y",25)
+        .attr("y",4)
      .attr("height", 20);
+
+    var ticks = [0,50,60,100];
+
+//var myAxis = d3.svg.axis()
+//  .scale(x)
+//  .tickValues(ticks);
+
+//    svg.append("g")
+//		.attr("class", "axis")
+//		.call(myAxis)
+//		.attr("transform","translate(100,100)");
+
+
+//    chart.selectAll("line")
+//     .data(x.ticks(10))
+//   .enter().append("line")
+//     .attr("x1", x)
+//     .attr("x2", x)
+//     .attr("y1", 4)
+//     .attr("y2", 24)
+//     .style("stroke", "#ccc");
+//
+//
+//    chart.selectAll(".rule")
+//2     .data(x.ticks(20))
+//3   .enter().append("text")
+//4     .attr("class", "rule")
+//5     .attr("x", x)
+//6     .attr("y", 0)
+//7     .attr("dy", -3)
+//8     .attr("text-anchor", "middle")
+//9     .text(function(d,i){if (d % 100){return "$"+d;}});
+
+    //draw bottom tooltip
+    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b>" + data[2].toFixed(1) + "%</b> income spent on lottery (or $" +(data[2].toFixed(1)) +
+    "out of every $100.");
+
+//    chart.append("foreignObject")
+//        .attr("width", 190)
+//        .attr("height", 20)
+//        .append("xhtml:div")
+//        .style("class", "bubble'")
+//        .html('$' + data[0] + " median household income per day.");
 
 //    chart.selectAll("rect")
 //     .data(data)
@@ -97,22 +144,23 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
 //        }else{return "no"+d;}});
 
 
-chart.selectAll("text")
-     .data(data)
-   .enter().append("text")
-    .attr("class","graph-tooltip")
-     .attr("x", x)
-     .attr("y", function(d,i) { if(i==0){ return 10;}else{return 65;}})
-    .attr("width",50)
-    .attr("height",20)
-//     .attr("dx", -3) // padding-right
-//     .attr("dy", ".35em") // vertical-align: middle
-//     .attr("text-anchor", "end") // text-align: right
-        .append("tspan")
-     .text(function(d,i){
-        if (i==0){
-            return "$" + d;
-        }else{return d + "%";}});
+
+
+//chart.selectAll("text")
+//     .data(data)
+//   .enter().append("text")
+//    .attr("class","graph-tooltip")
+//     .attr("x", x)
+//     .attr("y", function(d,i) { if(i==0){ return 10;}else{return 65;}})
+//    .attr("width",50)
+//    .attr("height",20)
+////     .attr("dx", -3) // padding-right
+////     .attr("dy", ".35em") // vertical-align: middle
+////     .attr("text-anchor", "end") // text-align: right
+//     .text(function(d,i){
+//        if (i==0){
+//            return "$" + d;
+//        }else{return d + "%";}});
 
 // chart.selectAll("line")
 //     .data(x.ticks(20))
@@ -731,6 +779,7 @@ var r = Raphael("map-popup-graphic", 193, 20);
 // Creates pie chart at with center at 145, 200,
 // radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
 r.barchart(0,0,230,30,[10]);
+
 }
 
 $('#interviewDetails').on("click", "button", function(event) {
