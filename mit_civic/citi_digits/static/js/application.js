@@ -59,17 +59,17 @@ function showMapPopUp(ev){
             break;
         case "AVG_WIN":
             map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale);
+            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale, layer.feature.properties.Net_Win);
         });
             break;
         case "AVG_SPEND":
             map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale);
+            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale, layer.feature.properties.Net_Win);
         });
             break;
         case "NET_GAIN_LOSS":
             map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale);
+            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale, layer.feature.properties.Net_Win);
         });
             break;
         }
@@ -154,8 +154,8 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
 }
 
 
-function drawNetGainLossGraph(popupId,winnings,spendings){
-    data = [8000,5000,2000,spendings,winnings];
+function drawNetGainLossGraph(popupId,winnings,spendings, net){
+    data = [8000,4000,1000,spendings,winnings];
         //draw top tooltip
 
     //draw graph
@@ -187,9 +187,18 @@ function drawNetGainLossGraph(popupId,winnings,spendings){
          .attr("class","rule")
       .attr("text-anchor", "center")
          .attr("dx",45)
-      .attr("dy", function (d,i){if(i==0){return 4;} if(i==1){return 29;}if(i==2){return 45;}})
+      .attr("dy", function (d,i){if(i==0){return 4;} if(i==1){return 29;}if(i==2){return 53;}})
       .style("fill", "#000000")
       .text(function(d,i) { return "$"+d;});
+
+    //draw bottom tooltip
+    $("#map-popup-" + popupId + " #map-popup-graphic #net_winnings_graph_text").append("<b>$" + data[4].toFixed(1) + "</b> winnings.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #net_spenings_graph_text").append("<b>$" + data[3].toFixed(1) + "</b> spending.");
+
+    //append descrption
+    $("#map-popup-" + popupId + " #map-popup-description-netgain").append("<p><b class='winnings'>$" + winnings.toFixed(1) + "</>" +
+    "     -      <b class='spendings'>$" +  spendings +"</b>= <b class='net'>" + net + "</b></p>");
+
 
 
 }
