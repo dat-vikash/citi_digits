@@ -45,9 +45,39 @@ function showMapPopUp(ev){
     url = getPopupUrlFrom(activeLayer,layer.feature.properties);
     console.log("ulr: " + url);
 
-    map_popups[idx].load(url, function(){
-        drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.EV_DOL);
-    });
+    //determine which graph to load based on active layer
+    switch(activeLayer){
+        case "PERCENT_INCOME":
+            map_popups[idx].load(url, function(){
+            drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.Daily_Inco);
+        });
+            break;
+        case "MEDIAN_INCOME":
+            map_popups[idx].load(url, function(){
+            drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.Daily_Inco);
+        });
+            break;
+        case "AVG_WIN":
+            map_popups[idx].load(url, function(){
+            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale);
+        });
+            break;
+        case "AVG_SPEND":
+            map_popups[idx].load(url, function(){
+            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale);
+        });
+            break;
+        case "NET_GAIN_LOSS":
+            map_popups[idx].load(url, function(){
+            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale);
+        });
+            break;
+        }
+
+//
+//    map_popups[idx].load(url, function(){
+//        drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.EV_DOL);
+//    });
     map_popups[idx].show();
     map_popups[idx].on("click",".div-close",function(event){
     map_popups[idx].innerHTML="";
@@ -122,6 +152,49 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
 
 
 }
+
+
+function drawNetGainLossGraph(popupId,winnings,spendings){
+    data = [8000,5000,2000,spendings,winnings];
+        //draw top tooltip
+
+    //draw graph
+     var chart = d3.select("#map-popup-" + popupId + " #map-popup-graphic-holder").append("svg")
+     .attr("class", "chart")
+     .attr("width", 120)
+     .attr("height", 120);
+
+
+    var x = d3.scale.linear()
+     .domain([0, 8000])
+     .range([3, 60]);
+
+    chart.selectAll("circle")
+     .data(data)
+   .enter().append("circle")
+  .attr("cx", 60)
+                       .attr("cy", 60)
+                      .attr("r", x)
+         .style("opacity", function(d,i){if(i<3){return .5;}})
+        .style("stroke", "white")
+     .style("stroke-width",1)
+                       .style("fill", function(d,i){ if (i==4){return "#9518ed"}else if(i==3){return "#00ec66"}else{return "#b0b6bd"}});
+
+    // Labels for each circle
+     chart.selectAll("text")
+     .data([8000,4000,1000])
+   .enter().append("text")
+         .attr("class","rule")
+      .attr("text-anchor", "center")
+         .attr("dx",45)
+      .attr("dy", function (d,i){if(i==0){return 4;} if(i==1){return 29;}if(i==2){return 45;}})
+      .style("fill", "#000000")
+      .text(function(d,i) { return "$"+d;});
+
+
+}
+
+
 
 function getPopupUrlFrom(activeLayer,properties){
         name = properties.N_Name.toString().split(' ').join('_');
