@@ -258,12 +258,12 @@ def popup(request,layer,neighborhood,perin,dol,sale,win,income,netwin):
         if layer == "PERCENT_INCOME":
             amountSpent = (100 * (float(perin)/100))
             return render_to_response('map_popup_percent_income.html',{'neighborhood':neighborhood.replace("_"," "),
-                'percent':perin, 'amountSpent':amountSpent,'neighborhoodUrl':neighborhood},context_instance=RequestContext(request))
+                'percent':perin, 'amountSpent':amountSpent,'neighborhoodUrl':neighborhood,'income':income},context_instance=RequestContext(request))
         if layer == "MEDIAN_INCOME":
             neighborhood =  neighborhood.replace("_"," ")
             amountSpent = (100 * (float(perin)/100))
             return render_to_response('map_popup_percent_income.html',{'neighborhood':neighborhood.replace("_"," "),
-                'percent':perin, 'amountSpent':amountSpent,'neighborhoodUrl':neighborhood},context_instance=RequestContext(request))
+                'percent':perin, 'amountSpent':amountSpent,'neighborhoodUrl':neighborhood,'income':income},context_instance=RequestContext(request))
         if layer == "NET_GAIN_LOSS":
             neighborhood =  neighborhood.replace("_"," ")
             return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood.replace("_"," "),
@@ -277,11 +277,12 @@ def popup(request,layer,neighborhood,perin,dol,sale,win,income,netwin):
             return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood.replace("_"," "),
                 'won':win, 'spent':sale},context_instance=RequestContext(request))
 
-def mathExplain(request,neighborhood,spent):
+def mathExplain(request,neighborhood,spent,income):
     """
 
     """
-    return render_to_response('mathematical_explainations.html',{'neighborhood':neighborhood, 'spent':spent},context_instance=RequestContext(request))
+    neighborhood =  neighborhood.replace("_"," ")
+    return render_to_response('mathematical_explainations.html',{'neighborhood':neighborhood, 'spent':spent, 'income':income},context_instance=RequestContext(request))
 
 
 
