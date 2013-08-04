@@ -297,10 +297,11 @@ def loadGeoJsonInterviews(request):
 
     #create features
     for interview in allInterview:
+        markerType = interview.interviewType.lower()
         geoJson["features"].append({"type":"Feature","geometry":{"type":"Point","coordinates":[interview.location.longitude,interview.location.latitude]},
                                     "properties":{
                                         "icon": {
-                                            "iconUrl": "/static/img/playermarker_" + interview.student.team.name.lower() +".png",
+                                            "iconUrl": "/static/img/" + markerType + "marker_" + interview.student.team.name.lower() +".png",
                                             "iconSize": [50, 50],
                                             "iconAnchor": [25, 25],
                                             "popupAnchor": [0, -25] },
