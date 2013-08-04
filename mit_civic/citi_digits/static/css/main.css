@@ -1205,3 +1205,28 @@ z-index: 0;
     font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     color: #ff26d6;
 }
+
+.styled-select2 {
+    text-align: left;
+}
+
+.styled-select2 select {
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #B0B6BD;
+   background: #ffffff;
+   width: 150px;
+   padding: 5px;
+   font-size: 15px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+.dropdown-caret {
+    margin-left: -15%;
+position: relative;
+height: 15px;
+padding-top: 10px;
+}

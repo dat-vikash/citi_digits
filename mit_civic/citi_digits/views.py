@@ -316,8 +316,14 @@ def interviewList(request,offset):
     #get interviews
     interviews = Interview.objects.all()
 
+    #get teams
+    teams =  Team.objects.values_list('name', flat=True).order_by('name').distinct()
+
+    #get classes
+    classes = Teacher.objects.values_list('className', flat=True)
+
     #render
-    return render_to_response('interviews.html',{'interviews':interviews},context_instance=RequestContext(request))
+    return render_to_response('interviews.html',{'interviews':interviews,'teams':teams, 'classes':classes},context_instance=RequestContext(request))
 
 def interviewDetails(request,id):
     """

@@ -1,7 +1,40 @@
 <div class="interview-header">
 <p>Interviews</p>
 </div><!-- interview-header -->
-<div id="toolbar"></div><!-- toolbar-->
+<div id="toolbar" class="container-fluid">
+    <div class="span2">
+        <label class="checkbox">
+            <input type="checkbox" id="interview_type" name="interview_type" value="PLAYER" checked>Player Interviews
+        </label>
+    </div>
+    <div class="span2">
+        <label class="checkbox">
+            <input type="checkbox" id="interview_type" name="interview_type" value="RETAILER" checked>Retailer Interviews
+        </label>
+    </div>
+    <div class="span1"></div>
+    <div class="span1"></div>
+    <div class=" styled-select2 span2 input-append">
+        <select id="team" name="team">
+            <option value="ALL" selected><b>Team</b> ALL</option>
+            {% for team in teams %}
+                <option value="{{ team }}"><b>Team</b> {{ team }}</option>
+            {% endfor %}
+        </select>
+        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
+    </div>
+    <div class=" styled-select2 span2 input-append">
+        <select id="class" name="class">
+            <option value="ALL">ALL</option>
+            {% for class in classes %}
+                <option value="{{ class }}">{{ class }}</option>
+            {% endfor %}
+        </select>
+        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
+    </div>
+    <div class="span1"></div>
+    <div class="span1"></div>
+</div><!-- toolbar-->
 <div id="interview-content" class="container-fluid">
     {% for interview in interviews %}
         <div class="interview-stub row-fluid" id="{{ interview.id }}">
