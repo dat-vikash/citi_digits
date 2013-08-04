@@ -41,9 +41,17 @@
     </div>
     <div class=" styled-select2 span2 input-append">
         <select id="class" class="interview-toolbar"  name="class">
-            <option value="ALL">ALL</option>
+            {%  if toolbar.searchClass == 'ALL' %}
+                <option value="ALL"selected>ALL</option>
+            {% else %}
+                <option value="ALL">ALL</option>
+            {% endif %}
             {% for class in classes %}
-                <option value="{{ class }}">{{ class }}</option>
+                {% if toolbar.searchClass == class %}
+                    <option value="{{ class }}" selected>{{ class }}</option>
+                {% else %}
+                    <option value="{{ class }}">{{ class }}</option>
+                {% endif %}
             {% endfor %}
         </select>
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
