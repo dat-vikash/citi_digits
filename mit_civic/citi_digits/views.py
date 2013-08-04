@@ -313,6 +313,12 @@ def interviewList(request,offset):
     """
         This view returns the interviews based on search criteria
     """
+    #store toolbar form info
+    toolbar={'player':True,
+             'retailer':True,
+             'searchClass':'ALL',
+             'searchTeam':'ALL'}
+
     #get interview types
     playerType = request.GET.get("player","false")
     retailerType = request.GET.get("retailer","false")
@@ -325,16 +331,20 @@ def interviewList(request,offset):
     #build query
     kwargs = {}
     if(playerType == "true" and retailerType == "false"):
-       kwargs['interviewType__exact'] = "PLAYER"
+        kwargs['interviewType__exact'] = "PLAYER"
+        toolbar['retailer'] = False
+
     if(playerType =="false" and retailerType=="true"):
-        print "Adfasdfd"
         kwargs['interviewType__exact'] = "RETAILER"
+        toolbar['player'] = False
 
     if(searchClass != "ALL"):
         kwargs['student__team__teacher__className__exact'] = searchClass
+        toolbar['searchClass'] = searchClass
 
     if(searchTeam != "ALL"):
         kwargs['student__team__name__exact'] = searchTeam
+        toolbar['searchTeam'] = searchTeam
 
 
     #get interviews
@@ -348,7 +358,8 @@ def interviewList(request,offset):
     classes = Teacher.objects.values_list('className', flat=True)
 
     #render
-    return render_to_response('interviews.html',{'interviews':interviews,'teams':teams, 'classes':classes},context_instance=RequestContext(request))
+    print toolbar
+    return render_to_response('interviews.html',{'interviews':interviews,'teams':teams, 'classes':classes,'toolbar':toolbar},context_instance=RequestContext(request))
 
 def interviewDetails(request,id):
     """

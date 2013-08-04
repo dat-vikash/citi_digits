@@ -4,21 +4,37 @@
 <div id="toolbar" class="container-fluid">
     <div class="span2">
         <label class="checkbox">
-            <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" checked>Player Interviews
+            {% if toolbar.player %}
+                <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" checked>Player Interviews
+            {%  else %}
+                <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" >Player Interviews
+            {% endif %}
         </label>
     </div>
     <div class="span2">
         <label class="checkbox">
-            <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" checked>Retailer Interviews
+            {% if toolbar.retailer %}
+                <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" checked>Retailer Interviews
+            {% else %}
+                <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" >Retailer Interviews
+            {% endif %}
         </label>
     </div>
     <div class="span1"></div>
     <div class="span1"></div>
     <div class=" styled-select2 span2 input-append">
         <select id="team" class="interview-toolbar"  name="team">
-            <option value="ALL" selected><b>Team</b> ALL</option>
+            {% if toolbar.searchTeam == 'ALL' %}
+                <option value="ALL" selected><b>Team</b> ALL</option>
+            {% else %}
+                <option value="ALL"><b>Team</b> ALL</option>
+            {% endif %}
             {% for team in teams %}
-                <option value="{{ team }}"><b>Team</b> {{ team }}</option>
+                {% if toolbar.searchTeam ==  team  %}
+                    <option value="{{ team }}" selected><b>Team</b> {{ team }}</option>
+                {% else %}
+                     <option value="{{ team }}"><b>Team</b> {{ team }}</option>
+                {% endif %}
             {% endfor %}
         </select>
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
