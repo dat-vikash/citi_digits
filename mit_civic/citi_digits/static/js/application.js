@@ -380,7 +380,7 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
         }
     }); // display the modal on url load
         //geo located
-        geoLocationMe();
+        geoLocationMe("player");
    });
     return false;
 });
@@ -400,7 +400,7 @@ $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
         }
     }); // display the modal on url load
         //geo located
-        geoLocationMe();
+        geoLocationMe("retailer");
    });
     return false;
 });
@@ -467,14 +467,21 @@ function loadMapThumb(){
 
 }
 
-function geoLocationMe(){
+function geoLocationMe(interviewType){
     if (navigator.geolocation) {
         var interview_thumb_map = L.mapbox.map('interview-map-thumb', 'sw2279.NYCLotto');
          interview_thumb_map.locate();
         //get student's team
         var team = $("#addInterviewModal #team").val();
         console.log("team :" + "/static/img/playermarker_" + team.toLowerCase() + ".png");
-
+        var slug = "";
+        if (interviewType == "player"){
+            slug = "playermarker_";
+        }
+        if(interviewType == "retailer"){
+            slug = "retailermarker_";
+        }
+        console.log("slug:" + slug);
         // Once we've got a position, zoom and center the map
         // on it, and add a single marker.
         interview_thumb_map.on('locationfound', function(e) {
@@ -488,7 +495,7 @@ function geoLocationMe(){
                 "properties": {
                     "title": "Interview",
                     "icon": {
-                        "iconUrl": "/static/img/playermarker_" + team.toLowerCase() +".png",
+                        "iconUrl": "/static/img/" + slug + team.toLowerCase() +".png",
                         "iconSize": [50, 50], // size of the icon
                         "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
                         "popupAnchor": [0, -25]  // point from which the popup should open relative to the iconAnchor
