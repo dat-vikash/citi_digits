@@ -302,7 +302,8 @@ def loadGeoJsonInterviews(request):
                                             "iconUrl": "/static/img/playermarker_" + interview.student.team.name.lower() +".png",
                                             "iconSize": [50, 50],
                                             "iconAnchor": [25, 25],
-                                            "popupAnchor": [0, -25] }
+                                            "popupAnchor": [0, -25] },
+                                        "interview_id": interview.id
                                     }})
 
     return HttpResponse(json.dumps(geoJson), content_type="application/json")

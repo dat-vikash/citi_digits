@@ -771,7 +771,6 @@ $("#interviews").click(function(e){
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
-   console.log("HERRO");
    var url = "/interview/" + $(this).attr("id") + "/"; //interview id from div#id
     $("#interviewDetails").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
@@ -852,6 +851,29 @@ function loadInterviews(){
                     feature = marker.feature;
                 marker.setIcon(L.icon(feature.properties.icon));
             });
+            markerLayer.on('click',function(e){
+                  var marker = e.layer,
+                    feature = marker.feature;
+                   var url = "/interview/" + feature.properties.interview_id + "/"; //interview id from div#id
+                    $("#interviewDetails").load(url,function() { // load the url into the modal
+                            $(this).modal('show').css({
+                                 width: '95%',
+                                 'max-width':'95%',
+                                  height:'95%',
+                                    'max-height':'95%',
+                                    'top':'1%',
+                                  'margin-left': function () {
+                            return window.pageXOffset-($(this).width() / 2);
+                        }
+                    }); // display the modal on url load
+
+                   });
+                $("#interviewDetails").on("shown",function(){
+                        loadMapThumb();
+                    });
+            });
+
+
             markerLayer.setGeoJSON(geoJson);
             markers.addLayer(markerLayer);
             MY_MAP.map.addLayer(markers);
