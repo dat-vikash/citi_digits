@@ -767,7 +767,7 @@ $("#map-ui-popup-1").on("click","button",function(event){
 
 $("#interviews").click(function(e){
     //start interview load
-    loadInterviewsWithPagination(1);
+    loadInterviewsWithPagination(1,true,true,"ALL","ALL");
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
@@ -788,6 +788,19 @@ $("#interviews-tab").on("click",".interview-stub",function(event){
     $("#interviewDetails").on("shown",function(){
             loadMapThumb();
         });
+});
+
+$("#interviews-tab").on("change",".interview-toolbar", function(e){
+   console.log("CHANGE DETECED");
+    //get search values
+    var values = {'player_interview':$("#interview_type_player").is(":checked"),
+                  'retailer_interview':$("#interview_type_retailer").is(":checked"),
+                  'team':$("#team").val(),
+                  'class':$("#class").val()};
+    var offset = 1;
+    console.log(values);
+    //reload interviews
+    loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
 });
 
 function loadGraph(){
@@ -881,11 +894,11 @@ function loadInterviews(){
     });
 }
 
-function loadInterviewsWithPagination(offset){
+function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,team,klass){
     console.log("loadinterviewwithpagination");
     $.ajax({
         type: 'GET',
-        url: 'interview/list/'+offset+'/',
+        url: 'interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
         success: function(data){
             $("#interviews-tab").html(data);
 

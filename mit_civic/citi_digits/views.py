@@ -311,10 +311,35 @@ def loadGeoJsonInterviews(request):
 
 def interviewList(request,offset):
     """
-
+        This view returns the interviews based on search criteria
     """
+    #get interview types
+    playerType = request.GET.get("player","false")
+    retailerType = request.GET.get("retailer","false")
+
+    #get search teams
+    searchTeam = request.GET.get("team","ALL")
+
+    #get search class
+    searchClass = request.GET.get("class","ALL")
+    #build query
+    kwargs = {}
+    if(playerType == "true" and retailerType == "false"):
+       kwargs['interviewType__exact'] = "PLAYER"
+    if(playerType =="false" and retailerType=="true"):
+        print "Adfasdfd"
+        kwargs['interviewType__exact'] = "RETAILER"
+
+    if(searchClass != "ALL"):
+        kwargs['student__team__teacher__className__exact'] = searchClass
+
+    if(searchTeam != "ALL"):
+        kwargs['student__team__name__exact'] = searchTeam
+
+
     #get interviews
-    interviews = Interview.objects.all()
+    print kwargs
+    interviews = Interview.objects.filter(**kwargs)
 
     #get teams
     teams =  Team.objects.values_list('name', flat=True).order_by('name').distinct()

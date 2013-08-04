@@ -4,18 +4,18 @@
 <div id="toolbar" class="container-fluid">
     <div class="span2">
         <label class="checkbox">
-            <input type="checkbox" id="interview_type" name="interview_type" value="PLAYER" checked>Player Interviews
+            <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" checked>Player Interviews
         </label>
     </div>
     <div class="span2">
         <label class="checkbox">
-            <input type="checkbox" id="interview_type" name="interview_type" value="RETAILER" checked>Retailer Interviews
+            <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" checked>Retailer Interviews
         </label>
     </div>
     <div class="span1"></div>
     <div class="span1"></div>
     <div class=" styled-select2 span2 input-append">
-        <select id="team" name="team">
+        <select id="team" class="interview-toolbar"  name="team">
             <option value="ALL" selected><b>Team</b> ALL</option>
             {% for team in teams %}
                 <option value="{{ team }}"><b>Team</b> {{ team }}</option>
@@ -24,7 +24,7 @@
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
     <div class=" styled-select2 span2 input-append">
-        <select id="class" name="class">
+        <select id="class" class="interview-toolbar"  name="class">
             <option value="ALL">ALL</option>
             {% for class in classes %}
                 <option value="{{ class }}">{{ class }}</option>
