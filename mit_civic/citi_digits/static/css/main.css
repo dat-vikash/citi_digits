@@ -1249,6 +1249,16 @@ margin-right: 8%;
 
 }
 
+.explain-text-odd{
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #00c9c8;
+    font-size: 22px;
+    margin-left: 8%;
+margin-right: 8%;
+    margin-top: 2%;
+
+}
+
 .math-table-center{
     margin-left: 20%;
      font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
@@ -1260,4 +1270,48 @@ margin-right: 8%;
       font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     color: #025ff1;
     font-size: 22px;
+}
+
+.bubble-explain-chart-text
+{
+    /*font-size: 13px;*/
+  font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #B0B6BD;
+position: relative;
+width: 150px;
+height: 40px;
+padding: 2px;
+background: #FFFFFF;
+border: #025FF1 solid 2px;
+-webkit-border-radius: 4px;
+-moz-border-radius: 4px;
+border-radius: 4px;
+    margin-left: 40%;
+}
+
+.bubble-explain-chart-text :after
+{content: "";
+position: absolute;
+bottom: -8px;
+left: 71px;
+border-style: solid;
+border-width: 8px 6px 0;
+border-color: #FFFFFF transparent;
+display: block;
+width: 0;
+z-index: 1;
+}
+
+.bubble-explain-chart-text :before
+{
+content: "";
+position: absolute;
+top: 46px;
+left: 70px;
+border-style: solid;
+border-width: 9px 7px 0;
+border-color: #025FF1 transparent;
+display: block;
+width: 0;
+z-index: 0;
 }
