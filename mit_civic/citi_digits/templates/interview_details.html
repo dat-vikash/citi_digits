@@ -66,18 +66,27 @@
 </div><!-- interview details -->
 <div id="interview-details-comments" class="">
     <p class="comment-header">Comments</p>
-    {% for comment in comments %}
+    <div id="comments-list">
+       {% for comment in comments %}
         <div class="row">
-            <div class="span3">
-                {{ comment.name }}
-{#                {{ interview.student.team.teacher.className }}#}
-                {{ comment.created_at }}
+            <div class="span3 comment-info">
+                <div class="row">
+                    <b>{{ comment.name }}</b>
+                </div>
+                <div class="row">
+                    {{ comment.interview.student.team.teacher.className }}
+                </div>
+                <div class="row">
+                    {{ comment.created_at }}
+                </div>
             </div>
             <div class="span9">
                 {{ comment.comment }}
             </div>
         </div>
-    {% endfor %}
+           <br>
+     {% endfor %}
+    </div>
     <p class="comment-header">Leave a Comment</p>
     <form id="comment-form">
         <input type="text" id="comment-name" placeholder="Name"><br>

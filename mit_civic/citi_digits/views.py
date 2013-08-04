@@ -392,7 +392,9 @@ def comment(request,id):
             comment = InterviewComment(name=name,comment=message,interview=interview)
             #persist comment
             comment.save()
-            return HttpResponse(json.dumps({"HTTPRESPONSE": 200}), content_type="application/json")
+            #get comments
+            comments = InterviewComment.objects.filter(interview=interview)
+            return render_to_response('interview_details_comments.html',{'comments':comments},context_instance=RequestContext(request))
         else:
             print "name is none"
             return HttpResponse(json.dumps({"HTTPRESPONSE": 500}), content_type="application/json")

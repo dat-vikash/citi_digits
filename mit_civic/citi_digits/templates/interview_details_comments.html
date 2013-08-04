@@ -1,0 +1,19 @@
+{% for comment in comments %}
+        <div class="row">
+            <div class="span3 comment-info">
+                <div class="row">
+                    <b>{{ comment.name }}</b>
+                </div>
+                <div class="row">
+                    {{ comment.interview.student.team.teacher.className }}
+                </div>
+                <div class="row">
+                    {{ comment.created_at }}
+                </div>
+            </div>
+            <div class="span9">
+                {{ comment.comment }}
+            </div>
+        </div>
+    <br>
+ {% endfor %}

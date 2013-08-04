@@ -837,10 +837,10 @@ $('#interviewDetails').on("click", "button", function(event) {
       console.log("comment created");
      },
      error: function(data){
-         console.log("ERROR CREATING COMMENT");
-         console.log(data.responseText);
-
-     }
+                 $("#interviewDetails #comments-list").html(data.responseText);
+            $('#comment-name').value = "";
+            $('#comment-message').value = "";
+    }
   });
 
     return false;

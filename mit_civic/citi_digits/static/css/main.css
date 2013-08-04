@@ -1231,3 +1231,9 @@ position: relative;
 height: 15px;
 padding-top: 10px;
 }
+
+
+.comment-info {
+    text-align: left;
+    margin-left: 5%;
+}
