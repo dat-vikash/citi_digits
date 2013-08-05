@@ -957,16 +957,6 @@ $("#map-nav").on("change",".map-ui-interviews", function(e){
     }else{
         console.log("no interviews selected");
     }
-//    if (){
-//        console.log("ADDING RETAILER LAYER");
-//        loadInterviews("RETAILER");
-//    }else{
-//      //remove layer
-//        console.log("REMOVING RETAILER LAYER");
-//        MY_MAP.map.removeLayer(RETAILER_LAYER);
-////         MY_MAP.map.getLaye
-//
-//    }
 });
 
 
