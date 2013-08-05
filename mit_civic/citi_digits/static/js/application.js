@@ -13,6 +13,7 @@ var mainLayer = null;
 var MY_MAP = null;
 var PLAYER_LAYER = null;
 var RETAILER_LAYER = null;
+var MARKER_LAYER = null;
 
 $().ready(new function(){
     var myMap = new CityDigitsMap();
@@ -922,42 +923,77 @@ $("#interviews-tab").on("change",".interview-toolbar", function(e){
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
 });
 
-$("#map-nav").on("change","#turn_on_player_interviews", function(e){
-    //toggle player interviews on the map
-    if ($("#turn_on_player_interviews").is(":checked")){
-        console.log("ADDING PLAYER LAYER");
-        loadInterviews("PLAYER");
-    }else{
-      //remove layer
-        console.log("REMOVING PLAYER LAYER");
-        console.log(PLAYER_LAYER);
-        MY_MAP.map.removeLayer(PLAYER_LAYER);
-    }
-});
+//$("#map-nav").on("change","#turn_on_player_interviews", function(e){
+//    //toggle player interviews on the map
+//    if ($("#turn_on_player_interviews").is(":checked")){
+//        console.log("ADDING PLAYER LAYER");
+//        loadInterviews("PLAYER");
+//    }else{
+//      //remove layer
+//        console.log("REMOVING PLAYER LAYER");
+//        console.log(PLAYER_LAYER);
+//        MY_MAP.map.removeLayer(PLAYER_LAYER);
+//    }
+//});
 
-$("#map-nav").on("change","#turn_on_retailer_interviews", function(e){
+$("#map-nav").on("change",".map-ui-interviews", function(e){
+    console.log("IN HERE!@#$@#$@$");
+    //get checkbox values
+    player = $("#turn_on_player_interviews").is(":checked");
+    retailer = $("#turn_on_retailer_interviews").is(":checked");
+
     //toggle player interviews on the map
-    if ($("#turn_on_retailer_interviews").is(":checked")){
-        console.log("ADDING RETAILER LAYER");
+    //remove previous layer
+    if(MARKER_LAYER!=null){
+        console.log("clearing layer");
+        MY_MAP.map.removeLayer(MARKER_LAYER);
+    }
+    if(player && retailer){
+        loadInterviews(null);
+    }else if(player && !retailer){
+        loadInterviews("PLAYER");
+    }else if(!player && retailer){
         loadInterviews("RETAILER");
     }else{
-      //remove layer
-        console.log("REMOVING RETAILER LAYER");
-        MY_MAP.map.removeLayer(RETAILER_LAYER);
-
+        console.log("no interviews selected");
     }
+//    if (){
+//        console.log("ADDING RETAILER LAYER");
+//        loadInterviews("RETAILER");
+//    }else{
+//      //remove layer
+//        console.log("REMOVING RETAILER LAYER");
+//        MY_MAP.map.removeLayer(RETAILER_LAYER);
+////         MY_MAP.map.getLaye
+//
+//    }
 });
 
-function loadGraph(){
 
-    //get div
-//    / Creates canvas 640 × 480 at 10, 50
-var r = Raphael("map-popup-graphic", 193, 20);
-// Creates pie chart at with center at 145, 200,
-// radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
-r.barchart(0,0,230,30,[10]);
+//$("#map-nav").on("change","#turn_on_retailer_interviews", function(e){
+//    //toggle player interviews on the map
+//    if ($("#turn_on_retailer_interviews").is(":checked")){
+//        console.log("ADDING RETAILER LAYER");
+//        loadInterviews("RETAILER");
+//    }else{
+//      //remove layer
+//        console.log("REMOVING RETAILER LAYER");
+//        MY_MAP.map.removeLayer(RETAILER_LAYER);
+////         MY_MAP.map.getLaye
+//
+//    }
+//});
 
-}
+//function loadGraph(){
+//
+//    //get div
+////    / Creates canvas 640 × 480 at 10, 50
+//var r = Raphael("map-popup-graphic", 193, 20);
+//// Creates pie chart at with center at 145, 200,
+//// radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
+//r.barchart(0,0,230,30,[10]);
+//
+//}
 
 $('#interviewDetails').on("click", "button", function(event) {
     event.preventDefault();
@@ -994,20 +1030,20 @@ $('#interviewDetails').on("click", "button", function(event) {
 
 function loadInterviews(interviewType){
     var geoJson = null;
+    var url = 'interview/geoJson/';
+    if (interviewType != null){
+        url =  'interview/geoJson/?type=' + interviewType;
+    }
     $.ajax({
         type:'GET',
-        url: 'interview/geoJson/?type=' + interviewType,
+        url: url,
         success: function(data){
             console.log("GOT INTERVIEW DATA");
             console.log(data);
             geoJson = data;
             var markers = new L.MarkerClusterGroup();
             var markerLayer = L.mapbox.markerLayer();
-            if(interviewType == "PLAYER"){
-                PLAYER_LAYER = markers;
-            }else{
-                RETAILER_LAYER = markers;
-            }
+            MARKER_LAYER = markers;
                          // Set a custom icon on each marker based on feature properties
             markerLayer.on('layeradd', function(e) {
                 var marker = e.layer,
