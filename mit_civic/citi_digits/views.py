@@ -291,7 +291,15 @@ def loadGeoJsonInterviews(request):
 
     """
     #get all interviews
-    allInterview = Interview.objects.all()
+    type = request.GET.get("type",None)
+    allInterview = None
+
+    if(type):
+        allInterview = Interview.objects.filter(interviewType=type)
+    else:
+        allInterview = Interview.objects.all()
+
+
     geoJson = {"type":"FeatureCollection",
                "features":[]}
 

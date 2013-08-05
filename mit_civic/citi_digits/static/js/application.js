@@ -11,6 +11,9 @@ var map_popups = [];
 var map_count = 0;
 var mainLayer = null;
 var MY_MAP = null;
+var PLAYER_LAYER = null;
+var RETAILER_LAYER = null;
+
 $().ready(new function(){
     var myMap = new CityDigitsMap();
     myMap.resizeMap();
@@ -23,7 +26,7 @@ $().ready(new function(){
     map_popups.push($("#map-popup-2"));
 
     $(".tab-content").height=$(window).height();
-    loadInterviews();
+//    loadInterviews();
 });
 
 function showMapPopUp(ev){
@@ -919,6 +922,32 @@ $("#interviews-tab").on("change",".interview-toolbar", function(e){
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
 });
 
+$("#map-nav").on("change","#turn_on_player_interviews", function(e){
+    //toggle player interviews on the map
+    if ($("#turn_on_player_interviews").is(":checked")){
+        console.log("ADDING PLAYER LAYER");
+        loadInterviews("PLAYER");
+    }else{
+      //remove layer
+        console.log("REMOVING PLAYER LAYER");
+        console.log(PLAYER_LAYER);
+        MY_MAP.map.removeLayer(PLAYER_LAYER);
+    }
+});
+
+$("#map-nav").on("change","#turn_on_retailer_interviews", function(e){
+    //toggle player interviews on the map
+    if ($("#turn_on_retailer_interviews").is(":checked")){
+        console.log("ADDING RETAILER LAYER");
+        loadInterviews("RETAILER");
+    }else{
+      //remove layer
+        console.log("REMOVING RETAILER LAYER");
+        MY_MAP.map.removeLayer(RETAILER_LAYER);
+
+    }
+});
+
 function loadGraph(){
 
     //get div
@@ -963,17 +992,22 @@ $('#interviewDetails').on("click", "button", function(event) {
 
 });
 
-function loadInterviews(){
+function loadInterviews(interviewType){
     var geoJson = null;
     $.ajax({
         type:'GET',
-        url: 'interview/geoJson/',
+        url: 'interview/geoJson/?type=' + interviewType,
         success: function(data){
             console.log("GOT INTERVIEW DATA");
             console.log(data);
             geoJson = data;
             var markers = new L.MarkerClusterGroup();
             var markerLayer = L.mapbox.markerLayer();
+            if(interviewType == "PLAYER"){
+                PLAYER_LAYER = markers;
+            }else{
+                RETAILER_LAYER = markers;
+            }
                          // Set a custom icon on each marker based on feature properties
             markerLayer.on('layeradd', function(e) {
                 var marker = e.layer,

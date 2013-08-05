@@ -316,6 +316,11 @@ body {
     box-shadow: 5px 5px 15px;
 }
 
+.map-ui-interviews {
+        background: #b0b6bd;
+
+}
+
 .map-ui ul {
     list-style-type:none;
     padding: 0;
@@ -342,6 +347,13 @@ body {
 
 .map-ui li.active {
     background: #FFFFFF;
+    color: #3F3F3F;
+    border-color: #3887BE;
+    border-top-color: #FFF;
+}
+
+.map-ui .interviews {
+    background: #b0b6bd;
     color: #3F3F3F;
     border-color: #3887BE;
     border-top-color: #FFF;
