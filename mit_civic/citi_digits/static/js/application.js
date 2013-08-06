@@ -477,10 +477,11 @@ $("#add-tour").click(function(ev){
     console.log("ADD TOUR");
    $("#addTourModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
+                 'overflow-y':'scroll',
                  width: '100%',
-                 'max-width':'400px',
+                 'max-width':'95%',
                   height:'100%',
-                    'max-height':'320px',
+                    'max-height':'95%',
                     'top':'1%',
                   'margin-left': function () {
                       if ($(window).width() < 934){

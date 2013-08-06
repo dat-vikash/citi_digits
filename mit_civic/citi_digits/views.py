@@ -1,6 +1,7 @@
 import json
 import django
 from django.db import transaction
+from django.forms.formsets import formset_factory
 from django.http import HttpResponse, QueryDict
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -415,8 +416,15 @@ def tour(request):
     """
      Handles adding a tour
     """
+    SlideFormSet = formset_factory(forms.TourSlide,extra=4)
     if request.method == 'POST':
         pass
     else:
         #get request
-        return render_to_response('add_a_tour.html',{},context_instance=RequestContext(request))
+        #tour form
+        tour = forms.TourForm()
+        #tour slides
+        slide_formset = SlideFormSet()
+        #students
+        students = Student.objects.all()
+        return render_to_response('add_a_tour.html',{'tour':tour,'slide_formset':slide_formset,'students':students},context_instance=RequestContext(request))

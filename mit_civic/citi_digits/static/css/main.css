@@ -1335,5 +1335,22 @@ z-index: 0;
  */
 
 #addTourModal {
-    background-color: #b0b6bd;
+    background-color: #8d9297;
 }
+
+#addTourModal .even{
+    background-color: #b0b6bd;
+    padding:2%;
+
+}
+
+#addTourModal .odd{
+    background-color: #8d9297;
+    padding:2%;
+}
+
+#addTourModal #workflow-tour{
+    padding: 2%;
+}
+
+

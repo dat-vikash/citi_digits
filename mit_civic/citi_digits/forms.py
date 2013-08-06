@@ -53,3 +53,16 @@ class RetailerInterviewForm(forms.Form):
     location = forms.CharField(widget=forms.TextInput(),required=False)
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
+
+class TourForm(forms.Form):
+    title = forms.CharField(widget=forms.TextInput())
+    teamPhoto = forms.ImageField()
+
+class TourSlide(forms.Form):
+    image = forms.ImageField()
+    text = forms.CharField(widget=forms.Textarea())
+    link =forms.CharField(widget=forms.TextInput())
+    audio = forms.FileField()
+
+
+

@@ -169,3 +169,4 @@ class TourSlide(models.Model):
     link = models.TextField(null=False)
     audio = models.FileField(upload_to="audio/%Y_%m_%d_%h_%M_%s_slide_audio")
     tour = models.ForeignKey(Tour)
+    sequence = models.IntegerField(null=False)

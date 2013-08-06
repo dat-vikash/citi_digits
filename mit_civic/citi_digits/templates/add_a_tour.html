@@ -6,7 +6,42 @@
 </div><!-- interview-header -->
 <form id="add_tour_form" enctype="multipart/form-data" class=" tour-form" method="post" action="/tour/new/">
     <div class="modal-body">
-        <div id="workflow">
+        <div id="workflow-tour">
+            <label>Author</label>
+                <div id="author-select" class="container">
+                    <div class="row-fluid">
+                        <select id="authors[]" name="authors[]" placeholder="Select a Student">
+                        {% for student in students %}
+                            <option value="{{ student.id }}">{{ student.firstName }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <div class="row-fluid">
+                        <select id="authors[]" name="authors[]" placeholder="Select a Student">
+                        {% for student in students %}
+                            <option value="{{ student.id }}">{{ student.firstName }}</option>
+                        {% endfor %}
+                        </select>
+                    </div>
+                    <p id="add_tour_author">+ Add a student</p>
+                </div>
+        <br>
+            <label>Add a team photo</label>
+            {{ tour.teamPhoto }}
+        <br>
+            <label>Title of your tour</label>
+            {{ tour.title }}
+        </div>
+        <div id="workflow-slides">
+            {% for form in slide_formset.forms %}
+                {% if forloop.counter|divisibleby:2 %}
+                    <div id="slide_{{ forloop.counter }}" class="even">
+                {% else %}
+                    <div id="slide_{{ forloop.counter }}" class="odd">
+                {% endif %}
+                {{ form.as_p }}
+                </div>
+            {% endfor %}
        </div><!-- workflow -->
     </div> <!-- modal-body -->
 </form>
