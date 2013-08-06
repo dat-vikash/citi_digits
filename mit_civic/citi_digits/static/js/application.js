@@ -466,6 +466,35 @@ $("#add-interview").click(function(ev){
     return false; //prevent click propagation
 });
 
+
+/*
+  Add a Tour
+ */
+
+$("#add-tour").click(function(ev){
+   ev.preventDefault();  //prevent navigation
+   var url = $(this).data("form"); //get the form url
+    console.log("ADD TOUR");
+   $("#addTourModal").load(url, function() { // load the url into the modal
+            $(this).modal('show').css({
+                 width: '100%',
+                 'max-width':'400px',
+                  height:'100%',
+                    'max-height':'320px',
+                    'top':'1%',
+                  'margin-left': function () {
+                      if ($(window).width() < 934){
+                          return window.pageXOffset;
+                      }else{
+                        return window.pageXOffset-($(this).width() / 2);
+                      }
+                    }
+    }); // display the modal on url load
+   }); //display modal
+    return false; //prevent click propagation
+});
+
+
 /*
   Add a player interview
  */
@@ -888,6 +917,30 @@ $("#map-ui-popup-1").on("click","button",function(event){
 $("#interviews").click(function(e){
     //start interview load
     loadInterviewsWithPagination(1,true,true,"ALL","ALL");
+    //show add interview button
+    $("#add-interview").parent().attr({'class':''});
+    $("#add-tour").parent().attr({'class':'hidden'});
+});
+
+$("#about").click(function(e){
+    //hidden interview button
+    $("#add-interview").parent().attr({'class':'hidden'});
+    $("#add-tour").parent().attr({'class':'hidden'});
+});
+
+$("#tours").click(function(e){
+    //load tours
+    loadToursWithPagination(1,'','');
+    //hidden interview button
+    $("#add-interview").parent().attr({'class':'hidden'});
+    $("#add-tour").parent().attr({'class':''});
+});
+
+
+$("#main-map").click(function(e){
+    //hidden interview button
+    $("#add-interview").parent().attr({'class':'hidden'});
+    $("#add-tour").parent().attr({'class':'hidden'});
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
@@ -1080,6 +1133,17 @@ function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,t
 
         }
     });
-
 }
+
+function loadToursWithPagination(offset,date,klass){
+    $.ajax({
+        type: 'GET',
+        url: 'tour/list/'+offset+'/?date=' + date + "&class="+klass,
+        success: function(data){
+            $("#tours-tab").html(data);
+
+        }
+    });
+}
+
 

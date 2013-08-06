@@ -314,6 +314,7 @@ body {
     text-align: center;
     font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     box-shadow: 5px 5px 15px;
+    border-radius: 6px;
 }
 
 .map-ui-interviews {
@@ -1326,4 +1327,13 @@ border-color: #025FF1 transparent;
 display: block;
 width: 0;
 z-index: 0;
+}
+
+
+/*
+ * Tours
+ */
+
+#addTourModal {
+    background-color: #b0b6bd;
 }

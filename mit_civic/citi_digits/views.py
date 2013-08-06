@@ -409,3 +409,14 @@ def comment(request,id):
             print "name is none"
             return HttpResponse(json.dumps({"HTTPRESPONSE": 500}), content_type="application/json")
 
+
+
+def tour(request):
+    """
+     Handles adding a tour
+    """
+    if request.method == 'POST':
+        pass
+    else:
+        #get request
+        return render_to_response('add_a_tour.html',{},context_instance=RequestContext(request))

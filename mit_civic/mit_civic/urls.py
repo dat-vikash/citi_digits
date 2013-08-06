@@ -20,6 +20,7 @@ urlpatterns = patterns('',
         url(r'^interview/list/(?P<offset>.+)/$', 'citi_digits.views.interviewList', name='interview_list'),
         url(r'^interview/(?P<id>.+)/comment/$', 'citi_digits.views.comment', name='comments'),
         url(r'^interview/(?P<id>.+)/$', 'citi_digits.views.interviewDetails', name='interview_details'),
+        url(r'^tour/new/$', 'citi_digits.views.tour', name='add_tour'),
 
 
     # Examples:

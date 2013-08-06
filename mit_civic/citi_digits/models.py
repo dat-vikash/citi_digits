@@ -141,3 +141,31 @@ class InterviewComment(models.Model):
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True,null=False)
     interview = models.ForeignKey(Interview)
+
+
+class Tour(models.Model):
+    """
+     Tour
+    """
+    title = models.CharField(max_length=255,null=False)
+    teamPhoto = models.FileField(upload_to="photo/%Y_%m_%d_%h_%M_%s_team_photo")
+    coverPhoto = models.FileField(upload_to="photo/%Y_%m_%d_%h_%M_%s_cover_photo")
+    created_at = models.DateTimeField(auto_now_add = True,null=False)
+
+class TourAuthors(models.Model):
+    """
+    Tour Authors
+    """
+    student = models.ForeignKey(Student)
+    tour = models.ForeignKey(Tour)
+
+
+class TourSlide(models.Model):
+    """
+     Tour Slides
+    """
+    photo = models.FileField(upload_to="photo/%Y_%m_%d_%h_%M_%s_slide_photo")
+    text = models.TextField(null=False)
+    link = models.TextField(null=False)
+    audio = models.FileField(upload_to="audio/%Y_%m_%d_%h_%M_%s_slide_audio")
+    tour = models.ForeignKey(Tour)

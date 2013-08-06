@@ -37,20 +37,20 @@
         <div class="container">
           <div class="nav-collapse collapse">
             <ul class="nav">
-              <li class="active"><a href="#map-tab" data-toggle="tab">MAP</a></li>
+              <li class="active"><a href="#map-tab" data-toggle="tab" id="main-map">MAP</a></li>
               <li class="divider-vertical"></li>
               <li><a href="#interviews-tab" data-toggle="tab" id="interviews">INTERVIEWS</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#about-tab" data-toggle="tab">ABOUT</a></li>
+              <li><a href="#about-tab" data-toggle="tab" id="about">ABOUT</a></li>
               <li class="divider-vertical"></li>
-              <li><a href="#tours-tab" data-toggle="tab">TOURS</a></li>
+              <li><a href="#tours-tab" data-toggle="tab" id="tours">TOURS</a></li>
             </ul>
             <h4 class="brand">City Digits: Local Lotto</h4>
             {% if user.is_authenticated %}
               <div id="logged_in_nav_bar">
                 <ul class="nav pull-right">
-                    <li><button class="btn interview-button" aria-hidden="true" id="add-interview" data-form="/interview/new/">Add Interview</button></li>
-                    <li class="divider-vertical"></li>
+                    <li class="hidden"><button class="btn interview-button" aria-hidden="true" id="add-interview" data-form="/interview/new/">Add Interview</button></li>
+                    <li class="hidden"><button class="btn interview-button" aria-hidden="true" id="add-tour" data-form="/tour/new/">Add Tour</button></li>
                     <li><a href="" class="membership-logout" data-form="/logout">LOGOUT</a></li>
                 </ul><!-- ul -->
               </div><!-- logged_in_nav_bar -->
@@ -72,6 +72,7 @@
         <div class="modal hide" id="signUpModal"></div><!--sign up modal -->
         <div class="modal hide" id="loginModal"></div><!-- login modal -->
         <div class="modal hide" id="addInterviewModal"></div><!-- add interview modal -->
+        <div class="modal hide" id="addTourModal"></div><!-- add interview modal -->
         <div class="modal hide" id="mapPopupModal"></div><!-- add map popup modal -->
         <div class="modal hide" id="interviewDetails"></div><!-- add interview details modal-->
         <div class="tab-content">
@@ -90,9 +91,9 @@
                 </div>
                 <div class="map-content" id="map"></div><!-- map div -->
             </div><!-- tab-pane map -->
-            <div class="tab-pane container-fluid" id="interviews-tab">TODO: INTERVIEWS</div><!-- tab-pane interviews -->
+            <div class="tab-pane container-fluid" id="interviews-tab"></div><!-- tab-pane interviews -->
             <div class="tab-pane" id="about-tab">TODO: ABOUT</div><!-- tab-pane about -->
-            <div class="tab-pane" id="tours-tab">TODO: TOURS</div><!-- tab-pane tours -->
+            <div class="tab-pane" id="tours-tab"></div><!-- tab-pane tours -->
          </div> <!-- tab-content -->
     </div> <!-- /container -->
 
