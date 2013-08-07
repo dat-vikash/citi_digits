@@ -1150,4 +1150,21 @@ function loadToursWithPagination(offset,date,klass){
     });
 }
 
+$("#addTourModal").on("click","#add_tour_author",function(e){
 
+    $("#author_select").clone().insertBefore(this);
+
+});
+
+$().click(function(e){
+    //get even or odd for last slide
+    //get last slide number
+//   <div id="slide_3" class="odd">
+//
+//                <p class="slide-header">Slide 3</p>
+//                <p><label for="id_form-2-image">Image:</label> <input id="id_form-2-image" name="form-2-image" type="file"></p>
+//<p><label for="id_form-2-text">Text:</label> <textarea cols="40" id="id_form-2-text" name="form-2-text" rows="10"></textarea></p>
+//<p><label for="id_form-2-link">Link:</label> <input id="id_form-2-link" name="form-2-link" type="text"></p>
+//<p><label for="id_form-2-audio">Audio:</label> <input id="id_form-2-audio" name="form-2-audio" type="file"></p>
+//                </div>
+});

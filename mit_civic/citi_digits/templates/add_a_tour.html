@@ -13,22 +13,24 @@
                 <li><button class="btn btn-primary" id="save_publish_button">Publish</button> </li>
             </ul>
         </div>
-        <div id="workflow-tour" class="tour-slide-height">
+        <div id="workflow-tour">
             <label>Author</label>
                 <div id="author-select" class="container">
-                    <div class="row-fluid">
+                    <div class="row-fluid styled-select-tour input-append" id="author_select">
                         <select id="authors[]" name="authors[]" placeholder="Select a Student">
                         {% for student in students %}
                             <option value="{{ student.id }}">{{ student.firstName }}</option>
                         {% endfor %}
                         </select>
+                        <img class="dropdown-caret-tour" src="{{ STATIC_URL }}/img/select_arrow.png">
                     </div>
-                    <div class="row-fluid">
+                    <div class="row-fluid styled-select-tour input-append" id="author_select">
                         <select id="authors[]" name="authors[]" placeholder="Select a Student">
                         {% for student in students %}
                             <option value="{{ student.id }}">{{ student.firstName }}</option>
                         {% endfor %}
                         </select>
+                        <img class="dropdown-caret-tour" src="{{ STATIC_URL }}/img/select_arrow.png">
                     </div>
                     <p id="add_tour_author">+ Add a student</p>
                 </div>

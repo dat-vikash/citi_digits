@@ -1388,3 +1388,28 @@ z-index: 0;
 #tour-menu-controls .tour-menu li button{
     width: 85px;
 }
+
+.styled-select-tour {
+    text-align: left;
+}
+
+.styled-select-tour select {
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #B0B6BD;
+   background: #ffffff;
+   width: 150px;
+   padding: 5px;
+   font-size: 15px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 34px;
+   -webkit-appearance: none;
+   }
+
+.dropdown-caret-tour {
+    margin-left: -2%;
+position: relative;
+height: 15px;
+padding-top: 10px;
+}
