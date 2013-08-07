@@ -14,8 +14,11 @@ var MY_MAP = null;
 var PLAYER_LAYER = null;
 var RETAILER_LAYER = null;
 var MARKER_LAYER = null;
+var SCREEN_HEIGHT = null;
 
 $().ready(new function(){
+    //get screen measurements
+    SCREEN_HEIGHT =  $(window).height();
     var myMap = new CityDigitsMap();
     myMap.resizeMap();
     myMap.loadLayers();

@@ -2,11 +2,18 @@
     <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
 <div class="tour-header">
-<p>Add a Tour</p>
+<p class="slide-header">Add a Tour<hr class="tour-hr-title"></p>
 </div><!-- interview-header -->
 <form id="add_tour_form" enctype="multipart/form-data" class=" tour-form" method="post" action="/tour/new/">
     <div class="modal-body">
-        <div id="workflow-tour">
+        <div id="tour-menu-controls" class="">
+            <ul class="tour-menu">
+                <li><button class="btn btn-primary" id="save_tour_button">Save</button> </li>
+                <li><button class="btn btn-primary" id="save_preview_button">Preview</button> </li>
+                <li><button class="btn btn-primary" id="save_publish_button">Publish</button> </li>
+            </ul>
+        </div>
+        <div id="workflow-tour" class="tour-slide-height">
             <label>Author</label>
                 <div id="author-select" class="container">
                     <div class="row-fluid">
@@ -39,6 +46,7 @@
                 {% else %}
                     <div id="slide_{{ forloop.counter }}" class="odd">
                 {% endif %}
+                <p class="slide-header">Slide {{ forloop.counter }}</p>
                 {{ form.as_p }}
                 </div>
             {% endfor %}

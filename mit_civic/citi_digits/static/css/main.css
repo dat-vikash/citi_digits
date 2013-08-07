@@ -1351,6 +1351,40 @@ z-index: 0;
 
 #addTourModal #workflow-tour{
     padding: 2%;
+    height: 95%;
+}
+
+.slide-header {
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #3f3f3f;
+    font-size: 20px;
+    text-align: center;
+}
+
+.tour-hr-title {
+    background-color: #3f3f3f;
+    width: 100px;
+    height: 2px;
+    margin: auto;
+}
+
+#tour-menu-controls {
+    position:fixed;
+    width:150px;
+    z-index:100;
+    right: 3%;
+    top: 75%;
+}
+
+#tour-menu-controls .tour-menu {
+    list-style-type: none;
 }
 
 
+#tour-menu-controls .tour-menu li{
+    margin: 1em 0;
+}
+
+#tour-menu-controls .tour-menu li button{
+    width: 85px;
+}
