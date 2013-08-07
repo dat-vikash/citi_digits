@@ -1161,17 +1161,65 @@ $("#addTourModal").on("click","#new-tour-slide",function(event){
      event.preventDefault();
     //get slide count
     var count = $(".slide").length;
+    console.log("count: " + count);
     //get even or odd for last slide
     var currentSlideDecoration = $(".slide")[count-1].attributes["class"].value.indexOf("even") >= 0 ? "odd": "even";
     //construct html
     var html = '<div id="slide_' + (count+1) +'" class="' + currentSlideDecoration + ' slide">' +
         '<p class="slide-header">Slide ' + (count +1)+ '</p>' +
-        '<p><label for="id_form-' + (count -1) + '-image">Image:</label> <input id="id_form-' + (count-1) + '-text" name="form-' + (count -1) + '-text" rows="10"></textarea></p>'+
-        '<p><label for="id_form-' + (count -1) + '-text">Text:</label> <textarea cols="40" id="id_form-' + (count-1) + '-text" name="form-' + (count-1) + '-text" rows="10"></textarea></p>' +
-        '<p><label for="id_form-' + (count -1) + '-link">Link:</label> <input id="id_form-' + (count-1) + '-link" name="form-' + (count-1) + '-link" type="text"></p>' +
-        '<p><label for="id_form-' + (count - 1) + '-audio">Audio:</label> <input id="id_form-' + (count-1) + '-audio" name="form-' + (count-1) + '-audio" type="file"></p>' +
+        '<p><label for="id_form-' + (count) + '-image">Image:</label> <input id="id_form-' + (count) + '-image" name="form-' + (count) + '-image" type="file"></p>'+
+        '<p><label for="id_form-' + (count) + '-text">Text:</label> <textarea cols="40" id="id_form-' + (count) + '-text" name="form-' + (count) + '-text" rows="10"></textarea></p>' +
+        '<p><label for="id_form-' + (count) + '-link">Link:</label> <input id="id_form-' + (count) + '-link" name="form-' + (count) + '-link" type="text"></p>' +
+        '<p><label for="id_form-' + (count) + '-audio">Audio:</label> <input id="id_form-' + (count) + '-audio" name="form-' + (count) + '-audio" type="file"></p>' +
         '</div>';
     $(html).insertBefore($(this).closest("div"));
+    //update django management form
+    $("#id_form-TOTAL_FORMS").val(count+1);
 
 });
 
+
+$("#addTourModal").on("click","#save_tour_button",function(event){
+   event.preventDefault();
+   console.log("save called");
+     //get request url
+    var request_url = $('#add_tour_form').attr('action');
+    // get all the inputs into an array.
+    var values = {};
+    values = $('#add_tour_form').serializeArray();
+
+
+    console.log("VALUES!");
+    console.log(values);
+
+
+    $("#add_tour_form").ajaxSubmit({
+        url:request_url, // the file to call
+        success: function(response) {
+            //update view
+            console.log("SUCCESSS")
+//         $("#addInterviewModal #workflow").hide();
+//         $("#addInterviewModal #success-message").show();
+        },
+        error: function(data){
+            console.log(data.responseText);
+     }
+    });
+
+
+    //do post
+//    $.ajax({
+//     url: request_url,
+//     type:'POST',
+//     dataType: "json",
+//     data: values,
+//     success: function(data){
+//       console.log("SUCCESS POST");
+//     },
+//     error: function(data){
+//         console.log(data.responseText);
+//     }
+//  });
+    //prevent click propagation
+    return false;
+});

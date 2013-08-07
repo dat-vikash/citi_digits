@@ -42,6 +42,7 @@
             {{ tour.title }}
         </div>
         <div id="workflow-slides">
+            {{ slide_formset.management_form }}
             {% for form in slide_formset.forms %}
                 {% if forloop.counter|divisibleby:2 %}
                     <div id="slide_{{ forloop.counter }}" class="even slide">

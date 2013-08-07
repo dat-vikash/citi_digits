@@ -56,13 +56,13 @@ class RetailerInterviewForm(forms.Form):
 
 class TourForm(forms.Form):
     title = forms.CharField(widget=forms.TextInput())
-    teamPhoto = forms.ImageField()
+    teamPhoto = forms.ImageField(required=False)
 
 class TourSlide(forms.Form):
     image = forms.ImageField()
     text = forms.CharField(widget=forms.Textarea())
     link =forms.CharField(widget=forms.TextInput())
-    audio = forms.FileField()
+    audio = forms.FileField(required=False)
 
 
 

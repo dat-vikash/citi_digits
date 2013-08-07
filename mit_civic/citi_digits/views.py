@@ -6,7 +6,7 @@ from django.http import HttpResponse, QueryDict
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 import forms
-from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer, InterviewComment
+from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer, InterviewComment, Tour, TourAuthors, TourSlide
 from service import MembershipService
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -412,13 +412,45 @@ def comment(request,id):
 
 
 
+@transaction.autocommit
 def tour(request):
     """
      Handles adding a tour
     """
-    SlideFormSet = formset_factory(forms.TourSlide,extra=4)
+    SlideFormSet = formset_factory(forms.TourSlide,extra=1)
     if request.method == 'POST':
-        pass
+        #create forms
+        tourForm = forms.TourForm(request.POST,request.FILES)
+        slideFormset = SlideFormSet(request.POST,request.FILES)
+
+        #validate forms
+        if tourForm.is_valid() and slideFormset.is_valid():
+            #create tour
+            newTour = Tour(title=tourForm.cleaned_data['title'],teamPhoto=tourForm.cleaned_data["teamPhoto"])
+            newTour.save()
+
+            #create tour authors
+            for authorId in request.POST.getlist('authors[]',[]):
+                print "getting authors"
+                #get student
+                student = Student.objects.get(pk=authorId)
+                #create tour author
+                author = TourAuthors(student=student,tour=newTour)
+                author.save()
+
+            #create tour slides
+            slideIdx=1
+            for slide in slideFormset.forms:
+                TourSlide(photo=slide.cleaned_data['image'],text=slide.cleaned_data['text'],
+                          link=slide.cleaned_data['link'],tour=newTour,sequence=slideIdx,audio=slide.cleaned_data['audio']).save()
+                slideIdx= slideIdx + 1
+
+
+        else:
+            #form is invalid, return errors
+            students = Student.objects.all()
+            return render_to_response('add_a_tour.html',{'tour':tourForm,'slide_formset':slideFormset,'students':students},context_instance=RequestContext(request))
+
     else:
         #get request
         #tour form
