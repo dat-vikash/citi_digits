@@ -44,14 +44,17 @@
         <div id="workflow-slides">
             {% for form in slide_formset.forms %}
                 {% if forloop.counter|divisibleby:2 %}
-                    <div id="slide_{{ forloop.counter }}" class="even">
+                    <div id="slide_{{ forloop.counter }}" class="even slide">
                 {% else %}
-                    <div id="slide_{{ forloop.counter }}" class="odd">
+                    <div id="slide_{{ forloop.counter }}" class="odd slide">
                 {% endif %}
                 <p class="slide-header">Slide {{ forloop.counter }}</p>
                 {{ form.as_p }}
                 </div>
             {% endfor %}
+            <div>
+                <button id="new-tour-slide" class="btn form_button">Add new slide</button>
+            </div>
        </div><!-- workflow -->
     </div> <!-- modal-body -->
 </form>
