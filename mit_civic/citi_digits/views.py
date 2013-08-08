@@ -460,3 +460,11 @@ def tour(request):
         #students
         students = Student.objects.all()
         return render_to_response('add_a_tour.html',{'tour':tour,'slide_formset':slide_formset,'students':students},context_instance=RequestContext(request))
+
+
+def tourPreview(request):
+    """
+      Previews a tour
+    """
+    slideCount = request.GET.get("slides",0)
+    return render_to_response('tour_preview.html',{'slides':slideCount},context_instance=RequestContext(request))

@@ -478,23 +478,25 @@ $("#add-tour").click(function(ev){
    ev.preventDefault();  //prevent navigation
    var url = $(this).data("form"); //get the form url
     console.log("ADD TOUR");
-   $("#addTourModal").load(url, function() { // load the url into the modal
-            $(this).modal('show').css({
-                 'overflow-y':'scroll',
-                 width: '100%',
-                 'max-width':'95%',
-                  height:'100%',
-                    'max-height':'95%',
-                    'top':'1%',
-                  'margin-left': function () {
-                      if ($(window).width() < 934){
-                          return window.pageXOffset;
-                      }else{
-                        return window.pageXOffset-($(this).width() / 2);
-                      }
-                    }
-    }); // display the modal on url load
+   $("#addTour").load(url, function() { // load the url into the modal
+//            $(this).modal('show').css({
+//                 'overflow-y':'scroll',
+//                 width: '100%',
+//                 'max-width':'95%',
+//                  height:'100%',
+//                    'max-height':'95%',
+//                    'top':'1%',
+//                  'margin-left': function () {
+//                      if ($(window).width() < 934){
+//                          return window.pageXOffset;
+//                      }else{
+//                        return window.pageXOffset-($(this).width() / 2);
+//                      }
+//                    }
+//    }); // display the modal on url load
    }); //display modal
+    $("#addTour").show();
+    $("#tour-grid").hide();
     return false; //prevent click propagation
 });
 
@@ -938,6 +940,8 @@ $("#tours").click(function(e){
     //hidden interview button
     $("#add-interview").parent().attr({'class':'hidden'});
     $("#add-tour").parent().attr({'class':''});
+    $("#addTour").hide();
+    $("#tour-grid").show();
 });
 
 
@@ -1150,14 +1154,14 @@ function loadToursWithPagination(offset,date,klass){
     });
 }
 
-$("#addTourModal").on("click","#add_tour_author",function(e){
+$("#addTour").on("click","#add_tour_author",function(e){
 
     $("#author_select").clone().insertBefore(this);
 
 });
 
 
-$("#addTourModal").on("click","#new-tour-slide",function(event){
+$("#addTour").on("click","#new-tour-slide",function(event){
      event.preventDefault();
     //get slide count
     var count = $(".slide").length;
@@ -1179,7 +1183,7 @@ $("#addTourModal").on("click","#new-tour-slide",function(event){
 });
 
 
-$("#addTourModal").on("click","#save_tour_button",function(event){
+$("#addTour").on("click","#save_tour_button",function(event){
    event.preventDefault();
    console.log("save called");
      //get request url
@@ -1222,4 +1226,55 @@ $("#addTourModal").on("click","#save_tour_button",function(event){
 //  });
     //prevent click propagation
     return false;
+});
+
+
+$("#addTour").on("click","#save_preview_button",function(ev){
+    console.log("IN PREVIEW");
+   ev.preventDefault();
+    //get form values
+    var title = $("#id_title").val();
+    var coverPhoto = $("#id_teamPhoto")[0].files[0];
+    var slides = [];
+    for(var i= 0; i<$("#add_tour_form .slide").length; i++){
+        console.log("builidng slides");
+        console.log($("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0]);
+        var slide = {'image' : $("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0],
+                    'text': $("#add_tour_form .slide").find("#id_form-" + i + "-text").val(),
+                    'link': $("#add_tour_form .slide").find("#id_form-" + i + "-link").val(),
+                    'audio':$("#add_tour_form .slide").find("#id_form-" + i + "-audio")[0].files[0]
+        };
+        slides.push(slide);
+    }
+    console.log(slides);
+
+    var url = $(this).data("form"); //get the form url
+//    url = url + "?slides=" + $(".slide").length;
+    console.log("url:" + url);
+    $("#tourPreview").load(url,function() { // load the url into the modal
+            $(this).modal('show').css({
+                 width: '95%',
+                 'max-width':'70%',
+                  height:'100%',
+                    'max-height':'70%',
+                    'top':'1%'
+//                  'margin-left': function () {
+//            return window.pageXOffset-($(this).width() / 2);
+//        }
+    }); // display the modal on url load
+
+   });
+
+            $("#tourPreview").on("shown",function(){
+        console.log("im shown");
+        var reader = new FileReader();
+        reader.onloadend = function (e) {
+            console.log("laodeddd");
+            $('#tour-preview-cover-photo img').attr('src', e.target.result);
+        };
+        reader.readAsDataURL(coverPhoto);
+    });
+
+
+return false;
 });

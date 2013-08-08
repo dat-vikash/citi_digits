@@ -1,6 +1,6 @@
-<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
-    <img src="{{ STATIC_URL }}/img/close.png"/>
-</button>
+{#<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">#}
+{#    <img src="{{ STATIC_URL }}/img/close.png"/>#}
+{#</button>#}
 <div class="tour-header">
 <p class="slide-header">Add a Tour<hr class="tour-hr-title"></p>
 </div><!-- interview-header -->
@@ -8,9 +8,8 @@
     <div class="modal-body">
         <div id="tour-menu-controls" class="">
             <ul class="tour-menu">
-                <li><button class="btn btn-primary" id="save_tour_button">Save</button> </li>
-                <li><button class="btn btn-primary" id="save_preview_button">Preview</button> </li>
-                <li><button class="btn btn-primary" id="save_publish_button">Publish</button> </li>
+                <li><button class="btn btn-primary" id="save_preview_button" data-form="/tour/preview/">Preview</button> </li>
+                <li><button class="btn btn-primary" id="save_tour_button">Publish</button> </li>
             </ul>
         </div>
         <div id="workflow-tour">

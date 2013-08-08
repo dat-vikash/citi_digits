@@ -1,0 +1,22 @@
+<div class="modal-body">
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        {% for i in slides|make_list  %}
+                <li data-target="#myCarousel" data-slide-to="{{ i }}"></li>
+        {% endfor %}
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner">
+        <div class="active item" id="tour-preview-cover">
+            <div id="tour-preview-cover-photo"><img></div>
+        </div>
+        {% for i in slides|make_list  %}
+        <div class="item" id="tour-preview-slide-{{ i }}"></div>
+        {% endfor %}
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>

@@ -1334,22 +1334,23 @@ z-index: 0;
  * Tours
  */
 
-#addTourModal {
+#addTour {
     background-color: #8d9297;
+    display: initial;
 }
 
-#addTourModal .even{
+#addTour .even{
     background-color: #b0b6bd;
     padding:2%;
 
 }
 
-#addTourModal .odd{
+#addTour .odd{
     background-color: #8d9297;
     padding:2%;
 }
 
-#addTourModal #workflow-tour{
+#addTour #workflow-tour{
     padding: 2%;
     height: 95%;
 }
@@ -1412,4 +1413,10 @@ z-index: 0;
 position: relative;
 height: 15px;
 padding-top: 10px;
+}
+
+#tourPreview {
+    background-color: #ffffff;
+    left: 0;
+    margin-left: 0;
 }
