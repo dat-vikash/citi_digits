@@ -443,9 +443,15 @@ def tour(request):
             for slide in slideFormset.forms:
                 TourSlide(photo=slide.cleaned_data['image'],text=slide.cleaned_data['text'],
                           link=slide.cleaned_data['link'],tour=newTour,sequence=slideIdx,audio=slide.cleaned_data['audio']).save()
+                if(slide.cleaned_data['isCoverPhoto']):
+                    #set cover photo
+                    newTour.coverPhoto = slide.cleaned_data['image'];
+                    newTour.save()
                 slideIdx= slideIdx + 1
 
-
+             #return response
+            json_data = json.dumps({"HTTPRESPONSE": 200})
+            return HttpResponse(json_data, mimetype="application/json")
         else:
             #form is invalid, return errors
             students = Student.objects.all()
