@@ -1234,11 +1234,16 @@ $("#addTour").on("click","#save_preview_button",function(ev){
    ev.preventDefault();
     //get form values
     var title = $("#id_title").val();
-    var coverPhoto = $("#id_teamPhoto")[0].files[0];
+    var teamPhoto = $("#id_teamPhoto")[0].files[0];
     var slides = [];
+    var coverPhoto;
     for(var i= 0; i<$("#add_tour_form .slide").length; i++){
         console.log("builidng slides");
-        console.log($("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0]);
+        console.log($("#add_tour_form #workflow-slides .slide").find("#id_form-" + i + "-image")[0].files[0]);
+        if ($("#add_tour_form .slide").find("#id_form-" + i + "-isCoverPhoto").is(":checked")){
+            console.log("cover photo found");
+            coverPhoto = $("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0];
+        }
         var slide = {'image' : $("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0],
                     'text': $("#add_tour_form .slide").find("#id_form-" + i + "-text").val(),
                     'link': $("#add_tour_form .slide").find("#id_form-" + i + "-link").val(),
@@ -1249,17 +1254,19 @@ $("#addTour").on("click","#save_preview_button",function(ev){
     console.log(slides);
 
     var url = $(this).data("form"); //get the form url
-//    url = url + "?slides=" + $(".slide").length;
+    url = url + "?slides=" + $("#add_tour_form .slide").length;
     console.log("url:" + url);
     $("#tourPreview").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
-                 width: '95%',
-                 'max-width':'70%',
+                 width: '100%',
+                 'max-width':'95%',
                   height:'100%',
-                    'max-height':'70%',
-                    'top':'1%'
+                    'max-height':'90%',
+                    'top':'5%',
+                    'left':'2%'
 //                  'margin-left': function () {
-//            return window.pageXOffset-($(this).width() / 2);
+//
+//            return (window.width/2)-($(this).width()/2);
 //        }
     }); // display the modal on url load
 
@@ -1267,12 +1274,58 @@ $("#addTour").on("click","#save_preview_button",function(ev){
 
             $("#tourPreview").on("shown",function(){
         console.log("im shown");
-        var reader = new FileReader();
-        reader.onloadend = function (e) {
+        //cover photo
+        var coverPhotoReader = new FileReader();
+        coverPhotoReader.onloadend = function (e) {
             console.log("laodeddd");
-            $('#tour-preview-cover-photo img').attr('src', e.target.result);
+            $('#tour-preview-cover-photo img.cover-photo').attr('src', e.target.result);
         };
-        reader.readAsDataURL(coverPhoto);
+        coverPhotoReader.readAsDataURL(coverPhoto);
+
+        //team photo
+        var teamPhotoReader = new FileReader();
+        teamPhotoReader.onloadend = function(e){
+            $('#tour-preview-team-info img.team-photo').attr('src', e.target.result);
+        };
+        teamPhotoReader.readAsDataURL(teamPhoto);
+
+        //load slides
+//        tour-preview-slide-
+        for(var i=0;i<slides.length;i++){
+            console.log("building slides");
+            //team photo
+            var slideTeamPhoto = new FileReader();
+            slideTeamPhoto['index'] = i;
+            slideTeamPhoto.onloadend = function(e){
+                console.log("loading slide team photo ");
+                console.log(e);
+                $("#tour-preview-slide-"+ e.target.index+ " #student-blurb img.team-photo").attr('src', e.target.result);
+            };
+            slideTeamPhoto.readAsDataURL(teamPhoto);
+            //text
+            $("#tour-preview-slide-"+i+ " #student-blurb .bubble-tour-preview-text p.blurb").html(slides[i]['text']);
+            //audio
+            var slideAudio = new FileReader();
+            slideAudio['index'] = i;
+            slideAudio.onloadend = function(e){
+                $("#tour-preview-slide-"+ e.target.index+ " #student-blurb .bubble-tour-preview-text #slide-audio").attr('src', e.target.result);
+            };
+            slideAudio.readAsDataURL(slides[i]['audio']);
+
+            //link
+            $("#tour-preview-slide-"+i+ " #student-blurb .bubble-tour-preview-text p.link").html(slides[i]['link']);
+
+            //audio
+            var slidePhoto = new FileReader();
+            slidePhoto['index'] = i;
+            slidePhoto.onloadend = function(e){
+                $("#tour-preview-slide-"+ e.target.index+ " #tour-preview-image img.tour-preview-img").attr('src', e.target.result);
+            };
+            slidePhoto.readAsDataURL(slides[i]['image']);
+
+        }
+
+
     });
 
 

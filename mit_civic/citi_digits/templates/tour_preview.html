@@ -7,12 +7,28 @@
         {% endfor %}
       </ol>
       <!-- Carousel items -->
-      <div class="carousel-inner">
-        <div class="active item" id="tour-preview-cover">
-            <div id="tour-preview-cover-photo"><img></div>
+      <div class="carousel-inner container">
+        <div class="active item container" id="tour-preview-cover">
+            <div id="tour-preview-cover-photo" class="row"><img class="cover-photo"></div>
+            <div id="tour-preview-team-info" class="row"><div class="span2"><img class="team-photo"></div>
+                <div class="span10"><p>Author and Class info</p></div>
+            </div>
+
         </div>
-        {% for i in slides|make_list  %}
-        <div class="item" id="tour-preview-slide-{{ i }}"></div>
+        {% for i in slides  %}
+        <div class="item container" id="tour-preview-slide-{{ i }}">
+            <div class="row" id="student-blurb">
+                <div class="span2"><img class="team-photo"></div>
+                <div class="span10 bubble-tour-preview-text">
+                    <p class="blurb"></p>
+                    <audio src="" preload="auto" controls="" id="slide-audio"></audio>
+                    <p class="link"></p>
+                </div>
+            </div>
+            <div class="row" id="tour-preview-image">
+                <img class="tour-preview-img">
+            </div>
+        </div>
         {% endfor %}
       </div>
       <!-- Carousel nav -->

@@ -467,4 +467,5 @@ def tourPreview(request):
       Previews a tour
     """
     slideCount = request.GET.get("slides",0)
+    slideCount = range(0,int(slideCount))
     return render_to_response('tour_preview.html',{'slides':slideCount},context_instance=RequestContext(request))

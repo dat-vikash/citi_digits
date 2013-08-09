@@ -1420,3 +1420,12 @@ padding-top: 10px;
     left: 0;
     margin-left: 0;
 }
+
+#tour-preview-cover-photo img.cover-photo {
+    width: 100%;
+    height: 500px;
+}
+
+#tour-preview-cover-photo img.team-photo {
+    height: 200px;
+}
