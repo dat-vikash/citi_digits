@@ -1164,10 +1164,10 @@ $("#addTour").on("click","#add_tour_author",function(e){
 $("#addTour").on("click","#new-tour-slide",function(event){
      event.preventDefault();
     //get slide count
-    var count = $(".slide").length;
+    var count = $("#add_tour_form #workflow-slides .slide").length;
     console.log("count: " + count);
     //get even or odd for last slide
-    var currentSlideDecoration = $(".slide")[count-1].attributes["class"].value.indexOf("even") >= 0 ? "odd": "even";
+    var currentSlideDecoration = $("#add_tour_form #workflow-slides .slide")[count-1].attributes["class"].value.indexOf("even") >= 0 ? "odd": "even";
     //construct html
     var html = '<div id="slide_' + (count+1) +'" class="' + currentSlideDecoration + ' slide">' +
         '<p class="slide-header">Slide ' + (count +1)+ '</p>' +

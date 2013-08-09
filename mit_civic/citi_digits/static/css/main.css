@@ -1429,3 +1429,43 @@ padding-top: 10px;
 #tour-preview-cover-photo img.team-photo {
     height: 200px;
 }
+
+#tourPreview #student-blurb img.team-photo {
+    height: 200px;
+}
+
+#tourPreview #tour-preview-image {
+    margin-top: 2%;
+}
+
+#tourPreview #tour-preview-image img.tour-preview-img{
+    height: 400px;
+    width: 100%;
+}
+
+
+.bubble-tour-preview-text
+{
+position: relative;
+width: 620px;
+height: 250px;
+padding: 0px;
+background: greenyellow;
+-webkit-border-radius: 10px;
+-moz-border-radius: 10px;
+border-radius: 10px;
+}
+
+.bubble-tour-preview-text:after
+{
+content: "";
+position: absolute;
+top: 59px;
+left: -15px;
+border-style: solid;
+border-width: 15px 15px 15px 0;
+border-color: transparent greenyellow;
+display: block;
+width: 0;
+z-index: 1;
+}
