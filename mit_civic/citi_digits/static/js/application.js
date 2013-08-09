@@ -1201,29 +1201,14 @@ $("#addTour").on("click","#save_tour_button",function(event){
         url:request_url, // the file to call
         success: function(response) {
             //update view
-            console.log("SUCCESSS")
-//         $("#addInterviewModal #workflow").hide();
-//         $("#addInterviewModal #success-message").show();
+            console.log("SUCCESSS");
+            $("#create-tour-success").attr('class','');;
+            $("#add_tour_form").hide();
         },
         error: function(data){
             console.log(data.responseText);
      }
     });
-
-
-    //do post
-//    $.ajax({
-//     url: request_url,
-//     type:'POST',
-//     dataType: "json",
-//     data: values,
-//     success: function(data){
-//       console.log("SUCCESS POST");
-//     },
-//     error: function(data){
-//         console.log(data.responseText);
-//     }
-//  });
     //prevent click propagation
     return false;
 });
