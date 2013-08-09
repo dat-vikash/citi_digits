@@ -1,0 +1,70 @@
+<div class="tour-header">
+<p>Tours</p>
+</div><!-- interview-header -->
+<div id="toolbar" class="container-fluid">
+{#    <div class="span2">#}
+{#        <label class="checkbox">#}
+{#            {% if toolbar.player %}#}
+{#                <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" checked>Player Interviews#}
+{#            {%  else %}#}
+{#                <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" >Player Interviews#}
+{#            {% endif %}#}
+{#        </label>#}
+{#    </div>#}
+{#    <div class="span2">#}
+{#        <label class="checkbox">#}
+{#            {% if toolbar.retailer %}#}
+{#                <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" checked>Retailer Interviews#}
+{#            {% else %}#}
+{#                <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" >Retailer Interviews#}
+{#            {% endif %}#}
+{#        </label>#}
+{#    </div>#}
+{#    <div class="span1"></div>#}
+{#    <div class="span1"></div>#}
+{#    <div class=" styled-select2 span2 input-append">#}
+{#        <select id="team" class="interview-toolbar"  name="team">#}
+{#            {% if toolbar.searchTeam == 'ALL' %}#}
+{#                <option value="ALL" selected><b>Team</b> ALL</option>#}
+{#            {% else %}#}
+{#                <option value="ALL"><b>Team</b> ALL</option>#}
+{#            {% endif %}#}
+{#            {% for team in teams %}#}
+{#                {% if toolbar.searchTeam ==  team  %}#}
+{#                    <option value="{{ team }}" selected><b>Team</b> {{ team }}</option>#}
+{#                {% else %}#}
+{#                     <option value="{{ team }}"><b>Team</b> {{ team }}</option>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">#}
+{#    </div>#}
+{#    <div class=" styled-select2 span2 input-append">#}
+{#        <select id="class" class="interview-toolbar"  name="class">#}
+{#            {%  if toolbar.searchClass == 'ALL' %}#}
+{#                <option value="ALL"selected>ALL</option>#}
+{#            {% else %}#}
+{#                <option value="ALL">ALL</option>#}
+{#            {% endif %}#}
+{#            {% for class in classes %}#}
+{#                {% if toolbar.searchClass == class %}#}
+{#                    <option value="{{ class }}" selected>{{ class }}</option>#}
+{#                {% else %}#}
+{#                    <option value="{{ class }}">{{ class }}</option>#}
+{#                {% endif %}#}
+{#            {% endfor %}#}
+{#        </select>#}
+{#        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">#}
+{#    </div>#}
+{#    <div class="span1"></div>#}
+{#    <div class="span1"></div>#}
+</div><!-- toolbar-->
+<div id="tour-content" class="container-fluid">
+    {% for tour in tours %}
+        <div class="tour-stub row-fluid" id="{{ tour.id }}">
+            <p>sup</p>
+        </div>
+    {% endfor %}
+
+</div><!--interview content -->
+<div id="tour-pagination"></div>

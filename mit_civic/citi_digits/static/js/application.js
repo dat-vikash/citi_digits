@@ -1148,7 +1148,7 @@ function loadToursWithPagination(offset,date,klass){
         type: 'GET',
         url: 'tour/list/'+offset+'/?date=' + date + "&class="+klass,
         success: function(data){
-            $("#tours-tab").html(data);
+            $("#tours-tab #tour-grid").html(data);
 
         }
     });
