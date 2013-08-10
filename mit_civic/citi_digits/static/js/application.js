@@ -1250,15 +1250,13 @@ $("#addTour").on("click","#save_preview_button",function(ev){
     $("#tourPreview").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
-                 'max-width':'95%',
-                  height:'100%',
-                    'max-height':'90%',
+                 'max-width':'940px',
+                    'max-height':'900px',
                     'top':'5%',
-                    'left':'2%'
-//                  'margin-left': function () {
-//
-//            return (window.width/2)-($(this).width()/2);
-//        }
+//                    'left':'2%',
+                  'margin-left': function () {
+                    return window.pageXOffset+(document.width - (document.width - 940/2))/2;
+                }
     }); // display the modal on url load
 
    });

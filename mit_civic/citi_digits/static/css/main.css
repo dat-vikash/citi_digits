@@ -1422,16 +1422,19 @@ padding-top: 10px;
 }
 
 #tour-preview-cover-photo img.cover-photo {
-    width: 100%;
+    width: 940px;
     height: 500px;
 }
 
-#tour-preview-cover-photo img.team-photo {
-    height: 200px;
+#tour-preview-team-info img.team-photo {
+    height: 110px;
+    width: 110px;
 }
 
 #tourPreview #student-blurb img.team-photo {
-    height: 200px;
+    height: 110px;
+    width: 110px;
+    margin-top: 15%;
 }
 
 #tourPreview #tour-preview-image {
@@ -1440,7 +1443,7 @@ padding-top: 10px;
 
 #tourPreview #tour-preview-image img.tour-preview-img{
     height: 400px;
-    width: 100%;
+    width: 940px;
 }
 
 
@@ -1454,6 +1457,8 @@ background: greenyellow;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
+   margin-left: -3%;
+    margin-top: 2%;
 }
 
 .bubble-tour-preview-text:after
