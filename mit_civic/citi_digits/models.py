@@ -153,6 +153,16 @@ class Tour(models.Model):
     created_at = models.DateTimeField(auto_now_add = True,null=False)
     student = models.ForeignKey(Student)
 
+    def getAuthorString(self):
+        """
+        """
+        authors = TourAuthors.objects.filter(tour=self)
+        authorList = []
+        for author in authors:
+            authorList.append(author.student.firstName)
+        return " & ".join(authorList)
+
+
 class TourAuthors(models.Model):
     """
     Tour Authors

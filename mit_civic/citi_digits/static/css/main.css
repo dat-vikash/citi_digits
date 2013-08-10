@@ -1478,11 +1478,45 @@ z-index: 1;
 
 #tours-tab #tour-content div.tour-stub {
     display: inline-block;
-    min-width: 280px;
-    max-width: 280px;
-    /*width: 30%;*/
+    min-width: 290px;
+    max-width: 290px;
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 1%;
     margin-right: 2%;
 }
+
+#tours-tab #tour-content div.tour-stub #tour-stub-cover-photo{
+    margin: 1%;
+}
+
+#tours-tab #tour-content div.tour-stub #tour-stub-cover-photo img.cover-photo{
+    width: 280px;
+    height: 195px;
+}
+
+#tours-tab #tour-content div.tour-stub #tour-stub-student-blurb{
+    margin-top:2%;
+    margin-bottom: 2%;
+}
+
+#tours-tab #tour-content div.tour-stub #tour-stub-student-blurb div{
+    display: inline;
+     margin-top:2%;
+    margin-bottom: 2%;
+}
+
+#tours-tab #tour-content div.tour-stub #tour-stub-student-blurb{
+    display: inline;
+}
+
+#tours-tab #tour-content div.tour-stub #tour-stub-student-blurb p{
+    display: inline;
+}
+
+#tours-tab #tour-content div.tour-stub #tour-stub-student-blurb img.team-photo{
+    width: 80px;
+    height: 80px;
+}
+
+

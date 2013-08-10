@@ -5,8 +5,8 @@
     <div class="styled-select2 span2 input-append">
         <select id="date-sort" class="tour-toolbar"  name="date-sort">
             {% if toolbar.sortDate == "DESC" %}
-                <option value="DESC" selected><b>Sort By</b> Date Descending</option>
-                <option value="ASC"><b>Sort By</b> Date Ascending</option>
+                <option value="DESC" selected><b>Sort By</b> Date Des</option>
+                <option value="ASC"><b>Sort By</b> Date Asc</option>
             {% else %}
                 <option value="DESC"><b>Sort By</b> Date Desc</option>
                 <option value="ASC" selected><b>Sort By</b> Date Asc</option>
@@ -31,67 +31,23 @@
         </select>
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
-{#    <div class="span2">#}
-{#        <label class="checkbox">#}
-{#            {% if toolbar.player %}#}
-{#                <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" checked>Player Interviews#}
-{#            {%  else %}#}
-{#                <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" >Player Interviews#}
-{#            {% endif %}#}
-{#        </label>#}
-{#    </div>#}
-{#    <div class="span2">#}
-{#        <label class="checkbox">#}
-{#            {% if toolbar.retailer %}#}
-{#                <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" checked>Retailer Interviews#}
-{#            {% else %}#}
-{#                <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" >Retailer Interviews#}
-{#            {% endif %}#}
-{#        </label>#}
-{#    </div>#}
-{#    <div class="span1"></div>#}
-{#    <div class="span1"></div>#}
-{#    <div class=" styled-select2 span2 input-append">#}
-{#        <select id="team" class="interview-toolbar"  name="team">#}
-{#            {% if toolbar.searchTeam == 'ALL' %}#}
-{#                <option value="ALL" selected><b>Team</b> ALL</option>#}
-{#            {% else %}#}
-{#                <option value="ALL"><b>Team</b> ALL</option>#}
-{#            {% endif %}#}
-{#            {% for team in teams %}#}
-{#                {% if toolbar.searchTeam ==  team  %}#}
-{#                    <option value="{{ team }}" selected><b>Team</b> {{ team }}</option>#}
-{#                {% else %}#}
-{#                     <option value="{{ team }}"><b>Team</b> {{ team }}</option>#}
-{#                {% endif %}#}
-{#            {% endfor %}#}
-{#        </select>#}
-{#        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">#}
-{#    </div>#}
-{#    <div class=" styled-select2 span2 input-append">#}
-{#        <select id="class" class="interview-toolbar"  name="class">#}
-            {%  if toolbar.searchClass == 'ALL' %}
-                <option value="ALL"selected>ALL</option>
-            {% else %}
-                <option value="ALL">ALL</option>
-            {% endif %}
-            {% for class in classes %}
-                {% if toolbar.searchClass == class %}
-                    <option value="{{ class }}" selected>{{ class }}</option>
-                {% else %}
-                    <option value="{{ class }}">{{ class }}</option>
-                {% endif %}
-            {% endfor %}
-{#        </select>#}
-{#        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">#}
-{#    </div>#}
-{#    <div class="span1"></div>#}
-{#    <div class="span1"></div>#}
 </div><!-- toolbar-->
 <div id="tour-content" class="container-fluid">
     {% for tour in tours %}
         <div class="tour-stub row-fluid" id="{{ tour.id }}">
-            <p><img src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}"/> </p>
+            <div class="container-fluid" >
+                <div id="tour-stub-cover-photo" class="row-fluid"><img class="cover-photo" src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}"></div>
+                <div id="tour-stub-student-blurb" class="row-fluid">
+                    <div class="span4">
+                        <img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}">
+                    </div>
+                    <div class="span8" >
+                        <p><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p>
+                        <br>
+                        <p>{{ tour.created_at }}</p>
+                    </div>
+                </div>
+            </div>
         </div>
     {% endfor %}
 
