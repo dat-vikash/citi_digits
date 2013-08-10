@@ -1332,3 +1332,19 @@ $("#tour-grid").on("change",".tour-toolbar", function(e){
     //reload interviews
     loadToursWithPagination(offset,values['sort-date'],values['sort-class']);
 });
+
+$("#tours-tab").on("click",".tour-stub",function(event){
+   var url = "/tour/" + $(this).attr("id") + "/"; //interview id from div#id
+    $("#tourPreview").load(url,function() { // load the url into the modal
+            $(this).modal('show').css({
+                 width: '100%',
+                 'max-width':'940px',
+                    'max-height':'900px',
+                    'top':'5%',
+                  'margin-left': function () {
+             return window.pageXOffset+(document.width - (document.width - 940/2))/2;
+        }
+    }); // display the modal on url load
+
+        });
+});

@@ -162,6 +162,11 @@ class Tour(models.Model):
             authorList.append(author.student.firstName)
         return " & ".join(authorList)
 
+    def getTourSlides(self):
+        """
+        """
+        return TourSlide.objects.filter(tour=self).order_by("sequence")
+
 
 class TourAuthors(models.Model):
     """

@@ -1,0 +1,38 @@
+<div class="modal-body">
+    <div id="myCarousel" class="carousel slide">
+      <ol class="carousel-indicators">
+        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+        {% for i in tour.getTourSlides  %}
+                <li data-target="#myCarousel" data-slide-to="{{ i }}"></li>
+        {% endfor %}
+      </ol>
+      <!-- Carousel items -->
+      <div class="carousel-inner container">
+        <div class="active item container" id="tour-preview-cover">
+            <div id="tour-slide-cover-photo" class="row"><img class="cover-photo" src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}"></div>
+            <div id="tour-slide-team-info" class="row"><div class="span2"><img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}"></div>
+                <div class="span10"><p><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p></div>
+            </div>
+
+        </div>
+        {% for slide in tour.getTourSlides  %}
+        <div class="item container">
+            <div class="row" id="student-blurb">
+                <div class="span2"><img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}"></div>
+                <div class="span10 bubble-tour-preview-text">
+                    <p class="blurb">{{ slide.text }}</p>
+                    <audio src="{{ MEDIA_URL }}/{{ slide.audio }}" preload="auto" controls="" id="slide-audio"></audio>
+                    <p class="link">{{ slide.link }}</p>
+                </div>
+            </div>
+            <div class="row" id="tour-image">
+                <img class="tour-img" src="{{ MEDIA_URL }}/{{ slide.photo }}">
+            </div>
+        </div>
+        {% endfor %}
+      </div>
+      <!-- Carousel nav -->
+      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+    </div>
+</div>

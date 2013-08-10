@@ -1520,3 +1520,27 @@ z-index: 1;
 }
 
 
+#tour-slide-cover-photo img.cover-photo {
+    width: 940px;
+    height: 500px;
+}
+
+#tour-slide-team-info img.team-photo {
+    height: 110px;
+    width: 110px;
+}
+
+#tourPreview #student-blurb img.team-photo {
+    height: 110px;
+    width: 110px;
+    margin-top: 15%;
+}
+
+#tourPreview #tour-image {
+    margin-top: 2%;
+}
+
+#tourPreview #tour-image img.tour-img{
+    height: 400px;
+    width: 940px;
+}
