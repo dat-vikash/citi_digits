@@ -432,7 +432,7 @@ def tour(request):
         #validate forms
         if tourForm.is_valid() and slideFormset.is_valid():
             #create tour
-            newTour = Tour(title=tourForm.cleaned_data['title'],teamPhoto=tourForm.cleaned_data["teamPhoto"])
+            newTour = Tour(title=tourForm.cleaned_data['title'],teamPhoto=tourForm.cleaned_data["teamPhoto"],student=currentStudent)
             newTour.save()
 
             #create tour authors
@@ -450,7 +450,7 @@ def tour(request):
                           link=slide.cleaned_data['link'],tour=newTour,sequence=slideIdx,audio=slide.cleaned_data['audio']).save()
                 if(slide.cleaned_data['isCoverPhoto']):
                     #set cover photo
-                    newTour.coverPhoto = slide.cleaned_data['image'];
+                    newTour.coverPhoto = slide.cleaned_data['image']
                     newTour.save()
                 slideIdx= slideIdx + 1
 
@@ -483,5 +483,43 @@ def tourList(request,offset):
     """
      Handles displaying tour grid
     """
-    tours = Tour.objects.all()
-    return render_to_response('tours.html',{'tours':tours},context_instance=RequestContext(request))
+    # tours = Tour.objects.all()
+    # return render_to_response('tours.html',{'tours':tours},context_instance=RequestContext(request))
+
+    #store toolbar form info
+    toolbar={'searchClass':'ALL',
+             'sortDate':'DESC'}
+
+    #get search teams
+    sortDate = request.GET.get("sort-date","DESC")
+    print "date: " + sortDate
+    if sortDate == "":sortDate = "DESC"
+    print "date: " + sortDate
+
+    #get search class
+    searchClass = request.GET.get("sort-class","ALL")
+    if searchClass == "":searchClass = "ALL"
+
+    #build query
+    kwargs = {}
+    if(searchClass != "ALL"):
+        kwargs['student__team__teacher__className__exact'] = searchClass
+        toolbar['searchClass'] = searchClass
+
+
+    #get tours
+    tours = None
+    if(sortDate == "DESC"):
+        tours = Tour.objects.filter(**kwargs).order_by('-created_at')
+        toolbar['sortDate'] = "DESC"
+    if(sortDate == "ASC"):
+        tours = Tour.objects.filter(**kwargs).order_by('created_at')
+        toolbar['sortDate'] = "ASC"
+
+
+    #get classes
+    classes = Teacher.objects.values_list('className', flat=True)
+
+    #render
+    print toolbar
+    return render_to_response('tours.html',{'tours':tours, 'classes':classes,'toolbar':toolbar},context_instance=RequestContext(request))

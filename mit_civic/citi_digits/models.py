@@ -151,6 +151,7 @@ class Tour(models.Model):
     teamPhoto = models.FileField(upload_to="photo/%Y_%m_%d_%h_%M_%s_team_photo")
     coverPhoto = models.FileField(upload_to="photo/%Y_%m_%d_%h_%M_%s_cover_photo")
     created_at = models.DateTimeField(auto_now_add = True,null=False)
+    student = models.ForeignKey(Student)
 
 class TourAuthors(models.Model):
     """

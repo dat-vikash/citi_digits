@@ -1146,7 +1146,7 @@ function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,t
 function loadToursWithPagination(offset,date,klass){
     $.ajax({
         type: 'GET',
-        url: 'tour/list/'+offset+'/?date=' + date + "&class="+klass,
+        url: 'tour/list/'+offset+'/?sort-date=' + date + "&sort-class="+klass,
         success: function(data){
             $("#tours-tab #tour-grid").html(data);
 
@@ -1319,4 +1319,16 @@ $("#addTour").on("click","#save_preview_button",function(ev){
 
 
 return false;
+});
+
+
+$("#tour-grid").on("change",".tour-toolbar", function(e){
+   console.log("CHANGE DETECED");
+    //get search values
+    var values = {'sort-date':$("#date-sort").val(),
+                  'sort-class':$("#class-sort").val()};
+    var offset = 1;
+    console.log(values);
+    //reload interviews
+    loadToursWithPagination(offset,values['sort-date'],values['sort-class']);
 });
