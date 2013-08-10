@@ -1200,7 +1200,7 @@ $("#addTour").on("click","#save_tour_button",function(event){
     $("#add_tour_form").ajaxSubmit({
         url:request_url, // the file to call
         success: function(response) {
-            if(response.indexOf("errorlist") >=0){
+            if(response.responseText.indexOf("errorlist") >=0){
                 //there were errors in the forms
                 $("#addTour").html(response);
             }else{
