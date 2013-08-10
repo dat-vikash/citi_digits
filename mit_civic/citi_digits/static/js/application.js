@@ -1200,10 +1200,16 @@ $("#addTour").on("click","#save_tour_button",function(event){
     $("#add_tour_form").ajaxSubmit({
         url:request_url, // the file to call
         success: function(response) {
-            //update view
+            if(response.indexOf("errorlist") >=0){
+                //there were errors in the forms
+                $("#addTour").html(response);
+            }else{
+                //no errors, show success
+                $("#create-tour-success").attr('class','');;
+                $("#add_tour_form").hide();
+            }
             console.log("SUCCESSS");
-            $("#create-tour-success").attr('class','');;
-            $("#add_tour_form").hide();
+
         },
         error: function(data){
             console.log(data.responseText);

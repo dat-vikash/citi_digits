@@ -417,6 +417,12 @@ def tour(request):
     """
      Handles adding a tour
     """
+    current_user = request.user
+    #get class
+    currentStudent = Student.objects.get(pk=current_user.entityId)
+    studentClass = currentStudent.team.teacher.className
+    students = Student.objects.filter(team__teacher__className=studentClass)
+
     SlideFormSet = formset_factory(forms.TourSlide,extra=1)
     if request.method == 'POST':
         #create forms
@@ -431,7 +437,6 @@ def tour(request):
 
             #create tour authors
             for authorId in request.POST.getlist('authors[]',[]):
-                print "getting authors"
                 #get student
                 student = Student.objects.get(pk=authorId)
                 #create tour author
@@ -449,12 +454,11 @@ def tour(request):
                     newTour.save()
                 slideIdx= slideIdx + 1
 
+
              #return response
             json_data = json.dumps({"HTTPRESPONSE": 200})
             return HttpResponse(json_data, mimetype="application/json")
         else:
-            #form is invalid, return errors
-            students = Student.objects.all()
             return render_to_response('add_a_tour.html',{'tour':tourForm,'slide_formset':slideFormset,'students':students},context_instance=RequestContext(request))
 
     else:
@@ -464,7 +468,6 @@ def tour(request):
         #tour slides
         slide_formset = SlideFormSet()
         #students
-        students = Student.objects.all()
         return render_to_response('add_a_tour.html',{'tour':tour,'slide_formset':slide_formset,'students':students},context_instance=RequestContext(request))
 
 

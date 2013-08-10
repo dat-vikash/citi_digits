@@ -59,10 +59,10 @@ class TourForm(forms.Form):
     teamPhoto = forms.ImageField(required=False)
 
 class TourSlide(forms.Form):
-    image = forms.ImageField()
+    image = forms.ImageField(required=True)
     isCoverPhoto = forms.BooleanField(widget=forms.CheckboxInput(),label="Use as Cover Photo",required=False)
     text = forms.CharField(widget=forms.Textarea())
-    link =forms.CharField(widget=forms.TextInput())
+    link =forms.CharField(widget=forms.TextInput(),required=True)
     audio = forms.FileField(required=False)
 
 

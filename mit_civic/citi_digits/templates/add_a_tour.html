@@ -6,6 +6,7 @@
 </div><!-- interview-header -->
 <form id="add_tour_form" enctype="multipart/form-data" class=" tour-form" method="post" action="/tour/new/">
     <div class="modal-body">
+    {{ form.non_field_errors }}
         <div id="tour-menu-controls" class="">
             <ul class="tour-menu">
                 <li><button class="btn btn-primary" id="save_preview_button" data-form="/tour/preview/">Preview</button> </li>
@@ -34,9 +35,11 @@
                     <p id="add_tour_author">+ Add a student</p>
                 </div>
         <br>
+            {{ tour.teamPhoto.errors }}
             <label>Add a team photo</label>
             {{ tour.teamPhoto }}
         <br>
+            {{ tour.title.errors}}
             <label>Title of your tour</label>
             {{ tour.title }}
         </div>
