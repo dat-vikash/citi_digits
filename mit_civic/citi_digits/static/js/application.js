@@ -10,6 +10,7 @@
 var map_popups = [];
 var map_count = 0;
 var mainLayer = null;
+var WINNINGS_SPENDINGS_LAYER = null;
 var MY_MAP = null;
 var PLAYER_LAYER = null;
 var RETAILER_LAYER = null;
@@ -320,7 +321,7 @@ function getPopupUrlFrom(activeLayer,properties){
             properties.Daily_Sale+"/"+properties.Daily_Win+"/"+properties.Daily_Inco+"/"+properties.Net_Win +"/";
 }
 
-$(".map-ui").on("click","li", function (e) {
+$(".map-ui").on("click","a", function (e) {
     e.preventDefault();
     $(".map-ui li.active #map-ui-subnav-content").hide();
     $(".map-ui li.active").removeClass("active");
@@ -1130,6 +1131,76 @@ function loadInterviews(interviewType){
         }
     });
 }
+
+
+$("#map-nav").on("click","#map-city-level-view",function(e){
+    console.log("fuck");
+   //reset zoom to city level
+    MY_MAP.map.setZoom(13);
+    //clear winnings markers if any
+    if(WINNINGS_SPENDINGS_LAYER!=null){
+        MY_MAP.map.removeLayer(WINNINGS_SPENDINGS_LAYER);
+        WINNINGS_SPENDINGS_LAYER = null;
+    }
+});
+
+$("#map-nav").on("click","#map-street-level-view",function(e){
+    e.preventDefault();
+   //reset zoom to city level
+    MY_MAP.map.setZoom(16);
+    //show winnings markers if not already shown
+    if(WINNINGS_SPENDINGS_LAYER==null){
+        loadAvgWinningsMarkers();
+    }
+});
+
+
+function loadAvgWinningsMarkers(){
+    //create scale
+    var scale = d3.scale.linear().domain([0,25000]).range([5,200]);
+    var markerLayer = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
+                        var radius = 200;
+                        if (feature.properties.wins_ths <=25000){
+                            radius = scale(feature.properties.wins_ths);
+                        }
+
+                            return L.circleMarker(latlng, {
+                                        radius: radius,
+                                        fillColor: "#9518ed",
+                                        color: "#000",
+                                        weight: 1,
+                                        opacity: 1,
+                                        fillOpacity:.8,
+                                        zIndex: 99999
+                                    });
+            }});
+
+    markerLayer.on("click",function(e){
+        console.log("I WAS CLICKED");
+        var marker = e.layer,
+        feature = marker.feature;
+        console.log("HERRO IM: " + feature.properties.FIRST_Plac );
+                // Create custom popup content
+        var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p><br>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' player won $' + feature.properties.wins_ths+'</p></div>';
+
+        marker.bindPopup(popupContent,{
+        closeButton: true,
+        minWidth: 320
+    });
+    });
+    MY_MAP.map.addLayer(markerLayer);
+    WINNINGS_SPENDINGS_LAYER = markerLayer;
+}
+
+function removeSHIT(){
+    MY_MAP.map.removeLayer(WINNINGS_SPENDINGS_LAYER);
+}
+
+
+
+
+
 
 function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,team,klass){
     console.log("loadinterviewwithpagination");

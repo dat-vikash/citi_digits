@@ -387,6 +387,25 @@ body {
     /*border-top-color: #FFF;*/
 }
 
+.map-ui #map-view-level{
+    margin-top:2%;
+}
+
+.map-ui #map-view-level div{
+    background-color: #b0b6bd;
+}
+
+.map-ui #map-view-level div.active{
+    border-style:solid;
+    border-width: 3px;
+    border-color: #000000;
+}
+
+.map-ui #map-view-level div p{
+    display: inline;
+}
+
+
 
 /*
  * Interview related stylings
