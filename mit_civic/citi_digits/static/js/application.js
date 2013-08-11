@@ -1142,6 +1142,13 @@ $("#map-nav").on("click","#map-city-level-view",function(e){
         MY_MAP.map.removeLayer(WINNINGS_SPENDINGS_LAYER);
         WINNINGS_SPENDINGS_LAYER = null;
     }
+    //set div to active
+    $(this).attr("class","span6 active");
+    $("#map-street-level-view").attr("class","span6");
+
+    //switch graphs
+    $("#map-legend-street").attr('class','hide');
+    $("#AVG_WIN #map-legend").attr('class','');
 });
 
 $("#map-nav").on("click","#map-street-level-view",function(e){
@@ -1152,6 +1159,13 @@ $("#map-nav").on("click","#map-street-level-view",function(e){
     if(WINNINGS_SPENDINGS_LAYER==null){
         loadAvgWinningsMarkers();
     }
+    //set to active
+     $(this).attr("class","span6 active");
+    $("#map-city-level-view").attr("class","span6");
+
+    //switch graphs
+    $("#map-legend-street").attr('class','');
+    $("#AVG_WIN #map-legend").attr('class','hide');
 });
 
 

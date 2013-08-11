@@ -405,7 +405,9 @@ body {
     display: inline;
 }
 
-
+.map-ui #map-legend-street{
+    float: left;
+}
 
 /*
  * Interview related stylings
