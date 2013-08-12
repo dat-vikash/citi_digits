@@ -1210,6 +1210,123 @@ $("#map-nav").on("click","#map-street-level-view-spendings",function(e){
     $("#AVG_SPEND #map-legend").attr('class','hide');
 });
 
+$("#map-nav").on("click","#map-city-level-view-netgainloss",function(e){
+    console.log("fuck");
+   //reset zoom to city level
+    MY_MAP.map.setZoom(13);
+    //clear winnings markers if any
+    if(SPENDINGS_LAYER!=null && WINNINGS_LAYER!=null){
+        MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+        SPENDINGS_LAYER = null;
+        MY_MAP.map.removeLayer(WINNINGS_LAYER);
+        WINNINGS_LAYER = null;
+    }
+    //set div to active
+    $(this).attr("class","span6 active");
+    $("#map-street-level-view-netgainloss").attr("class","span6");
+
+    //switch graphs
+    $("#NET_GAIN_LOSS #map-legend-street").attr('class','hide');
+    $("#NET_GAIN_LOSS #map-legend").attr('class','');
+});
+
+$("#map-nav").on("click","#map-street-level-view-netgainloss",function(e){
+    e.preventDefault();
+   //reset zoom to city level
+    MY_MAP.map.setZoom(16);
+    //show winnings markers if not already shown
+    if(SPENDINGS_LAYER==null){
+        loadNetGainLossMarkers();
+    }
+    //set to active
+     $(this).attr("class","span6 active");
+    $("#map-city-level-view-netgainloss").attr("class","span6");
+
+    //switch graphs
+    $("#NET_GAIN_LOSS #map-legend-street").attr('class','');
+    $("#NET_GAIN_LOSS #map-legend").attr('class','hide');
+});
+
+
+function loadNetGainLossMarkers(){
+    //load wins
+    //create scale
+    var scale = d3.scale.linear().domain([0,25000]).range([5,200]);
+    var markerLayer = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
+                        var radius = 200;
+                        if (feature.properties.wins_ths <=25000){
+                            radius = scale(feature.properties.wins_ths);
+                        }
+
+                            return L.circleMarker(latlng, {
+                                        radius: radius,
+                                        fillColor: "#9518ed",
+                                        color: "#000",
+                                        weight: 1,
+                                        opacity: 1,
+                                        fillOpacity:.5
+                                    });
+            }});
+
+    markerLayer.on("click",function(e){
+        console.log("I WAS CLICKED");
+        var marker = e.layer,
+        feature = marker.feature;
+        console.log("HERRO IM: " + feature.properties.FIRST_Plac );
+                // Create custom popup content
+        var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p><br>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent $' + feature.properties.sales+' and won $' +
+            feature.properties.wins_ths +'.</p><br>'+
+            '<p>$' + feature.properties.wins_ths + ' - ' + '$' + feature.properties.sales + ' = ' + (feature.properties.wins_ths - feature.properties.sales) + '</p>' +
+            '</div>';
+
+        marker.bindPopup(popupContent,{
+        closeButton: true,
+        minWidth: 320
+    });
+    });
+    MY_MAP.map.addLayer(markerLayer);
+    WINNINGS_LAYER = markerLayer;
+
+    //load spending
+    var markerLayerSpending = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
+                        var radius = 200;
+                        if (feature.properties.wins_ths <=25000){
+                            radius = scale(feature.properties.sales);
+                        }
+
+                            return L.circleMarker(latlng, {
+                                        radius: radius,
+                                        fillColor: "#00ec66",
+                                        color: "#000",
+                                        weight: 1,
+                                        opacity: 1,
+                                        fillOpacity:.5
+                                    });
+            }});
+
+    markerLayerSpending.on("click",function(e){
+        console.log("I WAS CLICKED");
+        var marker = e.layer,
+        feature = marker.feature;
+        // Create custom popup content
+        var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p><br>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent $' + feature.properties.sales+' and won $' +
+            feature.properties.wins_ths +'.</p><br>'+
+            '<p>$' + feature.properties.wins_ths + ' - ' + '$' + feature.properties.sales + ' = ' + (feature.properties.wins_ths - feature.properties.sales) + '</p>' +
+            '</div>';
+
+
+        marker.bindPopup(popupContent,{
+        closeButton: true,
+        minWidth: 320
+    });
+    });
+    MY_MAP.map.addLayer(markerLayerSpending);
+    SPENDINGS_LAYER = markerLayerSpending;
+
+}
+
 function loadAvgWinningsMarkers(){
     //create scale
     var scale = d3.scale.linear().domain([0,25000]).range([5,200]);
