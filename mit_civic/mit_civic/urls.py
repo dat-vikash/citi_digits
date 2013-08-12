@@ -24,6 +24,7 @@ urlpatterns = patterns('',
         url(r'^tour/list/(?P<offset>.+)/$', 'citi_digits.views.tourList', name='tour_list'),
         url(r'^tour/preview/$', 'citi_digits.views.tourPreview', name='tour_preview'),
         url(r'^tour/(?P<id>.+)/$', 'citi_digits.views.tourDetails', name='tour_details'),
+        url(r'^about/$', 'citi_digits.views.about', name='about'),
 
 
     # Examples:

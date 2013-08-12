@@ -1565,3 +1565,39 @@ z-index: 1;
     height: 400px;
     width: 940px;
 }
+
+#about-container {
+    background-color: #025ff1;
+    text-align: center;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+}
+
+#about-container p.about-header {
+    padding-top: 2%;
+    color: #ffffff;
+    font-size: 30px;
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    text-decoration: underline;
+    text-decoration-color: #FFFFFF;
+}
+
+#about-container p.about-body {
+    font-size: 22px;
+    color: #00c9c8;
+    padding-left: 3%;
+padding-right: 3%;
+padding-top: 1%;
+}
+
+#about-container p.about-header-sub,
+#about-container p.about-header-sub a{
+    padding-top: 1%;
+    padding-bottom: 1%;
+    color: #ffffff;
+    font-size: 24px;
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    text-decoration: underline;
+    text-decoration-color: #FFFFFF;
+}
+
+

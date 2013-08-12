@@ -528,3 +528,6 @@ def tourDetails(request,id):
     """
     tour = Tour.objects.get(pk=id)
     return render_to_response('tour_details.html',{'tour':tour},context_instance=RequestContext(request))
+
+def about(request):
+    return render_to_response('about.html',{},context_instance=RequestContext(request))

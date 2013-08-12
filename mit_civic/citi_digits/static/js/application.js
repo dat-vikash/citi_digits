@@ -933,12 +933,28 @@ $("#interviews").click(function(e){
     //show add interview button
     $("#add-interview").parent().attr({'class':''});
     $("#add-tour").parent().attr({'class':'hidden'});
+    $("#main-container").css('background-color','#b0b6bd');
+    $("body").css('background-color','#b0b6bd');
+
+
 });
 
 $("#about").click(function(e){
     //hidden interview button
     $("#add-interview").parent().attr({'class':'hidden'});
     $("#add-tour").parent().attr({'class':'hidden'});
+
+    //load in content
+    $.ajax({
+        type: 'GET',
+        url: 'about/',
+        success: function(data){
+            $("#about-tab").html(data);
+            $("#main-container").css('background-color','#025ff1');
+            $("body").css('background-color','#025ff1');
+        }
+    });
+
 });
 
 $("#tours").click(function(e){
@@ -949,6 +965,8 @@ $("#tours").click(function(e){
     $("#add-tour").parent().attr({'class':''});
     $("#addTour").hide();
     $("#tour-grid").show();
+    $("#main-container").css('background-color','#b0b6bd');
+    $("body").css('background-color','#b0b6bd');
 });
 
 
@@ -956,6 +974,8 @@ $("#main-map").click(function(e){
     //hidden interview button
     $("#add-interview").parent().attr({'class':'hidden'});
     $("#add-tour").parent().attr({'class':'hidden'});
+    $("#main-container").css('background-color','#b0b6bd');
+    $("body").css('background-color','#b0b6bd');
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
