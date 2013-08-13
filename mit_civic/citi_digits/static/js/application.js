@@ -27,6 +27,7 @@ $().ready(new function(){
     mainLayer = myMap.neighborhoodLayer;
     MY_MAP = myMap;
 
+    $("#map-tab").attr("class","tab-pane");
     //mav nav
     map_popups.push($("#map-popup-1"));
     map_popups.push($("#map-popup-2"));

@@ -1,4 +1,5 @@
 import json
+from random import randint
 import django
 from django.db import transaction
 from django.forms.formsets import formset_factory
@@ -17,8 +18,15 @@ def index(request):
     """
      Loads base index
     """
+     #get random tour
+    tourCount = Tour.objects.count()
+    tour = Tour.objects.get(pk=(randint(1,tourCount)))
+
+    #get random interview
+    interviewCount = Interview.objects.count()
+    interview = Interview.objects.get(pk=(randint(1,interviewCount)))
     current_user = request.user
-    return render_to_response('index.html', {},
+    return render_to_response('index.html', {'tour':tour,'interview':interview},
                               context_instance=RequestContext(request))
 
 
@@ -536,4 +544,13 @@ def home(request):
     """
       Home page
     """
-    tour =
+    print "in home page"
+    #get random tour
+    tourCount = Tour.objects.count()
+    tour = Tour.objects.get(pk=(randint(1,tourCount)))
+
+    #get random interview
+    interviewCount = Interview.objects.count()
+    interview = Interview.objects.get(pk=(randint(1,interviewCount)))
+
+    return render_to_response('home.html',{'tour':tour,'interview':interview}, context_instance=RequestContext(request))

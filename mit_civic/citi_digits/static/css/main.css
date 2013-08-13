@@ -1600,4 +1600,30 @@ padding-top: 1%;
     text-decoration-color: #FFFFFF;
 }
 
+#home-page-container img {
+    width: 100%;
+    height: 354px;
+}
 
+
+#home-page-container .no-margin{
+    margin-left: 0px;
+}
+
+#home-page-container .blue-back{
+    background-color: #00c9c8;
+    /*width: 50%;*/
+    height: 354px;
+}
+
+#home-page-container p.home-page-info {
+    line-height: 100%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+    margin-left: 10%;
+    margin-right: 10%;
+    color: #025ff1;
+    font-size: 33px;
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    text-align: center;
+}
