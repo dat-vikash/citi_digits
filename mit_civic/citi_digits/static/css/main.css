@@ -12,6 +12,17 @@ body {
 }
 }
 
+@media (max-width: 979px) and (min-width: 768px){
+.span4.brand {
+    width: 272px;
+}
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+.span4.nav {
+    width: 237px;
+}
+}
 /*
  * Overrides for navbar
 */
