@@ -531,3 +531,9 @@ def tourDetails(request,id):
 
 def about(request):
     return render_to_response('about.html',{},context_instance=RequestContext(request))
+
+def home(request):
+    """
+      Home page
+    """
+    tour =
