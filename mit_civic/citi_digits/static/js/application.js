@@ -952,6 +952,14 @@ $("#about").click(function(e){
             $("#about-tab").html(data);
             $("#main-container").css('background-color','#025ff1');
             $("body").css('background-color','#025ff1');
+            $("#about-main-page").on("click","#about-read-more-link",function(e){
+                $("#about-main-page").attr("class","hidden");
+                $("#about-read-more").attr("class","");
+            });
+            $("#about-read-more").on("click","#back-to-about",function(e){
+                $("#about-main-page").attr("class","");
+                $("#about-read-more").attr("class","hidden");
+            });
         }
     });
 
