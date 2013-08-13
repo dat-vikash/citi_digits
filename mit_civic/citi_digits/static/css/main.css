@@ -70,8 +70,14 @@ body {
     padding-left: 10%;
     font-size: 30px;
     margin-top:6px;
-    color: rgb( 2, 95, 241 );
-    font-family: "Helvetica Neue";
+    color: #025ff1;
+    font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+
+}
+
+.navbar .brand-fade {
+    font-weight: normal;
+    color: #00c9c8;
 }
 
 .nav-collapse .nav > li > a,

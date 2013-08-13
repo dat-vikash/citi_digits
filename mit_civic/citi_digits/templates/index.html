@@ -34,20 +34,17 @@
 
     <div class="navbar navbar-fixed-top">
       <div class="navbar-inner">
-        <div class="container">
+        <div class="container-fluid">
           <div class="nav-collapse collapse">
-            <ul class="nav">
+            <ul class="nav span4">
               <li class=""><a href="#map-tab" data-toggle="tab" id="main-map">MAP</a></li>
-              <li class="divider-vertical"></li>
               <li><a href="#interviews-tab" data-toggle="tab" id="interviews">INTERVIEWS</a></li>
-              <li class="divider-vertical"></li>
               <li><a href="#about-tab" data-toggle="tab" id="about">ABOUT</a></li>
-              <li class="divider-vertical"></li>
               <li><a href="#tours-tab" data-toggle="tab" id="tours">TOURS</a></li>
             </ul>
-            <h4 class="brand">City Digits: Local Lotto</h4>
+            <p class="brand span4">City Digits: <b class="brand-fade"> Local Lotto</b></p>
             {% if user.is_authenticated %}
-              <div id="logged_in_nav_bar">
+              <div id="logged_in_nav_bar span4">
                 <ul class="nav pull-right">
                     <li class="hidden"><button class="btn interview-button" aria-hidden="true" id="add-interview" data-form="/interview/new/">Add Interview</button></li>
                     <li class="hidden"><button class="btn interview-button" aria-hidden="true" id="add-tour" data-form="/tour/new/">Add Tour</button></li>
@@ -55,10 +52,9 @@
                 </ul><!-- ul -->
               </div><!-- logged_in_nav_bar -->
             {% else %}
-              <div id="login_nav_bar">
+              <div id="login_nav_bar span4">
                 <ul class="nav pull-right">
                     <li><a class="membership" href="#" data-form="/signup">SIGN UP</a></li>
-                    <li class="divider-vertical"></li>
                     <li><a href="" class="membership-login" data-form="/login">LOGIN</a></li>
                 </ul><!-- ul -->
               </div><!-- login_nav_bar -->
