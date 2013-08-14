@@ -10,6 +10,7 @@
         <div class="even">
             <p class="explain-text">In {{ neighborhood }}, players spent ${{ spent|floatformat:2  }} of every $100 earned on lottery tickets.The median
             househould earns ${{ income|floatformat:2 }} in a day.</p>
+            <br>
             <table class="math-table-center">
                 <tr>
                     <td><b class="spent-blue">{{ spent|floatformat:2 }}</b> spent on lottery tickets</td>
@@ -23,10 +24,11 @@
                     <td><b class="spent-blue"> ${{ income|floatformat:2 }} </b> earned</td>
                 </tr>
             </table>
+            <br>
         </div>
-        <br>
         <div class="odd">
-            <p class="explain-text-odd">Lets visualize that breakdown </p>
+            <p class="explain-text-odd"><br/>Let's visualize that breakdown.</p>
+             <br>
             <div id="explain-chart">
                 <input type="hidden" value="{{ income }}" id="median_income_value" >
                 <div id="explain-chart-text" class="bubble-explain-chart-text"></div>
@@ -39,11 +41,30 @@
                     <b class="spent-blue">${{ leftOver|floatformat:2 }}</b> =
                     <b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets
                 </p>
-
                 </div>
             </div>
+        <br>
         </div>
         <div class="even">
+            <br>
+            <p class="explain-text">So how much does a household in {{ neighborhood }} spend on lottery tickets in a year?</p>
+            <table class="math-table-center">
+                <tr>
+                    <td><b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets</td>
+                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-top.png" class="percent-income-365"></td>
+                    <td><b class="spent-blue">${{ yearSpent|floatformat:2 }}</b> spent on lottery tickets</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><img src="{{ STATIC_URL }}/img/equals_bar.png"></td>
+                </tr>
+                <tr>
+                    <td><b class="spent-blue"> ${{ income|floatformat:2 }} </b> earned</td>
+                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-bottom.png" class="percent-income-365"></td>
+                    <td><b class="spent-blue"> ${{ yearEarned|floatformat:2 }} </b> earned</td>
+                </tr>
+            </table>
+            <br>
+            <p class="explain-text">Can you calculate how much a household in {{ neighborhood }} spends on lottery in 5 years? 10 years?</p>
         </div>
    </div><!-- workflow -->
 </div> <!-- modal-body -->

@@ -1307,7 +1307,7 @@ margin-right: 8%;
 }
 
 .math-table-center{
-    margin-left: 20%;
+    margin: 0 auto;
      font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #ffffff;
     font-size: 18px;
@@ -1713,4 +1713,8 @@ padding-top: 1%;
 .chart-percent-explain rect:nth-child(3){
     fill-opacity: 1;
   fill: #025ff1;
+}
+
+img.percent-income-365{
+    margin-left: 22px;
 }
