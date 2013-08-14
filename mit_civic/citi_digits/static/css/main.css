@@ -577,28 +577,28 @@ body {
 */
 
 #PERCENT_INCOME .percent_income_spent .q1 {
-fill: #b2eaee;
-background-color: #b2eaee;
+fill: #a5f3fa;
+background-color: #a5f3fa;
     margin-right: -4px;
 }
 #PERCENT_INCOME .percent_income_spent .q2 {
-fill: #79CADA;
-background-color: #79CADA;
+fill: #62def8;
+background-color: #62def8;
     margin-right: -4px;
 }
 #PERCENT_INCOME .percent_income_spent .q3 {
-fill: #42B7BD;
-background-color: #42B7BD;
+fill: #0bb6ec;
+background-color: #0bb6ec;
     margin-right: -4px;
 }
 #PERCENT_INCOME .percent_income_spent .q4 {
-fill: #4794D4;
-background-color: #4794D4;
+fill: #178def;
+background-color: #178def;
     margin-right: -4px;
 }
 #PERCENT_INCOME .percent_income_spent .q5 {
-fill: #526CD9;
-background-color: #526CD9;
+fill: #254aeb;
+background-color: #254aeb;
 }
 
 #PERCENT_INCOME #legend-labels{
@@ -663,29 +663,30 @@ background-color: #00A1B7;
  Average Winnings legend
 */
 
-#AVG_WIN .percent_income_spent .q1 {
+#AVG_WIN .average_winnings_legend_square .q1 {
 fill: #E7D6FC;
 background-color: #E7D6FC;
     margin-right: -4px;
 }
-#AVG_WIN .percent_income_spent .q2 {
+#AVG_WIN .average_winnings_legend_square .q2 {
 fill: #DDA4FC;
 background-color: #DDA4FC;
     margin-right: -4px;
 }
-#AVG_WIN .percent_income_spent .q3 {
+#AVG_WIN .average_winnings_legend_square .q3 {
 fill: #CA6BF2;
 background-color: #CA6BF2;
     margin-right: -4px;
 }
-#AVG_WIN .percent_income_spent .q4 {
+#AVG_WIN .average_winnings_legend_square .q4 {
 fill: #9518ED;
 background-color: #9518ED;
     margin-right: -4px;
 }
-#AVG_WIN .percent_income_spent .q5 {
-fill: #6122FC;
-background-color: #6122FC;
+#AVG_WIN .average_winnings_legend_square .q5 {
+fill: #6f22FC;
+background-color: #6f22FC;
+    opacity: .9;
 }
 
 #AVG_WIN #legend-labels{
@@ -709,8 +710,8 @@ background-color: #6122FC;
 */
 
 #AVG_SPEND .percent_income_spent .q1 {
-fill: #EEFC9C;
-background-color: #EEFC9C;
+fill: #e1f4be;
+background-color: #e1f4be;
     margin-right: -4px;
 }
 #AVG_SPEND .percent_income_spent .q2 {
@@ -752,28 +753,28 @@ background-color: #00B95C;
 */
 
 #NET_GAIN_LOSS .percent_income_spent .q1 {
-fill: #BF46B1;
-background-color: #BF46B1;
+fill: #cd07b6;
+background-color: #cd07b6;
     margin-right: -4px;
 }
 #NET_GAIN_LOSS .percent_income_spent .q2 {
-fill: #E1DBC8;
-background-color: #E1DBC8;
+fill: #ff26d6;
+background-color: #ff26d6;
     margin-right: -4px;
 }
 #NET_GAIN_LOSS .percent_income_spent .q3 {
-fill: #DE88C8;
-background-color: #DE88C8;
+fill: #ff73db;
+background-color: #ff73db;
     margin-right: -4px;
 }
 #NET_GAIN_LOSS .percent_income_spent .q4 {
-fill: #E5AFD8;
-background-color: #E5AFD8;
+fill: #fea9e9;
+background-color: #fea9e9;
     margin-right: -4px;
 }
 #NET_GAIN_LOSS .percent_income_spent .q5 {
-fill: #EECAE5;
-background-color: #EECAE5;
+fill: #fbc5ed;
+background-color: #fbc5ed;
 }
 
 #NET_GAIN_LOSS #legend-labels{
