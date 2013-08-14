@@ -1668,3 +1668,49 @@ padding-top: 1%;
     padding-left: 0;
 }
 }
+
+#explain-chart-breakdown p.explain-chart-breakdown-equation {
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #FFFFFF;
+    font-size: 18px;
+}
+
+#explain-chart-breakdown p.explain-chart-breakdown-equation b {
+    padding-left: 4%;
+    padding-right: 4%;
+}
+
+#explain-chart-breakdown p.explain-chart-breakdown-equation b.spent-blue {
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #00c9c8;
+    font-size: 22px;
+}
+
+.chart-percent-explain {
+    margin-top: 1%;
+}
+
+.chart-percent-explain .rule {
+    font-size: 10px;
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    text-align: left;
+}
+
+.chart-percent-explain rect {
+   stroke: white;
+ }
+
+.chart-percent-explain rect:nth-child(1){
+    fill-opacity: .7;
+  fill: #B0B6BD;
+}
+
+.chart-percent-explain rect:nth-child(2){
+    fill-opacity: 1;
+  fill: #00c9c8;
+}
+
+.chart-percent-explain rect:nth-child(3){
+    fill-opacity: 1;
+  fill: #025ff1;
+}

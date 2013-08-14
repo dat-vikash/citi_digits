@@ -34,10 +34,10 @@
                 <div id="explain-chart-breakdown">
                 <p class="explain-chart-breakdown-equation">
                     {% for i in modCount %}
-                        <b class="explain-chart-breakdown-bold">${{ spent|floatformat:2 }}</b> +
+                        <b class="spent-blue">${{ spent|floatformat:2 }}</b> +
                     {% endfor %}
-                    <b class="explain-chart-breakdown-bold">${{ leftOver|floatformat:2 }}</b> =
-                    <b class="explain-chart-breakdown-bold">{{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets
+                    <b class="spent-blue">${{ leftOver|floatformat:2 }}</b> =
+                    <b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets
                 </p>
 
                 </div>
