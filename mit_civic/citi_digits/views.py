@@ -294,6 +294,7 @@ def mathExplain(request,neighborhood,spent,income):
 
     """
     neighborhood =  neighborhood.replace("_"," ")
+    spent = float(spent)
     income = float(income)
     modCount = divmod(income,100)[0]
     modCount = range(0,int(modCount))
