@@ -98,7 +98,7 @@ CityDigitsMap.getStyleColorForPercentIncome = function (feature){
         weight: 2,
         opacity: 0.1,
         color: 'black',
-        fillOpacity: 0.8,
+        fillOpacity: 0.75,
         fillColor: fillColor
     }
 }
@@ -126,7 +126,7 @@ CityDigitsMap.getStyleColorForMedianIncome = function (feature){
          weight: 2,
          opacity: 0.1,
          color: 'black',
-         fillOpacity: 0.7,
+         fillOpacity: 0.75,
          fillColor: fillColor
     }
 }
@@ -154,7 +154,7 @@ CityDigitsMap.getStyleColorForAverageWin = function(feature){
          weight: 2,
          opacity: 0.1,
          color: 'black',
-         fillOpacity: 0.8,
+         fillOpacity: 0.75,
          fillColor: fillColor
     }
 
@@ -183,7 +183,7 @@ CityDigitsMap.getStyleColorForAverageSpend = function(feature){
          weight: 2,
          opacity: 0.1,
          color: 'black',
-         fillOpacity: 0.8,
+         fillOpacity:.75,
          fillColor: fillColor
     }
 
@@ -212,7 +212,7 @@ CityDigitsMap.getStyleColorForNetWinLoss = function(feature){
          weight: 2,
          opacity: 0.1,
          color: 'black',
-         fillOpacity: 0.7,
+         fillOpacity: 0.75,
          fillColor: fillColor
     }
 

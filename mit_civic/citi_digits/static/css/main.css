@@ -562,7 +562,6 @@ body {
 
 #map-ui-subnav-content #legend-squares {
 	/*height:37px;*/
-	opacity: .7;
 }
 
 #map-ui-subnav-content .legend-square {
@@ -686,7 +685,6 @@ background-color: #9518ED;
 #AVG_WIN .average_winnings_legend_square .q5 {
 fill: #6f22FC;
 background-color: #6f22FC;
-    opacity: .9;
 }
 
 #AVG_WIN #legend-labels{
