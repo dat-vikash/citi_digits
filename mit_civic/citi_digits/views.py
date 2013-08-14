@@ -296,10 +296,13 @@ def mathExplain(request,neighborhood,spent,income):
     neighborhood =  neighborhood.replace("_"," ")
     income = float(income)
     modCount = divmod(income,100)[0]
+    modCount = range(0,int(modCount))
     leftOver = Decimal(divmod(income,100)[1]) / Decimal(100) * Decimal(spent)
+    spentOnLotto = Decimal(spent) * Decimal(income) / Decimal(100)
     return render_to_response('mathematical_explainations.html',{'neighborhood':neighborhood, 'spent':spent,
                                                                  'income':income,'modCount':modCount,
-                                                                 'leftOver':leftOver},context_instance=RequestContext(request))
+                                                                 'leftOver':leftOver,
+                                                                 'spentOnLotto':spentOnLotto},context_instance=RequestContext(request))
 
 
 

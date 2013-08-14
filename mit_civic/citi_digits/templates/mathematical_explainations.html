@@ -30,6 +30,17 @@
             <div id="explain-chart">
                 <input type="hidden" value="{{ income }}" id="median_income_value" >
                 <div id="explain-chart-text" class="bubble-explain-chart-text"></div>
+                <div id="explain-chart-chart"></div>
+                <div id="explain-chart-breakdown">
+                <p class="explain-chart-breakdown-equation">
+                    {% for i in modCount %}
+                        <b class="explain-chart-breakdown-bold">${{ spent|floatformat:2 }}</b> +
+                    {% endfor %}
+                    <b class="explain-chart-breakdown-bold">${{ leftOver|floatformat:2 }}</b> =
+                    <b class="explain-chart-breakdown-bold">{{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets
+                </p>
+
+                </div>
             </div>
         </div>
         <div class="even">

@@ -223,7 +223,7 @@ function drawPercentIncomeGraphForExplain(medianIncome){
     $("#mapPopupModal #explain-chart #explain-chart-text").append("<b>$" + data[1] + "</b> median household income per day.");
 
     //draw graph
-     var chart = d3.select("#mapPopupModal #explain-chart").append("svg")
+     var chart = d3.select("#mapPopupModal #explain-chart #explain-chart-chart").append("svg")
      .attr("class", "chart")
      .attr("width", 580)
      .attr("height", 60);
