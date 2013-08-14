@@ -15,6 +15,7 @@ body {
 @media (max-width: 979px) and (min-width: 768px){
 .span4.brand {
     width: 311px;
+    padding-left: 0;
 }
 }
 
