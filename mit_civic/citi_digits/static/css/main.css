@@ -12,13 +12,6 @@ body {
 }
 }
 
-@media (max-width: 979px) and (min-width: 768px){
-.navbar .brand {
-    width: 311px;
-    padding-left: 0;
-}
-}
-
 
 @media (max-width: 979px) and (min-width: 768px){
 .span4.nav {
@@ -1666,4 +1659,11 @@ padding-top: 1%;
 
 #tour-pagination #pagination-prev-page{
     margin-right: 3%;
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+.navbar .brand {
+    width: 311px;
+    padding-left: 0;
+}
 }
