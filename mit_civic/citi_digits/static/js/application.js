@@ -267,13 +267,13 @@ function drawPercentIncomeGraphForExplain(medianIncome){
     smallBraceWidth = (medianIncome/100) % 1;
     xCoord = 116;
     yCoord =30;
-    for(var i=0;i<fullBraceCount;i++){
-        //draw full braces
-        console.log("ASdfas");
-        chart.selectAll("path").data({'x1':xCoord - 116,'y1':30,'x2':xCoord,'y2':yCoord}).
-            enter().append("path").attr("class","curlyBrace").attr("d",function (d) {return makeCurlyBrace(d.x1,d.y1,d.x2,d.y2,50,0.6);});
-        xCoord = xCoord + 116;
-    }
+//    for(var i=0;i<fullBraceCount;i++){
+//        //draw full braces
+//        console.log("ASdfas");
+//        chart.selectAll("path").data({'x1':xCoord - 116,'y1':30,'x2':xCoord,'y2':yCoord}).
+//            enter().append("path").attr("class","curlyBrace").attr("d",function (d) {return makeCurlyBrace(d.x1,d.y1,d.x2,d.y2,50,0.6);});
+//        xCoord = xCoord + 116;
+//    }
 
 
 //    //draw bottom tooltip
@@ -899,6 +899,8 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
 
 $(".map-popup").on("click", "#math_explain", function (ev) {
     ev.preventDefault(); // prevent navigation
+    console.log("clearing html");
+
     var url = $(this).data("form"); //get the form url
     $("#mapPopupModal").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
@@ -914,12 +916,15 @@ $(".map-popup").on("click", "#math_explain", function (ev) {
    });
 
     $("#mapPopupModal").on("shown",function(){
-        console.log("im shown");
         drawPercentIncomeGraphForExplain($("#median_income_value").val());
-
+    });
+    $("#mapPopupModal").on("hidden",function(){
+        console.log("im closed");
+        $("#mapPopupModal").empty();
+        $("#mapPopupModal").unbind("shown");
+        $("#mapPopupModal").unbind("hidden");
 
     });
-    console.log("I AM IN HERE MAN!!");
     return false;
 });
 

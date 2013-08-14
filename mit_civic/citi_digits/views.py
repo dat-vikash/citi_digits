@@ -1,3 +1,4 @@
+from decimal import Decimal
 import json
 from random import randint
 import django
@@ -7,6 +8,7 @@ from django.forms.formsets import formset_factory
 from django.http import HttpResponse, QueryDict
 from django.shortcuts import render_to_response
 from django.template import RequestContext
+import math
 import forms
 from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer, InterviewComment, Tour, TourAuthors, TourSlide
 from service import MembershipService
@@ -292,7 +294,12 @@ def mathExplain(request,neighborhood,spent,income):
 
     """
     neighborhood =  neighborhood.replace("_"," ")
-    return render_to_response('mathematical_explainations.html',{'neighborhood':neighborhood, 'spent':spent, 'income':income},context_instance=RequestContext(request))
+    income = float(income)
+    modCount = divmod(income,100)[0]
+    leftOver = Decimal(divmod(income,100)[1]) / Decimal(100) * Decimal(spent)
+    return render_to_response('mathematical_explainations.html',{'neighborhood':neighborhood, 'spent':spent,
+                                                                 'income':income,'modCount':modCount,
+                                                                 'leftOver':leftOver},context_instance=RequestContext(request))
 
 
 
