@@ -297,8 +297,8 @@ def mathExplain(request,neighborhood,spent,income):
     spent = float(spent)
     modCount = divmod(float(income),100)[0]
     modCount = range(0,int(modCount))
-    leftOver = Decimal(str(divmod(float(income),100)[1])) / Decimal(100) * Decimal(spent)
-    spentOnLotto = Decimal(spent) * Decimal(income) / Decimal(100)
+    leftOver = float(divmod(float(income),100)[1]) / float(100) * float(spent)
+    spentOnLotto = float(spent) * float(income) / float(100)
     yearSpent = spentOnLotto * 365
     yearEarned = Decimal(income) * 365
     return render_to_response('mathematical_explainations.html',{'neighborhood':neighborhood, 'spent':spent,
