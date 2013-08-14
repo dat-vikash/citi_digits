@@ -77,4 +77,24 @@
     {% endfor %}
 
 </div><!--interview content -->
-<div id="interview-pagination"></div>
+<div id="interview-pagination">
+    <span class="step-links">
+        {% if interviews.has_previous %}
+            <a href="#" id="pagination-prev-page" data-form="{{ interviews.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            {% for pageNum in pages_to_display %}
+                 {% if pageNum == tours.number %}
+                     <a class="pagination-page pagination-active-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
+                 {% else %}
+                     <a class="pagination-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
+                {% endif %}
+            {% endfor %}
+        </span>
+
+        {% if interviews.has_next %}
+            <a href="#" id="pagination-next-page" data-form="{{ interviews.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>

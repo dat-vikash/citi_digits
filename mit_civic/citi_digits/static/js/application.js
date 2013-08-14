@@ -1020,6 +1020,53 @@ $("#interviews-tab").on("change",".interview-toolbar", function(e){
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
 });
 
+
+$("#interviews-tab").on("click","#pagination-prev-page", function(e){
+    e.preventDefault();
+   console.log("prev DETECED");
+    //get search values
+    var values = {'player_interview':$("#interview_type_player").is(":checked"),
+                  'retailer_interview':$("#interview_type_retailer").is(":checked"),
+                  'team':$("#team").val(),
+                  'class':$("#class").val()};
+    var offset = $(this).data("form");
+    console.log(offset);
+    //reload interviews
+    loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
+    return false;
+});
+
+$("#interviews-tab").on("click","#pagination-next-page", function(e){
+    e.preventDefault();
+   console.log("next DETECED");
+    //get search values
+    var values = {'player_interview':$("#interview_type_player").is(":checked"),
+                  'retailer_interview':$("#interview_type_retailer").is(":checked"),
+                  'team':$("#team").val(),
+                  'class':$("#class").val()};
+    var offset = $(this).data("form");
+    console.log(offset);
+    //reload interviews
+    loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
+    return false;
+});
+
+$("#interviews-tab").on("click",".pagination-page", function(e){
+    e.preventDefault();
+   console.log("page DETECED");
+    //get search values
+    var values = {'player_interview':$("#interview_type_player").is(":checked"),
+                  'retailer_interview':$("#interview_type_retailer").is(":checked"),
+                  'team':$("#team").val(),
+                  'class':$("#class").val()};
+    var offset = $(this).data("form");
+    console.log(offset);
+    //reload interviews
+    loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
+    return false;
+});
+
+
 //$("#map-nav").on("change","#turn_on_player_interviews", function(e){
 //    //toggle player interviews on the map
 //    if ($("#turn_on_player_interviews").is(":checked")){

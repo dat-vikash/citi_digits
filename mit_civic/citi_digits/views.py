@@ -333,6 +333,7 @@ def interviewList(request,offset):
     """
         This view returns the interviews based on search criteria
     """
+    offset = int(offset)
     #store toolbar form info
     toolbar={'player':True,
              'retailer':True,
@@ -377,9 +378,26 @@ def interviewList(request,offset):
     #get classes
     classes = Teacher.objects.values_list('className', flat=True)
 
+     #get paginated tours
+    interviews = __paginatatedEntities(interviews,offset)
+
+    #calculate pages to display
+    pagesToDisplay = range(1,interviews.paginator.num_pages)
+
+    if(offset == 1):
+        pagesToDisplay = pagesToDisplay[0:offset+5]
+    else:
+        idxStart= offset - 2
+        if (idxStart > 0):
+            pagesToDisplay = pagesToDisplay[idxStart:idxStart+5]
+        else:
+            pagesToDisplay = pagesToDisplay[0:offset+5]
+
+
     #render
     print toolbar
-    return render_to_response('interviews.html',{'interviews':interviews,'teams':teams, 'classes':classes,'toolbar':toolbar},context_instance=RequestContext(request))
+    return render_to_response('interviews.html',{'interviews':interviews,'teams':teams, 'classes':classes,
+                                                 'toolbar':toolbar,'pages_to_display':pagesToDisplay},context_instance=RequestContext(request))
 
 def interviewDetails(request,id):
     """
