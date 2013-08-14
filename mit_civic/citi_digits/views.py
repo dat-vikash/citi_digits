@@ -295,8 +295,7 @@ def mathExplain(request,neighborhood,spent,income):
     """
     neighborhood =  neighborhood.replace("_"," ")
     spent = float(spent)
-    income = float(income)
-    modCount = divmod(income,100)[0]
+    modCount = divmod(float(income),100)[0]
     modCount = range(0,int(str(modCount)))
     leftOver = Decimal(divmod(income,100)[1]) / Decimal(100) * Decimal(spent)
     spentOnLotto = Decimal(spent) * Decimal(income) / Decimal(100)
