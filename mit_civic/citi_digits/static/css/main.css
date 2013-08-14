@@ -13,15 +13,16 @@ body {
 }
 
 @media (max-width: 979px) and (min-width: 768px){
-.span4.brand {
+.navbar.brand {
     width: 311px;
     padding-left: 0;
 }
 }
 
+
 @media (max-width: 979px) and (min-width: 768px){
 .span4.nav {
-    width: 243px;
+    width: 245px;
 }
 }
 /*
