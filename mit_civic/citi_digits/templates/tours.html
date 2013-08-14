@@ -51,5 +51,25 @@
         </div>
     {% endfor %}
 
-</div><!--interview content -->
-<div id="tour-pagination"></div>
+</div><!--tour content -->
+<div id="tour-pagination">
+    <span class="step-links">
+        {% if tours.has_previous %}
+            <a href="#" id="pagination-prev-page" data-form="{{ tours.previous_page_number }}">Previous</a>
+        {% endif %}
+
+        <span class="current">
+            {% for pageNum in pages_to_display %}
+                 {% if pageNum == tours.number %}
+                     <a class="pagination-page pagination-active-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
+                 {% else %}
+                     <a class="pagination-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
+                {% endif %}
+            {% endfor %}
+        </span>
+
+        {% if tours.has_next %}
+            <a href="#" id="pagination-next-page" data-form="{{ tours.next_page_number }}">Next</a>
+        {% endif %}
+    </span>
+</div>

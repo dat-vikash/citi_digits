@@ -1634,6 +1634,45 @@ $("#tour-grid").on("change",".tour-toolbar", function(e){
     loadToursWithPagination(offset,values['sort-date'],values['sort-class']);
 });
 
+$("#tour-grid").on("click","#pagination-prev-page", function(e){
+    e.preventDefault();
+   console.log("prev DETECED");
+    //get search values
+    var values = {'sort-date':$("#date-sort").val(),
+                  'sort-class':$("#class-sort").val()};
+    var offset = $(this).data("form");
+    console.log(offset);
+    //reload interviews
+    loadToursWithPagination(offset,values['sort-date'],values['sort-class']);
+    return false;
+});
+
+$("#tour-grid").on("click","#pagination-next-page", function(e){
+    e.preventDefault();
+   console.log("next DETECED");
+    //get search values
+    var values = {'sort-date':$("#date-sort").val(),
+                  'sort-class':$("#class-sort").val()};
+    var offset = $(this).data("form");
+    console.log(offset);
+    //reload interviews
+    loadToursWithPagination(offset,values['sort-date'],values['sort-class']);
+    return false;
+});
+
+$("#tour-grid").on("click",".pagination-page", function(e){
+    e.preventDefault();
+   console.log("page DETECED");
+    //get search values
+    var values = {'sort-date':$("#date-sort").val(),
+                  'sort-class':$("#class-sort").val()};
+    var offset = $(this).data("form");
+    console.log(offset);
+    //reload interviews
+    loadToursWithPagination(offset,values['sort-date'],values['sort-class']);
+    return false;
+});
+
 $("#tours-tab").on("click",".tour-stub",function(event){
    var url = "/tour/" + $(this).attr("id") + "/"; //interview id from div#id
     $("#tourPreview").load(url,function() { // load the url into the modal

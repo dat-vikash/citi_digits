@@ -1644,3 +1644,24 @@ padding-top: 1%;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     text-align: center;
 }
+
+#tour-pagination{
+    margin-top: 5%;
+    text-align: center;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 15px;
+}
+
+#tour-pagination a{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+}
+
+#tour-pagination  #pagination-next-page{
+    margin-left: 3%;
+}
+
+#tour-pagination #pagination-prev-page{
+    margin-right: 3%;
+}

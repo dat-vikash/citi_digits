@@ -1,6 +1,7 @@
 import json
 from random import randint
 import django
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import transaction
 from django.forms.formsets import formset_factory
 from django.http import HttpResponse, QueryDict
@@ -492,6 +493,7 @@ def tourList(request,offset):
      Handles displaying tour grid
     """
     #store toolbar form info
+    offset = int(offset)
     toolbar={'searchClass':'ALL',
              'sortDate':'DESC'}
 
@@ -525,9 +527,28 @@ def tourList(request,offset):
     #get classes
     classes = Teacher.objects.values_list('className', flat=True)
 
+    #get paginated tours
+    tours = __paginatatedEntities(tours,offset)
+
+    #calculate pages to display
+    pagesToDisplay = range(1,tours.paginator.num_pages)
+    print pagesToDisplay
+
+    if(offset == 1):
+        pagesToDisplay = pagesToDisplay[0:offset+5]
+    else:
+        idxStart= offset - 2
+        if (idxStart > 0):
+            pagesToDisplay = pagesToDisplay[idxStart:idxStart+5]
+        else:
+            pagesToDisplay = pagesToDisplay[0:offset+5]
+
+
+
     #render
     print toolbar
-    return render_to_response('tours.html',{'tours':tours, 'classes':classes,'toolbar':toolbar},context_instance=RequestContext(request))
+    return render_to_response('tours.html',{'tours':tours, 'classes':classes,'toolbar':toolbar,'pages_to_display':pagesToDisplay}
+        ,context_instance=RequestContext(request))
 
 
 def tourDetails(request,id):
@@ -554,3 +575,32 @@ def home(request):
     interview = Interview.objects.get(pk=(randint(1,interviewCount)))
 
     return render_to_response('home.html',{'tour':tour,'interview':interview}, context_instance=RequestContext(request))
+
+
+
+
+###############################
+##  View Helper Methods      ##
+###############################
+
+def __paginatatedEntities(entity,page):
+    """
+       Returns a list of paginated entities
+    """
+    entities = None
+    #pages per page
+    paginator = Paginator(entity,9)
+
+    #pagination
+    try:
+        entities = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer, deliver first page.
+        entities = paginator.page(1)
+    except EmptyPage:
+        # If page is out of range (e.g. 9999), deliver last page of results.
+        entities = paginator.page(paginator.num_pages)
+    finally:
+        return entities
+
+
