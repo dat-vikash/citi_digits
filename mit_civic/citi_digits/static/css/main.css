@@ -331,13 +331,13 @@ body {
 
 .map-ui-interviews {
         background: #b0b6bd;
-
 }
 
 .map-ui ul {
     list-style-type:none;
     padding: 0;
     padding-left:0;
+    margin-bottom: 1px;
 }
 
 .map-ui ul li {
@@ -372,14 +372,70 @@ body {
     border-top-color: #FFF;
 }
 
+.map-ui #VIEWS_INTERVIEWS .interviews {
+    color: #000000;
+    border-color: #3887BE;
+    border-top-color: #FFF;
+}
+
+.map-ui ul li #VIEWS_INTERVIEWS {
+    background-color: #3f3f3f;
+}
+
 .map-ui li:hover{
     font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     /*background: #FFFFFF;*/
     color: #3F3F3F;
-        background: #777777;
+        background-color: #777777;
 
     /*border-color: #3887BE;*/
     /*border-top-color: #FFF;*/
+}
+
+.map-ui #VIEW_ALL_SCHOOLS{
+    color: #000000;
+        background-color: #b0b6bd;
+    box-shadow: 5px;
+    -webkit-border-bottom-right-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+
+}
+
+.map-ui #VIEW_ALL_SCHOOLS .caret{
+    margin-top: 8px;
+    margin-left: 3px;
+}
+
+.map-ui #VIEWS_INTERVIEWS{
+    color: #000000;
+        background-color: #b0b6bd;
+    border: 1px solid #BBB;
+    border-top-width: 1px;
+    border-bottom-width: 1px;
+
+}
+
+.map-ui #VIEWS_INTERVIEWS hr{
+    color: #000000;
+        background-color: #b0b6bd;
+    width: 250px;
+    margin-left: -10px;
+    margin-top: -4px;
+    border-width: 1;
+
+}
+
+.map-ui #VIEWS_INTERVIEWS label{
+    font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    background: #FFFFFF;
+    color: #FFFFFF;
+        background: #b0b6bd;
+    display: inline-block;
+    box-sizing: border-box;
 }
 
 .map-ui li.active:hover{
