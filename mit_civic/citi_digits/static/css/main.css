@@ -1095,7 +1095,8 @@ Interview colors
   font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #B0B6BD;
 position: relative;
-width: 150px;
+   min-width: 150px;
+    max-width: 161px;
 height: 40px;
 padding: 2px;
 background: #FFFFFF;
@@ -1147,7 +1148,8 @@ z-index: 0;
   font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #B0B6BD;
 position: relative;
-width: 155px;
+min-width: 155px;
+    max-width: 175px;
 height: 40px;
 padding: 2px;
 background: #FFFFFF;
@@ -1771,4 +1773,18 @@ padding-top: 1%;
 
 img.percent-income-365{
     margin-left: 22px;
+}
+
+.map-popup #map-popup-description{
+    margin-top: 5%;
+}
+
+.map-popup #map-popup-description p.description b.blue{
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #025ff1;
+}
+
+#percent_income_graph_text  b.blue{
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #025ff1;
 }
