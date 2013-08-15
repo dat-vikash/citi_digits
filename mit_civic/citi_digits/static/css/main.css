@@ -658,16 +658,18 @@ background-color: #254aeb;
 
 #PERCENT_INCOME #legend-labels{
     position: relative;
+    margin-top: -10px;
 }
 
 #PERCENT_INCOME p.legend-label {
 	color: #3F3F3F;
 	width: 70px;
 	margin: 0 0 0 -40px;
-	top: 5px;
+	top: 2px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 10px;
     display: inline-block;
+    position: relative;
 }
 
 
@@ -702,6 +704,7 @@ background-color: #00A1B7;
 
 #MEDIAN_INCOME #legend-labels{
     position: relative;
+    margin-top: -10px;
 }
 
 #MEDIAN_INCOME p.legend-label {
@@ -710,8 +713,9 @@ background-color: #00A1B7;
 	margin: 0 0 0 -40px;
 	top: 5px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 10px;
     display: inline-block;
+    position: relative;
 }
 
 /*
@@ -745,6 +749,7 @@ background-color: #6f22FC;
 
 #AVG_WIN #legend-labels{
     position: relative;
+    margin-top: -10px;
 }
 
 #AVG_WIN p.legend-label {
@@ -753,8 +758,9 @@ background-color: #6f22FC;
 	margin: 0 0 0 -40px;
 	top: 5px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 10px;
     display: inline-block;
+    position: relative;
 }
 
 
@@ -790,6 +796,7 @@ background-color: #00B95C;
 
 #AVG_SPEND #legend-labels{
     position: relative;
+    margin-top: -10px;
 }
 
 #AVG_SPEND p.legend-label {
@@ -798,8 +805,9 @@ background-color: #00B95C;
 	margin: 0 0 0 -40px;
 	top: 5px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 10px;
     display: inline-block;
+    position: relative;
 }
 
 /*
@@ -833,6 +841,7 @@ background-color: #fbc5ed;
 
 #NET_GAIN_LOSS #legend-labels{
     position: relative;
+    margin-top: -10px;
 }
 
 #NET_GAIN_LOSS p.legend-label {
@@ -841,8 +850,9 @@ background-color: #fbc5ed;
 	margin: 0 0 0 -40px;
 	top: 5px;
 	text-align: center;
-	font-size: 12px;
+	font-size: 10px;
     display: inline-block;
+    position: relative;
 }
 
 .map-ui-popup-1 {
