@@ -20,6 +20,7 @@ function CityDigitsMap() {
     this.map.gridControl.options.follow = true;
 
     this.popup = new L.Popup({ autoPan: false });
+    this.popup_previous_name = "";
 
 }
 
@@ -39,6 +40,9 @@ CityDigitsMap.prototype.loadLayers =  function (){
     this.neighborhoodLayer = L.geoJson(nyc_neighborhoods,{
         style :CityDigitsMap.getStyleColorForPercentIncome
     }).addTo(this.map);
+    this.neighborhoodLayer.on('mousemove', function(e) {
+        self.mapMouseMove(e);
+    });
     this.neighborhoodLayer.on('mouseover', function(e) {
         self.mapMouseMove(e);
     });
@@ -66,12 +70,18 @@ CityDigitsMap.prototype.mapMouseMove = function (ev){
 
     //verify feature
     if(layer.feature != undefined){
+        this.popup_previous_name = layer.feature.properties.N_Name;
             //get lat/long
-        this.popup.setLatLng(ev.latlng);
+        this.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
         this.popup.setContent(layer.feature.properties.N_Name);
         //display popup
         if (!this.popup._map) this.popup.openOn(this.map);
-        window.clearTimeout(this.closeTooltip);
+//        window.clearTimeout(this.closeTooltip);
+    }else{
+        this.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+        this.popup.setContent(this.popup_previous_name);
+        //display popup
+        if (!this.popup._map) this.popup.openOn(this.map);
     }
     return false;
 }
