@@ -369,7 +369,10 @@ $(".map-ui").on("click","a", function (e) {
         }).addTo(MY_MAP.map);
     }
 
-    //re-add mosue events
+    //re-add mouse events
+    mainLayer.on('mousemove', function(e) {
+        MY_MAP.mapMouseMove(e);
+    });
     mainLayer.on('mouseover', function(e) {
         MY_MAP.mapMouseMove(e);
     });
