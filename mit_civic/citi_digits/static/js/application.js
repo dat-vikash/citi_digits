@@ -1740,3 +1740,7 @@ $("#tours-tab").on("click",".tour-stub",function(event){
 
         });
 });
+
+$(window).on("resize",function(e){
+   MY_MAP.resizeMap();
+});

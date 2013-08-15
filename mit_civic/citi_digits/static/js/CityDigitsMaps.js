@@ -53,6 +53,9 @@ CityDigitsMap.prototype.loadLayers =  function (){
 }
 
 CityDigitsMap.prototype.resizeMap = function(){
+    //set params
+    this.height = $(window).height()-$(".navbar").height();
+    this.width = $(window).width();
     $("#map").height(this.height);
     $("#map").width(this.width);
 }
