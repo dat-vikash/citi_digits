@@ -17,6 +17,8 @@ function CityDigitsMap() {
     this.map.touchZoom.disable();
     this.map.doubleClickZoom.disable();
     this.map.scrollWheelZoom.disable();
+    this.map.gridControl.options.follow = true;
+
     this.popup = new L.Popup({ autoPan: false });
 
 }
@@ -58,48 +60,57 @@ CityDigitsMap.prototype.resizeMap = function(){
 CityDigitsMap.prototype.mapMouseMove = function (ev){
     //get layer
     var layer = ev.layer;
-    console.log(this.neighborhoodLayer);
-    //get lat/long
-    this.popup.setLatLng(ev.latlng);
-    this.popup.setContent(layer.feature.properties.N_Name);
-    //display popup
-    if (!this.popup._map) this.popup.openOn(this.map);
-    window.clearTimeout(this.closeTooltip);
+
+    //verify feature
+    if(layer.feature != undefined){
+            //get lat/long
+        this.popup.setLatLng(ev.latlng);
+        this.popup.setContent(layer.feature.properties.N_Name);
+        //display popup
+        if (!this.popup._map) this.popup.openOn(this.map);
+        window.clearTimeout(this.closeTooltip);
+    }
+    return false;
 }
 
 CityDigitsMap.prototype.mapMouseOut = function(e) {
     var self = this;
-    this.neighborhoodLayer.resetStyle(e.target);
-    this.closeTooltip = window.setTimeout(function() {
-        self.map.closePopup();
-        }, 100);
+//    this.neighborhoodLayer.resetStyle(e.target);
+//    this.closeTooltip = window.setTimeout(function() {
+//        self.map.closePopup();
+//        }, 100);
 }
 
 CityDigitsMap.getStyleColorForPercentIncome = function (feature){
-    var percent = feature.properties.PERINC10;
-    var fillColor = null;
-    if(percent >= 0 && percent <=.5){
-        fillColor =  "#b2eaee";
-    }
-    if(percent >.5 && percent <=1.5){
-        fillColor =  "#79CADA";
-    }
-    if(percent >1.5 && percent<=2){
-        fillColor = "#42B7BD";
-    }
-    if(percent > 2 && percent <=3){
-        fillColor =  "#4794D4";
-    }
-    if(percent > 3 && percent <=15){
-        fillColor =  "#526CD9";
-    }
+//    fillColor = "#FFFFFF";
+    try{
+        var percent = feature.properties.PERINC10;
+        var fillColor = null;
+        if(percent >= 0 && percent <=.5){
+            fillColor =  "#b2eaee";
+        }
+        if(percent >.5 && percent <=1.5){
+            fillColor =  "#79CADA";
+        }
+        if(percent >1.5 && percent<=2){
+            fillColor = "#42B7BD";
+        }
+        if(percent > 2 && percent <=3){
+            fillColor =  "#4794D4";
+        }
+        if(percent > 3 && percent <=15){
+            fillColor =  "#526CD9";
+        }
+    }catch (e){
 
-    return {
+    }finally{
+        return {
         weight: 2,
         opacity: 0.1,
         color: 'black',
         fillOpacity: 0.75,
         fillColor: fillColor
+        }
     }
 }
 
