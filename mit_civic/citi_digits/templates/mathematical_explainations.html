@@ -48,7 +48,19 @@
         <div class="even">
             <br>
             <p class="explain-text">So how much does a household in {{ neighborhood }} spend on lottery tickets in a year?</p>
+            <br/>
+            <br/>
             <table class="math-table-center">
+                <tr>
+                    <td><b class="spent-blue">IN ONE DAY:</b> </td>
+                    <td></td>
+                    <td><b class="spent-blue">IN ONE YEAR:</b> </td>
+                </tr>
+                <tr>
+                    <td><br/></td>
+                    <td><br/></td>
+                    <td><br/></td>
+                </tr>
                 <tr>
                     <td><b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets</td>
                     <td><img src="{{ STATIC_URL }}/img/percent-income-365-top.png" class="percent-income-365"></td>
@@ -65,6 +77,8 @@
             </table>
             <br>
             <p class="explain-text">Can you calculate how much a household in {{ neighborhood }} spends on lottery in 5 years? 10 years?</p>
+            <br/>
+            <br/>
         </div>
    </div><!-- workflow -->
 </div> <!-- modal-body -->
