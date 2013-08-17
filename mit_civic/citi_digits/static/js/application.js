@@ -17,6 +17,8 @@ var PLAYER_LAYER = null;
 var RETAILER_LAYER = null;
 var MARKER_LAYER = null;
 var SCREEN_HEIGHT = null;
+var CURRENT_LAYER = null;
+var VIEW_ALL_SCHOOLS_IS_OPEN = false;
 
 $().ready(new function(){
     //get screen measurements
@@ -103,7 +105,7 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
     console.log(data);
 
     //draw top tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + data[1].toFixed(2) + "</b> median household income per day.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + data[1].toFixed(2) + "</b> <a href='#' id='median_household_rollover'>median household</a> income per day.");
 
     //draw graph
      var chart = d3.select("#map-popup-" + popupId + " #map-popup-graphic-holder").append("svg")
@@ -343,30 +345,46 @@ $(".map-ui").on("click","a", function (e) {
         mainLayer =L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForPercentIncome
         }).addTo(MY_MAP.map);
+        CURRENT_LAYER = "PERCENT_INCOME";
     }
     if(layerId == "MEDIAN_INCOME"){
         MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForMedianIncome
         }).addTo(MY_MAP.map);
+        CURRENT_LAYER = "MEDIAN_INCOME";
+
     }
     if(layerId == "AVG_WIN"){
         MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForAverageWin
         }).addTo(MY_MAP.map);
+        CURRENT_LAYER="AVG_WIN";
     }
     if(layerId == "AVG_SPEND"){
         MY_MAP.map.removeLayer(mainLayer);
        mainLayer = L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForAverageSpend
         }).addTo(MY_MAP.map);
+        CURRENT_LAYER="AVG_SPEND";
     }
     if(layerId == "NET_GAIN_LOSS"){
         MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForNetWinLoss
         }).addTo(MY_MAP.map);
+        CURRENT_LAYER="NET_GAIN_LOSS";
+    }
+    if(layerId == "VIEW_ALL_SCHOOLS"){
+        //if this is clicked while active, close it
+        if(CURRENT_LAYER == "VIEW_ALL_SCHOOLS" && VIEW_ALL_SCHOOLS_IS_OPEN==true){
+            $(".map-ui li.active #map-ui-subnav-content").hide();
+            VIEW_ALL_SCHOOLS_IS_OPEN = false;
+        }else{
+            CURRENT_LAYER = "VIEW_ALL_SCHOOLS";
+            VIEW_ALL_SCHOOLS_IS_OPEN = true;
+        }
     }
 
     //re-add mouse events
@@ -384,7 +402,6 @@ $(".map-ui").on("click","a", function (e) {
         //load popup
         showMapPopUp(e);
     });
-
     return false;
 });
 
@@ -1111,6 +1128,17 @@ $("#map-nav").on("change",".map-ui-interviews", function(e){
     }
 });
 
+$("#map-nav").on("click",".turn_on_class_interviews", function(e){
+    console.log("IN HERE!@#$@#$@$");
+    var className = $(this).data("form");
+
+    //toggle interviews on the map
+    //remove previous layer
+    if(MARKER_LAYER!=null){
+        MY_MAP.map.removeLayer(MARKER_LAYER);
+    }
+    loadInterviews(className);
+});
 
 //$("#map-nav").on("change","#turn_on_retailer_interviews", function(e){
 //    //toggle player interviews on the map
@@ -1747,3 +1775,52 @@ $("#tours-tab").on("click",".tour-stub",function(event){
 $(window).on("resize",function(e){
    MY_MAP.resizeMap();
 });
+
+//$(".map-popup").on("mouseover", "#median_household_rollover",function(e){
+//
+//    var showPopover = function () {
+//
+//    $(this).popover('show').css('top','50px');
+//}
+//, hidePopover = function () {
+//    $(this).popover('hide');
+//};
+//
+//   console.log("MOUSE OVER");
+//    var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
+//        "whether or not they are related. To come up with the <b>daily household income</b>, the income each" +
+//        " person in the household earns per day is added together.<br> " +
+//        "A neighborhood's <b>median household income</b> means that half of the households in that neighborhood earn more and half of the households earn less.</div>";
+//    $("#median_household_rollover").tooltip({html:true,title:titleTxt,placement:'left'});
+//});
+//
+//$(".map-ui-popup-2").on("mouseover", "#median_household_rollover",function(e){
+//
+//    var showPopover = function () {
+//
+//    $(this).popover('show').css('top','50px');
+//}
+//, hidePopover = function () {
+//    $(this).popover('hide');
+//};
+//
+//   console.log("MOUSE OVER");
+//    var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
+//        "whether or not they are related. To come up with the <b>daily household income</b>, the income each" +
+//        " person in the household earns per day is added together.<br> " +
+//        "A neighborhood's <b>median household income</b> means that half of the households in that neighborhood earn more and half of the households earn less.</div>";
+//    $("#median_household_rollover").tooltip({html:true,title:titleTxt,placement:'left'});
+//});
+
+//$("#map-popup-1").on("mouseover","#median_household_rollover", function(event) {
+//    console.log("MOCING");
+//    console.log($("#tooltip-percent-income"));
+//    $("#map-popup-1 #tooltip-percent-income").css({
+//        top: event.pageY + 50 + "px",
+//        left: event.pageX + 5 + "px"
+//    }).show();
+//}).bind("mouseout", function() {
+//    $("#tooltip-percent-income").hide();
+//});
+
+$("")

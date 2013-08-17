@@ -106,7 +106,10 @@ def mapNavigation(request):
     """
       Loads the map navigation elements
     """
-    return render_to_response('map_navigation.html')
+    #get all classes
+    #get classes
+    classes = Teacher.objects.values_list('className', flat=True)
+    return render_to_response('map_navigation.html',{'classes':classes},context_instance=RequestContext(request))
 
 
 def login(request):
@@ -317,7 +320,10 @@ def loadGeoJsonInterviews(request):
     allInterview = None
 
     if(type):
-        allInterview = Interview.objects.filter(interviewType=type)
+        if(type in ('PLAYER','RETAILER')):
+            allInterview = Interview.objects.filter(interviewType=type)
+        else:
+            allInterview = Interview.objects.filter(student__team__teacher__className__exact=type)
     else:
         allInterview = Interview.objects.all()
 

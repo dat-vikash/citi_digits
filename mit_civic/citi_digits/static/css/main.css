@@ -361,7 +361,7 @@ body {
 .map-ui li.active {
     background: #FFFFFF;
     color: #3F3F3F;
-    border-color: #3887BE;
+    /*border-color: #3887BE;*/
     border-top-color: #FFF;
 }
 
@@ -402,6 +402,40 @@ body {
 -moz-border-radius-bottomleft: 5px;
 border-bottom-right-radius: 5px;
 border-bottom-left-radius: 5px;
+
+}
+
+.map-ui #VIEW_ALL_SCHOOLS #map-ui-all-classes{
+   background-color: #ffffff;
+    height: 100px;
+    overflow-y: auto;
+    width: 109%;
+margin-left: -10px;
+margin-bottom: -10px;
+-webkit-border-bottom-right-radius: 5px;
+-webkit-border-bottom-left-radius: 5px;
+-moz-border-radius-bottomright: 5px;
+-moz-border-radius-bottomleft: 5px;
+border-bottom-right-radius: 5px;
+border-bottom-left-radius: 5px;
+    font-size: 15px;
+    color: #3f3f3f;
+    font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+
+}
+
+.map-ui #VIEW_ALL_SCHOOLS .turn_on_class_interviews:hover{
+    color: #025ff1;
+}
+
+.map-ui #VIEW_ALL_SCHOOLS hr{
+    color: #000000;
+        background-color: #b0b6bd;
+    width: 250px;
+    margin-left: -10px;
+    margin-top: -4px;
+    border-width: 1;
+    margin-top: 10px;
 
 }
 
@@ -860,7 +894,7 @@ background-color: #fbc5ed;
     background-color: #FFFFFF;
     /*float: right;*/
     position: relative;
-    max-height: 310px;
+    max-height: 345px;
     height: 100%;
     width: 250px;
     border-radius: 5px;
@@ -1741,6 +1775,15 @@ padding-top: 1%;
     font-size: 18px;
 }
 
+#median_household_rollover:link{
+    color: #b0b6bd;
+    text-decoration: underline;
+}
+
+#median_household_rollover:visited{
+    color: #b0b6bd;
+}
+
 #explain-chart-breakdown p.explain-chart-breakdown-equation b {
     padding-left: 4%;
     padding-right: 4%;
@@ -1802,4 +1845,13 @@ img.percent-income-365{
 b.blue-2{
     font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     color: #00c9c8;
+}
+
+#tooltip-percent-income {
+    position:absolute;
+    display:none;
+    z-index:1000;
+    background-color:black;
+    color:white;
+    border: 1px solid black;
 }
