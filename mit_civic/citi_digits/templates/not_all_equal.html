@@ -1,0 +1,81 @@
+<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
+        <img src="{{ STATIC_URL }}/img/close.png"/>
+</button>
+<div class="popup-explain-header-not-equal">
+<p>Not all stores are Equal</p>
+</div><!-- popup-header -->
+<div class="modal-body">
+    <div id="workflow">
+        <br>
+        <div class="not-all-equal-even">
+            <p class="explain-text-not-equal">In general, the stores that serve more people have higher net gains and losses than the stores
+            that server fewer people. What might explain this?</p>
+            <br>
+            <br>
+        </div>
+        <div class="not-all-equal-odd">
+            <p class="explain-text-odd"><br/>Imagine distributing the net gain or loss in a day equally across all the adults in
+            {{ neighborhood }}.
+            <br/>
+            <br/>
+                There are {{ totalAdults }} adults living in {{ neighborhood }} and {{ totalStores }} stores selling Lottery tickets.
+                How many people does each store serve?
+            </p>
+             <br>
+            <br/>
+            <table class="math-table-center">
+                <tr>
+                    <td><b class="not-equal-purple">${{ totalAdults }}</b> adults</td>
+                    <td><img src="{{ STATIC_URL }}/img/not-equal-365-top.png" class="percent-income-365"> <span id="total-stores-top">{{ totalStores  }}</span></td>
+                    <td><b class="spent-blue">${{ adultsPerStore }}</b> spent on lottery tickets</td>
+                </tr>
+                <tr>
+                    <td colspan="3"><img src="{{ STATIC_URL }}/img/equals_bar.png"></td>
+                </tr>
+                <tr>
+                    <td><b class="spent-blue"> ${{ income|floatformat:2 }} </b> earned</td>
+                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-bottom.png" class="percent-income-365"></td>
+                    <td><b class="spent-blue"> ${{ yearEarned|floatformat:2 }} </b> adults</td>
+                </tr>
+            </table>
+
+        <br>
+        </div>
+{#        <div class="even">#}
+{#            <br>#}
+{#            <p class="explain-text">So how much does a household in {{ neighborhood }} spend on lottery tickets in a year?</p>#}
+{#            <br/>#}
+{#            <br/>#}
+{#            <table class="math-table-center">#}
+{#                <tr>#}
+{#                    <td><b class="spent-blue">IN ONE DAY:</b> </td>#}
+{#                    <td></td>#}
+{#                    <td><b class="spent-blue">IN ONE YEAR:</b> </td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td><br/></td>#}
+{#                    <td><br/></td>#}
+{#                    <td><br/></td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td><b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets</td>#}
+{#                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-top.png" class="percent-income-365"></td>#}
+{#                    <td><b class="spent-blue">${{ yearSpent|floatformat:2 }}</b> spent on lottery tickets</td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td colspan="3"><img src="{{ STATIC_URL }}/img/equals_bar.png"></td>#}
+{#                </tr>#}
+{#                <tr>#}
+{#                    <td><b class="spent-blue"> ${{ income|floatformat:2 }} </b> earned</td>#}
+{#                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-bottom.png" class="percent-income-365"></td>#}
+{#                    <td><b class="spent-blue"> ${{ yearEarned|floatformat:2 }} </b> earned</td>#}
+{#                </tr>#}
+{#            </table>#}
+{#            <br>#}
+{#            <p class="explain-text">Can you calculate how much a household in {{ neighborhood }} spends on lottery in 5 years? 10 years?</p>#}
+{#            <br/>#}
+{#            <br/>#}
+{#        </div>#}
+   </div><!-- workflow -->
+</div> <!-- modal-body -->
+

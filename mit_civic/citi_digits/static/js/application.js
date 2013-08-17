@@ -929,6 +929,7 @@ $(".map-popup").on("click", "#math_explain", function (ev) {
                   height:'100%',
                     'max-height':'85%',
                     'top':'1%',
+                 'background-color':'#00c9c8',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
         }
@@ -947,6 +948,40 @@ $(".map-popup").on("click", "#math_explain", function (ev) {
     });
     return false;
 });
+
+
+$(".map-popup").on("click", "#not_all_equal", function (ev) {
+    ev.preventDefault(); // prevent navigation
+    console.log("not all equal clicked");
+
+    var url = $(this).data("form"); //get the form url
+    $("#mapPopupModal").load(url,function() { // load the url into the modal
+            $(this).modal('show').css({
+                 width: '95%',
+                 'max-width':'100%',
+                  height:'100%',
+                    'max-height':'85%',
+                    'top':'1%',
+                  'margin-left': function () {
+            return window.pageXOffset-($(this).width() / 2);
+        },
+                'background-color':'#9518ed'
+    }); // display the modal on url load
+   });
+//
+//    $("#mapPopupModal").on("shown",function(){
+//        drawPercentIncomeGraphForExplain($("#median_income_value").val());
+//    });
+//    $("#mapPopupModal").on("hidden",function(){
+//        console.log("im closed");
+//        $("#mapPopupModal").empty();
+//        $("#mapPopupModal").unbind("shown");
+//        $("#mapPopupModal").unbind("hidden");
+//
+//    });
+    return false;
+});
+
 
 
 $("#map-ui-popup-1").on("click","button",function(event){

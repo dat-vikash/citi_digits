@@ -186,3 +186,20 @@ class TourSlide(models.Model):
     audio = models.FileField(upload_to="audio/%Y_%m_%d_%h_%M_%s_slide_audio")
     tour = models.ForeignKey(Tour)
     sequence = models.IntegerField(null=False)
+
+
+class NeighborhoodStatistics(models.Model):
+    """
+      Import of static neighborhood stats
+    """
+    id = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=255)
+    percent_income = models.CharField(max_length=255)
+    net_win = models.CharField(max_length=255)
+    daily_win = models.CharField(max_length=255)
+    map_id = models.CharField(max_length=255)
+    total_households = models.CharField(max_length=255)
+    total_18_and_up = models.CharField(max_length=255)
+    total_retailers = models.CharField(max_length=255)
+    adults_per_store = models.CharField(max_length=255)
+    net_loss_per_store = models.CharField(max_length=255)

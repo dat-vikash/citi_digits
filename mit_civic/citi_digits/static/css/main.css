@@ -985,6 +985,12 @@ background-color: #fbc5ed;
 
 }
 
+.popup-explain-header-not-equal {
+    background-color: #9518ed;
+    text-align: center;
+
+}
+
 #mapPopupModal {
     background-color: #00c9c8;
 }
@@ -1000,6 +1006,15 @@ background-color: #fbc5ed;
 }
 
 .popup-explain-header p{
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    font-size: 30px;
+    color: #FFFFFF;
+    text-decoration: underline;
+    margin-top: 2%;
+
+}
+
+.popup-explain-header-not-equal p{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
     color: #FFFFFF;
@@ -1401,7 +1416,15 @@ padding-top: 10px;
     margin-left: 8%;
 margin-right: 8%;
     margin-top: 1%;
+}
 
+.explain-text-not-equal {
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #b0b6bd;
+    font-size: 22px;
+    margin-left: 8%;
+margin-right: 8%;
+    margin-top: 1%;
 }
 
 .explain-text-odd{
