@@ -164,10 +164,11 @@ body {
 
 .form_button{
     color: #000000;
-    width: 110px;
     background-color: #a9a9a9;
     background-image: none;
     box-shadow: 5px 5px 5px 1px #181818;
+    min-width: 95px;
+    max-width: 170px;
 }
 
 #sign_up_form label {
@@ -955,20 +956,27 @@ background-color: #fbc5ed;
 
 #map-popup-footer button.form_button{
     color: #000000;
-    width: 145px;
+    min-width: 95px;
+    max-width: 170px;
     background-color: #a9a9a9;
     background-image: none;
     box-shadow: 5px 5px 5px 1px #696969;
     float: left;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    font-size: 13px;
+
 }
 
 #map-popup-footer button.form_button:hover{
     color: #000000;
-    width: 145px;
+    min-width: 95px;
+    max-width: 170px;
     background-color: #8d9297;
     background-image: none;
     box-shadow: 5px 5px 5px 1px #696969;
     float: left;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    font-size: 13px;
 }
 
 .popup-explain-header {
