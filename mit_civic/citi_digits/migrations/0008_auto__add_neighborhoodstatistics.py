@@ -1,8 +1,10 @@
 # -*- coding: utf-8 -*-
 import datetime
+import os
 from south.db import db
 from south.v2 import SchemaMigration
 from django.db import models
+from django.conf import settings as SETTINGS
 
 
 class Migration(SchemaMigration):
@@ -25,11 +27,19 @@ class Migration(SchemaMigration):
             ('net_loss_per_store', self.gf('django.db.models.fields.CharField')(max_length=255)),
         ))
         db.send_create_signal(u'citi_digits', ['NeighborhoodStatistics'])
-
+        self.seed()
 
     def backwards(self, orm):
         # Deleting model 'NeighborhoodStatistics'
         db.delete_table(u'citi_digits_neighborhoodstatistics')
+
+    def seed(self):
+        #get sql file
+        seed_file = open(os.path.join(SETTINGS.PROJECT_ROOT, '..', 'citi_digits','migrations') + "/stats_fixture.sql")
+        for line in seed_file.readlines():
+            #strip off semicolon
+            insertLine = line[0:len(line)-1]
+            db.execute(insertLine)
 
 
     models = {
