@@ -1471,6 +1471,20 @@ margin-right: 8%;
     font-size: 22px;
 }
 
+.math-table-center b.spent-purple{
+      font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #9518ed;
+    font-size: 22px;
+}
+
+
+.math-table-center-fixed{
+    margin: 0 auto;
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #ffffff;
+    font-size: 18px;
+}
+
 .bubble-explain-chart-text
 {
     /*font-size: 13px;*/
@@ -1912,14 +1926,68 @@ b.blue-2{
     margin-left: 32%;
 }
 
-/*.not-all-equal-top{*/
-    /*margin-left: 45%;*/
-/*}*/
+.not-all-equal-top{
+    margin-left: -50px;
+}
 
-/*.not-all-equal-bottom{*/
-    /*margin-left: 45%;*/
-/*}*/
+.not-all-equal-bottom{
+    margin-left: -50px;
+}
 
 .td-space{
     padding: 40px;
 }
+
+#dollar-td {
+    width: 265px;
+    float: right;
+    text-align: left;
+}
+
+#smiley-td{
+    width: 260px;
+    float: right;
+    text-align: left;
+}
+
+.td-bottom-align{
+    vertical-align: bottom;
+}
+
+.td-top-align{
+    vertical-align: top;
+}
+
+img.dollar-sign-img{
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+b.net-loss-red {
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #ff26d6;
+}
+
+b.net-loss-grey{
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #b0b6bd;
+}
+
+b.net-loss-purple{
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #9518ed;
+}
+
+#total-stores-top{
+ font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #9518ed;
+    margin-left: -50px;
+
+}
+
+#total-stores-bottom{
+ font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #9518ed;
+    margin-left: -50px;
+}
+
