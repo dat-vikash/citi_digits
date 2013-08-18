@@ -106,7 +106,10 @@ def mapNavigation(request):
     """
       Loads the map navigation elements
     """
-    return render_to_response('map_navigation.html')
+    #get all classes
+    #get classes
+    classes = Teacher.objects.values_list('className', flat=True)
+    return render_to_response('map_navigation.html',{'classes':classes},context_instance=RequestContext(request))
 
 
 def login(request):
@@ -278,15 +281,15 @@ def popup(request,layer,neighborhood,perin,dol,sale,win,income,netwin):
                 'percent':perin, 'amountSpent':amountSpent,'neighborhoodUrl':neighborhood,'income':income},context_instance=RequestContext(request))
         if layer == "NET_GAIN_LOSS":
             neighborhood =  neighborhood.replace("_"," ")
-            return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood.replace("_"," "),
+            return render_to_response('map_popup_net_gain_loss.html',{'neighborhoodUrl':neighborhood,'neighborhood':neighborhood.replace("_"," "),
                 'won':win, 'spent':sale},context_instance=RequestContext(request))
         if layer == "AVG_SPEND":
             neighborhood =  neighborhood.replace("_"," ")
-            return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood.replace("_"," "),
+            return render_to_response('map_popup_net_gain_loss.html',{'neighborhoodUrl':neighborhood,'neighborhood':neighborhood.replace("_"," "),
                 'won':win, 'spent':sale},context_instance=RequestContext(request))
         if layer == "AVG_WIN":
             neighborhood =  neighborhood.replace("_"," ")
-            return render_to_response('map_popup_net_gain_loss.html',{'neighborhood':neighborhood.replace("_"," "),
+            return render_to_response('map_popup_net_gain_loss.html',{'neighborhoodUrl':neighborhood,'neighborhood':neighborhood.replace("_"," "),
                 'won':win, 'spent':sale},context_instance=RequestContext(request))
 
 def mathExplain(request,neighborhood,spent,income):
@@ -307,6 +310,13 @@ def mathExplain(request,neighborhood,spent,income):
                                                                  'spentOnLotto':spentOnLotto},context_instance=RequestContext(request))
 
 
+def notAllEqual(request,neighborhood):
+    """
+     Not all equal explaination
+    """
+    neighborhood =  neighborhood.replace("_"," ")
+    return render_to_response('not_all_equal.html',{'neighborhood':neighborhood},context_instance=RequestContext(request))
+
 
 def loadGeoJsonInterviews(request):
     """
@@ -317,7 +327,10 @@ def loadGeoJsonInterviews(request):
     allInterview = None
 
     if(type):
-        allInterview = Interview.objects.filter(interviewType=type)
+        if(type in ('PLAYER','RETAILER')):
+            allInterview = Interview.objects.filter(interviewType=type)
+        else:
+            allInterview = Interview.objects.filter(student__team__teacher__className__exact=type)
     else:
         allInterview = Interview.objects.all()
 

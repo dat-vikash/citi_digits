@@ -158,6 +158,14 @@
         </div>
     </li>
     <li id="VIEW_ALL_SCHOOLS">
-        <p class="interviews">View All Schools <span class="caret"/> </p>
+        <a href="#" class="interviews">View All Schools <span class="caret"/> </a>
+        <hr/>
+        <div id="map-ui-subnav-content" class="hide">
+            <div id="map-ui-all-classes">
+                {% for class in classes %}
+                    <b data-form="{{ class }}" class="turn_on_class_interviews">{{ class }}</b>
+                {% endfor %}
+            </div>
+        </div>
     </li>
 </ul>
