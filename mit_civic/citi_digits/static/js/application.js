@@ -969,17 +969,21 @@ $(".map-popup").on("click", "#not_all_equal", function (ev) {
                 'background-color':'#9518ed'
     }); // display the modal on url load
    });
-//
-//    $("#mapPopupModal").on("shown",function(){
-//        drawPercentIncomeGraphForExplain($("#median_income_value").val());
-//    });
-//    $("#mapPopupModal").on("hidden",function(){
-//        console.log("im closed");
-//        $("#mapPopupModal").empty();
-//        $("#mapPopupModal").unbind("shown");
-//        $("#mapPopupModal").unbind("hidden");
-//
-//    });
+
+
+    $("#mapPopupModal").on("shown",function(){
+        $(".not-equal-rollover").on("mouseover",function(e){
+    var content = "<div id='img-tooltip'><img src='/static/img/dollar.png'> = $100<br><img src='/static/img/smiley.png'> = 100 people</div>";
+   $(this).tooltip({html:true,title:content,background:'#ffffff'});
+});
+    });
+    $("#mapPopupModal").on("hidden",function(){
+        console.log("im closed");
+        $("#mapPopupModal").empty();
+        $("#mapPopupModal").unbind("shown");
+        $("#mapPopupModal").unbind("hidden");
+
+    });
     return false;
 });
 
@@ -1859,4 +1863,3 @@ $(window).on("resize",function(e){
 //    $("#tooltip-percent-income").hide();
 //});
 
-$("")

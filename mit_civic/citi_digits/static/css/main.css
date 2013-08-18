@@ -1991,3 +1991,7 @@ b.net-loss-purple{
     /*margin-left: 5%;*/
 }
 
+.tooltip .tooltip-inner {
+  color: #000000;
+  background-color: #ffffff;
+}
