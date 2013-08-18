@@ -1926,13 +1926,13 @@ b.blue-2{
     margin-left: 32%;
 }
 
-.not-all-equal-top{
-    margin-left: -50px;
-}
+/*.not-all-equal-top{*/
+    /*margin-left: -50px;*/
+/*}*/
 
-.not-all-equal-bottom{
-    margin-left: -50px;
-}
+/*.not-all-equal-bottom{*/
+    /*margin-left: -50px;*/
+/*}*/
 
 .td-space{
     padding: 40px;
@@ -1981,13 +1981,13 @@ b.net-loss-purple{
 #total-stores-top{
  font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     color: #9518ed;
-    margin-left: -50px;
+    /*margin-left: 5%;*/
 
 }
 
 #total-stores-bottom{
  font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     color: #9518ed;
-    margin-left: -50px;
+    /*margin-left: 5%;*/
 }
 
