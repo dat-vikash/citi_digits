@@ -10,7 +10,7 @@ from django.shortcuts import render_to_response
 from django.template import RequestContext
 import math
 import forms
-from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer, InterviewComment, Tour, TourAuthors, TourSlide
+from models import School, Teacher, Team, Student, CityDigitsUser, Interview, Location, InterviewPlayer, InterviewRetailer, InterviewComment, Tour, TourAuthors, TourSlide, NeighborhoodStatistics
 from service import MembershipService
 from django.contrib.auth import login as auth_login
 from django.contrib.auth import logout as auth_logout
@@ -265,7 +265,7 @@ def interviewRetailer(request):
         return render_to_response('retailer_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
 
 
-def popup(request,layer,neighborhood,perin,dol,sale,win,income,netwin):
+def popup(request,layer,neighborhood,perin,dol,sale,win,income,netwin,id):
     """
 
     """
@@ -275,21 +275,21 @@ def popup(request,layer,neighborhood,perin,dol,sale,win,income,netwin):
             return render_to_response('map_popup_percent_income.html',{'neighborhood':neighborhood.replace("_"," "),
                 'percent':perin, 'amountSpent':amountSpent,'neighborhoodUrl':neighborhood,'income':income},context_instance=RequestContext(request))
         if layer == "MEDIAN_INCOME":
-            neighborhood =  neighborhood.replace("_"," ")
+            # neighborhood =  neighborhood.replace("_"," ")
             amountSpent = (100 * (float(perin)/100))
             return render_to_response('map_popup_percent_income.html',{'neighborhood':neighborhood.replace("_"," "),
                 'percent':perin, 'amountSpent':amountSpent,'neighborhoodUrl':neighborhood,'income':income},context_instance=RequestContext(request))
         if layer == "NET_GAIN_LOSS":
-            neighborhood =  neighborhood.replace("_"," ")
-            return render_to_response('map_popup_net_gain_loss.html',{'neighborhoodUrl':neighborhood,'neighborhood':neighborhood.replace("_"," "),
+            # neighborhood =  neighborhood.replace("_"," ")
+            return render_to_response('map_popup_net_gain_loss.html',{'id':id,'neighborhood':neighborhood.replace("_"," "),
                 'won':win, 'spent':sale},context_instance=RequestContext(request))
         if layer == "AVG_SPEND":
-            neighborhood =  neighborhood.replace("_"," ")
-            return render_to_response('map_popup_net_gain_loss.html',{'neighborhoodUrl':neighborhood,'neighborhood':neighborhood.replace("_"," "),
+            # neighborhood =  neighborhood.replace("_"," ")
+            return render_to_response('map_popup_net_gain_loss.html',{'id':id,'neighborhood':neighborhood.replace("_"," "),
                 'won':win, 'spent':sale},context_instance=RequestContext(request))
         if layer == "AVG_WIN":
-            neighborhood =  neighborhood.replace("_"," ")
-            return render_to_response('map_popup_net_gain_loss.html',{'neighborhoodUrl':neighborhood,'neighborhood':neighborhood.replace("_"," "),
+            # neighborhood =  neighborhood.replace("_"," ")
+            return render_to_response('map_popup_net_gain_loss.html',{'id':id,'neighborhood':neighborhood.replace("_"," "),
                 'won':win, 'spent':sale},context_instance=RequestContext(request))
 
 def mathExplain(request,neighborhood,spent,income):
@@ -314,8 +314,34 @@ def notAllEqual(request,neighborhood):
     """
      Not all equal explaination
     """
-    neighborhood =  neighborhood.replace("_"," ")
-    return render_to_response('not_all_equal.html',{'neighborhood':neighborhood},context_instance=RequestContext(request))
+    #get stats based on neighborhood
+    stats = NeighborhoodStatistics.objects.get(pk=neighborhood)
+    totalAdults = stats.total_18_and_up
+    totalStores = stats.total_retailers
+    neighborhood =  stats.name
+    adultsPerStore = stats.adults_per_store
+    netLossList = range(0,int(abs(round(float(stats.net_loss_per_store)/100.0))))
+    netLoss =abs(float(stats.net_loss_per_store))
+    personList = range(0,int(round(float(stats.adults_per_store)/100.0)))
+    statsHuntersPoint = NeighborhoodStatistics.objects.get(pk=241)
+    netLossListHP = range(0,int(abs(round(float(statsHuntersPoint.net_loss_per_store)/100.0))))
+    personListHP = range(0,int(round(float(statsHuntersPoint.adults_per_store)/100.0)))
+    statsHillCrest = NeighborhoodStatistics.objects.get(pk=210)
+    netLossListHILL = range(0,int(abs(round(float(statsHillCrest.net_loss_per_store)/100.0))))
+    personListHILL = range(0,int(round(float(statsHillCrest.adults_per_store)/100.0)))
+    adultsPerStoreHILL = statsHillCrest.adults_per_store
+    adultsPerStoreHP = statsHuntersPoint.adults_per_store
+    netLossHILL = abs(float(statsHillCrest.net_loss_per_store))
+    netLossHP = abs(float(statsHuntersPoint.net_loss_per_store))
+
+    return render_to_response('not_all_equal.html',{'neighborhood':neighborhood, 'totalAdults':totalAdults,
+                                                    'totalStores':totalStores,'adultsPerStore':adultsPerStore,
+                                                    'netLossList':netLossList,'netLoss':netLoss,
+                                                    'personList': personList,'personListHP':personListHP,'netLossListHP':netLossListHP,
+                                                    'netLossListHILL':netLossListHILL,'personListHILL':personListHILL,
+                                                    'adultsPerStoreHILL':adultsPerStoreHILL,'adultsPerStoreHP':adultsPerStoreHP,
+                                                    'netLossHILL':netLossHILL,'netLossHP':netLossHP
+                                                    },context_instance=RequestContext(request))
 
 
 def loadGeoJsonInterviews(request):

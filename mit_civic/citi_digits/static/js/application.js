@@ -54,7 +54,8 @@ function showMapPopUp(ev){
     }
     map_count = map_count + 1;
     //load into [0]
-    url = getPopupUrlFrom(activeLayer,layer.feature.properties);
+    console.log(layer);
+    url = getPopupUrlFrom(activeLayer,layer.feature);
     console.log("ulr: " + url);
 
     //determine which graph to load based on active layer
@@ -319,10 +320,10 @@ function drawPercentIncomeGraphForExplain(medianIncome){
 		}
 
 
-function getPopupUrlFrom(activeLayer,properties){
-        name = properties.N_Name.toString().split(' ').join('_');
-        return "/popup/"+activeLayer+"/"+name+"/"+properties.PERINC10+"/"+properties.EV_DOL+"/" +
-            properties.Daily_Sale+"/"+properties.Daily_Win+"/"+properties.Daily_Inco+"/"+properties.Net_Win +"/";
+function getPopupUrlFrom(activeLayer,feature){
+        name = feature.properties.N_Name.toString().split(' ').join('_');
+        return "/popup/"+activeLayer+"/"+name+"/"+feature.properties.PERINC10+"/"+feature.properties.EV_DOL+"/" +
+            feature.properties.Daily_Sale+"/"+feature.properties.Daily_Win+"/"+feature.properties.Daily_Inco+"/"+feature.properties.Net_Win +"/" + feature.id +"/";
 }
 
 $(".map-ui").on("click","a", function (e) {

@@ -993,6 +993,8 @@ background-color: #fbc5ed;
 
 #mapPopupModal {
     background-color: #00c9c8;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 #mapPopupModal .even{
@@ -1004,6 +1006,17 @@ background-color: #fbc5ed;
     background-color: #025ff1;
     text-align: center;
 }
+
+#mapPopupModal .not-all-equal-odd{
+    background-color: #b0b6bd;
+    text-align: center;
+}
+
+#mapPopupModal .not-all-equal-even{
+    /*background-color: #b0b6bd;*/
+    text-align: center;
+}
+
 
 .popup-explain-header p{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
@@ -1434,7 +1447,15 @@ margin-right: 8%;
     margin-left: 8%;
 margin-right: 8%;
     margin-top: 2%;
+}
 
+.explain-text-odd-not-equal{
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #9518ED;
+    font-size: 22px;
+    margin-left: 8%;
+margin-right: 8%;
+    margin-top: 2%;
 }
 
 .math-table-center{
@@ -1885,4 +1906,20 @@ b.blue-2{
     background-color:black;
     color:white;
     border: 1px solid black;
+}
+
+.not-all-equal-center{
+    margin-left: 32%;
+}
+
+/*.not-all-equal-top{*/
+    /*margin-left: 45%;*/
+/*}*/
+
+/*.not-all-equal-bottom{*/
+    /*margin-left: 45%;*/
+/*}*/
+
+.td-space{
+    padding: 40px;
 }
