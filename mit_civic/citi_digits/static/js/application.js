@@ -328,28 +328,44 @@ function getPopupUrlFrom(activeLayer,feature){
 
 $(".map-ui").on("click","a", function (e) {
     e.preventDefault();
+    console.log(" got cluck :" + mainLayer);
     //turn off any unwanted layers
     if(WINNINGS_LAYER !=null){
         MY_MAP.map.removeLayer(WINNINGS_LAYER);
         WINNINGS_LAYER = null;
     }
+    if(SPENDINGS_LAYER !=null){
+        MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+        SPENDINGS_LAYER = null;
+    }
+
     $(".map-ui li.active #map-ui-subnav-content").hide();
     $(".map-ui li.active").removeClass("active");
      $(this).closest("li").addClass("active");
     $(".map-ui li.active #map-ui-subnav-content").show();
 
+    //remove current layer
+    if(mainLayer!=null){
+       MY_MAP.map.removeLayer(mainLayer);
+    }
+
+    //check zoom
+    if( MY_MAP.map.getZoom() > 13){
+         MY_MAP.map.setZoom(13);
+        updateMapUIBackToCityLevel();
+    }
     //update map
     var layerId = $(".map-ui li.active").attr("id");
     //set fillcolor based on id and properties
     if(layerId == "PERCENT_INCOME"){
-        MY_MAP.map.removeLayer(mainLayer);
+//        MY_MAP.map.removeLayer(mainLayer);
         mainLayer =L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForPercentIncome
         }).addTo(MY_MAP.map);
         CURRENT_LAYER = "PERCENT_INCOME";
     }
     if(layerId == "MEDIAN_INCOME"){
-        MY_MAP.map.removeLayer(mainLayer);
+//        MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForMedianIncome
         }).addTo(MY_MAP.map);
@@ -357,21 +373,21 @@ $(".map-ui").on("click","a", function (e) {
 
     }
     if(layerId == "AVG_WIN"){
-        MY_MAP.map.removeLayer(mainLayer);
+//        MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForAverageWin
         }).addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_WIN";
     }
     if(layerId == "AVG_SPEND"){
-        MY_MAP.map.removeLayer(mainLayer);
+//        MY_MAP.map.removeLayer(mainLayer);
        mainLayer = L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForAverageSpend
         }).addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_SPEND";
     }
     if(layerId == "NET_GAIN_LOSS"){
-        MY_MAP.map.removeLayer(mainLayer);
+//        MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
             style :CityDigitsMap.getStyleColorForNetWinLoss
         }).addTo(MY_MAP.map);
@@ -1290,6 +1306,31 @@ function loadInterviews(interviewType){
     });
 }
 
+function updateMapUIBackToCityLevel(){
+    //AVG WIN
+    //set active thumb
+    $("#map-city-level-view-winnings").attr("class","span6 active");
+    $("#map-street-level-view-winnings").attr("class","span6");
+    //update legends
+    $("#AVG_WIN #map-legend-street").attr('class','hide');
+    $("#AVG_WIN #map-legend").attr('class','');
+
+    //AVG SPEND
+    //set active thumb
+    $("#map-city-level-view-spendings").attr("class","span6 active");
+    $("#map-street-level-view-spendings").attr("class","span6");
+    //update legends
+    $("#AVG_SPEND #map-legend-street").attr('class','hide');
+    $("#AVG_SPEND #map-legend").attr('class','');
+
+    //NET GAIN/LOSS
+    //set active thumb
+    $("#map-city-level-view-netgainloss").attr("class","span6 active");
+    $("#map-street-level-view-netgainloss").attr("class","span6");
+    //update legends
+    $("#NET_GAIN_LOSS #map-legend-street").attr('class','hide');
+    $("#NET_GAIN_LOSS #map-legend").attr('class','');
+}
 
 $("#map-nav").on("click","#map-city-level-view-winnings",function(e){
     console.log("fuck");
@@ -1299,6 +1340,11 @@ $("#map-nav").on("click","#map-city-level-view-winnings",function(e){
     if(WINNINGS_LAYER!=null){
         MY_MAP.map.removeLayer(WINNINGS_LAYER);
         WINNINGS_LAYER = null;
+    }
+    if(mainLayer==null){
+        mainLayer= L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageWin
+        }).addTo(MY_MAP.map);
     }
     //set div to active
     $(this).attr("class","span6 active");
@@ -1317,6 +1363,12 @@ $("#map-nav").on("click","#map-street-level-view-winnings",function(e){
     if(WINNINGS_LAYER==null){
         loadAvgWinningsMarkers();
     }
+    //turn off city layer
+    if(mainLayer!=null){
+        MY_MAP.map.removeLayer(mainLayer);
+        mainLayer = null;
+    }
+
     //set to active
      $(this).attr("class","span6 active");
     $("#map-city-level-view-winnings").attr("class","span6");
@@ -1336,6 +1388,12 @@ $("#map-nav").on("click","#map-city-level-view-spendings",function(e){
         MY_MAP.map.removeLayer(SPENDINGS_LAYER);
         SPENDINGS_LAYER = null;
     }
+
+    if(mainLayer==null){
+        mainLayer= L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageSpend
+        }).addTo(MY_MAP.map);
+    }
     //set div to active
     $(this).attr("class","span6 active");
     $("#map-street-level-view-spendings").attr("class","span6");
@@ -1352,6 +1410,12 @@ $("#map-nav").on("click","#map-street-level-view-spendings",function(e){
     //show winnings markers if not already shown
     if(SPENDINGS_LAYER==null){
         loadAvgSpendingsMarkers();
+    }
+
+    //turn off city layer
+    if(mainLayer!=null){
+        MY_MAP.map.removeLayer(mainLayer);
+        mainLayer = null;
     }
     //set to active
      $(this).attr("class","span6 active");
@@ -1373,6 +1437,13 @@ $("#map-nav").on("click","#map-city-level-view-netgainloss",function(e){
         MY_MAP.map.removeLayer(WINNINGS_LAYER);
         WINNINGS_LAYER = null;
     }
+
+    if(mainLayer==null){
+        mainLayer= L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForNetWinLoss
+        }).addTo(MY_MAP.map);
+    }
+
     //set div to active
     $(this).attr("class","span6 active");
     $("#map-street-level-view-netgainloss").attr("class","span6");
@@ -1387,8 +1458,14 @@ $("#map-nav").on("click","#map-street-level-view-netgainloss",function(e){
    //reset zoom to city level
     MY_MAP.map.setZoom(16);
     //show winnings markers if not already shown
-    if(SPENDINGS_LAYER==null){
+    if(SPENDINGS_LAYER==null && WINNINGS_LAYER==null){
         loadNetGainLossMarkers();
+    }
+
+    //turn off city layer
+    if(mainLayer!=null){
+        MY_MAP.map.removeLayer(mainLayer);
+        mainLayer = null;
     }
     //set to active
      $(this).attr("class","span6 active");
