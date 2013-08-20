@@ -175,6 +175,8 @@ def interviewPlayer(request):
     """
       Handles player interview form
     """
+    #get student team
+    team = MembershipService.findStudentForId(request.user.entityId).team.name
     if request.method == "POST":
         #Bound form
         form = forms.PlayerInterviewForm(request.POST, request.FILES)
@@ -207,13 +209,11 @@ def interviewPlayer(request):
             print("FORM ERRORS")
             for e in form.errors:
                 print e
-            return render_to_response('player_interview.html', {'form': form}, context_instance=RequestContext(request))
+            return render_to_response('player_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
 
     elif request.method == "GET":
         #Load interview form
         form = forms.PlayerInterviewForm()
-        #get student team
-        team = MembershipService.findStudentForId(request.user.entityId).team.name
         return render_to_response('player_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
 
 
@@ -223,6 +223,8 @@ def interviewRetailer(request):
     """
       Handles retailer interview form
     """
+    #get student team
+    team = MembershipService.findStudentForId(request.user.entityId).team.name
     if request.method == "POST":
         #Bound form
         form = forms.RetailerInterviewForm(request.POST, request.FILES)
@@ -255,13 +257,11 @@ def interviewRetailer(request):
             print("FORM ERRORS")
             for e in form.errors:
                 print e
-            return render_to_response('retailer_interview.html', {'form': form}, context_instance=RequestContext(request))
+            return render_to_response('retailer_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
 
     elif request.method == "GET":
         #Load interview form
         form = forms.RetailerInterviewForm()
-        #get student team
-        team = MembershipService.findStudentForId(request.user.entityId).team.name
         return render_to_response('retailer_interview.html', {'form': form,'team':team}, context_instance=RequestContext(request))
 
 

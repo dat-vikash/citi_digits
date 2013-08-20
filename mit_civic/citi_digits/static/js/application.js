@@ -921,9 +921,14 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
     $("#add_interview_form").ajaxSubmit({
         url:request_url, // the file to call
         success: function(response) {
+            if(response.toString().indexOf("errorlist") >=0){
+                //there were errors in the forms
+                $("#addInterviewModal").html(response);
+                geoLocationMe($("#interview_type").val());
+            }else{
             //update view
          $("#addInterviewModal #workflow").hide();
-         $("#addInterviewModal #success-message").show();
+         $("#addInterviewModal #success-message").show();}
         },
         error: function(data){
           $("#addInterviewModal").html(data.responseText);
@@ -1093,7 +1098,7 @@ $("#interviews-tab").on("change",".interview-toolbar", function(e){
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
-                  'team':$("#team").val(),
+                  'team':$("#interviews-tab #team").val(),
                   'class':$("#class").val()};
     var offset = 1;
     console.log(values);
