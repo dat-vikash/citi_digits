@@ -19,7 +19,7 @@ function CityDigitsMap() {
     this.map.scrollWheelZoom.disable();
     this.map.gridControl.options.follow = true;
 
-    this.popup = new L.Popup({ autoPan: false });
+    this.popup = new L.Popup({ autoPan: false, maxWidth:250 });
     this.popup_previous_name = "";
 
 }
