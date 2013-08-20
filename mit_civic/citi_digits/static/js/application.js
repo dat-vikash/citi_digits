@@ -38,13 +38,14 @@ $().ready(new function(){
 //    loadInterviews();
 });
 
-function showMapPopUp(ev){
+function showMapPopUp(ev,feature){
+    console.log(feature);
     var idx= null;
     //get which layer is active
     var activeLayer = $(".map-ui li.active").attr("id");
     //get layer properties
     //get layer
-    var layer = ev.layer;
+//    var layer = ev.layer;
     //pass properties to webservice to construct popup
     //determine which popup is currently shown
     if (map_count % 2 == 0){
@@ -54,35 +55,35 @@ function showMapPopUp(ev){
     }
     map_count = map_count + 1;
     //load into [0]
-    console.log(layer);
-    url = getPopupUrlFrom(activeLayer,layer.feature);
+//    console.log(layer);
+    url = getPopupUrlFrom(activeLayer,feature);
     console.log("ulr: " + url);
 
     //determine which graph to load based on active layer
     switch(activeLayer){
         case "PERCENT_INCOME":
             map_popups[idx].load(url, function(){
-            drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.Daily_Inco);
+            drawPercentIncomeGraph(idx +1,feature.properties.PERINC10,feature.properties.Daily_Inco);
         });
             break;
         case "MEDIAN_INCOME":
             map_popups[idx].load(url, function(){
-            drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.Daily_Inco);
+            drawPercentIncomeGraph(idx +1,feature.properties.PERINC10,feature.properties.Daily_Inco);
         });
             break;
         case "AVG_WIN":
             map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale, layer.feature.properties.Net_Win);
+            drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
         });
             break;
         case "AVG_SPEND":
             map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale, layer.feature.properties.Net_Win);
+            drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
         });
             break;
         case "NET_GAIN_LOSS":
             map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,layer.feature.properties.Daily_Win,layer.feature.properties.Daily_Sale, layer.feature.properties.Net_Win);
+            drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
         });
             break;
         }
@@ -360,14 +361,16 @@ $(".map-ui").on("click","a", function (e) {
     if(layerId == "PERCENT_INCOME"){
 //        MY_MAP.map.removeLayer(mainLayer);
         mainLayer =L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForPercentIncome
+            style :CityDigitsMap.getStyleColorForPercentIncome,
+            onEachFeature :CityDigitsMap.onEachFeature
         }).addTo(MY_MAP.map);
         CURRENT_LAYER = "PERCENT_INCOME";
     }
     if(layerId == "MEDIAN_INCOME"){
 //        MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForMedianIncome
+            style :CityDigitsMap.getStyleColorForMedianIncome,
+           onEachFeature :CityDigitsMap.onEachFeature
         }).addTo(MY_MAP.map);
         CURRENT_LAYER = "MEDIAN_INCOME";
 
@@ -375,21 +378,24 @@ $(".map-ui").on("click","a", function (e) {
     if(layerId == "AVG_WIN"){
 //        MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageWin
+            style :CityDigitsMap.getStyleColorForAverageWin,
+           onEachFeature :CityDigitsMap.onEachFeature
         }).addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_WIN";
     }
     if(layerId == "AVG_SPEND"){
 //        MY_MAP.map.removeLayer(mainLayer);
        mainLayer = L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageSpend
+            style :CityDigitsMap.getStyleColorForAverageSpend,
+           onEachFeature :CityDigitsMap.onEachFeature
         }).addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_SPEND";
     }
     if(layerId == "NET_GAIN_LOSS"){
 //        MY_MAP.map.removeLayer(mainLayer);
        mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForNetWinLoss
+            style :CityDigitsMap.getStyleColorForNetWinLoss,
+           onEachFeature :CityDigitsMap.onEachFeature
         }).addTo(MY_MAP.map);
         CURRENT_LAYER="NET_GAIN_LOSS";
     }
@@ -405,20 +411,20 @@ $(".map-ui").on("click","a", function (e) {
     }
 
     //re-add mouse events
-    mainLayer.on('mousemove', function(e) {
-        MY_MAP.mapMouseMove(e);
-    });
-    mainLayer.on('mouseover', function(e) {
-        MY_MAP.mapMouseMove(e);
-    });
-    mainLayer.on('mouseout', function(e) {
-        MY_MAP.mapMouseOut(e);
-    });
-    mainLayer.on('click', function(e) {
-        MY_MAP.mapMouseMove(e);
-        //load popup
-        showMapPopUp(e);
-    });
+//    mainLayer.on('mousemove', function(e) {
+//        MY_MAP.mapMouseMove(e);
+//    });
+//    mainLayer.on('mouseover', function(e) {
+//        MY_MAP.mapMouseMove(e);
+//    });
+//    mainLayer.on('mouseout', function(e) {
+//        MY_MAP.mapMouseOut(e);
+//    });
+//    mainLayer.on('click', function(e) {
+//        MY_MAP.mapMouseMove(e);
+//        //load popup
+//        showMapPopUp(e);
+//    });
     return false;
 });
 
