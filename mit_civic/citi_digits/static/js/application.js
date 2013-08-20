@@ -1480,9 +1480,9 @@ $("#map-nav").on("click","#map-street-level-view-netgainloss",function(e){
 function loadNetGainLossMarkers(){
     //load wins
     //create scale
-    var scale = d3.scale.linear().domain([0,25000]).range([5,200]);
+    var scale = d3.scale.linear().domain([0,25000]).range([2,100]);
     var markerLayer = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
-                        var radius = 200;
+                        var radius = 100;
                         if (feature.properties.wins_ths <=25000){
                             radius = scale(feature.properties.wins_ths);
                         }
@@ -1495,31 +1495,29 @@ function loadNetGainLossMarkers(){
                                         opacity: 1,
                                         fillOpacity:.5
                                     });
-            }});
-
-    markerLayer.on("click",function(e){
-        console.log("I WAS CLICKED");
-        var marker = e.layer,
-        feature = marker.feature;
-        console.log("HERRO IM: " + feature.properties.FIRST_Plac );
+            },onEachFeature: function(feature,layer){
                 // Create custom popup content
-        var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p><br>' +
-            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent $' + feature.properties.sales+' and won $' +
-            feature.properties.wins_ths +'.</p><br>'+
-            '<p>$' + feature.properties.wins_ths + ' - ' + '$' + feature.properties.sales + ' = ' + (feature.properties.wins_ths - feature.properties.sales) + '</p>' +
+                  var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
+            Math.round(feature.properties.wins_ths) +'</b>.</p>'+
+            '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>       -        ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>      =       <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
             '</div>';
 
-        marker.bindPopup(popupContent,{
+                layer.bindPopup(popupContent,{
         closeButton: true,
-        minWidth: 320
+        maxWidth: 250
     });
+
+            }
+
     });
+
     MY_MAP.map.addLayer(markerLayer);
     WINNINGS_LAYER = markerLayer;
 
     //load spending
     var markerLayerSpending = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
-                        var radius = 200;
+                        var radius = 100;
                         if (feature.properties.wins_ths <=25000){
                             radius = scale(feature.properties.sales);
                         }
@@ -1532,25 +1530,23 @@ function loadNetGainLossMarkers(){
                                         opacity: 1,
                                         fillOpacity:.5
                                     });
-            }});
-
-    markerLayerSpending.on("click",function(e){
-        console.log("I WAS CLICKED");
-        var marker = e.layer,
-        feature = marker.feature;
-        // Create custom popup content
-        var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p><br>' +
-            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent $' + feature.properties.sales+' and won $' +
-            feature.properties.wins_ths +'.</p><br>'+
-            '<p>$' + feature.properties.wins_ths + ' - ' + '$' + feature.properties.sales + ' = ' + (feature.properties.wins_ths - feature.properties.sales) + '</p>' +
+            },onEachFeature: function(feature,layer){
+                // Create custom popup content
+                  var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
+            Math.round(feature.properties.wins_ths) +'</b>.</p>'+
+            '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
             '</div>';
 
-
-        marker.bindPopup(popupContent,{
+                layer.bindPopup(popupContent,{
         closeButton: true,
-        minWidth: 320
+        maxWidth: 250
     });
+
+            }
+
     });
+
     MY_MAP.map.addLayer(markerLayerSpending);
     SPENDINGS_LAYER = markerLayerSpending;
 
@@ -1558,9 +1554,9 @@ function loadNetGainLossMarkers(){
 
 function loadAvgWinningsMarkers(){
     //create scale
-    var scale = d3.scale.linear().domain([0,25000]).range([5,200]);
+    var scale = d3.scale.linear().domain([0,25000]).range([2,100]);
     var markerLayer = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
-                        var radius = 200;
+                        var radius = 100;
                         if (feature.properties.wins_ths <=25000){
                             radius = scale(feature.properties.wins_ths);
                         }
@@ -1594,9 +1590,9 @@ function loadAvgWinningsMarkers(){
 
 function loadAvgSpendingsMarkers(){
     //create scale
-    var scale = d3.scale.linear().domain([0,25000]).range([5,200]);
+    var scale = d3.scale.linear().domain([0,25000]).range([2,100]);
     var markerLayer = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
-                        var radius = 200;
+                        var radius = 100;
                         if (feature.properties.wins_ths <=25000){
                             radius = scale(feature.properties.sales);
                         }
@@ -1609,21 +1605,20 @@ function loadAvgSpendingsMarkers(){
                                         opacity: 1,
                                         fillOpacity:.8
                                     });
-            }});
+            },onEachFeature: function(feature,layer){
+                // Create custom popup content
+                 var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
-    markerLayer.on("click",function(e){
-        console.log("I WAS CLICKED");
-        var marker = e.layer,
-        feature = marker.feature;
-        // Create custom popup content
-        var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p><br>' +
-            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent $' + feature.properties.sales+'</p></div>';
-
-        marker.bindPopup(popupContent,{
+                layer.bindPopup(popupContent,{
         closeButton: true,
-        minWidth: 320
+        maxWidth: 250
     });
+
+            }
     });
+
+
     MY_MAP.map.addLayer(markerLayer);
     SPENDINGS_LAYER = markerLayer;
 }
