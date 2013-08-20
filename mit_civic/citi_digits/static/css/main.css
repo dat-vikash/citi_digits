@@ -1995,3 +1995,22 @@ b.net-loss-purple{
   color: #000000;
   background-color: #ffffff;
 }
+
+#win-spend-tooltip  {
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #000000;
+    font-size: 13px;
+}
+
+#win-spend-tooltip p.title {
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #000000;
+    font-size: 20px;
+    text-align: center;
+}
+
+
+#win-spend-tooltip b.win-tooltip-purple {
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #9518ed;
+}

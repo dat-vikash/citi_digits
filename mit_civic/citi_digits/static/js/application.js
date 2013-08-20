@@ -1574,22 +1574,20 @@ function loadAvgWinningsMarkers(){
                                         fillOpacity:.8,
                                         zIndex: 99999
                                     });
-            }});
-
-    markerLayer.on("click",function(e){
-        console.log("I WAS CLICKED");
-        var marker = e.layer,
-        feature = marker.feature;
-        console.log("HERRO IM: " + feature.properties.FIRST_Plac );
+            },
+            onEachFeature: function(feature,layer){
                 // Create custom popup content
-        var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p><br>' +
-            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won $' + feature.properties.wins_ths+'</p></div>';
+                 var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
-        marker.bindPopup(popupContent,{
+                layer.bindPopup(popupContent,{
         closeButton: true,
-        minWidth: 320
+        maxWidth: 250
     });
+
+            }
     });
+
     MY_MAP.map.addLayer(markerLayer);
     WINNINGS_LAYER = markerLayer;
 }
