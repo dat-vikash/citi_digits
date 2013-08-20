@@ -19,7 +19,7 @@ function CityDigitsMap() {
     this.map.scrollWheelZoom.disable();
     this.map.gridControl.options.follow = true;
 
-    this.popup = new L.Popup({ autoPan: false, maxWidth:250 });
+    this.popup = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
     this.popup_previous_name = "";
 
 }
@@ -32,7 +32,7 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         CityDigitsMap.popup_previous_name = feature.properties.N_Name;
         //get lat/long
         MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-        MY_MAP.popup.setContent(feature.properties.N_Name);
+        MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
         //display popup
         if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
     });
@@ -41,7 +41,8 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         CityDigitsMap.popup_previous_name = feature.properties.N_Name;
             //get lat/long
         MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-        MY_MAP.popup.setContent(feature.properties.N_Name);
+                MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
+
         //display popup
         if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
     });
@@ -50,7 +51,8 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         CityDigitsMap.popup_previous_name = feature.properties.N_Name;
             //get lat/long
         MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-        MY_MAP.popup.setContent(feature.properties.N_Name);
+                MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
+
         //display popup
         if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
 
