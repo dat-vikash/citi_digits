@@ -8,7 +8,7 @@ function CityDigitsMap() {
     var basemap = "sw2279.map-x3k7qi26";
 
     //where brooklyn at?!40.7429 N, 73.9188
-    this.map = L.mapbox.map('map', basemap).setView([40.7429,-73.9188], 13);;
+    this.map = L.mapbox.map('map', basemap,{minZoom:11,maxZoom:16}).setView([40.7429,-73.9188], 13);
     //set params
     this.height = $(window).height()-$(".navbar").height();
     this.width = $(window).width();
@@ -24,10 +24,6 @@ function CityDigitsMap() {
 
 }
 
-//CityDigitsMap.prototype.onEachFeature = function(feature, layer) {
-//    console.log("ON EACH FEATURE");
-////       );
-//}
 
 CityDigitsMap.onEachFeature = function(feature,layer){
 
