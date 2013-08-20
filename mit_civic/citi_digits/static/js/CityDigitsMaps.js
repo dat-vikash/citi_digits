@@ -29,6 +29,42 @@ function CityDigitsMap() {
 ////       );
 //}
 
+CityDigitsMap.onEachFeature = function(feature,layer){
+
+    //set mouse events for layer
+    layer.on('mouseover', function(ev) {
+        CityDigitsMap.popup_previous_name = feature.properties.N_Name;
+        //get lat/long
+        MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+        MY_MAP.popup.setContent(feature.properties.N_Name);
+        //display popup
+        if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+    });
+
+    layer.on('mousemove', function(ev) {
+        CityDigitsMap.popup_previous_name = feature.properties.N_Name;
+            //get lat/long
+        MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+        MY_MAP.popup.setContent(feature.properties.N_Name);
+        //display popup
+        if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+    });
+
+    layer.on("click",function(ev){
+        CityDigitsMap.popup_previous_name = feature.properties.N_Name;
+            //get lat/long
+        MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+        MY_MAP.popup.setContent(feature.properties.N_Name);
+        //display popup
+        if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+
+        //show neighborhood popup
+        showMapPopUp(ev,feature);
+    });
+
+}
+
+
 
 CityDigitsMap.prototype.loadLayers =  function (){
     var self = this;
@@ -38,22 +74,23 @@ CityDigitsMap.prototype.loadLayers =  function (){
 
     //add neighborhoods
     this.neighborhoodLayer = L.geoJson(nyc_neighborhoods,{
-        style :CityDigitsMap.getStyleColorForPercentIncome
+        style :CityDigitsMap.getStyleColorForPercentIncome,
+        onEachFeature : CityDigitsMap.onEachFeature
     }).addTo(this.map);
-    this.neighborhoodLayer.on('mousemove', function(e) {
-        self.mapMouseMove(e);
-    });
-    this.neighborhoodLayer.on('mouseover', function(e) {
-        self.mapMouseMove(e);
-    });
-    this.neighborhoodLayer.on('mouseout', function(e) {
-        self.mapMouseOut(e);
-    });
-    this.neighborhoodLayer.on('click', function(e) {
-        self.mapMouseMove(e);
-        //load popup
-        showMapPopUp(e);
-    });
+//    this.neighborhoodLayer.on('mousemove', function(e) {
+//        self.mapMouseMove(e);
+//    });
+//    this.neighborhoodLayer.on('mouseover', function(e) {
+//        self.mapMouseMove(e);
+//    });
+//    this.neighborhoodLayer.on('mouseout', function(e) {
+//        self.mapMouseOut(e);
+//    });
+//    this.neighborhoodLayer.on('click', function(e) {
+//        self.mapMouseMove(e);
+//        //load popup
+//        showMapPopUp(e);
+//    });
 }
 
 CityDigitsMap.prototype.resizeMap = function(){
