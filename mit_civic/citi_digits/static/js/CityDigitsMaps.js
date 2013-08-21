@@ -66,7 +66,7 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             MY_SELECTED_BOROUGHS.push(ev.target);
             //highlight current layer
             layer.setStyle({
-            weight: 2,
+            weight: 3,
             color: '#3b3b3b',
             opacity: 1
             });
@@ -77,7 +77,7 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             mainLayer.resetStyle(event);
             //highlight current layer
             layer.setStyle({
-            weight: 2,
+            weight: 3,
             color: '#3b3b3b',
             opacity: 1
             });
