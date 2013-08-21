@@ -35,6 +35,11 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
         //display popup
         if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+
+        });
+
+    layer.on("mouseout",function resetHighlight(e) {
+//    mainLayer.resetStyle(e.target);
     });
 
     layer.on('mousemove', function(ev) {
@@ -56,6 +61,28 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         //display popup
         if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
 
+        if(MY_SELECTED_BOROUGHS.length >= 0 && MY_SELECTED_BOROUGHS.length !=2){
+            //only 1 selected, add another
+            MY_SELECTED_BOROUGHS.push(ev.target);
+            //highlight current layer
+            layer.setStyle({
+            weight: 2,
+            color: '#3b3b3b',
+            opacity: 1
+            });
+
+        }else{
+            //clear borough
+            var event = MY_SELECTED_BOROUGHS.shift();
+            mainLayer.resetStyle(event);
+            //highlight current layer
+            layer.setStyle({
+            weight: 2,
+            color: '#3b3b3b',
+            opacity: 1
+            });
+            MY_SELECTED_BOROUGHS.push(ev.target);
+        }
         //show neighborhood popup
         showMapPopUp(ev,feature);
     });
@@ -153,9 +180,9 @@ CityDigitsMap.getStyleColorForPercentIncome = function (feature){
 
     }finally{
         return {
-        weight: 2,
-        opacity: 0.1,
-        color: 'black',
+        weight: 1,
+        opacity: .1,
+        color: 'white',
         fillOpacity: 0.75,
         fillColor: fillColor
         }

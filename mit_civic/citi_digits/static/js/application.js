@@ -19,6 +19,7 @@ var MARKER_LAYER = null;
 var SCREEN_HEIGHT = null;
 var CURRENT_LAYER = null;
 var VIEW_ALL_SCHOOLS_IS_OPEN = false;
+var MY_SELECTED_BOROUGHS = [];
 
 $().ready(new function(){
     //get screen measurements
