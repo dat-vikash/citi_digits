@@ -1513,7 +1513,8 @@ function loadNetGainLossMarkers(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                     var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                     var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                         '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
             Math.round(feature.properties.wins_ths) +'</b>.</p>'+
             '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
@@ -1526,14 +1527,15 @@ function loadNetGainLossMarkers(){
 
 
                 // Create custom popup content
-                  var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                  var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                      '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
             Math.round(feature.properties.wins_ths) +'</b>.</p>'+
             '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>       -        ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>      =       <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
             '</div>';
 
                 layer.bindPopup(popupContent,{
-        closeButton: true,
+        closeButton: false,
         maxWidth: 250
     });
 
@@ -1563,7 +1565,8 @@ function loadNetGainLossMarkers(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                     var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                     var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                         '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
             Math.round(feature.properties.wins_ths) +'</b>.</p>'+
             '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
@@ -1575,14 +1578,15 @@ function loadNetGainLossMarkers(){
                 });
 
                 // Create custom popup content
-                  var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                  var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                      '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
             Math.round(feature.properties.wins_ths) +'</b>.</p>'+
             '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
             '</div>';
 
                 layer.bindPopup(popupContent,{
-        closeButton: true,
+        closeButton: false,
         maxWidth: 250
     });
 
@@ -1619,7 +1623,8 @@ function loadAvgWinningsMarkers(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                     var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                     var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                         '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
                 MY_MAP.popup.setContent(popupContent);
@@ -1627,21 +1632,27 @@ function loadAvgWinningsMarkers(){
                 if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
                 });
 
+
+
                 // Create custom popup content
-                 var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                 var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                     '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
                 layer.bindPopup(popupContent,{
-                    closeButton: true,
+                    closeButton: false,
                     maxWidth: 250
                     });
-
             }
     });
 
     MY_MAP.map.addLayer(markerLayer);
     WINNINGS_LAYER = markerLayer;
 }
+
+$("#map").on("click",".popup-close",function(e){
+    MY_MAP.map.closePopup();
+});
 
 function loadAvgSpendingsMarkers(){
     //create scale
@@ -1664,7 +1675,8 @@ function loadAvgSpendingsMarkers(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                    var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                    var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                        '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
                 MY_MAP.popup.setContent(popupContent);
@@ -1673,7 +1685,8 @@ function loadAvgSpendingsMarkers(){
                 });
 
                 // Create custom popup content
-                 var popupContent = '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                 var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                     '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
                 layer.bindPopup(popupContent,{
@@ -1692,7 +1705,6 @@ function loadAvgSpendingsMarkers(){
 
 
 function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,team,klass){
-    console.log("loadinterviewwithpagination");
     $.ajax({
         type: 'GET',
         url: 'interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
@@ -1725,7 +1737,6 @@ $("#addTour").on("click","#new-tour-slide",function(event){
      event.preventDefault();
     //get slide count
     var count = $("#add_tour_form #workflow-slides .slide").length;
-    console.log("count: " + count);
     //get even or odd for last slide
     var currentSlideDecoration = $("#add_tour_form #workflow-slides .slide")[count-1].attributes["class"].value.indexOf("even") >= 0 ? "odd": "even";
     //construct html
@@ -1745,17 +1756,11 @@ $("#addTour").on("click","#new-tour-slide",function(event){
 
 $("#addTour").on("click","#save_tour_button",function(event){
    event.preventDefault();
-   console.log("save called");
      //get request url
     var request_url = $('#add_tour_form').attr('action');
     // get all the inputs into an array.
     var values = {};
     values = $('#add_tour_form').serializeArray();
-
-
-    console.log("VALUES!");
-    console.log(values);
-
 
     $("#add_tour_form").ajaxSubmit({
         url:request_url, // the file to call
@@ -1768,7 +1773,6 @@ $("#addTour").on("click","#save_tour_button",function(event){
                 $("#create-tour-success").attr('class','');;
                 $("#add_tour_form").hide();
             }
-            console.log("SUCCESSS");
 
         },
         error: function(data){
@@ -1781,7 +1785,6 @@ $("#addTour").on("click","#save_tour_button",function(event){
 
 
 $("#addTour").on("click","#save_preview_button",function(ev){
-    console.log("IN PREVIEW");
    ev.preventDefault();
     //get form values
     var title = $("#id_title").val();
@@ -1789,10 +1792,7 @@ $("#addTour").on("click","#save_preview_button",function(ev){
     var slides = [];
     var coverPhoto;
     for(var i= 0; i<$("#add_tour_form .slide").length; i++){
-        console.log("builidng slides");
-        console.log($("#add_tour_form #workflow-slides .slide").find("#id_form-" + i + "-image")[0].files[0]);
         if ($("#add_tour_form .slide").find("#id_form-" + i + "-isCoverPhoto").is(":checked")){
-            console.log("cover photo found");
             coverPhoto = $("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0];
         }
         var slide = {'image' : $("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0],
