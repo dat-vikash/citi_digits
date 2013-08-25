@@ -44,9 +44,7 @@ function showMapPopUp(ev,feature){
     var idx= null;
     //get which layer is active
     var activeLayer = $(".map-ui li.active").attr("id");
-    //get layer properties
-    //get layer
-//    var layer = ev.layer;
+
     //pass properties to webservice to construct popup
     //determine which popup is currently shown
     if (map_count % 2 == 0){
@@ -358,74 +356,7 @@ $(".map-ui").on("click","a", function (e) {
     }
     //update map
     var layerId = $(".map-ui li.active").attr("id");
-    //set fillcolor based on id and properties
-    if(layerId == "PERCENT_INCOME"){
-//        MY_MAP.map.removeLayer(mainLayer);
-        mainLayer =L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForPercentIncome,
-            onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
-        CURRENT_LAYER = "PERCENT_INCOME";
-    }
-    if(layerId == "MEDIAN_INCOME"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForMedianIncome,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
-        CURRENT_LAYER = "MEDIAN_INCOME";
-
-    }
-    if(layerId == "AVG_WIN"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageWin,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
-        CURRENT_LAYER="AVG_WIN";
-    }
-    if(layerId == "AVG_SPEND"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer = L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageSpend,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
-        CURRENT_LAYER="AVG_SPEND";
-    }
-    if(layerId == "NET_GAIN_LOSS"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForNetWinLoss,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
-        CURRENT_LAYER="NET_GAIN_LOSS";
-    }
-    if(layerId == "VIEW_ALL_SCHOOLS"){
-        //if this is clicked while active, close it
-        if(CURRENT_LAYER == "VIEW_ALL_SCHOOLS" && VIEW_ALL_SCHOOLS_IS_OPEN==true){
-            $(".map-ui li.active #map-ui-subnav-content").hide();
-            VIEW_ALL_SCHOOLS_IS_OPEN = false;
-        }else{
-            CURRENT_LAYER = "VIEW_ALL_SCHOOLS";
-            VIEW_ALL_SCHOOLS_IS_OPEN = true;
-        }
-    }
-
-    //re-add mouse events
-//    mainLayer.on('mousemove', function(e) {
-//        MY_MAP.mapMouseMove(e);
-//    });
-//    mainLayer.on('mouseover', function(e) {
-//        MY_MAP.mapMouseMove(e);
-//    });
-//    mainLayer.on('mouseout', function(e) {
-//        MY_MAP.mapMouseOut(e);
-//    });
-//    mainLayer.on('click', function(e) {
-//        MY_MAP.mapMouseMove(e);
-//        //load popup
-//        showMapPopUp(e);
-//    });
+    CityDigitsMap.loadLayerFor(layerId);
     return false;
 });
 
