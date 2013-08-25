@@ -30,6 +30,10 @@ function CityDigitsMap() {
 }
 
 CityDigitsMap.loadLayerFor = function(layerId){
+        //remove current layer
+    if(mainLayer!=null && layerId!="VIEW_ALL_SCHOOLS"){
+       MY_MAP.map.removeLayer(mainLayer);
+    }
     //set fillcolor based on id and properties
     if(layerId == "PERCENT_INCOME"){
 //        MY_MAP.map.removeLayer(mainLayer);
