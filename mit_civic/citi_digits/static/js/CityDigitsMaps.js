@@ -8,7 +8,12 @@ function CityDigitsMap() {
     var basemap = "sw2279.map-x3k7qi26";
 
     //where brooklyn at?!40.7429 N, 73.9188
-    this.map = L.mapbox.map('map', basemap,{minZoom:11,maxZoom:16}).setView([40.7429,-73.9188], 13);
+    this.map = L.mapbox.map('map', basemap,{minZoom:11,maxZoom:16,zoomControl:false}).setView([40.7429,-73.9188], 13);
+    //load zoomer
+    $("#citydigits-zoomer").attr({'class':'citydigits-zoomer'});
+    $("#citydigits-zoomer").on("click","#zoom-in",CityDigitsMap.onZoomIn);
+    $("#citydigits-zoomer").on("click","#zoom-out",CityDigitsMap.onZoomOut);
+
     //set params
     this.height = $(window).height()-$(".navbar").height();
     this.width = $(window).width();
@@ -23,6 +28,15 @@ function CityDigitsMap() {
     this.popup_previous_name = "";
 
 }
+
+CityDigitsMap.onZoomIn = function(event){
+    MY_MAP.map.zoomIn();
+}
+
+CityDigitsMap.onZoomOut = function(event){
+    MY_MAP.map.zoomOut();
+}
+
 
 
 CityDigitsMap.onEachFeature = function(feature,layer){

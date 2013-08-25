@@ -44,9 +44,7 @@ function showMapPopUp(ev,feature){
     var idx= null;
     //get which layer is active
     var activeLayer = $(".map-ui li.active").attr("id");
-    //get layer properties
-    //get layer
-//    var layer = ev.layer;
+
     //pass properties to webservice to construct popup
     //determine which popup is currently shown
     if (map_count % 2 == 0){
