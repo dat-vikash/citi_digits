@@ -344,11 +344,6 @@ $(".map-ui").on("click","a", function (e) {
      $(this).closest("li").addClass("active");
     $(".map-ui li.active #map-ui-subnav-content").show();
 
-    //remove current layer
-    if(mainLayer!=null){
-       MY_MAP.map.removeLayer(mainLayer);
-    }
-
     //check zoom
     if( MY_MAP.map.getZoom() > 13){
          MY_MAP.map.setZoom(13);
