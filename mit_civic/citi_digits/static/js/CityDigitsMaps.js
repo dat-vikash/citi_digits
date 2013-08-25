@@ -81,6 +81,11 @@ CityDigitsMap.loadLayerFor = function(layerId){
         if(CURRENT_LAYER == "VIEW_ALL_SCHOOLS" && VIEW_ALL_SCHOOLS_IS_OPEN==true){
             $(".map-ui li.active #map-ui-subnav-content").hide();
             VIEW_ALL_SCHOOLS_IS_OPEN = false;
+            //remove previous layer
+            if(MARKER_LAYER!=null){
+                console.log("clearing layer");
+                MY_MAP.map.removeLayer(MARKER_LAYER);
+            }
         }else{
             CURRENT_LAYER = "VIEW_ALL_SCHOOLS";
             VIEW_ALL_SCHOOLS_IS_OPEN = true;
