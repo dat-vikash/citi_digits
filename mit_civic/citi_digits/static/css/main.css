@@ -316,7 +316,7 @@ body {
 
 .map-ui {
     position: absolute;
-    top: 10%;
+    top: 99px;
     /*left: 10px;*/
     width: 250px;
     margin: 0;
@@ -2031,4 +2031,23 @@ b.net-loss-purple{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #000000;
     font-size: 13px;
+}
+
+.citydigits-zoomer {
+    position: absolute;
+    z-index: 110;
+    top: 59px;
+    background-color: #000000;
+    border-radius: 5px;
+    height: 31px;
+    box-shadow: 2px 2px 15px;
+}
+.citydigits-zoomer #zoom-out{
+    margin-left: -5px;
+}
+.citydigits-zoomer #zoom-out:hover{
+    opacity: .9;
+}
+.citydigits-zoomer #zoom-in:hover{
+    opacity: .9;
 }
