@@ -29,11 +29,130 @@ function CityDigitsMap() {
 
 }
 
+CityDigitsMap.loadLayerFor = function(layerId){
+    //set fillcolor based on id and properties
+    if(layerId == "PERCENT_INCOME"){
+//        MY_MAP.map.removeLayer(mainLayer);
+        mainLayer =L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForPercentIncome,
+            onEachFeature :CityDigitsMap.onEachFeature
+        }).addTo(MY_MAP.map);
+        CURRENT_LAYER = "PERCENT_INCOME";
+    }
+    if(layerId == "MEDIAN_INCOME"){
+//        MY_MAP.map.removeLayer(mainLayer);
+       mainLayer= L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForMedianIncome,
+           onEachFeature :CityDigitsMap.onEachFeature
+        }).addTo(MY_MAP.map);
+        CURRENT_LAYER = "MEDIAN_INCOME";
+
+    }
+    if(layerId == "AVG_WIN"){
+//        MY_MAP.map.removeLayer(mainLayer);
+       mainLayer= L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageWin,
+           onEachFeature :CityDigitsMap.onEachFeature
+        }).addTo(MY_MAP.map);
+        CURRENT_LAYER="AVG_WIN";
+    }
+    if(layerId == "AVG_SPEND"){
+//        MY_MAP.map.removeLayer(mainLayer);
+       mainLayer = L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageSpend,
+           onEachFeature :CityDigitsMap.onEachFeature
+        }).addTo(MY_MAP.map);
+        CURRENT_LAYER="AVG_SPEND";
+    }
+    if(layerId == "NET_GAIN_LOSS"){
+//        MY_MAP.map.removeLayer(mainLayer);
+       mainLayer= L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForNetWinLoss,
+           onEachFeature :CityDigitsMap.onEachFeature
+        }).addTo(MY_MAP.map);
+        CURRENT_LAYER="NET_GAIN_LOSS";
+    }
+    if(layerId == "VIEW_ALL_SCHOOLS"){
+        //if this is clicked while active, close it
+        if(CURRENT_LAYER == "VIEW_ALL_SCHOOLS" && VIEW_ALL_SCHOOLS_IS_OPEN==true){
+            $(".map-ui li.active #map-ui-subnav-content").hide();
+            VIEW_ALL_SCHOOLS_IS_OPEN = false;
+        }else{
+            CURRENT_LAYER = "VIEW_ALL_SCHOOLS";
+            VIEW_ALL_SCHOOLS_IS_OPEN = true;
+        }
+    }
+}
+
+CityDigitsMap.viewSwitcher = function(){
+    //get active layer
+    var layerId = $(".map-ui li.active").attr("id");
+    console.log("LAYERID: " + layerId);
+    if($.inArray(layerId,['AVG_WIN','AVG_SPEND','NET_GAIN_LOSS'])>-1){
+        if(mainLayer!=null){
+            MY_MAP.map.removeLayer(mainLayer);
+            mainLayer = null;
+        }
+        if(layerId == "AVG_WIN" && !WINNINGS_LAYER){
+            loadAvgWinningsMarkers();
+        }else if(layerId=="AVG_SPEND" && !SPENDINGS_LAYER){
+            loadAvgSpendingsMarkers();
+        }else if(layerId=="NET_GAIN_LOSS" && !WINNINGS_LAYER & !SPENDINGS_LAYER){
+            loadNetGainLossMarkers();
+        }
+    }
+}
+
 CityDigitsMap.onZoomIn = function(event){
+    //check for neighborhood vs city levels
+    console.log("zoom in: " + MY_MAP.map.getZoom());
+    if((MY_MAP.map.getZoom() + 1 >16)){
+        console.log("calling view switcher");
+        //neighorhood level
+        CityDigitsMap.viewSwitcher();
+    }else{
+        //city level
+        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+            if(WINNINGS_LAYER){
+                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+            }
+            if(SPENDINGS_LAYER){
+                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+            }
+            var layerId = $(".map-ui li.active").attr("id");
+            if(mainLayer==null){
+                CityDigitsMap.loadLayerFor(layerId);
+            }
+            updateMapUIBackToCityLevel();
+        }
+    }
     MY_MAP.map.zoomIn();
 }
 
+
+
 CityDigitsMap.onZoomOut = function(event){
+        console.log("zoom out: " + MY_MAP.map.getZoom());
+
+     if((MY_MAP.map.getZoom() + 1 >16)){
+        //neighorhood level
+        CityDigitsMap.viewSwitcher();
+    }else{
+        //city level
+        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+            if(WINNINGS_LAYER){
+                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+            }
+            if(SPENDINGS_LAYER){
+                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+            }
+            var layerId = $(".map-ui li.active").attr("id");
+            if(mainLayer==null){
+                CityDigitsMap.loadLayerFor(layerId);
+            }
+            updateMapUIBackToCityLevel();
+        }
+    }
     MY_MAP.map.zoomOut();
 }
 
