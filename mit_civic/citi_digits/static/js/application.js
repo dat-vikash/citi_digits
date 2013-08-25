@@ -1235,6 +1235,29 @@ function loadInterviews(interviewType){
                         loadMapThumb();
                     });
             });
+            markerLayer.on('mouseover',function(e){
+               var marker = e.layer;
+                feature = marker.feature;
+                console.log("hello");
+                console.log(e);
+                MY_MAP.popup.setLatLng(e.latlng);
+                console.log("1");
+                var popupContent = '<div class="interview-tooltip row-fluid"><div class="span4">' + '<img src="/media/' + feature.properties.photo + '"/></div>' +
+                    '<div class="span8">'+ '<p class="interview-rollover-name">'+ feature.properties.name +'</p>' +
+                    '<p class="interview-rollover-about"><b>By: </b>'+ feature.properties.team  + ' Team, ' + feature.properties.class  + '</p>'
+                    + '</div></div>';
+                MY_MAP.popup.setContent(popupContent);
+                //display popup
+                if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+
+                $(".leaflet-popup-content-wrapper").css('border','3px solid #00ec66');
+            });
+
+            markerLayer.on('mouseout',function(e){
+                //reset any styling and close popup
+                 $(".leaflet-popup-content-wrapper").css('border','');
+                 if (MY_MAP.popup._isOpen) MY_MAP.map.closePopup(MY_MAP.popup);
+            });
 
 
             markerLayer.setGeoJSON(geoJson);

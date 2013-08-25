@@ -2051,3 +2051,32 @@ b.net-loss-purple{
 .citydigits-zoomer #zoom-in:hover{
     opacity: .9;
 }
+
+.interview-tooltip {
+    width: 250px;
+    height: 90px;
+}
+
+.interview-tooltip img{
+ height: 80px;
+    width: 80px;
+}
+
+.interview-tooltip p.interview-rollover-name{
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #000000;
+    font-size: 15px;
+    margin-top: 0px;
+}
+
+.interview-tooltip p.interview-rollover-name{
+    font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #000000;
+    font-size: 15px;
+}
+
+.interview-tooltip p.interview-rollover-about{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #000000;
+    font-size: 12px;
+}
