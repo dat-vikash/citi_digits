@@ -203,7 +203,7 @@ body {
 
 .modal-body {
     overflow-x: hidden;
-    overflow-y: scroll;
+    overflow-y: hidden;
     height: 100%;
     max-height: 100%;
     max-width: 100%;
@@ -2088,4 +2088,10 @@ b.net-loss-purple{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #000000;
     font-size: 12px;
+}
+
+.btn{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #FFFFFF;
+    font-size: 13px;
 }
