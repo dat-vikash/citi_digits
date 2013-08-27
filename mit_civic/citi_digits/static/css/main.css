@@ -18,6 +18,17 @@ body {
     width: 245px;
 }
 }
+
+@media (max-width: 979px) and (min-width: 768px) {
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+width: 100%;
+}}
+
+@media (min-width: 1200px){
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+width: 100%;
+}}
+
 /*
  * Overrides for navbar
 */
@@ -587,7 +598,7 @@ border-bottom-left-radius: 5px;
     background-image: none;
     color: #FFFFFF;
     font-size: 13px;
-    width: 106px;
+    width: 95px;
     box-shadow: rgba(0, 0, 0, 0.4);
 }
 
@@ -1042,6 +1053,11 @@ background-color: #fbc5ed;
     background-color: #B0B6BD ;
 }
 
+#interviews-tab .interview-header{
+padding-top: 4%;
+padding-bottom: 2%;
+}
+
 #interviews-tab .interview-header p{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
@@ -1059,23 +1075,26 @@ background-color: #fbc5ed;
 
 #interviews-tab #interview-content div.interview-stub {
     display: inline-block;
-    min-width: 280px;
-    max-width: 280px;
+    width: 235px;
+    height: 295px;
     /*width: 30%;*/
     background-color: #ffffff;
     border-radius: 5px;
-    margin-top: 1%;
+    margin-top: 3%;
     margin-right: 2%;
+    text-align: center;
 }
 
 #interviews-tab #interview-content img.interviewee-photo{
-    height: 280px;
-    width: 280px;
+    height: 219px;
+    width: 219px;
 }
 
 #interviews-tab #interview-content img.interviewee-team{
     height: 31px;
     width: 31px;
+    float: left;
+    margin-left: 4%;
     margin-top: 2%;
 }
 
@@ -1084,7 +1103,6 @@ background-color: #fbc5ed;
     font-size: 12px;
     color: #555555;
     text-align: center;
-    margin-top: -10%;
 }
 
 #interview-details-comments{
@@ -1406,15 +1424,29 @@ z-index: 0;
 
 .styled-select2 select {
      font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
-    color: #B0B6BD;
+    color: #555555;
    background: #ffffff;
-   width: 150px;
+   width: 105px;
    padding: 5px;
    font-size: 15px;
    line-height: 1;
    border: 0;
    border-radius: 0;
-   height: 34px;
+   height: 27px;
+   -webkit-appearance: none;
+   }
+
+.styled-select2 select.large {
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #555555;
+   background: #ffffff;
+   width: 125px;
+   padding: 5px;
+   font-size: 15px;
+   line-height: 1;
+   border: 0;
+   border-radius: 0;
+   height: 27px;
    -webkit-appearance: none;
    }
 
@@ -1422,7 +1454,18 @@ z-index: 0;
     margin-left: -15%;
 position: relative;
 height: 15px;
-padding-top: 10px;
+top: 3px;
+}
+
+label.styled-select2-label{
+    padding: 5px;
+position: relative;
+height: 15px;
+top: 4px;
+background-color: #ffffff;
+display: inline;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #555555;
 }
 
 
@@ -2094,4 +2137,14 @@ b.net-loss-purple{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #FFFFFF;
     font-size: 13px;
+}
+
+label.checkbox{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 15px;
+}
+
+.interview-pull-left{
+    margin-left: 20px;
 }
