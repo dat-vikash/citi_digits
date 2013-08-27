@@ -84,7 +84,7 @@
                     {{ comment.interview.student.team.teacher.className }}
                 </div>
                 <div class="row-fluid">
-                    {{ comment.created_at }}
+                    {{ comment.created_at|date:"M d, Y" }}
                 </div>
             </div>
             <div class="span9 comment-text">
