@@ -1181,6 +1181,12 @@ width: 160px;
 margin-left: 12px;
 }
 
+#interview-details-comments p.comment-header{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    font-size: 22px;
+    color: #FFFFFF;
+}
+
 /*
 Interview colors
 */
