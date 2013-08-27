@@ -1143,6 +1143,44 @@ margin-top: 8px;
 display: inline-block;
 }
 
+#interview-details{
+    margin-left: 40px;
+}
+
+#interview-details p.interviewee-name-details{
+    text-align: center;
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    font-size: 30px;
+    color: #3f3f3f;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    text-decoration: underline;
+}
+
+#interview-details p.interview-details-label{
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    font-size: 15px;
+    color: #3f3f3f;
+    margin-bottom: 1px;
+}
+
+#interview-details p{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    font-size: 15px;
+    color: #3f3f3f;
+}
+
+#interview-details img.interviewee-photo{
+    height: 282px;
+    width: 282px;
+}
+
+#interview-details #map-thumb {
+height: 160px;
+width: 160px;
+margin-left: 12px;
+}
+
 /*
 Interview colors
 */
