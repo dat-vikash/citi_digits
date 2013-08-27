@@ -1053,6 +1053,11 @@ background-color: #fbc5ed;
     background-color: #B0B6BD ;
 }
 
+#interviews-tab .interview-header{
+padding-top: 4%;
+padding-bottom: 2%;
+}
+
 #interviews-tab .interview-header p{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
@@ -1075,7 +1080,7 @@ background-color: #fbc5ed;
     /*width: 30%;*/
     background-color: #ffffff;
     border-radius: 5px;
-    margin-top: 1%;
+    margin-top: 3%;
     margin-right: 2%;
     text-align: center;
 }
