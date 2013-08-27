@@ -107,9 +107,9 @@ width: 100%;
  Container overrides
 */
 
-.container {
-    margin-left: 1%;
-}
+/*.container {*/
+    /*margin-left: 1%;*/
+/*}*/
 
 /*
  Bootstrap Modal Overrides
@@ -598,7 +598,8 @@ border-bottom-left-radius: 5px;
     background-image: none;
     color: #FFFFFF;
     font-size: 13px;
-    width: 95px;
+    min-width: 95px;
+    max-width: 108px;
     box-shadow: rgba(0, 0, 0, 0.4);
 }
 
