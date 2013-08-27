@@ -87,19 +87,32 @@
                     {{ comment.created_at|date:"M d, Y" }}
                 </div>
             </div>
-            <div class="span9 comment-text">
+            <div class="span7 comment-text">
                 {{ comment.comment }}
             </div>
+            <div class="span2"></div>
         </div>
            <br>
      {% endfor %}
     </div>
     <p class="comment-header">Leave a Comment</p>
     <form id="comment-form">
-        <input type="text" id="comment-name" placeholder="Name"><br>
-        <textarea id="comment-message" placeholder="Comment"></textarea>
-        <br>
-        <button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true">Submit</button>
+        <div class="row-fluid">
+            <div class="span3"></div>
+            <div class="span7"><input type="text" id="comment-name" placeholder="Name" style="width: 95%"></div>
+            <div class="span2"></div>
+        </div>
+        <div class="row-fluid">
+            <div class="span3"></div>
+            <div class="span7"><textarea id="comment-message" placeholder="Comment" style="width: 95%; height: 150px" ></textarea></div>
+            <div class="span2"></div>
+        </div>
+        <div class="row-fluid">
+            <div class="span3"></div>
+            <div class="span7"><button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true" style="float: left">Submit</button></div>
+            <div class="span2"></div>
+        </div>
+
     </form>
 <br/>
 <br/>
