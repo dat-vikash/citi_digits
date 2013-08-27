@@ -20,25 +20,9 @@
             {% endif %}
         </label>
     </div>
-    <div class=" styled-select2 pull-right input-append">
-        <select id="team" class="interview-toolbar"  name="team">
-            {% if toolbar.searchTeam == 'ALL' %}
-                <option value="ALL" selected><b>Team</b> ALL</option>
-            {% else %}
-                <option value="ALL"><b>Team</b> ALL</option>
-            {% endif %}
-            {% for team in teams %}
-                {% if toolbar.searchTeam ==  team  %}
-                    <option value="{{ team }}" selected><b>Team</b> {{ team }}</option>
-                {% else %}
-                     <option value="{{ team }}"><b>Team</b> {{ team }}</option>
-                {% endif %}
-            {% endfor %}
-        </select>
-        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
-    </div>
-    <div class=" styled-select2 pull-right input-append">
-        <select id="class" class="interview-toolbar"  name="class">
+    <div class=" styled-select2 pull-right input-append input-prepend">
+        <label class="styled-select2-label"><b>Class: </b></label>
+        <select id="class" class="interview-toolbar large"  name="class">
             {%  if toolbar.searchClass == 'ALL' %}
                 <option value="ALL"selected>ALL</option>
             {% else %}
@@ -49,6 +33,24 @@
                     <option value="{{ class }}" selected>{{ class }}</option>
                 {% else %}
                     <option value="{{ class }}">{{ class }}</option>
+                {% endif %}
+            {% endfor %}
+        </select>
+        <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
+    </div>
+    <div class=" styled-select2 pull-right input-append input-prepend">
+        <label class="styled-select2-label"><b>Team: </b></label>
+        <select id="team" class="interview-toolbar"  name="team">
+            {% if toolbar.searchTeam == 'ALL' %}
+                <option value="ALL" selected>ALL</option>
+            {% else %}
+                <option value="ALL">ALL</option>
+            {% endif %}
+            {% for team in teams %}
+                {% if toolbar.searchTeam ==  team  %}
+                    <option value="{{ team }}" selected>{{ team }}</option>
+                {% else %}
+                     <option value="{{ team }}">{{ team }}</option>
                 {% endif %}
             {% endfor %}
         </select>
