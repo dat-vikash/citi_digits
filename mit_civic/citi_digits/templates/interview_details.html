@@ -2,7 +2,7 @@
     <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
 <div id="interview-details-header" class="interview-detail-team-{{ interview.student.team.name.lower }}">
-    <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team ">
+    <img src="{{ STATIC_URL }}img/interview-details-icon.png" class="interviewee-team ">
     <p class="interviewee-by-description "><b>By:</b> {{ interview.student.team.name }} team,{{ interview.student.team.teacher.className }}
     <br>
     {{ interview.created_at }}</p>
