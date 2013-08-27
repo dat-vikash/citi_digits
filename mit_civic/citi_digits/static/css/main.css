@@ -1113,10 +1113,22 @@ padding-bottom: 2%;
 #interview-details-comments{
     text-align: center;
     background-color: #B0B6BD;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    font-size: 13px;
+    color: #555555;
 }
 
 #interview-details-comments #comments-list .comment-text {
     text-align: left;
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    font-size: 15px;
+    color: #555555;
+}
+
+interview-details-comments b.comment-name{
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    font-size: 13px;
+    color: #3f3f3f;
 }
 
 #interviewDetails {
