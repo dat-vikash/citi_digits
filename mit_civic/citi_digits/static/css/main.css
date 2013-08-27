@@ -1115,6 +1115,10 @@ padding-bottom: 2%;
     background-color: #B0B6BD;
 }
 
+#interview-details-comments #comments-list .comment-text {
+    text-align: left;
+}
+
 #interviewDetails {
     overflow-y: scroll;
 overflow-x: hidden;
