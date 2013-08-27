@@ -1954,6 +1954,8 @@ img.percent-income-365{
 
 .map-popup #map-popup-description{
     margin-top: 5%;
+    line-height: normal;
+    text-align: left;
 }
 
 .map-popup #map-popup-description p.description b.blue{
