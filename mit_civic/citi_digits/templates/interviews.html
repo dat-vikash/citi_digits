@@ -2,7 +2,7 @@
 <p>Interviews</p>
 </div><!-- interview-header -->
 <div id="toolbar" class="container-fluid">
-    <div class="span2">
+    <div class="pull-left">
         <label class="checkbox">
             {% if toolbar.player %}
                 <input type="checkbox" class="interview-toolbar" id="interview_type_player" name="interview_type" value="PLAYER" checked>Player Interviews
@@ -11,7 +11,7 @@
             {% endif %}
         </label>
     </div>
-    <div class="span2">
+    <div class="pull-left interview-pull-left">
         <label class="checkbox">
             {% if toolbar.retailer %}
                 <input type="checkbox" class="interview-toolbar"  id="interview_type_retailer" name="interview_type" value="RETAILER" checked>Retailer Interviews
@@ -20,9 +20,7 @@
             {% endif %}
         </label>
     </div>
-    <div class="span1"></div>
-    <div class="span1"></div>
-    <div class=" styled-select2 span2 input-append">
+    <div class=" styled-select2 pull-right input-append">
         <select id="team" class="interview-toolbar"  name="team">
             {% if toolbar.searchTeam == 'ALL' %}
                 <option value="ALL" selected><b>Team</b> ALL</option>
@@ -39,7 +37,7 @@
         </select>
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
-    <div class=" styled-select2 span2 input-append">
+    <div class=" styled-select2 pull-right input-append">
         <select id="class" class="interview-toolbar"  name="class">
             {%  if toolbar.searchClass == 'ALL' %}
                 <option value="ALL"selected>ALL</option>
@@ -56,8 +54,6 @@
         </select>
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
-    <div class="span1"></div>
-    <div class="span1"></div>
 </div><!-- toolbar-->
 <div id="interview-content" class="container">
     {% for interview in interviews %}

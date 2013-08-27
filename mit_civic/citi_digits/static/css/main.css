@@ -2108,3 +2108,14 @@ b.net-loss-purple{
     color: #FFFFFF;
     font-size: 13px;
 }
+
+label.checkbox{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.interview-pull-left{
+    margin-left: 20px;
+}
