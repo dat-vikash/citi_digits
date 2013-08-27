@@ -18,6 +18,17 @@ body {
     width: 245px;
 }
 }
+
+@media (max-width: 979px) and (min-width: 768px) {
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+width: 100%;
+}}
+
+@media (min-width: 1200px){
+.container, .navbar-static-top .container, .navbar-fixed-top .container, .navbar-fixed-bottom .container {
+width: 100%;
+}}
+
 /*
  * Overrides for navbar
 */
@@ -1059,23 +1070,26 @@ background-color: #fbc5ed;
 
 #interviews-tab #interview-content div.interview-stub {
     display: inline-block;
-    min-width: 280px;
-    max-width: 280px;
+    width: 235px;
+    height: 295px;
     /*width: 30%;*/
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 1%;
     margin-right: 2%;
+    text-align: center;
 }
 
 #interviews-tab #interview-content img.interviewee-photo{
-    height: 280px;
-    width: 280px;
+    height: 219px;
+    width: 219px;
 }
 
 #interviews-tab #interview-content img.interviewee-team{
     height: 31px;
     width: 31px;
+    float: left;
+    margin-left: 4%;
     margin-top: 2%;
 }
 
@@ -1084,7 +1098,6 @@ background-color: #fbc5ed;
     font-size: 12px;
     color: #555555;
     text-align: center;
-    margin-top: -10%;
 }
 
 #interview-details-comments{
