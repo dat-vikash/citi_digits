@@ -491,8 +491,8 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
             $(this).modal('show').css({
                  width: '95%',
                  'max-width':'100%',
-                  height:'100%',
-                    'max-height':'100%',
+                  height: '90%',
+                    'max-height':'90%',
                     'top':'1%',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
@@ -511,8 +511,8 @@ $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
             $(this).modal('show').css({
                  width: '95%',
                  'max-width':'100%',
-                  height:'100%',
-                    'max-height':'100%',
+                  height:'90%',
+                    'max-height':'90%',
                     'top':'1%',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
