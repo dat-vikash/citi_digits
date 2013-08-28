@@ -1910,7 +1910,7 @@ function resizeInterviewModal(){
     $("#addInterviewModal").css("margin-left",margin + "px");
 
    //height
-    $("#addInterviewModal").css("height","100%");
+    $("#addInterviewModal").css("height","90%");
 }
 
 $(window).on("resize",function(e){
