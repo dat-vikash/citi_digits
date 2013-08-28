@@ -2,96 +2,118 @@
     <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
 <div id="interview-details-header" class="interview-detail-team-{{ interview.student.team.name.lower }}">
-    <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team ">
+    <img src="{{ STATIC_URL }}img/interview-details-icon.png" class="interviewee-team ">
     <p class="interviewee-by-description "><b>By:</b> {{ interview.student.team.name }} team,{{ interview.student.team.teacher.className }}
     <br>
     {{ interview.created_at }}</p>
 </div><!-- interview details header -->
-<div id="interview-details" class="row">
+<div id="interview-details" class="container">
 {% if interview.interviewType == 'PLAYER' %}
-    <div class="span12">
-        <p class="interviewee-name">{{ interview.getInterview.firstName }}</p>
+    <div class="row-fluid">
+        <p class="interviewee-name-details">{{ interview.getInterview.firstName }}</p>
     </div><!-- name -->
-    <div class="span4">
+    <div class="row-fluid">
+    <div class="span5">
         <p class="interview-details-label">Do you ever buy lottery tickets?</p>
         <p>{{ interview.getInterview.do_you_ever_buy_lottery_tickets|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">Why or why not?</p>
-        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio>
+        <p><audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio></p>
         <p class="interview-details-label">Have you ever won the lottery?</p>
-        {{ interview.getInterview.have_you_ever_won_the_lottery|yesno:"Yes,No" }}
+        <p>{{ interview.getInterview.have_you_ever_won_the_lottery|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">What is the most you've ever won?</p>
-        {{ interview.getInterview.most_won }}
+        <p>${{ interview.getInterview.most_won }}</p>
         <p class="interview-details-label">How much do you spend on lottery in an average week?</p>
-        {{ interview.getInterview.money_spent_on_lottery_in_average_week }}
+        <p>${{ interview.getInterview.money_spent_on_lottery_in_average_week }}</p>
         <p class="interview-details-label">What would you do if you won the jackpot?</p>
         <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.jackpot_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
-    <div class="span6">
+    <div class="span4">
         <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
     </div><!-- image -->
-    <div id="map-thumb">
+    <div id="map-thumb" class="span3">
         <div id="long" class="hidden">{{ long }}</div>
         <div id="lat" class="hidden">{{ lat }}</div>
         <div id="team-name" class="hidden">{{ interview.student.team.name.lower }}</div>
 
     </div><!-- map thumb -->
 {% else %}
-    <div class="span12">
-        <p class="interviewee-name">{{ interview.getInterview.storeName }}</p>
+    <div class="row-fluid">
+        <p class="interviewee-name-details">{{ interview.getInterview.storeName }}</p>
     </div><!-- name -->
-    <div class="span4">
+    <div class="row-fluid">
+    <div class="span5">
         <p class="interview-details-label">Do you sell lottery tickets?</p>
         <p>{{ interview.getInterview.do_you_sell_lottery_tickets|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">Why or why not?</p>
-        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio>
+        <p><audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio></p>
         <p class="interview-details-label">About how many customers do you have in an average day?</p>
-        {{ interview.getInterview.customers_in_a_day}}
+        <p>{{ interview.getInterview.customers_in_a_day}}</p>
         <p class="interview-details-label">What percentage of your customers buy lottery tickets?</p>
-        {{ interview.getInterview.percentage_buy_lottery_tickets }}
+        <p>{{ interview.getInterview.percentage_buy_lottery_tickets }}</p>
         <p class="interview-details-label">About how many tickets do people usually buy in one visit?</p>
-        {{ interview.getInterview.amount_tickets_bought_per_visit }}
+        <p>{{ interview.getInterview.amount_tickets_bought_per_visit }}</p>
         <p class="interview-details-label">Do you think the lottery is good for this neighborhood? Why or why not?</p>
         <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_lottery_neighborhood_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
-    <div class="span6">
+    <div class="span4">
         <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
     </div><!-- image -->
-    <div id="map-thumb" class="span2">
+    <div id="map-thumb" class="span3">
         <div id="long" class="hidden">{{ long }}</div>
         <div id="lat" class="hidden">{{ lat }}</div>
         <div id="team-name" class="hidden">{{ interview.student.team.name.lower }}</div>
 
     </div><!-- map thumb -->
 {% endif %}
+    </div><!--- row -->
+<br/>
+<br/>
 </div><!-- interview details -->
 <div id="interview-details-comments" class="">
+    <br/>
     <p class="comment-header">Comments</p>
-    <div id="comments-list">
+    <br/>
+    <div id="comments-list" class="container">
        {% for comment in comments %}
         <div class="row">
             <div class="span3 comment-info">
-                <div class="row">
-                    <b>{{ comment.name }}</b>
+                <div class="row-fluid">
+                    <b class="comment-name">{{ comment.name }}</b>
                 </div>
-                <div class="row">
+                <div class="row-fluid">
                     {{ comment.interview.student.team.teacher.className }}
                 </div>
-                <div class="row">
-                    {{ comment.created_at }}
+                <div class="row-fluid">
+                    {{ comment.created_at|date:"M d, Y" }}
                 </div>
             </div>
-            <div class="span9">
+            <div class="span7 comment-text">
                 {{ comment.comment }}
             </div>
+            <div class="span2"></div>
         </div>
            <br>
      {% endfor %}
     </div>
     <p class="comment-header">Leave a Comment</p>
     <form id="comment-form">
-        <input type="text" id="comment-name" placeholder="Name"><br>
-        <textarea id="comment-message" placeholder="Comment"></textarea>
-        <br>
-        <button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true">Submit</button>
+        <div class="row-fluid">
+            <div class="span3"></div>
+            <div class="span7"><input type="text" id="comment-name" placeholder="Name" style="width: 95%"></div>
+            <div class="span2"></div>
+        </div>
+        <div class="row-fluid">
+            <div class="span3"></div>
+            <div class="span7"><textarea id="comment-message" placeholder="Comment" style="width: 95%; height: 150px" ></textarea></div>
+            <div class="span2"></div>
+        </div>
+        <div class="row-fluid">
+            <div class="span3"></div>
+            <div class="span7"><button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true" style="float: left">Submit</button></div>
+            <div class="span2"></div>
+        </div>
+
     </form>
+<br/>
+<br/>
 </div><!-- interview comments -->
