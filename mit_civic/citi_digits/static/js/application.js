@@ -436,12 +436,10 @@ $("#add-interview").click(function(ev){
                     'max-height':'320px',
                     'top':'1%',
                   'margin-left': function () {
-                      if ($(window).width() < 934){
-                          return window.pageXOffset;
-                      }else{
+
                         return window.pageXOffset-($(this).width() / 2);
                       }
-                    }
+
     }); // display the modal on url load
    }); //display modal
     return false; //prevent click propagation
@@ -491,8 +489,8 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
             $(this).modal('show').css({
                  width: '95%',
                  'max-width':'100%',
-                  height:'100%',
-                    'max-height':'100%',
+                  height: '90%',
+                    'max-height':'90%',
                     'top':'1%',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
@@ -511,8 +509,8 @@ $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
             $(this).modal('show').css({
                  width: '95%',
                  'max-width':'100%',
-                  height:'100%',
-                    'max-height':'100%',
+                  height:'90%',
+                    'max-height':'90%',
                     'top':'1%',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
@@ -1897,8 +1895,28 @@ $("#tours-tab").on("click",".tour-stub",function(event){
         });
 });
 
+function resizeInterviewModal(){
+    var margin = 0;
+    var height = 0;
+    //margin
+   if ($(window).width() < 934){
+        margin =  -380;
+    }
+    else{
+      margin =  window.pageXOffset-($("#addInterviewModal").width() / 2);
+    }
+    $("#addInterviewModal").css("margin-left",margin + "px");
+
+   //height
+    $("#addInterviewModal").css("height","90%");
+}
+
 $(window).on("resize",function(e){
    MY_MAP.resizeMap();
+    //test if modal is visible
+    if($("#addInterviewModal").is(':visible') && $("#addInterviewModal").html().indexOf("Add an Interview") < 0){
+        resizeInterviewModal();
+    }
 });
 
 //$(".map-popup").on("mouseover", "#median_household_rollover",function(e){
