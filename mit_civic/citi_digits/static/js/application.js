@@ -1895,6 +1895,24 @@ $("#tours-tab").on("click",".tour-stub",function(event){
         });
 });
 
+
+function resizeInterviewDetails(){
+    var margin = 0;
+    var height = 0;
+    //margin
+    if ($(window).width() < 934){
+        margin =  -380;
+    }
+    else{
+      margin =  window.pageXOffset-($("#interviewDetails").width() / 2);
+    }
+    $("#interviewDetails").css("margin-left",margin + "px");
+
+   //height
+    $("#interviewDetails").css("height","95%");
+
+}
+
 function resizeInterviewModal(){
     var margin = 0;
     var height = 0;
@@ -1916,6 +1934,9 @@ $(window).on("resize",function(e){
     //test if modal is visible
     if($("#addInterviewModal").is(':visible') && $("#addInterviewModal").html().indexOf("Add an Interview") < 0){
         resizeInterviewModal();
+    }
+    if($("#interviewDetails").is(':visible')){
+        resizeInterviewDetails();
     }
 });
 
