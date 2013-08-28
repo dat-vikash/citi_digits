@@ -1440,6 +1440,7 @@ border: #9518ed solid 2px;
 border-radius: 4px;
     margin-left: 7%;
     margin-top: -35%;
+    line-height: normal;
 }
 
 .bubble-net_winnings_graph_text:after
@@ -1494,6 +1495,7 @@ border-radius: 4px;
     float: right;
     margin-top: -20%;
     margin-right: 10%;
+    line-height: normal;
 }
 
 .bubble-net_spenings_graph_text:after
@@ -1522,6 +1524,10 @@ border-color: transparent #00ec66;
 display: block;
 width: 0;
 z-index: 0;
+}
+
+#map-popup-description-netgain {
+    line-height: normal;
 }
 
 #map-popup-description-netgain .spendings {
