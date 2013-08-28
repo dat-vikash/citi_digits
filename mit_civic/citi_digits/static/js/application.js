@@ -1897,8 +1897,29 @@ $("#tours-tab").on("click",".tour-stub",function(event){
         });
 });
 
+function resizeInterviewModal(){
+    var margin = 0;
+    var height = 0;
+    //margin
+   if ($(window).width() < 934){
+        margin =  -380;
+    }
+    else{
+      margin =  window.pageXOffset-($("#addInterviewModal").width() / 2);
+    }
+    $("#addInterviewModal").css("margin-left",margin + "px");
+
+   //height
+    $("#addInterviewModal").css("height","100%");
+}
+
 $(window).on("resize",function(e){
    MY_MAP.resizeMap();
+
+    //test if modal is visible
+    if($("#addInterviewModal").is(':visible')){
+        resizeInterviewModal();
+    }
 });
 
 //$(".map-popup").on("mouseover", "#median_household_rollover",function(e){
