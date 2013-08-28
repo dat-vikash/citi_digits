@@ -27,15 +27,15 @@ class LoginForm(forms.Form):
 
 
 class PlayerInterviewForm(forms.Form):
-    firstName = forms.CharField(widget=forms.TextInput())
+    firstName = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}))
     buyLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
     whyOrWhyNot = forms.FileField()
     wonLottery = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')),required=False)
-    mostWonAmount = forms.CharField(widget=forms.TextInput(),required=False)
-    averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput())
+    mostWonAmount = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=False)
+    averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}))
     wonJackpotQuestion = forms.FileField()
     photo = forms.ImageField()
-    location = forms.CharField(widget=forms.TextInput(),required=False)
+    location = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=False)
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
 
