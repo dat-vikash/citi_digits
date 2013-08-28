@@ -2,6 +2,10 @@ body {
     background-color: #B0B6BD ;
 }
 
+#main-container {
+    margin-top: -18px;
+}
+
 /*
   Bootstrap Overrides
 */
@@ -325,11 +329,11 @@ width: 100%;
     top:0;
     bottom:0;
     width:100%;
-    margin-left: -20px;
     margin-top: 40px;
 }
 
 .map-ui {
+    left: 15px;
     position: absolute;
     top: 99px;
     /*left: 10px;*/
@@ -919,10 +923,15 @@ background-color: #fbc5ed;
     margin-top: 3%;
     box-shadow: 5px 5px 15px;
     text-align: center;
-    padding: 5%;
+    padding-top: 3%;
+    padding-bottom: 5%;
+    padding-left: 3%;
+    float: right;
+    margin-right: 20px;
 }
 
 .map-ui-popup-2 {
+    float: right;
     z-index: 100;
     background-color: #FFFFFF;
     /*float: right;*/
@@ -935,14 +944,18 @@ background-color: #fbc5ed;
     /*left: 20.8%;*/
     box-shadow: 5px 5px 15px;
     text-align: center;
-    padding: 5%;
+    padding-top: 3%;
+    padding-bottom: 12px;
+    padding-left: 3%;
+    margin-right: 20px;
+    margin-top: 3%;
 }
 
 .div-close {
     position: relative;
     margin: 0;
-    top: -30px;
-    right: -25px;
+    top: -23px;
+    right: -8px;
     z-index: 101;
     opacity: 0.9;
 }
@@ -1053,9 +1066,12 @@ background-color: #fbc5ed;
 }
 
 
+
 #interviews-tab {
     /*width: 100%;*/
     background-color: #B0B6BD ;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 #interviews-tab .interview-header{
@@ -1733,6 +1749,10 @@ width: 0;
 z-index: 1;
 }
 
+#tours-tab #tour-grid{
+    padding-left: 20px;
+    padding-right: 20px;
+}
 
 #tours-tab #tour-content div.tour-stub {
     display: inline-block;
@@ -2101,6 +2121,7 @@ b.net-loss-purple{
     border-radius: 5px;
     height: 31px;
     box-shadow: 2px 2px 15px;
+    left: 15px;
 }
 .citydigits-zoomer #zoom-out{
     margin-left: -5px;
