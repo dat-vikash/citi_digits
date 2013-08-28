@@ -16,6 +16,23 @@ body {
 }
 }
 
+@media (max-width: 979px) and (min-width: 768px){
+#main-container {
+    margin-top: -8px;
+}
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+#map-popup-1, map-popup-2 {
+    margin-top: 10%;
+}
+}
+
+@media (max-width: 979px) and (min-width: 768px){
+#map-popup-2 {
+    margin-top: 20px;
+}
+}
 
 @media (max-width: 979px) and (min-width: 768px){
 .span4.nav {
