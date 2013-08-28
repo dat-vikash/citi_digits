@@ -436,12 +436,10 @@ $("#add-interview").click(function(ev){
                     'max-height':'320px',
                     'top':'1%',
                   'margin-left': function () {
-                      if ($(window).width() < 934){
-                          return window.pageXOffset;
-                      }else{
+
                         return window.pageXOffset-($(this).width() / 2);
                       }
-                    }
+
     }); // display the modal on url load
    }); //display modal
     return false; //prevent click propagation
@@ -1915,9 +1913,8 @@ function resizeInterviewModal(){
 
 $(window).on("resize",function(e){
    MY_MAP.resizeMap();
-
     //test if modal is visible
-    if($("#addInterviewModal").is(':visible')){
+    if($("#addInterviewModal").is(':visible') && $("#addInterviewModal").html().indexOf("Add an Interview") < 0){
         resizeInterviewModal();
     }
 });
