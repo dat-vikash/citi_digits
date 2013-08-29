@@ -633,13 +633,26 @@ border-bottom-left-radius: 5px;
     color: #FFFFFF;
 }
 
+.auto-scroll {
+    overflow-y: auto;
+}
+
 #add_interview_form {
     background-color: #B0B6BD;
        margin: 0px;
     /*padding: 5px;*/
     border: none;
     height: inherit;
+    /*font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;*/
+    /*font-size: 15px;*/
+    /*color:  #3F3F3F;*/
 }
+
+/*#add_interview_form label {*/
+    /*font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;*/
+    /*font-size: 15px;*/
+    /*color:  #3F3F3F;*/
+/*}*/
 
 #add_interview_form .column_1 {
     /*float: left;*/
