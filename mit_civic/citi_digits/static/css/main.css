@@ -203,6 +203,7 @@ width: 100%;
     max-width: 170px;
 }
 
+
 #sign_up_form label {
     color: #a9a9a9;
 }
@@ -648,11 +649,6 @@ border-bottom-left-radius: 5px;
     /*color:  #3F3F3F;*/
 }
 
-/*#add_interview_form label {*/
-    /*font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;*/
-    /*font-size: 15px;*/
-    /*color:  #3F3F3F;*/
-/*}*/
 
 #add_interview_form .column_1 {
     /*float: left;*/
@@ -672,14 +668,39 @@ border-bottom-left-radius: 5px;
 
 #add_interview_form .fieldWrapper {
     padding: 5px;
+    margin-bottom: 20px;
 }
 
-#add_interview_form .fieldWrapper ul label{
+#add_interview_form  label{
     display: inline;
     /*list-style-type: none;*/
     padding-right: 10px;
     clear:none;
     padding: 2px 1em 0 0;
+    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    font-size: 15px;
+    color:  #3F3F3F;
+}
+
+#add_interview_form label.add_media_button_photo{
+    font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    margin-left: 18px;
+    opacity: .5;
+}
+
+#add_interview_form  span.input-span-close{
+font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3F3F3F;
+;
+}
+
+#add_interview_form  button{
+    margin-top: 10px;
+}
+
+#add_interview_form  input{
+    margin-top: 10px;
 }
 
 #add_interview_form .fieldWrapper ul li{
