@@ -870,6 +870,7 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
 
 });
 
+
 $(".map-popup").on("click", "#math_explain", function (ev) {
     ev.preventDefault(); // prevent navigation
     console.log("clearing html");
