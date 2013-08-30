@@ -69,7 +69,7 @@
             <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team">
             <p class="interviewee-by-description"><b>By:</b> {{ interview.student.team.name }} team,{{ interview.student.team.teacher.className }}
             <br>
-            {{ interview.created_at }}</p>
+            {{ interview.created_at|date:"M d, Y" }}</p>
 
         </div>
     {% endfor %}

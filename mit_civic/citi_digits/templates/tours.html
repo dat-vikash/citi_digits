@@ -46,7 +46,7 @@
                     <div class="span7" >
                         <p><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p>
                         <br>
-                        <p>{{ tour.created_at }}</p>
+                        <p>{{ tour.created_at|date:"M d, Y" }}</p>
                     </div>
                     <div class="span1"></div>
                 </div>
