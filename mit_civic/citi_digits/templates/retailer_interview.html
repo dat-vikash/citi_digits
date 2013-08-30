@@ -5,58 +5,58 @@
 <h3>Add a Retailer Interview</h3>
 </div><!-- interview-header -->
     <form id="add_interview_form" enctype="multipart/form-data" class="well interview-form" method="post" action="/interview/retailer/">
-<div class="modal-body">
-    <div id="workflow">
+<div class="modal-body auto-scroll">
+    <div id="workflow" class="container-fluid">
         <div class="row-fluid column_1">
-            <div class="span6">
+            <div class="span7">
             <div class="fieldWrapper">
                 {{ form.storeName.errors }}
-                <label for="id_firstName">What is the name of the store?</label>
+                <label for="id_firstName">What is the name of the store?</label><br/>
                 {{ form.storeName }}
             </div>
             <div class="fieldWrapper" id="sellLotteryTickets">
                 {{ form.sellLotteryTickets.errors }}
-                <label for="id_sellLotteryTickets_0">Do you sell lottery tickets?</label>
+                <label for="id_sellLotteryTickets_0">Do you sell lottery tickets?</label><br/>
                 {{ form.sellLotteryTickets }}
             </div>
             <div class="fieldWrapper">
                 {{ form.whyOrWhyNot.errors }}
-                <label for="id_whyOrWhyNot">Why or why not?</label>
+                <label for="id_whyOrWhyNot">Why or why not?</label><br/>
                 {{ form.whyOrWhyNot }}
+                <span class="input-span-close">Add an Audio recording</span>
             </div>
             <div class="fieldWrapper hide" id="customersPerDay">
                 {{ form.customersPerDay.errors }}
-                <label for="id_customersPerDay">About how many customers do you have in an average day?</label>
-                ${{ form.customersPerDay }}
+                <label for="id_customersPerDay">About how many customers do you have in an average day?</label><br/>
+                <label>$</label>{{ form.customersPerDay }}
             </div>
             <div class="fieldWrapper hide" id="percentageCustomers">
                 {{ form.percentageCustomers.errors }}
-                <label for="id_percentageCustomers">What percentage of your customers buy lottery tickets?</label>
-                ${{ form.percentageCustomers }}
+                <label for="id_percentageCustomers">What percentage of your customers buy lottery tickets?</label><br/>
+                <label>%</label>{{ form.percentageCustomers }}
             </div>
             <div class="fieldWrapper hide" id="amountPerVisit">
                 {{ form.amountPerVisit.errors }}
-                <label for="id_amountPerVisit">About how many tickets do people usually buy in one visit?</label>
+                <label for="id_amountPerVisit">About how many tickets do people usually buy in one visit?</label><br/>
                 {{ form.amountPerVisit }}
             </div>
             <div class="fieldWrapper">
                 {{ form.goodForNeighborhoodQuestion.errors }}
-                <label for="id_goodForNeighborhoodQuestion">Do you think the lottery is good for this neighborhood? Why or why not?</label>
+                <label for="id_goodForNeighborhoodQuestion">Do you think the lottery is good for this neighborhood? Why or why not?</label><br/>
                 {{ form.goodForNeighborhoodQuestion }}
-                <span>Add an Audio recording</span>
+                <span class="input-span-close">Add an Audio recording</span>
             </div>
             <div class="fieldWrapper">
                 {{ form.photo.errors }}
-                <label for="id_photo">Add photo</label>
+                <label for="id_photo">Add photo</label><br/>
                 <input id="id_photo" name="photo" type="file"  accept="image/*;capture=camera">
             </div>
                 <div class="fieldWrapper">
-{#                <button class="btn btn-primary interview-button" aria-hidden="true">Submit</button>#}
                 <button class="btn submit interview-button" aria-hidden="true" id="interviewSubmit">Submit</button>
             </div>
            </div><!-- span 6 -->
-{#        </div><!-- column_1 -->#}
-        <div class="span6 column_2">
+            <div class="span1"></div>
+        <div class="span4 column_2">
             <div class="fieldWrapper">
                 {{ form.location.errors }}
                 <label for="id_mostWonAmount">Location</label>
