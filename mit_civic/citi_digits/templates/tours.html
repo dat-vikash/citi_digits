@@ -2,24 +2,26 @@
 <p>Tours</p>
 </div><!-- interview-header -->
 <div id="toolbar" class="container-fluid">
-    <div class="styled-select2 span2 input-append">
+    <div class="styled-select2 span2 input-append pull-left input-prepend">
+    <label class="styled-select2-label"><b>Sort By: </b></label>
         <select id="date-sort" class="tour-toolbar"  name="date-sort">
             {% if toolbar.sortDate == "DESC" %}
-                <option value="DESC" selected><b>Sort By</b> Date Des</option>
-                <option value="ASC"><b>Sort By</b> Date Asc</option>
+                <option value="DESC" selected>Date Desc</option>
+                <option value="ASC">Date Ascending</option>
             {% else %}
-                <option value="DESC"><b>Sort By</b> Date Desc</option>
-                <option value="ASC" selected><b>Sort By</b> Date Asc</option>
+                <option value="DESC">Date Descending</option>
+                <option value="ASC" selected>Date Asc</option>
             {% endif %}
         </select>
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
-    <div class="styled-select2 span2 input-append">
+    <div class="styled-select2 span2 input-append input-prepend pull-left">
+    <label class="styled-select2-label"><b>Class: </b></label>
         <select id="class-sort" class="tour-toolbar"  name="class-sort">
              {%  if toolbar.searchClass == 'ALL' %}
-                <option value="ALL"selected>Class ALL</option>
+                <option value="ALL"selected>ALL</option>
             {% else %}
-                <option value="ALL">Class ALL</option>
+                <option value="ALL">ALL</option>
             {% endif %}
             {% for class in classes %}
                 {% if toolbar.searchClass == class %}
@@ -32,20 +34,21 @@
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
 </div><!-- toolbar-->
-<div id="tour-content" class="container-fluid">
+<div id="tour-content" class="container">
     {% for tour in tours %}
         <div class="tour-stub row-fluid" id="{{ tour.id }}">
-            <div class="container-fluid" >
+            <div class="container" >
                 <div id="tour-stub-cover-photo" class="row-fluid"><img class="cover-photo" src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}"></div>
                 <div id="tour-stub-student-blurb" class="row-fluid">
                     <div class="span4">
                         <img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}">
                     </div>
-                    <div class="span8" >
+                    <div class="span7" >
                         <p><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p>
                         <br>
                         <p>{{ tour.created_at }}</p>
                     </div>
+                    <div class="span1"></div>
                 </div>
             </div>
         </div>
