@@ -2015,7 +2015,7 @@ padding-bottom: 2%;
 }
 
 #tourPreview #tour-image img.tour-img{
-    height: 400px;
+    height: 100%;
     width: 100%;
 
 }
