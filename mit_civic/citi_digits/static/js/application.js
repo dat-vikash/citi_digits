@@ -1690,10 +1690,12 @@ $("#addTour").on("click","#new-tour-slide",function(event){
     //construct html
     var html = '<div id="slide_' + (count+1) +'" class="' + currentSlideDecoration + ' slide">' +
         '<p class="slide-header">Slide ' + (count +1)+ '</p>' +
-        '<p><label for="id_form-' + (count) + '-image">Image:</label> <input id="id_form-' + (count) + '-image" name="form-' + (count) + '-image" type="file"></p>'+
-        '<p><label for="id_form-' + (count) + '-text">Text:</label> <textarea cols="40" id="id_form-' + (count) + '-text" name="form-' + (count) + '-text" rows="10"></textarea></p>' +
-        '<p><label for="id_form-' + (count) + '-link">Link:</label> <input id="id_form-' + (count) + '-link" name="form-' + (count) + '-link" type="text"></p>' +
+        '<p><label for="id_form-' + (count) + '-image">Add an Image:</label> <input id="id_form-' + (count) + '-image" name="form-' + (count) + '-image" type="file"></p>'+
+        '<p><input id="id_form-' + (count) +'-isCoverPhoto" name="form-' + (count) + '-isCoverPhoto" type="checkbox"><label style="display: inline-block; margin-left: 5px;">Use as cover photo</label></p>'+
+        '<p><label for="id_form-' + (count) + '-text">Add Text:</label> <textarea cols="40" rows="10" style="width: 50%;height : 250px;" id="id_form-' + (count) + '-text" name="form-' + (count) + '-text" ></textarea></p>' +
+        '<p><label for="id_form-' + (count) + '-link">Link (optional):</label> <input id="id_form-' + (count) + '-link" name="form-' + (count) + '-link" type="text" style="width:50%"></p>' +
         '<p><label for="id_form-' + (count) + '-audio">Audio:</label> <input id="id_form-' + (count) + '-audio" name="form-' + (count) + '-audio" type="file"></p>' +
+        '<p class="add_tour_photo">Select an interview audio clip</p>' +
         '</div>';
     $(html).insertBefore($(this).closest("div"));
     //update django management form

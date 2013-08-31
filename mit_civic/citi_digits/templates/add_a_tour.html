@@ -50,7 +50,32 @@
                     <div id="slide_{{ forloop.counter }}" class="odd slide">
                 {% endif %}
                 <p class="slide-header">Slide {{ forloop.counter }}</p>
-                {{ form.as_p }}
+                <p>
+                    {{ form.image.errors }}
+                    <label>Add an Image</label>
+                    {{ form.image }}
+                </p>
+                <p>
+                    {{ form.isCoverPhoto.errors }}
+                    {{ form.isCoverPhoto }}
+                    <label style="display: inline-block; margin-left: 5px;">Use as cover photo</label>
+                </p>
+                <p>
+                    {{ form.text.errors }}
+                    <label>Add text</label>
+                    {{ form.text }}
+                </p>
+                <p>
+                    {{ form.link.errors }}
+                    <label>Link (optional)</label>
+                    {{ form.link }}
+                </p>
+                <p>
+                    {{ form.audio.erorrs }}
+                    <label>Add audio</label>
+                    {{ form.audio }}
+                    <p class="add_tour_photo">Select an interview audio clip</p>
+                </p>
                 </div>
             {% endfor %}
             <div>
