@@ -288,11 +288,12 @@ width: 100%;
 }
 
 .modal-close {
-    position: relative;
+    position: absolute;
     margin: 0;
     top: -14px;
     right: -6px;
     opacity: 0.9;
+    z-index: 999;
 }
 
 .modal-close:hover {
@@ -1832,7 +1833,7 @@ padding-top: 10px;
 
 #tourPreview {
     background-color: #ffffff;
-    left: 0;
+    /*left: 0;*/
     margin-left: 0;
 }
 
@@ -1899,7 +1900,6 @@ background: greenyellow;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
-   margin-left: 0px !important;
     margin-top: 20px;
     display: inline-block;
 }
