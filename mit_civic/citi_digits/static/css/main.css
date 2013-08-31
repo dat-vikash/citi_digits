@@ -2016,7 +2016,7 @@ padding-bottom: 2%;
 
 #tourPreview #tour-image img.tour-img{
     height: 400px;
-    width: 940px;
+    width: 100%;
 
 }
 
