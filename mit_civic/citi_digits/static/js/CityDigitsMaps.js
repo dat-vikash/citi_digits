@@ -421,19 +421,19 @@ CityDigitsMap.getStyleColorForNetWinLoss = function(feature){
     var net = feature.properties.Net_Win;
     var fillColor = null;
     if(net >= -6700 && net <=-1500){
-        fillColor =  "#BF46B1";
+        fillColor =  "#cd07b6";
     }
     if(net >-1500 && net <=-1200){
-        fillColor =  "#E1DBC8";
+        fillColor =  "#ff26d6";
     }
     if(net >-1200 && net<=-1000){
-        fillColor = "#DE88C8";
+        fillColor = "#ff73db";
     }
     if(net > -1000 && net <=0){
-        fillColor = "#E5AFD8";
+        fillColor = "#fea9e9";
     }
     if(net > 0 && net <=1300){
-        fillColor = "#EECAE5";
+        fillColor = "#fbc5ed";
     }
 
      return {
