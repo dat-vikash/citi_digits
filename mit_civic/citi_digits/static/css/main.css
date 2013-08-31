@@ -1967,6 +1967,13 @@ padding-bottom: 2%;
 #tour-slide-team-info img.team-photo {
     height: 110px;
     width: 110px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#tour-slide-team-info p.tour-paragraph-detail{
+    margin-top: 10px;
+    font-size: 22px;
 }
 
 #tourPreview #student-blurb img.team-photo {
