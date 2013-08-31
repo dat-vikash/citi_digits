@@ -1900,7 +1900,7 @@ function resizeToursPreview(){
     var margin = 0;
      //margin
     if ($(window).width() < 934){
-        margin =  -380;
+        margin =  -400;
     }
     else{
       margin =  window.pageXOffset-($("#tourPreview").width() / 2);
@@ -1913,7 +1913,7 @@ function resizeInterviewDetails(){
     var height = 0;
     //margin
     if ($(window).width() < 934){
-        margin =  -400;
+        margin =  -380;
     }
     else{
       margin =  window.pageXOffset-($("#interviewDetails").width() / 2);
