@@ -1674,8 +1674,8 @@ function loadToursWithPagination(offset,date,klass){
     });
 }
 
-$("#addTour").on("click","#add_tour_author",function(e){
-
+$("#addTour").on("click",".add_tour_author",function(e){
+   console.log("asdfjoaisfdj");
     $("#author_select").clone().insertBefore(this);
 
 });

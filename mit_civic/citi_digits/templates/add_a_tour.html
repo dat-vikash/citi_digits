@@ -15,6 +15,7 @@
                 <div id="author-select-workflow" class="container">
                     <div class="row-fluid styled-select-tour input-append" id="author_select">
                         <select id="authors[]" name="authors[]" placeholder="Select a Student">
+                            <option value="0" disabled selected>Select a Student</option>
                         {% for student in students %}
                             <option value="{{ student.id }}">{{ student.firstName }}</option>
                         {% endfor %}
@@ -23,6 +24,7 @@
                     </div>
                     <div class="row-fluid styled-select-tour input-append" id="author_select">
                         <select id="authors[]" name="authors[]" placeholder="Select a Student">
+                            <option value="0" disabled selected>Select a Student</option>
                         {% for student in students %}
                             <option value="{{ student.id }}">{{ student.firstName }}</option>
                         {% endfor %}
