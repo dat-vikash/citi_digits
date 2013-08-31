@@ -1870,6 +1870,21 @@ padding-top: 10px;
     color: #3f3f3f;
     font-size: 20px;
     text-align: left;
+    padding: 10px;
+}
+
+.bubble-tour-preview-text p.audio{
+    padding-left: 10px;
+}
+
+.bubble-tour-preview-text p.link{
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 10px;
+    padding-right: 10px;
+    vertical-align: bottom;
 }
 
 .bubble-tour-preview-text
