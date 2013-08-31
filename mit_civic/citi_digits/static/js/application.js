@@ -1886,8 +1886,8 @@ $("#tours-tab").on("click",".tour-stub",function(event){
             $(this).modal('show').css({
                  width: '100%',
                  'max-width':'800px',
-                    'max-height':'900px',
-                    'top':'5%',
+                    'max-height':'95%',
+                    'top':'2%',
                   'margin-left': function () {
              return window.pageXOffset-($(this).width() / 2);
         }
@@ -1906,6 +1906,8 @@ function resizeToursPreview(){
       margin =  window.pageXOffset-($("#tourPreview").width() / 2);
     }
     $("#tourPreview").css("margin-left",margin + "px");
+    //height
+    $("#tourPreview").css("height","95%");
 }
 
 function resizeInterviewDetails(){
