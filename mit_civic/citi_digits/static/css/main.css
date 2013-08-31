@@ -1771,6 +1771,26 @@ z-index: 0;
     height: 95%;
 }
 
+#addTour #workflow-tour label{
+     font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #3f3f3f;
+    font-size: 15px;
+}
+
+#author-select-workflow p.add_tour_author{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 15px;
+    opacity: .5;
+}
+
+#author-select-workflow p.add_tour_photo{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 15px;
+}
+
+
 .slide-header {
     font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     color: #3f3f3f;

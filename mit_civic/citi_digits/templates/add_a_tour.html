@@ -1,8 +1,5 @@
-{#<button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">#}
-{#    <img src="{{ STATIC_URL }}/img/close.png"/>#}
-{#</button>#}
 <div class="tour-header">
-<p class="slide-header">Add a Tour<hr class="tour-hr-title"></p>
+<p class="slide-header">Add a Tour</p>
 </div><!-- interview-header -->
 <form id="add_tour_form" enctype="multipart/form-data" class=" tour-form" method="post" action="/tour/new/">
     <div class="modal-body">
@@ -15,7 +12,7 @@
         </div>
         <div id="workflow-tour">
             <label>Author</label>
-                <div id="author-select" class="container">
+                <div id="author-select-workflow" class="container">
                     <div class="row-fluid styled-select-tour input-append" id="author_select">
                         <select id="authors[]" name="authors[]" placeholder="Select a Student">
                         {% for student in students %}
@@ -32,12 +29,13 @@
                         </select>
                         <img class="dropdown-caret-tour" src="{{ STATIC_URL }}/img/select_arrow.png">
                     </div>
-                    <p id="add_tour_author">+ Add a student</p>
+                    <p class="add_tour_author">+ Add a student</p>
                 </div>
         <br>
             {{ tour.teamPhoto.errors }}
             <label>Add a team photo</label>
             {{ tour.teamPhoto }}
+            <p class="add_tour_photo">Take a photo or add a jpg or png</p>
         <br>
             {{ tour.title.errors}}
             <label>Title of your tour</label>
