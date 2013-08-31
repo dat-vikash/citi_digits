@@ -1885,24 +1885,35 @@ $("#tours-tab").on("click",".tour-stub",function(event){
     $("#tourPreview").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
-                 'max-width':'940px',
+                 'max-width':'800px',
                     'max-height':'900px',
                     'top':'5%',
                   'margin-left': function () {
-             return window.pageXOffset+(document.width - (document.width - 940/2))/2;
+             return window.pageXOffset-($(this).width() / 2);
         }
     }); // display the modal on url load
 
         });
 });
 
+function resizeToursPreview(){
+    var margin = 0;
+     //margin
+    if ($(window).width() < 934){
+        margin =  -380;
+    }
+    else{
+      margin =  window.pageXOffset-($("#tourPreview").width() / 2);
+    }
+    $("#tourPreview").css("margin-left",margin + "px");
+}
 
 function resizeInterviewDetails(){
     var margin = 0;
     var height = 0;
     //margin
     if ($(window).width() < 934){
-        margin =  -380;
+        margin =  -400;
     }
     else{
       margin =  window.pageXOffset-($("#interviewDetails").width() / 2);
@@ -1938,6 +1949,10 @@ $(window).on("resize",function(e){
     }
     if($("#interviewDetails").is(':visible')){
         resizeInterviewDetails();
+    }
+    if($("#tourPreview").is(':visible')){
+        console.log("Resizing");
+        resizeToursPreview();
     }
 });
 

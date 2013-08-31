@@ -288,11 +288,12 @@ width: 100%;
 }
 
 .modal-close {
-    position: relative;
+    position: absolute;
     margin: 0;
     top: -14px;
     right: -6px;
     opacity: 0.9;
+    z-index: 999;
 }
 
 .modal-close:hover {
@@ -1832,7 +1833,7 @@ padding-top: 10px;
 
 #tourPreview {
     background-color: #ffffff;
-    left: 0;
+    /*left: 0;*/
     margin-left: 0;
 }
 
@@ -1846,11 +1847,11 @@ padding-top: 10px;
     width: 110px;
 }
 
-#tourPreview #student-blurb img.team-photo {
-    height: 110px;
-    width: 110px;
-    margin-top: 15%;
-}
+/*#tourPreview #student-blurb img.team-photo {*/
+    /*height: 110px;*/
+    /*width: 110px;*/
+    /*margin-top: 15%;*/
+/*}*/
 
 #tourPreview #tour-preview-image {
     margin-top: 2%;
@@ -1861,6 +1862,33 @@ padding-top: 10px;
     width: 940px;
 }
 
+.tour-details-team-photo-div{
+    display: inline-block;
+}
+
+.bubble-tour-preview-text p.blurb{
+     font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    color: #3f3f3f;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 20px;
+    padding-top: 20px;
+    padding-right: 20px;
+}
+
+.bubble-tour-preview-text p.audio{
+    padding-left: 20px;
+}
+
+.bubble-tour-preview-text p.link{
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #ffffff;
+    font-size: 20px;
+    text-align: left;
+    padding-left: 20px;
+    padding-right: 20px;
+    vertical-align: bottom;
+}
 
 .bubble-tour-preview-text
 {
@@ -1872,8 +1900,8 @@ background: greenyellow;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
-   margin-left: -3%;
-    margin-top: 2%;
+    margin-top: 20px;
+    display: inline-block;
 }
 
 .bubble-tour-preview-text:after
@@ -1967,12 +1995,19 @@ padding-bottom: 2%;
 #tour-slide-team-info img.team-photo {
     height: 110px;
     width: 110px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+#tour-slide-team-info p.tour-paragraph-detail{
+    margin-top: 10px;
+    font-size: 22px;
 }
 
 #tourPreview #student-blurb img.team-photo {
     height: 110px;
     width: 110px;
-    margin-top: 15%;
+    margin-top: 20px;
 }
 
 #tourPreview #tour-image {
@@ -1982,6 +2017,7 @@ padding-bottom: 2%;
 #tourPreview #tour-image img.tour-img{
     height: 400px;
     width: 940px;
+
 }
 
 #about-container {
