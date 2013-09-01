@@ -366,30 +366,14 @@ $(".map-ui").on("click","a", function (e) {
         var url = $(this).data("form"); // get the  form url
         $("#signUpModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
-                  width: '100%',
-                 'max-width': function () {
-                     if ($(window).width() < 934){
-                         return .90 * $(window).width();
-                     }else{
-                         return '934px';
-                     }
-                 },
-                  height:'100%',
+                  width: '95%',
+                  'max-width': '95%',
+                  height:'95%',
                     'top':'1%',
                   'margin-left': function () {
-                      if ($(window).width() < 934){
-                          return window.pageXOffset;
-                      }else{
                         return window.pageXOffset-($(this).width() / 2);
-                      }
                     },
-                'max-height': function () {
-                    if ($(window).height() < 670){
-                        return .90 * $(window).height() ;
-                    }else{
-                        return '670px';
-                    }
-                }
+                'max-height':'670px'
     }); // display the modal on url load
         });
         return false; // prevent the click propagation
@@ -1906,6 +1890,20 @@ $("#tours-tab").on("click",".tour-stub",function(event){
         });
 });
 
+function resizeSignUpModal(){
+    var margin = 0;
+    var height = 0;
+    if ($(window).width() < 934){
+        margin =  -380;
+    }
+    else{
+      margin =  window.pageXOffset-($("#signUpModal").width() / 2);
+    }
+    $("#signUpModal").css("margin-left",margin + "px");
+    //height
+    $("#signUpModal").css("height","95%");
+}
+
 
 function resizeMapPopupModal(){
     var margin = 0;
@@ -1983,6 +1981,9 @@ $(window).on("resize",function(e){
     }
     if($("#mapPopupModal").is(':visible')){
         resizeMapPopupModal();
+    }
+    if($("#signUpModal").is(':visible')){
+        resizeSignUpModal();
     }
 });
 
