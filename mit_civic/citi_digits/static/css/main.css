@@ -1623,6 +1623,14 @@ height: 15px;
 top: 0px;
 }
 
+.dropdown-caret-login {
+    margin-left: -15%;
+position: relative;
+height: 15px;
+top: 8px;
+}
+
+
 label.styled-select2-label{
     padding: 5px;
 position: relative;
