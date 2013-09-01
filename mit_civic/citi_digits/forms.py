@@ -16,7 +16,7 @@ class SignUpForm(forms.Form):
     schoolAddress = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Address','class':'sign_up_large'}))
     schoolCity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'City','class':'sign_up_medium','style':'width:150px; margin-left: -5px;'}))
     schoolState = USStateField(widget=forms.Select(
-        choices=STATE_CHOICES,attrs={'placeholder':'State', 'class':'sign_up_medium'}))
+        choices=STATE_CHOICES,attrs={'placeholder':'State', 'class':'sign_up_medium','style':'width:150px;'}),initial='NY')
     className = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Class Name','class':'sign_up_large'}))
 
 class LoginForm(forms.Form):
