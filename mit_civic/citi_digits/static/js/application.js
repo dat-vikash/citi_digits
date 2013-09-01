@@ -1906,6 +1906,22 @@ $("#tours-tab").on("click",".tour-stub",function(event){
         });
 });
 
+
+function resizeMapPopupModal(){
+    var margin = 0;
+    var height = 0;
+    if ($(window).width() < 934){
+        margin =  -380;
+    }
+    else{
+      margin =  window.pageXOffset-($("#mapPopupModal").width() / 2);
+    }
+    $("#mapPopupModal").css("margin-left",margin + "px");
+
+   //height
+    $("#mapPopupModal").css("height","95%");
+}
+
 function resizeToursPreview(){
     var margin = 0;
      //margin
@@ -1963,8 +1979,10 @@ $(window).on("resize",function(e){
         resizeInterviewDetails();
     }
     if($("#tourPreview").is(':visible')){
-        console.log("Resizing");
         resizeToursPreview();
+    }
+    if($("#mapPopupModal").is(':visible')){
+        resizeMapPopupModal();
     }
 });
 
