@@ -218,6 +218,7 @@ width: 100%;
 #signUpModal #workflow_2 .team {
     width: 400px;
     display: inline-block;
+    margin-top: 21px;
 }
 
 #signUpModal .citi-footer {
@@ -292,6 +293,13 @@ width: 100%;
     color: rgb(255,255,255);
     margin-top: -13px;
     margin-bottom: 19px;
+}
+
+.modal-body .no-padding p{
+    text-align: center;
+    color: rgb(255,255,255);
+    margin-top: -13px;
+    margin-bottom: 0px;
 }
 
 .modal-body .fieldGroup{
