@@ -14,14 +14,14 @@ class SignUpForm(forms.Form):
     email = forms.EmailField(widget=forms.TextInput(attrs={'placeholder': 'Email','class':'sign_up_large'}))
     schoolName = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Name','class':'sign_up_large'}))
     schoolAddress = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'School Address','class':'sign_up_large'}))
-    schoolCity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'City','class':'sign_up_medium','style':'width:150px;'}))
+    schoolCity = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'City','class':'sign_up_medium','style':'width:150px; margin-left:-4px;'}))
     schoolState = USStateField(widget=forms.Select(
         choices=STATE_CHOICES,attrs={'placeholder':'State', 'class':'sign_up_medium','style':'width:150px;'}),initial='NY')
     className = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Class Name','class':'sign_up_large'}))
 
 class LoginForm(forms.Form):
     CHOICES = (('STUDENT', 'Student',), ('TEACHER', 'Teacher',))
-    role = forms.ChoiceField(widget=forms.Select(attrs={'placeholder':'Student','class':'sign_up_medium styled-select'}),choices=CHOICES)
+    role = forms.ChoiceField(widget=forms.Select(attrs={'placeholder':'Student','class':'sign_up_medium styled-select','style':'width:150px;'}),choices=CHOICES)
     username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Name or Email','class':'sign_up_large'}))
     password = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'Password','class':'sign_up_large'}))
 

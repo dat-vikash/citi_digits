@@ -730,9 +730,9 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
     var teamCount = $("#workflow_2").find(".team").length;
 
     $('#workflow_2 .row-fluid').append('<div class="team">' +
-              '<div class="styled-select">' +
-                '<select class="sign_up_large" id="team_name" name="team_name[]"><option value="base">Team</option><option value="BLUE">Blue</option><option value="AQUA">Aqua</option><option value="PINK">Pink</option>'+
-                '<option value="PURPLE">Purple</option><option value="GREEN">Green</option><option value="ORANGE">Orange</option><option value="YELLOW">Yellow</option><option value="RED">Red</option></select>' +
+              '<div class="styled-select input-append">' +
+                '<select class="sign_up_large" id="team_name" name="team_name[]" style="width:340px"><option value="base">Team</option><option value="BLUE">Blue</option><option value="AQUA">Aqua</option><option value="PINK">Pink</option>'+
+                '<option value="PURPLE">Purple</option><option value="GREEN">Green</option><option value="ORANGE">Orange</option><option value="YELLOW">Yellow</option><option value="RED">Red</option></select><img class="dropdown-caret-login" src="/static/img/select_arrow.png">' +
               '</div>'+
               '<table>'+
                   '<tr>' +
