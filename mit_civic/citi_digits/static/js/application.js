@@ -1738,9 +1738,14 @@ $("#addTour").on("click","#save_preview_button",function(ev){
    ev.preventDefault();
     //get form values
     var title = $("#id_title").val();
+    var values = $('#add_tour_form').serializeArray();
     var teamPhoto = $("#id_teamPhoto")[0].files[0];
     var slides = [];
     var coverPhoto;
+
+    //load authors
+
+
     for(var i= 0; i<$("#add_tour_form .slide").length; i++){
         if ($("#add_tour_form .slide").find("#id_form-" + i + "-isCoverPhoto").is(":checked")){
             coverPhoto = $("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0];
@@ -1760,12 +1765,11 @@ $("#addTour").on("click","#save_preview_button",function(ev){
     $("#tourPreview").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
-                 'max-width':'940px',
-                    'max-height':'900px',
-                    'top':'5%',
-//                    'left':'2%',
+                 'max-width':'800px',
+                    'max-height':'630px',
+                    'top':'2%',
                   'margin-left': function () {
-                    return window.pageXOffset+(document.width - (document.width - 940/2))/2;
+             return window.pageXOffset-($(this).width() / 2);
                 }
     }); // display the modal on url load
 
@@ -1773,6 +1777,10 @@ $("#addTour").on("click","#save_preview_button",function(ev){
 
             $("#tourPreview").on("shown",function(){
         console.log("im shown");
+
+         //title
+         $("#tour-preview-team-info p.tour-paragraph-detail").html(title);
+
         //cover photo
         var coverPhotoReader = new FileReader();
         coverPhotoReader.onloadend = function (e) {
