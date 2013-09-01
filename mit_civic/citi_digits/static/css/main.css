@@ -1873,21 +1873,22 @@ padding-top: 10px;
 #tour-preview-team-info img.team-photo {
     height: 110px;
     width: 110px;
+    margin-top: 10px;
+    margin-left: 10px;
 }
 
-/*#tourPreview #student-blurb img.team-photo {*/
-    /*height: 110px;*/
-    /*width: 110px;*/
-    /*margin-top: 15%;*/
-/*}*/
+#tour-preview-team-info p.tour-paragraph-detail{
+    margin-top: 10px;
+    font-size: 22px;
+}
 
 #tourPreview #tour-preview-image {
     margin-top: 2%;
 }
 
 #tourPreview #tour-preview-image img.tour-preview-img{
-    height: 400px;
-    width: 940px;
+    height: 330px;
+    width: 100%;
 }
 
 .tour-details-team-photo-div{
