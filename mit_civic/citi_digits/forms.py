@@ -55,15 +55,15 @@ class RetailerInterviewForm(forms.Form):
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
 
 class TourForm(forms.Form):
-    title = forms.CharField(widget=forms.TextInput())
+    title = forms.CharField(widget=forms.TextInput(attrs={'style':'width:50%'}))
     teamPhoto = forms.ImageField(required=False)
 
 class TourSlide(forms.Form):
-    image = forms.ImageField(required=True)
+    image = forms.ImageField(required=True,label="Add an Image")
     isCoverPhoto = forms.BooleanField(widget=forms.CheckboxInput(),label="Use as Cover Photo",required=False)
-    text = forms.CharField(widget=forms.Textarea())
-    link =forms.CharField(widget=forms.TextInput(),required=True)
-    audio = forms.FileField(required=False)
+    text = forms.CharField(widget=forms.Textarea(attrs={"style":'width: 50%;height : 250px;'}),label="Add text")
+    link =forms.CharField(widget=forms.TextInput(attrs={'style':'width:50%'}),required=False,label="Link (optional)")
+    audio = forms.FileField(required=False,label="Add audio")
 
 
 
