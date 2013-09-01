@@ -1738,9 +1738,14 @@ $("#addTour").on("click","#save_preview_button",function(ev){
    ev.preventDefault();
     //get form values
     var title = $("#id_title").val();
+    var values = $('#add_tour_form').serializeArray();
     var teamPhoto = $("#id_teamPhoto")[0].files[0];
     var slides = [];
     var coverPhoto;
+
+    //load authors
+
+
     for(var i= 0; i<$("#add_tour_form .slide").length; i++){
         if ($("#add_tour_form .slide").find("#id_form-" + i + "-isCoverPhoto").is(":checked")){
             coverPhoto = $("#add_tour_form .slide").find("#id_form-" + i + "-image")[0].files[0];
@@ -1772,6 +1777,10 @@ $("#addTour").on("click","#save_preview_button",function(ev){
 
             $("#tourPreview").on("shown",function(){
         console.log("im shown");
+
+         //title
+         $("#tour-preview-team-info p.tour-paragraph-detail").html(title);
+
         //cover photo
         var coverPhotoReader = new FileReader();
         coverPhotoReader.onloadend = function (e) {
