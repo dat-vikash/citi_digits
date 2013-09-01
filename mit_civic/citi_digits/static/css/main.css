@@ -329,7 +329,7 @@ width: 100%;
 }
 
 #login_form hr{
-    margin-left: 130px;
+    margin-left: 149px;
     margin-top: 0px;
 }
 
@@ -2414,8 +2414,9 @@ b.net-loss-purple{
 
 .btn{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
-    color: #FFFFFF;
+    color: #3f3f3f;
     font-size: 13px;
+
 }
 
 label.checkbox{
