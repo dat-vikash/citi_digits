@@ -2486,3 +2486,26 @@ label.checkbox{
 .interview-pull-left{
     margin-left: 20px;
 }
+
+.add-media-styled-button {
+    display: inline-block;
+    margin-top: 10px;
+    width: 94px;
+    height: 26px;
+    background-image: url('/static/img/add_media.png');
+    background-repeat: no-repeat;
+    cursor:pointer;
+    border: none;
+    box-shadow: 5px 5px 5px #3f3f3f;
+}
+
+.add-media-styled-button input {
+    filter: alpha(opacity=0);
+   opacity: 0;
+}
+
+#addInterviewModal #add_interview_form span.no-file-chosen {
+display: inline-block;
+margin-left: 10px;
+    opacity: .5;;
+}

@@ -5,7 +5,7 @@
 <h3>Add a Retailer Interview</h3>
 </div><!-- interview-header -->
     <form id="add_interview_form" enctype="multipart/form-data" class="well interview-form" method="post" action="/interview/retailer/">
-<div class="modal-body auto-scroll">
+<div class="modal-body auto-scroll" style="margin-left: 7px;margin-right: 15px;">
     <div id="workflow" class="container-fluid">
         <div class="row-fluid column_1">
             <div class="span7">
@@ -22,8 +22,11 @@
             <div class="fieldWrapper">
                 {{ form.whyOrWhyNot.errors }}
                 <label for="id_whyOrWhyNot">Why or why not?</label><br/>
+                <div class="add-media-styled-button">
                 {{ form.whyOrWhyNot }}
-                <span class="input-span-close">Add an Audio recording</span>
+                </div>
+                <span class="no-file-chosen">No file chosen</span>
+                <span class="input-span-close" style="margin-top: 10px">Add an Audio recording</span>
             </div>
             <div class="fieldWrapper hide" id="customersPerDay">
                 {{ form.customersPerDay.errors }}
@@ -43,13 +46,19 @@
             <div class="fieldWrapper">
                 {{ form.goodForNeighborhoodQuestion.errors }}
                 <label for="id_goodForNeighborhoodQuestion">Do you think the lottery is good for this neighborhood? Why or why not?</label><br/>
+                <div class="add-media-styled-button">
                 {{ form.goodForNeighborhoodQuestion }}
-                <span class="input-span-close">Add an Audio recording</span>
+               </div>
+                <span class="no-file-chosen">No file chosen</span>
+                <span class="input-span-close" style="margin-top: 10px">Add an Audio recording</span>
             </div>
             <div class="fieldWrapper">
                 {{ form.photo.errors }}
                 <label for="id_photo">Add photo</label><br/>
+                <div class="add-media-styled-button">
                 <input id="id_photo" name="photo" type="file"  accept="image/*;capture=camera">
+                </div>
+                <span class="no-file-chosen">No file chosen</span>
             </div>
                 <div class="fieldWrapper">
                 <button class="btn submit interview-button" aria-hidden="true" id="interviewSubmit">Submit</button>
@@ -59,7 +68,7 @@
         <div class="span4 column_2">
             <div class="fieldWrapper">
                 {{ form.location.errors }}
-                <label for="id_mostWonAmount">Location</label>
+                <label for="">Location</label>
                 {{ form.location }}
                 <div id='interview-map-thumb'></div>
                 {{ form.latitude }}
