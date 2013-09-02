@@ -366,30 +366,14 @@ $(".map-ui").on("click","a", function (e) {
         var url = $(this).data("form"); // get the  form url
         $("#signUpModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
-                  width: '100%',
-                 'max-width': function () {
-                     if ($(window).width() < 934){
-                         return .90 * $(window).width();
-                     }else{
-                         return '934px';
-                     }
-                 },
-                  height:'100%',
+                  width: '95%',
+                  'max-width': '95%',
+                  height:'95%',
                     'top':'1%',
                   'margin-left': function () {
-                      if ($(window).width() < 934){
-                          return window.pageXOffset;
-                      }else{
                         return window.pageXOffset-($(this).width() / 2);
-                      }
                     },
-                'max-height': function () {
-                    if ($(window).height() < 670){
-                        return .90 * $(window).height() ;
-                    }else{
-                        return '670px';
-                    }
-                }
+                'max-height':'670px'
     }); // display the modal on url load
         });
         return false; // prevent the click propagation
@@ -723,18 +707,21 @@ $("#signUpModal").on("click", ".back", function (ev) {
 
 $('#signUpModal').on("click", ".add_student", function (ev) {
     ev.preventDefault(); // prevent navigation
-    //get team name
-    var teamCount = $(this).closest("div").find("#team_name").attr('name');
+
+    //get team count to add student too
+    var originIdx = $(this).closest(".team").find(".student").last().attr('name').indexOf("[");
+    var destIdx = $(this).closest(".team").find(".student").last().attr('name').indexOf("]");
+    var teamCount = $(this).closest(".team").find(".student").last().attr('name').substring(originIdx+1,destIdx);
 
     //get student count for team
     var student_count = $(this).closest(".team").find(".student").length + 1;
     //create input strings
     var studentFirstNameInput = '<input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name[' +
-        teamCount+'][ ]">';
+        teamCount+'][]">';
     var studentPassword = '<input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' +
         teamCount+'][]">';
     //apply input strings
-    $(this).parent().parent().parent().prepend('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
+    $(this).parent().parent().parent().find('tr:last').prev().before('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td><td><a href="#" class="remove_student">X</a></td></tr>');
 });
 
 /*
@@ -743,30 +730,50 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
 $('#signUpModal').on("click", ".add_team", function (ev) {
     ev.preventDefault(); // prevent navigation
     //get team count
-    var teamCount = $("#workflow_2").find(".team").length;
+    var teamCount = 0;
+    for(var i=0; i < $("#workflow_2").find(".team").length; i++ ){
+        //get max count from div id
+        if(parseInt($("#workflow_2").find(".team")[i].id.split("_")[1]) > teamCount){
+            teamCount = parseInt($("#workflow_2").find(".team")[i].id.split("_")[1]);
+        }
+    }
+    teamCount = teamCount + 1;
 
-    $('#workflow_2 .row-fluid').append('<div class="team">' +
-              '<div class="styled-select">' +
-                '<select class="sign_up_large" id="team_name" name="team_name[]"><option value="base">Team</option><option value="BLUE">Blue</option><option value="AQUA">Aqua</option><option value="PINK">Pink</option>'+
-                '<option value="PURPLE">Purple</option><option value="GREEN">Green</option><option value="ORANGE">Orange</option><option value="YELLOW">Yellow</option><option value="RED">Red</option></select>' +
+    $('#workflow_2 .row-fluid').append('<div class="team" id="team_' + teamCount + '">' +
+              '<div class="styled-select input-append">' +
+                '<select class="sign_up_large" id="team_name" name="team_name[]" style="width:340px"><option value="base_'+ teamCount +'">Team</option><option value="BLUE_'+ teamCount +'">Blue</option><option value="AQUA_'+ teamCount +'">Aqua</option><option value="PINK_'+ teamCount+'">Pink</option>'+
+                '<option value="PURPLE_'+ teamCount+'">Purple</option><option value="GREEN_'+teamCount +'">Green</option><option value="ORANGE_'+ teamCount +'">Orange</option><option value="YELLOW_'+ teamCount +'">Yellow</option><option value="RED_'+ teamCount+'">Red</option></select><img class="dropdown-caret-login" src="/static/img/select_arrow.png">' +
               '</div>'+
               '<table>'+
                   '<tr>' +
                           '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name['+teamCount +'][]"></td>' +
-                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' + teamCount +'][]"></td></tr>' +
+                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' + teamCount +'][]"></td>' +
+                          '<td><a href="#" class="remove_student">X</a></td></tr>' +
                       '<tr>' +
                           '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name['+ teamCount+'][]"></td>' +
-                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password['+ teamCount +'][]"></td></tr><tr>' +
+                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password['+ teamCount +'][]"></td>' +
+                          '<td><a href="#" class="remove_student">X</a></td>' +
                       '</tr>' +
                   '<tr>' +
-                      '<td colspan="2">' +
+                      '<td colspan="3">' +
                           '<label class="add_student">+ Add a student to this team</label>' +
                       '</td>' +
                   '</tr>' +
+                  '<tr><td colspan="3"><label class="delete_team">- Delete team</label></td></tr>'+
               '</table>' +
           '</div><!-- team -->')
     //prevent click propagation
     return false;
+});
+
+
+$('#signUpModal').on("click", ".remove_student", function (ev) {
+    $(this).closest('tr').remove();
+});
+
+$('#signUpModal').on("click", ".delete_team", function (ev) {
+    console.log("remove");
+    $(this).closest('div').remove();
 });
 
 /*
@@ -1906,6 +1913,20 @@ $("#tours-tab").on("click",".tour-stub",function(event){
         });
 });
 
+function resizeSignUpModal(){
+    var margin = 0;
+    var height = 0;
+    if ($(window).width() < 934){
+        margin =  -380;
+    }
+    else{
+      margin =  window.pageXOffset-($("#signUpModal").width() / 2);
+    }
+    $("#signUpModal").css("margin-left",margin + "px");
+    //height
+    $("#signUpModal").css("height","95%");
+}
+
 
 function resizeMapPopupModal(){
     var margin = 0;
@@ -1983,6 +2004,9 @@ $(window).on("resize",function(e){
     }
     if($("#mapPopupModal").is(':visible')){
         resizeMapPopupModal();
+    }
+    if($("#signUpModal").is(':visible')){
+        resizeSignUpModal();
     }
 });
 

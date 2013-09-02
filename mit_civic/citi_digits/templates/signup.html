@@ -6,7 +6,6 @@
   <div class="modal-body">
       <div class="citi-header">
     <h3>Teacher Sign Up</h3>
-    <hr width="100px">
   </div><!-- modal-header -->
       <div id="workflow_1">
           <div class="fieldInfoWrapper" id="first">
@@ -79,9 +78,10 @@
                              </div>
                           </td>
                           <td>
-                              <div class="fieldWrapper">
+                              <div class="fieldWrapper styled-select input-append">
                                 {{ form.schoolState.errors }}
                                 {{ form.schoolState }}
+                                <img class="dropdown-caret-login" src="{{ STATIC_URL }}/img/select_arrow.png">
                              </div>
                           </td>
                       </tr><!-- tr -->
@@ -101,37 +101,82 @@
           </div>
       </div><!-- #div workflow_1 -->
       <div id="workflow_2" class="row-fluid hide">
-          <div class="fieldInfoWrapper">
+          <div class="fieldInfoWrapper no-padding">
               <h5>Create accounts for your students.</h5>
               <p>Split your class into teams composed of around 2-4 students. Provide students with their names and passwords, exactly as you've entered them, to
               log on to the site. The student names you enter will be public.</p>
           </div><!-- fieldInfoWrapper -->
           <div class="row-fluid">
-              <div class="team ">
-                  <div class="styled-select">
-                      <select class="sign_up_large" id="team_name" name="team_name[]">
-                          <option value="base">Team</option>
-                          <option value="BLUE">Blue</option>
-                          <option value="AQUA">Aqua</option>
-                          <option value="PINK">Pink</option>
-                          <option value="PURPLE">Purple</option>
-                          <option value="GREEN">Green</option>
-                          <option value="ORANGE">Orange</option>
-                          <option value="YELLOW">Yellow</option>
-                          <option value="RED">Red</option>
+              <div class="team " id="team_0">
+                  <div class="styled-select input-append">
+                      <select class="sign_up_large" id="team_name" name="team_name[]" style="width:340px">
+                          <option value="base_0">Team</option>
+                          <option value="BLUE_0">Blue</option>
+                          <option value="AQUA_0">Aqua</option>
+                          <option value="PINK_0">Pink</option>
+                          <option value="PURPLE_0">Purple</option>
+                          <option value="GREEN_0">Green</option>
+                          <option value="ORANGE_0">Orange</option>
+                          <option value="YELLOW_0">Yellow</option>
+                          <option value="RED_0">Red</option>
                       </select>
+                      <img class="dropdown-caret-login" src="{{ STATIC_URL }}/img/select_arrow.png">
                   </div> <!--div -->
                   <table>
                       <tr>
                           <td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name[0][]"></td>
-                          <td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[0][]"></td></tr>
+                          <td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[0][]"></td>
+                          <td><a href="#" class="remove_student">X</a></td>
                       <tr>
                           <td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name[0][]"></td>
-                          <td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[0][]"></td></tr><tr>
+                          <td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[0][]"></td>
+                          <td><a href="#" class="remove_student">X</a></td>
                       </tr>
                       <tr>
-                          <td colspan="2">
+                          <td colspan="3">
                               <label class="add_student">+ Add a student to this team</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td colspan="3">
+                              <label class="delete_team">- Delete team</label>
+                          </td>
+                      </tr>
+                  </table><!--table -->
+              </div><!-- team -->
+              <div class="team " id="team_1">
+                  <div class="styled-select input-append">
+                      <select class="sign_up_large" id="team_name" name="team_name[]" style="width:340px">
+                          <option value="base_1">Team</option>
+                          <option value="BLUE_1">Blue</option>
+                          <option value="AQUA_1">Aqua</option>
+                          <option value="PINK_1">Pink</option>
+                          <option value="PURPLE_1">Purple</option>
+                          <option value="GREEN_1">Green</option>
+                          <option value="ORANGE_1">Orange</option>
+                          <option value="YELLOW_1">Yellow</option>
+                          <option value="RED_1">Red</option>
+                      </select>
+                      <img class="dropdown-caret-login" src="{{ STATIC_URL }}/img/select_arrow.png">
+                  </div> <!--div -->
+                  <table>
+                      <tr>
+                          <td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name[1][]"></td>
+                          <td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[1][]"></td>
+                          <td><a href="#" class="remove_student">X</a></td>
+                      <tr>
+                          <td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name[1][]"></td>
+                          <td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[1][]"></td>
+                          <td><a href="#" class="remove_student">X</a></td>
+                      </tr>
+                      <tr>
+                          <td colspan="3">
+                              <label class="add_student">+ Add a student to this team</label>
+                          </td>
+                      </tr>
+                      <tr>
+                          <td colspan="3">
+                              <label class="delete_team">- Delete team</label>
                           </td>
                       </tr>
                   </table><!--table -->
@@ -140,20 +185,20 @@
       </div><!-- #div workflow 2-->
       <div id="workflow_3" class="row-fluid hide">
           <div class="fieldInfoWrapper">
-              <h5>You have successfully registered.</h5>
-              <p>Lorem ipsum dolor sit amet, menandri intellegam concludaturque ius in. Ius ei legimus vivendo molestiae, blandit conclusionemque no sit. Id nonumes insolens vis,
-                  vero aliquam interpretaris id vix. Mel ad quidam insolens. Cu amet suas deleniti vis, quod definitionem quo ad. Affert discere alterum ad eum, at mei audiam intellegebat definitiones.</p>
+              <p class="success-message">Thank you! Your account has successfully been created.</p>
           </div><!-- fieldInfoWrapper -->
       </div>
       <div class="citi-footer">
           <div class="text-center">
-                    <button class="btn workflow_2_add_team hide back pull-left form_button" aria-hidden="true">Back</button>
+                    <button class="btn workflow_2_add_team hide back pull-left form_button signup-back-button" aria-hidden="true">Back</button>
 
                    <button class="btn workflow_2_add_team hide add_team form_button " aria-hidden="true">Add a Team</button>
-                    <button class="btn workflow_2_add_team pull-right hide submit form_button" aria-hidden="true">Submit</button>
+                    <button class="btn workflow_2_add_team pull-right hide submit form_button signup-submit-button" aria-hidden="true">Submit</button>
 
           </div>
         <button class="btn btn-primary pull-right  workflow_1_click form_button" aria-hidden="true">Next</button>
+        <br/>
+          <br/>
       </div>
   </div> <!-- modal-body -->
 </form>
