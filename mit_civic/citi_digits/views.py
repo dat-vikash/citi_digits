@@ -4,6 +4,7 @@ from random import randint
 import django
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import transaction
+from django.forms.util import ErrorList
 from django.forms.formsets import formset_factory
 from django.http import HttpResponse, QueryDict
 from django.shortcuts import render_to_response
@@ -45,6 +46,15 @@ def signUp(request):
         if form.is_valid():
             #place form data into query dict for easier access
             formData = QueryDict(request.body)
+
+            #check for teacher email unqiueness
+            if CityDigitsUser.doesUsernameExist(formData.get('email')):
+                #add error and return
+                errors = form._errors.setdefault("email", ErrorList())
+                errors.append(u"Email already Exists")
+                return render_to_response('signup.html', {'form': form},
+                                      context_instance=RequestContext(request))
+
             #create entities
             school = School.objects.create(name=formData.get('schoolName'), address=formData.get('schoolAddress'),
                                            city=formData.get('schoolCity'), state=formData.get('schoolState'))
