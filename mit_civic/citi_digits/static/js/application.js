@@ -718,7 +718,7 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
     var studentPassword = '<input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' +
         teamCount+'][]">';
     //apply input strings
-    $(this).parent().parent().parent().prepend('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
+    $(this).parent().parent().parent().find('tr:last').before('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
 });
 
 /*
