@@ -50,7 +50,7 @@ class RetailerInterviewForm(forms.Form):
                                                                               '11 or more tickets')))
     goodForNeighborhoodQuestion = forms.FileField()
     photo = forms.ImageField()
-    location = forms.CharField(widget=forms.TextInput(),required=False)
+    location = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=False)
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
 
