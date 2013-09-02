@@ -38,12 +38,12 @@
                 <label for="id_mostWonAmount">What is the most you've won?</label><br/>
                 <label>$</label>{{ form.mostWonAmount }}
             </div>
-            <div class="fieldWrapper">
+            <div class="fieldWrapper hide" id="averageSpentOnLotteryPerWeek">
                 {{ form.averageSpentOnLotteryPerWeek.errors }}
                 <label for="id_mostWonAmount">How much do you spend on the lottery in an average week?</label><br/>
                 <label>$</label>{{ form.averageSpentOnLotteryPerWeek }}
             </div>
-            <div class="fieldWrapper">
+            <div class="fieldWrapper hide" id="wonJackpotQuestion">
                 {{ form.wonJackpotQuestion.errors }}
                 <label for="id_mostWonAmount">What would you do if you won the jackpot?</label><br/>
                 <div class="add-media-styled-button">

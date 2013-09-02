@@ -642,10 +642,14 @@ $("#addInterviewModal").on("change", "input[name=buyLotteryTickets]:radio", func
     if ($("input[name=buyLotteryTickets]:radio")[0].checked) {
             //YES
             $('#wonLottery').show();
+            $("#averageSpentOnLotteryPerWeek").show();
+            $("#wonJackpotQuestion").show();
         }
         else if($("input[name=buyLotteryTickets]:radio")[1].checked){
             //NO
             $("#wonLottery").hide();
+            $("#averageSpentOnLotteryPerWeek").hide();
+            $("#wonJackpotQuestion").hide();
 
         }
     }
