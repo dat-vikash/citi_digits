@@ -721,7 +721,7 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
     var studentPassword = '<input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' +
         teamCount+'][]">';
     //apply input strings
-    $(this).parent().parent().parent().find('tr:last').before('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td><td><a href="#" class="remove_student">X</a></td></tr>');
+    $(this).parent().parent().parent().find('tr:last').prev().before('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td><td><a href="#" class="remove_student">X</a></td></tr>');
 });
 
 /*
@@ -730,12 +730,19 @@ $('#signUpModal').on("click", ".add_student", function (ev) {
 $('#signUpModal').on("click", ".add_team", function (ev) {
     ev.preventDefault(); // prevent navigation
     //get team count
-    var teamCount = $("#workflow_2").find(".team").length;
+    var teamCount = 0;
+    for(var i=0; i < $("#workflow_2").find(".team").length; i++ ){
+        //get max count from div id
+        if(parseInt($("#workflow_2").find(".team")[i].id.split("_")[1]) > teamCount){
+            teamCount = parseInt($("#workflow_2").find(".team")[i].id.split("_")[1]);
+        }
+    }
+    teamCount = teamCount + 1;
 
-    $('#workflow_2 .row-fluid').append('<div class="team">' +
+    $('#workflow_2 .row-fluid').append('<div class="team" id="team_' + teamCount + '">' +
               '<div class="styled-select input-append">' +
-                '<select class="sign_up_large" id="team_name" name="team_name[]" style="width:340px"><option value="base">Team</option><option value="BLUE">Blue</option><option value="AQUA">Aqua</option><option value="PINK">Pink</option>'+
-                '<option value="PURPLE">Purple</option><option value="GREEN">Green</option><option value="ORANGE">Orange</option><option value="YELLOW">Yellow</option><option value="RED">Red</option></select><img class="dropdown-caret-login" src="/static/img/select_arrow.png">' +
+                '<select class="sign_up_large" id="team_name" name="team_name[]" style="width:340px"><option value="base_'+ teamCount +'">Team</option><option value="BLUE_'+ teamCount +'">Blue</option><option value="AQUA_'+ teamCount +'">Aqua</option><option value="PINK_'+ teamCount+'">Pink</option>'+
+                '<option value="PURPLE_'+ teamCount+'">Purple</option><option value="GREEN_'+teamCount +'">Green</option><option value="ORANGE_'+ teamCount +'">Orange</option><option value="YELLOW_'+ teamCount +'">Yellow</option><option value="RED_'+ teamCount+'">Red</option></select><img class="dropdown-caret-login" src="/static/img/select_arrow.png">' +
               '</div>'+
               '<table>'+
                   '<tr>' +
@@ -752,6 +759,7 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
                           '<label class="add_student">+ Add a student to this team</label>' +
                       '</td>' +
                   '</tr>' +
+                  '<tr><td colspan="3"><label class="delete_team">- Delete team</label></td></tr>'+
               '</table>' +
           '</div><!-- team -->')
     //prevent click propagation
@@ -763,6 +771,10 @@ $('#signUpModal').on("click", ".remove_student", function (ev) {
     $(this).closest('tr').remove();
 });
 
+$('#signUpModal').on("click", ".delete_team", function (ev) {
+    console.log("remove");
+    $(this).closest('div').remove();
+});
 
 /*
  * This function defines how to handle a sign up  workflow submission
