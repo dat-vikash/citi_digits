@@ -328,7 +328,6 @@ function getPopupUrlFrom(activeLayer,feature){
 
 $(".map-ui").on("click","a", function (e) {
     e.preventDefault();
-    console.log(" got cluck :" + mainLayer);
     //turn off any unwanted layers
     if(WINNINGS_LAYER !=null){
         MY_MAP.map.removeLayer(WINNINGS_LAYER);

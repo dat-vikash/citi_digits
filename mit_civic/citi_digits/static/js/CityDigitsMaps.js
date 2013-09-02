@@ -27,6 +27,13 @@ function CityDigitsMap() {
     this.popup = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
     this.popup_previous_name = "";
 
+    //Layers
+    this.PERCENT_INCOME_LAYER = null;
+    this.MEDIAN_INCOME_LAYER = null;
+    this.AVERAGE_WINNINGS_LAYER = null;
+    this.AVERAGE_SPENDINGS_LAYER = null;
+    this.NET_GAIN_LOSS_LAYER = null;
+
 }
 
 CityDigitsMap.loadLayerFor = function(layerId){
@@ -36,44 +43,23 @@ CityDigitsMap.loadLayerFor = function(layerId){
     }
     //set fillcolor based on id and properties
     if(layerId == "PERCENT_INCOME"){
-//        MY_MAP.map.removeLayer(mainLayer);
-        mainLayer =L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForPercentIncome,
-            onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+        mainLayer =MY_MAP.PERCENT_INCOME_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER = "PERCENT_INCOME";
     }
     if(layerId == "MEDIAN_INCOME"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForMedianIncome,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer= MY_MAP.MEDIAN_INCOME_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER = "MEDIAN_INCOME";
-
     }
     if(layerId == "AVG_WIN"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageWin,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer= MY_MAP.AVERAGE_WINNINGS_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_WIN";
     }
     if(layerId == "AVG_SPEND"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer = L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageSpend,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer = MY_MAP.AVERAGE_SPENDINGS_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_SPEND";
     }
     if(layerId == "NET_GAIN_LOSS"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForNetWinLoss,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer= MY_MAP.NET_GAIN_LOSS_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER="NET_GAIN_LOSS";
     }
     if(layerId == "VIEW_ALL_SCHOOLS"){
@@ -239,25 +225,30 @@ CityDigitsMap.prototype.loadLayers =  function (){
     //show map ui nav
     $("#map-nav").load("/map/nav/");
 
-    //add neighborhoods
-    this.neighborhoodLayer = L.geoJson(nyc_neighborhoods,{
+    //load layers
+    this.PERCENT_INCOME_LAYER = L.geoJson(nyc_neighborhoods,{
         style :CityDigitsMap.getStyleColorForPercentIncome,
         onEachFeature : CityDigitsMap.onEachFeature
-    }).addTo(this.map);
-//    this.neighborhoodLayer.on('mousemove', function(e) {
-//        self.mapMouseMove(e);
-//    });
-//    this.neighborhoodLayer.on('mouseover', function(e) {
-//        self.mapMouseMove(e);
-//    });
-//    this.neighborhoodLayer.on('mouseout', function(e) {
-//        self.mapMouseOut(e);
-//    });
-//    this.neighborhoodLayer.on('click', function(e) {
-//        self.mapMouseMove(e);
-//        //load popup
-//        showMapPopUp(e);
-//    });
+    });
+    this.MEDIAN_INCOME_LAYER =  L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForMedianIncome,
+           onEachFeature :CityDigitsMap.onEachFeature
+     });
+    this.AVERAGE_WINNINGS_LAYER = L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageWin,
+           onEachFeature :CityDigitsMap.onEachFeature
+     });
+    this.AVERAGE_SPENDINGS_LAYER = L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageSpend,
+           onEachFeature :CityDigitsMap.onEachFeature
+     });
+    this.NET_GAIN_LOSS_LAYER = L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForNetWinLoss,
+           onEachFeature :CityDigitsMap.onEachFeature
+    });
+
+    //start with percent income for initial load
+    this.neighborhoodLayer = this.PERCENT_INCOME_LAYER.addTo(this.map);
 }
 
 CityDigitsMap.prototype.resizeMap = function(){
