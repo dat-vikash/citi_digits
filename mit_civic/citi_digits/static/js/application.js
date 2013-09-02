@@ -707,18 +707,21 @@ $("#signUpModal").on("click", ".back", function (ev) {
 
 $('#signUpModal').on("click", ".add_student", function (ev) {
     ev.preventDefault(); // prevent navigation
-    //get team name
-    var teamCount = $(this).closest("div").find("#team_name").attr('name');
+
+    //get team count to add student too
+    var originIdx = $(this).closest(".team").find(".student").last().attr('name').indexOf("[");
+    var destIdx = $(this).closest(".team").find(".student").last().attr('name').indexOf("]");
+    var teamCount = $(this).closest(".team").find(".student").last().attr('name').substring(originIdx+1,destIdx);
 
     //get student count for team
     var student_count = $(this).closest(".team").find(".student").length + 1;
     //create input strings
     var studentFirstNameInput = '<input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name[' +
-        teamCount+'][ ]">';
+        teamCount+'][]">';
     var studentPassword = '<input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' +
         teamCount+'][]">';
     //apply input strings
-    $(this).parent().parent().parent().find('tr:last').before('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td></tr>');
+    $(this).parent().parent().parent().find('tr:last').before('<tr><td class="sign_up_row_buffer">' + studentFirstNameInput + '</td><td>' + studentPassword +'</td><td><a href="#" class="remove_student">X</a></td></tr>');
 });
 
 /*
@@ -737,13 +740,15 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
               '<table>'+
                   '<tr>' +
                           '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name['+teamCount +'][]"></td>' +
-                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' + teamCount +'][]"></td></tr>' +
+                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password[' + teamCount +'][]"></td>' +
+                          '<td><a href="#" class="remove_student">X</a></td></tr>' +
                       '<tr>' +
                           '<td class="sign_up_row_buffer"><input class="sign_up_medium student" type="text" placeholder="Student First Name" name="student_name['+ teamCount+'][]"></td>' +
-                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password['+ teamCount +'][]"></td></tr><tr>' +
+                          '<td><input class="sign_up_medium" type="text" placeholder="Password" name="student_password['+ teamCount +'][]"></td>' +
+                          '<td><a href="#" class="remove_student">X</a></td>' +
                       '</tr>' +
                   '<tr>' +
-                      '<td colspan="2">' +
+                      '<td colspan="3">' +
                           '<label class="add_student">+ Add a student to this team</label>' +
                       '</td>' +
                   '</tr>' +
@@ -752,6 +757,12 @@ $('#signUpModal').on("click", ".add_team", function (ev) {
     //prevent click propagation
     return false;
 });
+
+
+$('#signUpModal').on("click", ".remove_student", function (ev) {
+    $(this).closest('tr').remove();
+});
+
 
 /*
  * This function defines how to handle a sign up  workflow submission
