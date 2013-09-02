@@ -76,6 +76,13 @@ class CityDigitsUser(AbstractBaseUser):
     def get_short_name(self):
         return self.username
 
+    @classmethod
+    def doesUsernameExist(self,uname):
+        if CityDigitsUser.objects.filter(username=uname).count():
+            return True
+        else:
+            return False
+
 
 class Location(models.Model):
     """
