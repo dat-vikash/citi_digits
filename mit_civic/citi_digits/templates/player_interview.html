@@ -22,8 +22,10 @@
             <div class="fieldWrapper">
                 {{ form.whyOrWhyNot.errors }}
                 <label for="id_whyOrWhyNot">Why or why not?</label><br/>
-                {{ form.whyOrWhyNot }}
-                <span class="input-span-close">Add an Audio recording</span>
+                <div class="add-media-styled-button">
+                    {{ form.whyOrWhyNot }}
+                </div>
+                <span class="input-span-close" style="margin-top: 10px">Add an Audio recording</span>
             </div>
             <div class="fieldWrapper hide" id="wonLottery">
                 {{ form.wonLottery.errors }}
@@ -43,14 +45,18 @@
             <div class="fieldWrapper">
                 {{ form.wonJackpotQuestion.errors }}
                 <label for="id_mostWonAmount">What would you do if you won the jackpot?</label><br/>
+                <div class="add-media-styled-button">
                 {{ form.wonJackpotQuestion }}
-                <span class="input-span-close">Add an Audio recording</span>
+               </div>
+                <span class="input-span-close" style="margin-top: 10px">Add an Audio recording</span>
             </div>
                 <br/>
             <div class="fieldWrapper">
                 {{ form.photo.errors }}
                 <label for="id_mostWonAmount">Add photo</label><br/>
+                <div class="add-media-styled-button">
                 {{ form.photo }}
+                </div>
             </div>
                 <div class="fieldWrapper">
                 <button class="btn submit interview-button" aria-hidden="true" id="interviewSubmit">Submit</button>
