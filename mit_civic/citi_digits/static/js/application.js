@@ -642,10 +642,14 @@ $("#addInterviewModal").on("change", "input[name=buyLotteryTickets]:radio", func
     if ($("input[name=buyLotteryTickets]:radio")[0].checked) {
             //YES
             $('#wonLottery').show();
+            $("#averageSpentOnLotteryPerWeek").show();
+            $("#wonJackpotQuestion").show();
         }
         else if($("input[name=buyLotteryTickets]:radio")[1].checked){
             //NO
             $("#wonLottery").hide();
+            $("#averageSpentOnLotteryPerWeek").hide();
+            $("#wonJackpotQuestion").hide();
 
         }
     }
@@ -680,7 +684,33 @@ $("#addInterviewModal").on("change", "input[name=sellLotteryTickets]:radio", fun
     }
 );
 
+$("#addInterviewModal").on("change", "input[name=whyOrWhyNot]:file", function(ev){
+    console.log("whwy or why not");
+     //update the no file chosen field
+     $(this).parent().parent().find(".no-file-chosen").html($(this).val());
+    }
+);
 
+$("#addInterviewModal").on("change", "input[name=wonJackpotQuestion]:file", function(ev){
+    console.log("whwy or why not");
+     //update the no file chosen field
+     $(this).parent().parent().find(".no-file-chosen").html($(this).val());
+    }
+);
+
+$("#addInterviewModal").on("change", "input[name=photo]:file", function(ev){
+    console.log("whwy or why not");
+     //update the no file chosen field
+     $(this).parent().parent().find(".no-file-chosen").html($(this).val());
+    }
+);
+
+$("#addInterviewModal").on("change", "input[name=goodForNeighborhoodQuestion]:file", function(ev){
+    console.log("whwy or why not");
+     //update the no file chosen field
+     $(this).parent().parent().find(".no-file-chosen").html($(this).val());
+    }
+);
 
 /*
  * Sign Up workflow logic

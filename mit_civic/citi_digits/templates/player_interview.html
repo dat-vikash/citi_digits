@@ -5,7 +5,7 @@
 <h3>Add a Player Interview</h3>
 </div><!-- interview-header -->
     <form id="add_interview_form" enctype="multipart/form-data" class="well interview-form" method="post" action="/interview/player/">
-<div class="modal-body auto-scroll">
+<div class="modal-body auto-scroll" style="margin-left: 7px;margin-right: 15px;">
     <div id="workflow" class="container-fluid">
         <div class="row-fluid column_1">
             <div class="span7">
@@ -22,8 +22,11 @@
             <div class="fieldWrapper">
                 {{ form.whyOrWhyNot.errors }}
                 <label for="id_whyOrWhyNot">Why or why not?</label><br/>
-                {{ form.whyOrWhyNot }}
-                <span class="input-span-close">Add an Audio recording</span>
+                <div class="add-media-styled-button">
+                    {{ form.whyOrWhyNot }}
+                </div>
+                <span class="no-file-chosen">No file chosen</span>
+                <span class="input-span-close" style="margin-top: 10px">Add an Audio recording</span>
             </div>
             <div class="fieldWrapper hide" id="wonLottery">
                 {{ form.wonLottery.errors }}
@@ -35,22 +38,28 @@
                 <label for="id_mostWonAmount">What is the most you've won?</label><br/>
                 <label>$</label>{{ form.mostWonAmount }}
             </div>
-            <div class="fieldWrapper">
+            <div class="fieldWrapper hide" id="averageSpentOnLotteryPerWeek">
                 {{ form.averageSpentOnLotteryPerWeek.errors }}
                 <label for="id_mostWonAmount">How much do you spend on the lottery in an average week?</label><br/>
                 <label>$</label>{{ form.averageSpentOnLotteryPerWeek }}
             </div>
-            <div class="fieldWrapper">
+            <div class="fieldWrapper hide" id="wonJackpotQuestion">
                 {{ form.wonJackpotQuestion.errors }}
                 <label for="id_mostWonAmount">What would you do if you won the jackpot?</label><br/>
+                <div class="add-media-styled-button">
                 {{ form.wonJackpotQuestion }}
-                <span class="input-span-close">Add an Audio recording</span>
+               </div>
+                <span class="no-file-chosen">No file chosen</span>
+                <span class="input-span-close" style="margin-top: 10px">Add an Audio recording</span>
             </div>
                 <br/>
             <div class="fieldWrapper">
                 {{ form.photo.errors }}
                 <label for="id_mostWonAmount">Add photo</label><br/>
+                <div class="add-media-styled-button">
                 {{ form.photo }}
+                </div>
+                <span class="no-file-chosen">No file chosen</span>
             </div>
                 <div class="fieldWrapper">
                 <button class="btn submit interview-button" aria-hidden="true" id="interviewSubmit">Submit</button>
@@ -61,7 +70,7 @@
         <div class="span4 column_2">
             <div class="fieldWrapper">
                 {{ form.location.errors }}
-                <label for="id_mostWonAmount">Location</label>
+                <label for="">Location</label>
                 {{ form.location }}
                 <div id='interview-map-thumb'></div>
                 {{ form.latitude }}
