@@ -636,13 +636,10 @@ border-bottom-left-radius: 5px;
     color:  #3F3F3F;
     text-align: center;
     line-height: 10px;
-    margin-top: 3%;
-    /*text-decoration: underline;*/
-    /*text-align: center;*/
-    /*color: #3F3F3F;*/
-    /*font-size: 30px;*/
-    /*text-underline-position: below;*/
-    /*text-decoration:underline;*/
+    margin-top: 33px;
+    text-decoration: underline;
+    text-underline-position: below;
+    text-decoration-color: #3f3f3f;
 }
 
 #addInterviewModal hr{
@@ -660,14 +657,15 @@ border-bottom-left-radius: 5px;
 
 #addInterviewModal .interview-footer{
     background-color: #B0B6BD;
+    margin-top: 30px;
 }
 
 #addInterviewModal .interview-footer .pull-left{
-    margin-left: 35px;
+    margin-left: 30px;
 }
 
 #addInterviewModal .interview-footer .pull-right{
-    margin-right: 35px;
+    margin-right: 30px;
 }
 
 #addInterviewModal .interview-footer img .pull-left{

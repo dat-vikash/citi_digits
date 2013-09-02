@@ -417,7 +417,7 @@ $("#add-interview").click(function(ev){
                  width: '100%',
                  'max-width':'400px',
                   height:'100%',
-                    'max-height':'320px',
+                    'max-height':'304px',
                     'top':'1%',
                   'margin-left': function () {
 
