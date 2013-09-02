@@ -61,7 +61,7 @@ def signUp(request):
             cityUser.save()
 
             #create teams and students entities
-            teamIdx = 0;
+            teamIdx = 0
             print(formData)
             for teamName in formData.getlist('team_name[]'):
                 teamIdx = teamName.split('_')[1]
@@ -69,7 +69,7 @@ def signUp(request):
                 team = Team.objects.create(name=teamName, teacher=teacher)
                 team.save()
                 #add students to team
-                studentIdx = 0;
+                studentIdx = 0
                 for studentName in formData.getlist("student_name[%s][]" % teamIdx):
                     #get password
                     password = MembershipService.encryptPassword(studentName,

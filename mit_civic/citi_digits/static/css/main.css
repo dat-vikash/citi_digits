@@ -50,6 +50,13 @@ width: 100%;
 width: 100%;
 }}
 
+.btn{
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 13px;
+
+}
+
 /*
  * Overrides for navbar
 */
@@ -206,6 +213,13 @@ width: 100%;
     max-width: 170px;
 }
 
+.signup-submit-button{
+    margin-right: 6px;
+}
+
+.signup-back-button{
+    margin-left:11px;
+}
 
 #sign_up_form label {
     color: #a9a9a9;
@@ -1878,6 +1892,7 @@ z-index: 0;
 
 #tour-menu-controls .tour-menu li button{
     width: 85px;
+    color: #ffffff;
 }
 
 .styled-select-tour {
@@ -2454,13 +2469,6 @@ b.net-loss-purple{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #000000;
     font-size: 12px;
-}
-
-.btn{
-    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
-    color: #3f3f3f;
-    font-size: 13px;
-
 }
 
 label.checkbox{
