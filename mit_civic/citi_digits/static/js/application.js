@@ -680,7 +680,26 @@ $("#addInterviewModal").on("change", "input[name=sellLotteryTickets]:radio", fun
     }
 );
 
+$("#addInterviewModal").on("change", "input[name=whyOrWhyNot]:file", function(ev){
+    console.log("whwy or why not");
+     //update the no file chosen field
+     $(this).parent().parent().find(".no-file-chosen").html($(this).val());
+    }
+);
 
+$("#addInterviewModal").on("change", "input[name=wonJackpotQuestion]:file", function(ev){
+    console.log("whwy or why not");
+     //update the no file chosen field
+     $(this).parent().parent().find(".no-file-chosen").html($(this).val());
+    }
+);
+
+$("#addInterviewModal").on("change", "input[name=photo]:file", function(ev){
+    console.log("whwy or why not");
+     //update the no file chosen field
+     $(this).parent().parent().find(".no-file-chosen").html($(this).val());
+    }
+);
 
 /*
  * Sign Up workflow logic
