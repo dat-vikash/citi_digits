@@ -20,6 +20,7 @@ var SCREEN_HEIGHT = null;
 var CURRENT_LAYER = null;
 var VIEW_ALL_SCHOOLS_IS_OPEN = false;
 var MY_SELECTED_BOROUGHS = [];
+L_PREFER_CANVAS = true; // experimental
 
 $().ready(new function(){
     //get screen measurements
@@ -1101,18 +1102,6 @@ $("#interviews-tab").on("click",".pagination-page", function(e){
 });
 
 
-//$("#map-nav").on("change","#turn_on_player_interviews", function(e){
-//    //toggle player interviews on the map
-//    if ($("#turn_on_player_interviews").is(":checked")){
-//        console.log("ADDING PLAYER LAYER");
-//        loadInterviews("PLAYER");
-//    }else{
-//      //remove layer
-//        console.log("REMOVING PLAYER LAYER");
-//        console.log(PLAYER_LAYER);
-//        MY_MAP.map.removeLayer(PLAYER_LAYER);
-//    }
-//});
 
 $("#map-nav").on("change",".map-ui-interviews", function(e){
     console.log("IN HERE!@#$@#$@$");
@@ -1330,8 +1319,6 @@ $("#map-nav").on("click","#map-city-level-view-winnings",function(e){
 
 $("#map-nav").on("click","#map-street-level-view-winnings",function(e){
     e.preventDefault();
-   //reset zoom to city level
-    MY_MAP.map.setZoom(16);
     //show winnings markers if not already shown
     if(WINNINGS_LAYER==null){
         loadAvgWinningsMarkers();
@@ -1341,7 +1328,8 @@ $("#map-nav").on("click","#map-street-level-view-winnings",function(e){
         MY_MAP.map.removeLayer(mainLayer);
         mainLayer = null;
     }
-
+    //reset zoom to city level
+    MY_MAP.map.setZoom(16);
     //set to active
      $(this).attr("class","span6 active");
     $("#map-city-level-view-winnings").attr("class","span6");
