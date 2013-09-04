@@ -176,11 +176,11 @@ CityDigitsMap.loadLayerFor = function(layerId){
     //check if any popups are active and if so reload them with info from current layer
     console.log(map_popups_currently_active_features);
     if(MY_MAP.map.hasLayer(MY_MAP.popup2) && map_popups_currently_active_features[0]!=null){
-        WAS_RESHOW = true;
+
         reShowMapPopUp(null, map_popups_currently_active_features[0],0);
     }
     if(MY_MAP.map.hasLayer(MY_MAP.popup3) && map_popups_currently_active_features[1]!=null){
-        WAS_RESHOW = true;
+
         reShowMapPopUp(null, map_popups_currently_active_features[1],1);
     }
 }
@@ -293,7 +293,9 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             //only 1 selected, add another
             console.log("SELECTED BOUROUGHS1: ");
             console.log(MY_SELECTED_BOROUGHS);
-            MY_SELECTED_BOROUGHS.push(ev.target);
+            var targetToPush = ev.target;
+            targetToPush['originalLayer'] = mainLayer;
+            MY_SELECTED_BOROUGHS.push(targetToPush);
             //highlight current layer
             layer.setStyle({
             weight: 3,
@@ -306,18 +308,18 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             console.log("SELECTED BOUROUGHS: ");
             console.log(MY_SELECTED_BOROUGHS);
             var event = MY_SELECTED_BOROUGHS.shift();
-            if(WAS_RESHOW){
-               reshow_previous_layer.resetStyle(event);
-            }else{
-                mainLayer.resetStyle(event);
-            }
+            var resetLayer = event.originalLayer;
+            resetLayer.resetStyle(event);
+
             //highlight current layer
             layer.setStyle({
             weight: 3,
             color: '#3b3b3b',
             opacity: 1
             });
-            MY_SELECTED_BOROUGHS.push(ev.target);
+            var targetToPush = ev.target;
+            targetToPush['originalLayer'] = mainLayer;
+            MY_SELECTED_BOROUGHS.push(targetToPush);
             //remove popup
             if (MY_MAP.last_map_popup_loaded=="popup2"){
                 MY_MAP.map.removeLayer(MY_MAP.popup3);
@@ -326,7 +328,7 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             }
 
         }
-            WAS_RESHOW = false;
+
          if (!MY_MAP.map.hasLayer(MY_MAP.popup2) && MY_MAP.last_map_popup_loaded!="popup2"){
             //get lat/long
             MY_MAP.popup2.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
