@@ -527,8 +527,8 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
     $("#addInterviewModal").load(url,function() { // load the url into the modal
         $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
-                 width: '95%',
-                 'max-width':'100%',
+                 width: '90%',
+                 'max-width':'90%',
                   height: '90%',
                     'max-height':'90%',
                     'top':'1%',
@@ -548,8 +548,8 @@ $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
     $("#addInterviewModal").load(url,function() { // load the url into the modal
         $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
-                 width: '95%',
-                 'max-width':'100%',
+                 width: '90%',
+                 'max-width':'90%',
                   height:'90%',
                     'max-height':'90%',
                     'top':'1%',
@@ -972,8 +972,8 @@ $(".map-popup").on("click", "#math_explain", function (ev) {
     var url = $(this).data("form"); //get the form url
     $("#mapPopupModal").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
-                 width: '95%',
-                 'max-width':'100%',
+                 width: '90%',
+                 'max-width':'90%',
                   height:'100%',
                     'max-height':'85%',
                     'top':'1%',
@@ -1005,8 +1005,8 @@ $(".map-popup").on("click", "#not_all_equal", function (ev) {
     var url = $(this).data("form"); //get the form url
     $("#mapPopupModal").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
-                 width: '95%',
-                 'max-width':'100%',
+                 width: '90%',
+                 'max-width':'90%',
                   height:'100%',
                     'max-height':'85%',
                     'top':'1%',
