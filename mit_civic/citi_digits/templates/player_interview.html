@@ -69,12 +69,14 @@
            <div class="span1"></div>
         <div class="span4 column_2">
             <div class="fieldWrapper">
-                {{ form.location.errors }}
-                <label for="">Location</label>
-                {{ form.location }}
                 <div id='interview-map-thumb'></div>
                 {{ form.latitude }}
                 {{ form.longitude }}
+                <br/>
+                {{ form.location.errors }}
+                <label class="instructional-text">Your location should appear automatically on the map. If the location is incorrect, please enter the address below.</label><br/>
+                <label for="location">Location</label>
+                {{ form.location }}
             </div>
         </div>
          <input type="hidden" id="team" name="team" value="{{ team }}"/>
