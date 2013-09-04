@@ -12,6 +12,7 @@ var map_popups_currently_active = [];
 var map_count = 0;
 var last_map_popup_loaded = null;
 var map_popups_currently_active_features = [];
+var reshow_previous_layer = null;
 var mainLayer = null;
 var WINNINGS_LAYER = null;
 var SPENDINGS_LAYER = null;

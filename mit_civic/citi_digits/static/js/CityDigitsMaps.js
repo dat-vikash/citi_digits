@@ -133,6 +133,7 @@ CityDigitsMap.prototype.loadMarkers = function(){
 CityDigitsMap.loadLayerFor = function(layerId){
         //remove current layer
     if(mainLayer!=null && layerId!="VIEW_ALL_SCHOOLS"){
+        reshow_previous_layer = mainLayer;
        MY_MAP.map.removeLayer(mainLayer);
     }
     //set fillcolor based on id and properties
@@ -175,9 +176,11 @@ CityDigitsMap.loadLayerFor = function(layerId){
     //check if any popups are active and if so reload them with info from current layer
     console.log(map_popups_currently_active_features);
     if(MY_MAP.map.hasLayer(MY_MAP.popup2) && map_popups_currently_active_features[0]!=null){
+        WAS_RESHOW = true;
         reShowMapPopUp(null, map_popups_currently_active_features[0],0);
     }
     if(MY_MAP.map.hasLayer(MY_MAP.popup3) && map_popups_currently_active_features[1]!=null){
+        WAS_RESHOW = true;
         reShowMapPopUp(null, map_popups_currently_active_features[1],1);
     }
 }
@@ -288,6 +291,8 @@ CityDigitsMap.onEachFeature = function(feature,layer){
 
         if(MY_SELECTED_BOROUGHS.length >= 0 && MY_SELECTED_BOROUGHS.length !=2){
             //only 1 selected, add another
+            console.log("SELECTED BOUROUGHS1: ");
+            console.log(MY_SELECTED_BOROUGHS);
             MY_SELECTED_BOROUGHS.push(ev.target);
             //highlight current layer
             layer.setStyle({
@@ -298,8 +303,14 @@ CityDigitsMap.onEachFeature = function(feature,layer){
 
         }else{
             //clear borough
+            console.log("SELECTED BOUROUGHS: ");
+            console.log(MY_SELECTED_BOROUGHS);
             var event = MY_SELECTED_BOROUGHS.shift();
-            mainLayer.resetStyle(event);
+            if(WAS_RESHOW){
+               reshow_previous_layer.resetStyle(event);
+            }else{
+                mainLayer.resetStyle(event);
+            }
             //highlight current layer
             layer.setStyle({
             weight: 3,
@@ -315,7 +326,7 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             }
 
         }
-
+            WAS_RESHOW = false;
          if (!MY_MAP.map.hasLayer(MY_MAP.popup2) && MY_MAP.last_map_popup_loaded!="popup2"){
             //get lat/long
             MY_MAP.popup2.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
