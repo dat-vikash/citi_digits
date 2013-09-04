@@ -27,6 +27,105 @@ function CityDigitsMap() {
     this.popup = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
     this.popup_previous_name = "";
 
+    //Layers
+    this.PERCENT_INCOME_LAYER = null;
+    this.MEDIAN_INCOME_LAYER = null;
+    this.AVERAGE_WINNINGS_LAYER = null;
+    this.AVERAGE_SPENDINGS_LAYER = null;
+    this.NET_GAIN_LOSS_LAYER = null;
+
+    //Markers
+    this.AVERAGE_WINNINGS_MARKER_LAYER = null;
+    this.AVERAGE_SPENDINGS_MARKER_LAYER = null;
+}
+
+CityDigitsMap.prototype.loadMarkers = function(){
+    //create scale
+    var scale = d3.scale.linear().domain([0,25000]).range([2,100]);
+
+    //AVERAGE WINNINGS MARKERS
+    this.AVERAGE_WINNINGS_MARKER_LAYER = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
+                        var radius = 100;
+                        if (feature.properties.wins_ths <=25000){
+                            radius = scale(feature.properties.wins_ths);
+                        }
+
+                            return L.circleMarker(latlng, {
+                                        radius: radius,
+                                        fillColor: "#9518ed",
+                                        color: "#000",
+                                        weight: 1,
+                                        opacity: 1,
+                                        fillOpacity:.8,
+                                        zIndex: 99999
+                                    });
+            },
+            onEachFeature: function(feature,layer){
+                //add on hover
+                layer.on('mouseover', function(ev) {
+                //get lat/long
+                MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+                     var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                         '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+
+                MY_MAP.popup.setContent(popupContent);
+                //display popup
+                if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+                });
+
+                // Create custom popup content
+                 var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                     '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+
+                layer.bindPopup(popupContent,{
+                    closeButton: false,
+                    maxWidth: 250
+                    });
+            }
+    });
+
+    //AVERAGE SPENDINGS MARKERS
+    this.AVERAGE_SPENDINGS_MARKER_LAYER = L.geoJson(retailer_geojson,{ pointToLayer: function (feature, latlng) {
+                        var radius = 100;
+                        if (feature.properties.wins_ths <=25000){
+                            radius = scale(feature.properties.sales);
+                        }
+
+                            return L.circleMarker(latlng, {
+                                        radius: radius,
+                                        fillColor: "#00ec66",
+                                        color: "#000",
+                                        weight: 1,
+                                        opacity: 1,
+                                        fillOpacity:.8
+                                    });
+            },onEachFeature: function(feature,layer){
+                layer.on('mouseover', function(ev) {
+                //get lat/long
+                MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+                    var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                        '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+
+                MY_MAP.popup.setContent(popupContent);
+                //display popup
+                if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+                });
+
+                // Create custom popup content
+                 var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                     '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+
+                layer.bindPopup(popupContent,{
+        closeButton: true,
+        maxWidth: 250
+    });
+
+            }
+    });
 }
 
 CityDigitsMap.loadLayerFor = function(layerId){
@@ -36,44 +135,23 @@ CityDigitsMap.loadLayerFor = function(layerId){
     }
     //set fillcolor based on id and properties
     if(layerId == "PERCENT_INCOME"){
-//        MY_MAP.map.removeLayer(mainLayer);
-        mainLayer =L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForPercentIncome,
-            onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+        mainLayer =MY_MAP.PERCENT_INCOME_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER = "PERCENT_INCOME";
     }
     if(layerId == "MEDIAN_INCOME"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForMedianIncome,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer= MY_MAP.MEDIAN_INCOME_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER = "MEDIAN_INCOME";
-
     }
     if(layerId == "AVG_WIN"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageWin,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer= MY_MAP.AVERAGE_WINNINGS_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_WIN";
     }
     if(layerId == "AVG_SPEND"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer = L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForAverageSpend,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer = MY_MAP.AVERAGE_SPENDINGS_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER="AVG_SPEND";
     }
     if(layerId == "NET_GAIN_LOSS"){
-//        MY_MAP.map.removeLayer(mainLayer);
-       mainLayer= L.geoJson(nyc_neighborhoods,{
-            style :CityDigitsMap.getStyleColorForNetWinLoss,
-           onEachFeature :CityDigitsMap.onEachFeature
-        }).addTo(MY_MAP.map);
+       mainLayer= MY_MAP.NET_GAIN_LOSS_LAYER.addTo(MY_MAP.map);
         CURRENT_LAYER="NET_GAIN_LOSS";
     }
     if(layerId == "VIEW_ALL_SCHOOLS"){
@@ -239,25 +317,30 @@ CityDigitsMap.prototype.loadLayers =  function (){
     //show map ui nav
     $("#map-nav").load("/map/nav/");
 
-    //add neighborhoods
-    this.neighborhoodLayer = L.geoJson(nyc_neighborhoods,{
+    //load layers
+    this.PERCENT_INCOME_LAYER = L.geoJson(nyc_neighborhoods,{
         style :CityDigitsMap.getStyleColorForPercentIncome,
         onEachFeature : CityDigitsMap.onEachFeature
-    }).addTo(this.map);
-//    this.neighborhoodLayer.on('mousemove', function(e) {
-//        self.mapMouseMove(e);
-//    });
-//    this.neighborhoodLayer.on('mouseover', function(e) {
-//        self.mapMouseMove(e);
-//    });
-//    this.neighborhoodLayer.on('mouseout', function(e) {
-//        self.mapMouseOut(e);
-//    });
-//    this.neighborhoodLayer.on('click', function(e) {
-//        self.mapMouseMove(e);
-//        //load popup
-//        showMapPopUp(e);
-//    });
+    });
+    this.MEDIAN_INCOME_LAYER =  L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForMedianIncome,
+           onEachFeature :CityDigitsMap.onEachFeature
+     });
+    this.AVERAGE_WINNINGS_LAYER = L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageWin,
+           onEachFeature :CityDigitsMap.onEachFeature
+     });
+    this.AVERAGE_SPENDINGS_LAYER = L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForAverageSpend,
+           onEachFeature :CityDigitsMap.onEachFeature
+     });
+    this.NET_GAIN_LOSS_LAYER = L.geoJson(nyc_neighborhoods,{
+            style :CityDigitsMap.getStyleColorForNetWinLoss,
+           onEachFeature :CityDigitsMap.onEachFeature
+    });
+
+    //start with percent income for initial load
+    this.neighborhoodLayer = this.PERCENT_INCOME_LAYER.addTo(this.map);
 }
 
 CityDigitsMap.prototype.resizeMap = function(){
