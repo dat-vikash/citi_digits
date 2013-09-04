@@ -407,19 +407,19 @@ CityDigitsMap.getStyleColorForPercentIncome = function (feature){
         var percent = feature.properties.PERINC10;
         var fillColor = null;
         if(percent >= 0 && percent <=.5){
-            fillColor =  "#b2eaee";
+            fillColor =  "#a5f3fa";
         }
         if(percent >.5 && percent <=1.5){
-            fillColor =  "#79CADA";
+            fillColor =  "#62def8";
         }
         if(percent >1.5 && percent<=2){
-            fillColor = "#42B7BD";
+            fillColor = "#0bb6ec";
         }
         if(percent > 2 && percent <=3){
-            fillColor =  "#4794D4";
+            fillColor =  "#178def";
         }
         if(percent > 3 && percent <=15){
-            fillColor =  "#526CD9";
+            fillColor =  "#254aeb";
         }
     }catch (e){
 
