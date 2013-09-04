@@ -205,12 +205,12 @@ def interviewPlayer(request):
             entity = None
             entity = InterviewPlayer(firstName=form.cleaned_data["firstName"],
                                      do_you_ever_buy_lottery_tickets=form.cleaned_data["buyLotteryTickets"],
-                                     why_or_why_not_audio=request.FILES['whyOrWhyNot'],
+                                     why_or_why_not_audio=request.FILES['whyOrWhyNot'] if 'whyOrWhyNot' in request.FILES else None,
                                      have_you_ever_won_the_lottery=form.cleaned_data["wonLottery"],
-                                     most_won=float(form.cleaned_data["mostWonAmount"]),
-                                     money_spent_on_lottery_in_average_week=float(form.cleaned_data["averageSpentOnLotteryPerWeek"]),
-                                     jackpot_audio=request.FILES["wonJackpotQuestion"],
-                                     photo=request.FILES["photo"])
+                                     most_won=float(form.cleaned_data["mostWonAmount"] if form.cleaned_data["mostWonAmount"]!="" else 0),
+                                     money_spent_on_lottery_in_average_week=float(form.cleaned_data["averageSpentOnLotteryPerWeek"] if form.cleaned_data["averageSpentOnLotteryPerWeek"]!="" else 0 ),
+                                     jackpot_audio=request.FILES["wonJackpotQuestion"] if 'wonJackpotQuestion' in request.FILES else None,
+                                     photo=request.FILES["photo"] if "photo" in request.FILES else None)
             entity.save()
             #Create interview
             interview = Interview(student=student, location=location, interviewType="PLAYER", entityId=entity.id)

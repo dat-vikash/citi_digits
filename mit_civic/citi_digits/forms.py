@@ -27,29 +27,29 @@ class LoginForm(forms.Form):
 
 
 class PlayerInterviewForm(forms.Form):
-    firstName = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}))
-    buyLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
-    whyOrWhyNot = forms.FileField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}))
+    firstName = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=True)
+    buyLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')),required=True)
+    whyOrWhyNot = forms.FileField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}),required=False)
     wonLottery = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')),required=False)
     mostWonAmount = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 90%;'}),required=False)
-    averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 90%;'}))
-    wonJackpotQuestion = forms.FileField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}))
-    photo = forms.ImageField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}))
+    averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 90%;'}),required=False)
+    wonJackpotQuestion = forms.FileField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}),required=False)
+    photo = forms.ImageField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}),required=False)
     location = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=False)
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
 
 class RetailerInterviewForm(forms.Form):
-    storeName = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}))
-    sellLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')))
+    storeName = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=True)
+    sellLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')),required=True)
     whyOrWhyNot = forms.FileField()
     customersPerDay = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 90%;'}),required=False)
     percentageCustomers = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 89%;'}),required=False)
     amountPerVisit = forms.ChoiceField(required=False,widget=forms.RadioSelect(),choices=(('1-TICKET','1-ticket'),('2-5-TICKETS','2-5 tickets'),
                                                                              ('6-10-TICKETS','6-10 tickets'),('11-OR-MORE-TICKETS',
                                                                               '11 or more tickets')))
-    goodForNeighborhoodQuestion = forms.FileField()
-    photo = forms.ImageField()
+    goodForNeighborhoodQuestion = forms.FileField(required=False)
+    photo = forms.ImageField(required=False)
     location = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=False)
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
