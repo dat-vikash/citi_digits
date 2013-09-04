@@ -133,6 +133,7 @@ CityDigitsMap.prototype.loadMarkers = function(){
 CityDigitsMap.loadLayerFor = function(layerId){
         //remove current layer
     if(mainLayer!=null && layerId!="VIEW_ALL_SCHOOLS"){
+        reshow_previous_layer = mainLayer;
        MY_MAP.map.removeLayer(mainLayer);
     }
     //set fillcolor based on id and properties
@@ -170,6 +171,17 @@ CityDigitsMap.loadLayerFor = function(layerId){
             CURRENT_LAYER = "VIEW_ALL_SCHOOLS";
             VIEW_ALL_SCHOOLS_IS_OPEN = true;
         }
+    }
+
+    //check if any popups are active and if so reload them with info from current layer
+    console.log(map_popups_currently_active_features);
+    if(MY_MAP.map.hasLayer(MY_MAP.popup2) && map_popups_currently_active_features[0]!=null){
+
+        reShowMapPopUp(null, map_popups_currently_active_features[0],0);
+    }
+    if(MY_MAP.map.hasLayer(MY_MAP.popup3) && map_popups_currently_active_features[1]!=null){
+
+        reShowMapPopUp(null, map_popups_currently_active_features[1],1);
     }
 }
 
@@ -279,7 +291,11 @@ CityDigitsMap.onEachFeature = function(feature,layer){
 
         if(MY_SELECTED_BOROUGHS.length >= 0 && MY_SELECTED_BOROUGHS.length !=2){
             //only 1 selected, add another
-            MY_SELECTED_BOROUGHS.push(ev.target);
+            console.log("SELECTED BOUROUGHS1: ");
+            console.log(MY_SELECTED_BOROUGHS);
+            var targetToPush = ev.target;
+            targetToPush['originalLayer'] = mainLayer;
+            MY_SELECTED_BOROUGHS.push(targetToPush);
             //highlight current layer
             layer.setStyle({
             weight: 3,
@@ -289,15 +305,21 @@ CityDigitsMap.onEachFeature = function(feature,layer){
 
         }else{
             //clear borough
+            console.log("SELECTED BOUROUGHS: ");
+            console.log(MY_SELECTED_BOROUGHS);
             var event = MY_SELECTED_BOROUGHS.shift();
-            mainLayer.resetStyle(event);
+            var resetLayer = event.originalLayer;
+            resetLayer.resetStyle(event);
+
             //highlight current layer
             layer.setStyle({
             weight: 3,
             color: '#3b3b3b',
             opacity: 1
             });
-            MY_SELECTED_BOROUGHS.push(ev.target);
+            var targetToPush = ev.target;
+            targetToPush['originalLayer'] = mainLayer;
+            MY_SELECTED_BOROUGHS.push(targetToPush);
             //remove popup
             if (MY_MAP.last_map_popup_loaded=="popup2"){
                 MY_MAP.map.removeLayer(MY_MAP.popup3);
