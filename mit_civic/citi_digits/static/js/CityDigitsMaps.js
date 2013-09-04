@@ -25,6 +25,8 @@ function CityDigitsMap() {
     this.map.gridControl.options.follow = true;
 
     this.popup = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
+    this.popup2 = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
+    this.popup3 = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
     this.popup_previous_name = "";
 
     //Layers
@@ -274,12 +276,6 @@ CityDigitsMap.onEachFeature = function(feature,layer){
 
     layer.on("click",function(ev){
         CityDigitsMap.popup_previous_name = feature.properties.N_Name;
-            //get lat/long
-        MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
-
-        //display popup
-        if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
 
         if(MY_SELECTED_BOROUGHS.length >= 0 && MY_SELECTED_BOROUGHS.length !=2){
             //only 1 selected, add another
@@ -302,7 +298,31 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             opacity: 1
             });
             MY_SELECTED_BOROUGHS.push(ev.target);
+            //remove popup
+            if (MY_MAP.last_map_popup_loaded=="popup2"){
+                MY_MAP.map.removeLayer(MY_MAP.popup3);
+            }else{
+                MY_MAP.map.removeLayer(MY_MAP.popup2);
+            }
+
         }
+
+         if (!MY_MAP.map.hasLayer(MY_MAP.popup2) && MY_MAP.last_map_popup_loaded!="popup2"){
+            //get lat/long
+            MY_MAP.popup2.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+            MY_MAP.popup2.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
+
+            //display popup
+            MY_MAP.map.addLayer(MY_MAP.popup2);
+            MY_MAP.last_map_popup_loaded="popup2";
+            }else{
+                 MY_MAP.popup3.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
+                MY_MAP.popup3.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
+                MY_MAP.map.addLayer(MY_MAP.popup3);
+                MY_MAP.last_map_popup_loaded="popup3";
+            }
+
+
         //show neighborhood popup
         showMapPopUp(ev,feature);
     });
