@@ -2509,3 +2509,9 @@ display: inline-block;
 margin-left: 10px;
     opacity: .5;;
 }
+
+label.instructional-text{
+    font-size: 12px;
+    color: #000000;
+    opacity: .5;
+}
