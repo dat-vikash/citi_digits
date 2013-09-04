@@ -171,6 +171,15 @@ CityDigitsMap.loadLayerFor = function(layerId){
             VIEW_ALL_SCHOOLS_IS_OPEN = true;
         }
     }
+
+    //check if any popups are active and if so reload them with info from current layer
+    console.log(map_popups_currently_active_features);
+    if(MY_MAP.map.hasLayer(MY_MAP.popup2) && map_popups_currently_active_features[0]!=null){
+        reShowMapPopUp(null, map_popups_currently_active_features[0],0);
+    }
+    if(MY_MAP.map.hasLayer(MY_MAP.popup3) && map_popups_currently_active_features[1]!=null){
+        reShowMapPopUp(null, map_popups_currently_active_features[1],1);
+    }
 }
 
 CityDigitsMap.viewSwitcher = function(){
