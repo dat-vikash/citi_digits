@@ -6,6 +6,10 @@ body {
     margin-top: -18px;
 }
 
+.tab-content{
+    overflow: visible;
+}
+
 /*
   Bootstrap Overrides
 */
@@ -1032,13 +1036,15 @@ background-color: #fbc5ed;
     border-radius: 5px;
     /*margin-right: 5%;*/
     margin-top: 3%;
-    box-shadow: 5px 5px 15px;
     text-align: center;
     padding-top: 3%;
     padding-bottom: 5%;
     padding-left: 3%;
     float: right;
     margin-right: 20px;
+    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
 }
 
 .map-ui-popup-2 {
@@ -1051,15 +1057,15 @@ background-color: #fbc5ed;
     max-height:310px;
     width: 250px;
     border-radius: 5px;
-    /*margin-top: 27%;*/
-    /*left: 20.8%;*/
-    box-shadow: 5px 5px 15px;
     text-align: center;
     padding-top: 3%;
     padding-bottom: 12px;
     padding-left: 3%;
     margin-right: 20px;
     margin-top: 3%;
+    -moz-box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
+    box-shadow: 5px 5px 5px rgba(0,0,0,0.4);
 }
 
 .div-close {
