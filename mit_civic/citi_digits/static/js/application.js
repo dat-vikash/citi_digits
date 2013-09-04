@@ -111,7 +111,7 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
     console.log(data);
 
     //draw top tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + data[1].toFixed(2) + "</b> <a href='#' id='median_household_rollover'>median household</a> income per day.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + Math.round(data[1].toFixed(1)) + "</b> <a href='#' id='median_household_rollover'>median household</a> income per day.");
 
     //draw graph
      var chart = d3.select("#map-popup-" + popupId + " #map-popup-graphic-holder").append("svg")
@@ -155,7 +155,7 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
      .text(function(d,i){ if(i%2==0 && i!=0){return "$"+d;}});
 
     //draw bottom tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + data[2].toFixed(1) + "%</b> income spent on lottery (or $" +(data[2].toFixed(1)) +
+    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + data[2].toFixed(1) + "%</b> income spent on lottery (or $" +Math.round(data[2].toFixed(0)) +
     "out of every $100.");
 
 
@@ -200,12 +200,12 @@ function drawNetGainLossGraph(popupId,winnings,spendings, net){
       .text(function(d,i) { return "$"+d;});
 
     //draw bottom tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #net_winnings_graph_text").append("<b>$" + data[4].toFixed(1) + "</b> winnings.");
-    $("#map-popup-" + popupId + " #map-popup-graphic #net_spenings_graph_text").append("<b>$" + data[3].toFixed(1) + "</b> spending.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #net_winnings_graph_text").append("<b>$" + data[4].toFixed(0) + "</b> winnings.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #net_spenings_graph_text").append("<b>$" + data[3].toFixed(0) + "</b> spending.");
 
     //append descrption
-    $("#map-popup-" + popupId + " #map-popup-description-netgain").append("<p><b class='winnings'>$" + winnings.toFixed(1) + "</>" +
-    "     -      <b class='spendings'>$" +  spendings +"</b>= <b class='net'>" + net + "</b></p>");
+    $("#map-popup-" + popupId + " #map-popup-description-netgain").append("<p><b class='winnings' style='margin-left:6px; margin-right:6px;'>$" + winnings.toFixed(0) + "</b>" +
+    "     -      <b class='spendings' style='margin-left:6px; margin-right:6px;'>$" +  spendings.toFixed(0) +"</b>= <b class='net' style='margin-left:6px; margin-right:6px;'>" + net.toFixed(0) + "</b></p>");
 
 
 
