@@ -42,7 +42,7 @@ class PlayerInterviewForm(forms.Form):
 class RetailerInterviewForm(forms.Form):
     storeName = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=True)
     sellLotteryTickets = forms.ChoiceField(widget=forms.RadioSelect(),choices=(('1','Yes'),('0','No')),required=True)
-    whyOrWhyNot = forms.FileField()
+    whyOrWhyNot = forms.FileField(required=False)
     customersPerDay = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 90%;'}),required=False)
     percentageCustomers = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 89%;'}),required=False)
     amountPerVisit = forms.ChoiceField(required=False,widget=forms.RadioSelect(),choices=(('1-TICKET','1-ticket'),('2-5-TICKETS','2-5 tickets'),

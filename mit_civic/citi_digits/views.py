@@ -253,12 +253,12 @@ def interviewRetailer(request):
             entity = None
             entity = InterviewRetailer(storeName=form.cleaned_data["storeName"],
                                      do_you_sell_lottery_tickets=form.cleaned_data["sellLotteryTickets"],
-                                     why_or_why_not_audio=request.FILES['whyOrWhyNot'],
+                                     why_or_why_not_audio=request.FILES['whyOrWhyNot'] if 'whyOrWhyNot' in request.FILES else None,
                                      customers_in_a_day=form.cleaned_data["customersPerDay"],
-                                     percentage_buy_lottery_tickets=float(form.cleaned_data["percentageCustomers"]),
+                                     percentage_buy_lottery_tickets=float(form.cleaned_data["percentageCustomers"] if form.cleaned_data["percentageCustomers"]!="" else 0),
                                      amount_tickets_bought_per_visit=form.cleaned_data["amountPerVisit"],
-                                     why_or_why_not_lottery_neighborhood_audio=request.FILES["goodForNeighborhoodQuestion"],
-                                     photo=request.FILES["photo"])
+                                     why_or_why_not_lottery_neighborhood_audio=request.FILES["goodForNeighborhoodQuestion"] if 'goodForNeighborhoodQuestion' in request.FILES else None,
+                                     photo=request.FILES["photo"] if "photo" in request.FILES else None)
             entity.save()
             #Create interview
             interview = Interview(student=student, location=location, interviewType="RETAILER", entityId=entity.id)
