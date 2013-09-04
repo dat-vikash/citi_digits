@@ -8,6 +8,7 @@
   On DOM load handlers
  */
 var map_popups = [];
+var map_popups_currently_active = [];
 var map_count = 0;
 var last_map_popup_loaded = null;
 var mainLayer = null;
@@ -50,59 +51,61 @@ function showMapPopUp(ev,feature){
     //get which layer is active
     var activeLayer = $(".map-ui li.active").attr("id");
 
-    //pass properties to webservice to construct popup
-    //determine which popup is currently shown
-    if (map_count % 2 == 0){
-        idx = 0;
+    var map_id = activeLayer+"-"+feature.properties.N_Name;
+
+    //check if already displayed
+    if($.inArray(map_id, map_popups_currently_active)>=0){
+        return 0;
     }else{
-        idx=1;
-    }
-    map_count = map_count + 1;
-    //load into [0]
-//    console.log(layer);
-    url = getPopupUrlFrom(activeLayer,feature);
-    console.log("ulr: " + url);
-
-    //determine which graph to load based on active layer
-    switch(activeLayer){
-        case "PERCENT_INCOME":
-            map_popups[idx].load(url, function(){
-            drawPercentIncomeGraph(idx +1,feature.properties.PERINC10,feature.properties.Daily_Inco);
-        });
-            break;
-        case "MEDIAN_INCOME":
-            map_popups[idx].load(url, function(){
-            drawPercentIncomeGraph(idx +1,feature.properties.PERINC10,feature.properties.Daily_Inco);
-        });
-            break;
-        case "AVG_WIN":
-            map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
-        });
-            break;
-        case "AVG_SPEND":
-            map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
-        });
-            break;
-        case "NET_GAIN_LOSS":
-            map_popups[idx].load(url, function(){
-            drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
-        });
-            break;
+        //pass properties to webservice to construct popup
+        //determine which popup is currently shown
+        if (map_count % 2 == 0){
+            idx = 0;
+        }else{
+            idx=1;
         }
+        map_count = map_count + 1;
+        //load into [0]
+        url = getPopupUrlFrom(activeLayer,feature);
+        console.log("ulr: " + url);
+        map_popups_currently_active.push(map_id);
 
-//
-//    map_popups[idx].load(url, function(){
-//        drawPercentIncomeGraph(idx +1,layer.feature.properties.PERINC10,layer.feature.properties.EV_DOL);
-//    });
-    map_popups[idx].show();
-    map_popups[idx].on("click",".div-close",function(event){
-    map_popups[idx].innerHTML="";
-    map_popups[idx].hide();});
-    //load graph
+        //determine which graph to load based on active layer
+        switch(activeLayer){
+            case "PERCENT_INCOME":
+                map_popups[idx].load(url, function(){
+                drawPercentIncomeGraph(idx +1,feature.properties.PERINC10,feature.properties.Daily_Inco);
+            });
+                break;
+            case "MEDIAN_INCOME":
+                map_popups[idx].load(url, function(){
+                drawPercentIncomeGraph(idx +1,feature.properties.PERINC10,feature.properties.Daily_Inco);
+            });
+                break;
+            case "AVG_WIN":
+                map_popups[idx].load(url, function(){
+                drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
+            });
+                break;
+            case "AVG_SPEND":
+                map_popups[idx].load(url, function(){
+                drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
+            });
+                break;
+            case "NET_GAIN_LOSS":
+                map_popups[idx].load(url, function(){
+                drawNetGainLossGraph(idx +1,feature.properties.Daily_Win,feature.properties.Daily_Sale, feature.properties.Net_Win);
+            });
+                break;
+            }
 
-
+        map_popups[idx].show();
+        map_popups[idx].on("click",".div-close",function(event){
+        map_popups[idx].innerHTML="";
+        map_popups[idx].hide();
+        map_popups_currently_active.shift();
+        });
+    }
 }
 
 function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
