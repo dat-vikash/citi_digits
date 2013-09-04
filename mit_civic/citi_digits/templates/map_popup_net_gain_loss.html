@@ -11,7 +11,7 @@
     </div>
     <div id="map-popup-description-netgain">
         <p class="description">On an average day in 2010 at a store in {{ neighborhood }} that sells lottery tickets, players
-            spent <b class="spendings"> ${{ spent }} </b> and won <b class="winnings"> ${{ won }} </b>.</p>
+            spent <b class="spendings"> ${{ spent|floatformat:0 }} </b> and won <b class="winnings"> ${{ won|floatformat:0 }} </b>.</p>
 
     </div>
     <div id="map-popup-footer">
