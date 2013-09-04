@@ -769,8 +769,8 @@ font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-
 }
 
 #add_interview_form #interview-map-thumb{
-    height: 160px;
-    width: 160px;
+    height: 320px;
+    width: 100%;
 }
 
 #map-thumb {
@@ -2508,4 +2508,10 @@ label.checkbox{
 display: inline-block;
 margin-left: 10px;
     opacity: .5;;
+}
+
+label.instructional-text{
+    font-size: 12px;
+    color: #000000;
+    opacity: .5;
 }
