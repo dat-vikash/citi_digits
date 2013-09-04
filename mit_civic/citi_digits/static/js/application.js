@@ -452,6 +452,7 @@ $("#add-interview").click(function(ev){
    var url = $(this).data("form"); //get the form url
     console.log("ADD INTERVIEW");
    $("#addInterviewModal").load(url, function() { // load the url into the modal
+       $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
                  width: '100%',
                  'max-width':'400px',
@@ -509,6 +510,7 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
     ev.preventDefault(); // prevent navigation
     var url = $(this).data("form"); //get the form url
     $("#addInterviewModal").load(url,function() { // load the url into the modal
+        $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
                  width: '95%',
                  'max-width':'100%',
@@ -529,6 +531,7 @@ $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
     ev.preventDefault(); // prevent navigation
     var url = $(this).data("form"); //get the form url
     $("#addInterviewModal").load(url,function() { // load the url into the modal
+        $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
                  width: '95%',
                  'max-width':'100%',
