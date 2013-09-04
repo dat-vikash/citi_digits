@@ -19,7 +19,7 @@ function CityDigitsMap() {
     this.width = $(window).width();
 
      //disable unwanted events
-    this.map.touchZoom.enable();
+//    this.map.touchZoom.enable();
     this.map.doubleClickZoom.enable();
     this.map.scrollWheelZoom.disable();
     this.map.gridControl.options.follow = true;
