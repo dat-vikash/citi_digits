@@ -1513,6 +1513,15 @@ $("#map-nav").on("click","#map-street-level-view-netgainloss",function(e){
 
 function loadNetGainLossMarkers(){
 
+
+    //NET GAIN/LOSS
+    //set active thumb
+    $("#map-city-level-view-netgainloss").attr("class","span6");
+    $("#map-street-level-view-netgainloss").attr("class","span6 active");
+    //update legends
+    $("#NET_GAIN_LOSS #map-legend-street").attr('class','');
+    $("#NET_GAIN_LOSS #map-legend").attr('class','hide');
+
     if(MY_MAP.AVERAGE_SPENDINGS_MARKER_LAYER!=null){
         MY_MAP.map.addLayer(MY_MAP.AVERAGE_SPENDINGS_MARKER_LAYER);
         SPENDINGS_LAYER = MY_MAP.AVERAGE_SPENDINGS_MARKER_LAYER;
@@ -1527,6 +1536,15 @@ function loadNetGainLossMarkers(){
 
 function loadAvgWinningsMarkers(){
     if(MY_MAP.AVERAGE_WINNINGS_MARKER_LAYER!=null){
+        //update map ui to street view
+        //AVG WIN
+        //set active thumb
+        $("#map-city-level-view-winnings").attr("class","span6");
+        $("#map-street-level-view-winnings").attr("class","span6 active");
+        //update legends
+        $("#AVG_WIN #map-legend-street").attr('class','');
+        $("#AVG_WIN #map-legend").attr('class','hide');
+
         MY_MAP.map.addLayer(MY_MAP.AVERAGE_WINNINGS_MARKER_LAYER);
         WINNINGS_LAYER = MY_MAP.AVERAGE_WINNINGS_MARKER_LAYER;
     }
@@ -1538,6 +1556,15 @@ $("#map").on("click",".popup-close",function(e){
 
 function loadAvgSpendingsMarkers(){
     if(MY_MAP.AVERAGE_SPENDINGS_MARKER_LAYER!=null){
+
+         //AVG SPEND
+        //set active thumb
+        $("#map-city-level-view-spendings").attr("class","span6");
+        $("#map-street-level-view-spendings").attr("class","span6 active");
+        //update legends
+        $("#AVG_SPEND #map-legend-street").attr('class','');
+        $("#AVG_SPEND #map-legend").attr('class','hide');
+
         MY_MAP.map.addLayer(MY_MAP.AVERAGE_SPENDINGS_MARKER_LAYER);
         SPENDINGS_LAYER = MY_MAP.AVERAGE_SPENDINGS_MARKER_LAYER;
     }
