@@ -24,18 +24,13 @@ function CityDigitsMap() {
     this.map.scrollWheelZoom.disable();
     this.map.gridControl.options.follow = true;
     this.map.on("zoomend",function(){
-       console.log("zoomed calledback");
         if((MY_MAP.map.getZoom() >=15)){
-        console.log("calling view switcher");
         //neighorhood level
         CityDigitsMap.viewSwitcher();
         }else{
-            console.log("removing winnings");
         //city level
         if(WINNINGS_LAYER || SPENDINGS_LAYER){
-            console.log("wiinnings layer exists");
             if(MY_MAP.map.hasLayer(WINNINGS_LAYER)){
-                console.log("about to remove");
                 MY_MAP.map.removeLayer(WINNINGS_LAYER);
             }
             if(MY_MAP.map.hasLayer(SPENDINGS_LAYER)){
@@ -214,16 +209,13 @@ CityDigitsMap.loadLayerFor = function(layerId){
 CityDigitsMap.viewSwitcher = function(){
     //get active layer
     var layerId = $(".map-ui li.active").attr("id");
-    console.log("LAYERID: " + layerId);
     if($.inArray(layerId,['AVG_WIN','AVG_SPEND','NET_GAIN_LOSS'])>-1){
-        console.log("made it in here");
         if(mainLayer!=null){
             MY_MAP.map.removeLayer(mainLayer);
             mainLayer = null;
         }
         console.log(WINNINGS_LAYER);
         if(layerId == "AVG_WIN" && !MY_MAP.map.hasLayer(WINNINGS_LAYER)){
-            console.log("1234556");
             loadAvgWinningsMarkers();
         }else if(layerId=="AVG_SPEND" && !MY_MAP.map.hasLayer(SPENDINGS_LAYER)){
             loadAvgSpendingsMarkers();
