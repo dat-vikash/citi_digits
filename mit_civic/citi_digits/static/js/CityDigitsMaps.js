@@ -88,19 +88,45 @@ CityDigitsMap.prototype.loadMarkers = function(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                     var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
-                         '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
-            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+
+                //content varies on active layer
+                var layerId = $(".map-ui li.active").attr("id");
+                var popupContent = "";
+                if(layerId=="NET_GAIN_LOSS"){
+                     popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+                    '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                    '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
+                    Math.round(feature.properties.wins_ths) +'</b>.</p>'+
+                    '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
+                    '</div>';
+
+                }else{
+                  popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+                     '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                     '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+                }
 
                 MY_MAP.popup.setContent(popupContent);
                 //display popup
                 if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
                 });
 
-                // Create custom popup content
-                 var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+                //content varies on active layer
+                var layerId = $(".map-ui li.active").attr("id");
+                var popupContent = "";
+                if(layerId=="NET_GAIN_LOSS"){
+                     popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+                    '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                    '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
+                    Math.round(feature.properties.wins_ths) +'</b>.</p>'+
+                    '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
+                    '</div>';
+
+                }else{
+                  popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
                      '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
-            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+                    '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+                 }
 
                 layer.bindPopup(popupContent,{
                     closeButton: false,
@@ -128,20 +154,44 @@ CityDigitsMap.prototype.loadMarkers = function(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                    var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+
+
+                     //content varies on active layer
+                var layerId = $(".map-ui li.active").attr("id");
+                var popupContent = "";
+                if(layerId=="NET_GAIN_LOSS"){
+                     popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+                    '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                    '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
+                    Math.round(feature.properties.wins_ths) +'</b>.</p>'+
+                    '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
+                    '</div>';
+
+                }else{
+                    popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
                         '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
-
+                }
                 MY_MAP.popup.setContent(popupContent);
                 //display popup
                 if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
                 });
 
-                // Create custom popup content
-                 var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
-                     '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
-            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+                var layerId = $(".map-ui li.active").attr("id");
+                var popupContent = "";
+                if(layerId=="NET_GAIN_LOSS"){
+                     popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+                    '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+                    '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green">$' + Math.round(feature.properties.sales)+'</b> and won <b class="win-tooltip-purple"> $' +
+                    Math.round(feature.properties.wins_ths) +'</b>.</p>'+
+                    '<p><b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths) + '</b>    -     ' + '<b class="spend-tooltip-green"> $' + Math.round(feature.properties.sales) + '</b>    =     <b class="net-loss-tooltip-red">' + Math.round(feature.properties.wins_ths - feature.properties.sales) + '</b></p>' +
+                    '</div>';
 
+                }else{
+                    popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
+                        '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
+            '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
+                }
                 layer.bindPopup(popupContent,{
         closeButton: true,
         maxWidth: 250
