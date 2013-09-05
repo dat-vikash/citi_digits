@@ -1141,6 +1141,8 @@ background-color: #fbc5ed;
     background-color: #00c9c8;
     overflow-y: scroll;
     overflow-x: hidden;
+    overflow: visible;
+
 }
 
 #mapPopupModal .even{
@@ -1267,7 +1269,7 @@ interview-details-comments b.comment-name{
 
 #interviewDetails {
     overflow-y: scroll;
-overflow-x: hidden;
+    overflow-x: hidden;
 }
 
 #interview-details-header p.interviewee-by-description{
