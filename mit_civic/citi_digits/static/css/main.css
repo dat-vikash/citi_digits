@@ -487,7 +487,7 @@ width: 100%;
 }
 
 .map-ui li:hover{
-    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    /*font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;*/
     /*background: #FFFFFF;*/
     color: #3F3F3F;
         background-color: #777777;
@@ -577,7 +577,7 @@ border-bottom-left-radius: 5px;
 }
 
 .map-ui li.active:hover{
-    font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    /*font-family:"Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;*/
     /*background: #FFFFFF;*/
     color: #3F3F3F;
         background: #FFFFFF;
