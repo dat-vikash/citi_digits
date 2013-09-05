@@ -2159,18 +2159,60 @@ padding-top: 1%;
     text-decoration-color: #FFFFFF;
 }
 
+#home-page-container #homepage-interviews-square{
+    background-color: #025ff1;
+    line-height: 20em;
+}
+
+#home-page-container #homepage-tours-square{
+    background-color: #025ff1;
+    line-height: 20em;
+}
+
 #home-page-container .home-page-rollover{
-    background-color: #00c9c8;
+    background-color: transparent;
     /*width: 50%;*/
     height: 354px;
 }
 
 #home-page-container .home-page-rollover p{
-    line-height: 100%;
-    color: #025ff1;
+    /*margin-top: 10%;*/
+    /*margin-bottom: 10%;*/
+    /*margin-left: 10%;*/
+    /*margin-right: 10%;*/
+    /*line-height: 100%;*/
+    color: #ffffff;
     font-size: 33px;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     text-align: center;
+    text-decoration: underline;
+    vertical-align: middle;
+}
+
+
+#home-page-container #homepage-map-square{
+    background-color: #025ff1;
+    line-height: 20em;
+}
+
+#home-page-container .home-page-rollover{
+    background-color: transparent;
+    /*width: 50%;*/
+    height: 354px;
+}
+
+#home-page-container .home-page-rollover p{
+    /*margin-top: 10%;*/
+    /*margin-bottom: 10%;*/
+    /*margin-left: 10%;*/
+    /*margin-right: 10%;*/
+    /*line-height: 100%;*/
+    color: #ffffff;
+    font-size: 33px;
+    font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+    text-align: center;
+    text-decoration: underline;
+    vertical-align: middle;
 }
 
 #home-page-container img {

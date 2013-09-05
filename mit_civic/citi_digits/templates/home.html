@@ -1,16 +1,18 @@
 <div id="home-page-container" class="container">
     <div class="row-fluid no-space">
-        <div class="span6 blue-back" id="homepage-map-square">
+        <div class="span6" id="homepage-map-square">
             <img src="{{ STATIC_URL }}/img/homepage-map-square.png">
-            <div class="home-page-rollover hide"><p>MAP</p></div>
+            <div class="home-page-rollover hide"><p>Map</p></div>
         </div>
-        <div class="span6" >
+        <div class="span6" id="homepage-interviews-square">
             <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}">
+            <div class="home-page-rollover hide"><p>Interviews</p></div>
         </div>
     </div>
     <div class="row-fluid no-space">
-        <div class="span6">
+        <div class="span6" id="homepage-tours-square">
             <img src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}">
+            <div class="home-page-rollover hide"><p>Tours</p></div>
         </div>
         <div class="span6 blue-back">
             <p class="home-page-info">Local Lotto is a visualisation of the spatial patterns of the lottery in New York

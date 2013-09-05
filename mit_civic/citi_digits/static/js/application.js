@@ -1896,18 +1896,70 @@ $(window).on("resize",function(e){
     }
 });
 
+//home page bindings
+
+//square 1 - map
 
 $("#homepage-map-square").on("mouseenter","img",function(e){
-    console.log(" map rollover");
     $(this).hide();
     $(this).parent().find(".home-page-rollover").show();
 });
-//
+
 $("#homepage-map-square").on("mouseleave",".home-page-rollover",function(e){
-    console.log(" map mouseout");
     $(this).hide();
     $(this).parent().find("img").show();
 });
+
+$("#homepage-map-square").on("click","img",function(e){
+    $(this).hide();
+    $(this).parent().find(".home-page-rollover").show();
+});
+
+$("#homepage-map-square").on("click",".home-page-rollover",function(e){
+    $("#main-map").click();
+});
+
+//square 2 - interview
+$("#homepage-interviews-square").on("mouseenter","img",function(e){
+    $(this).hide();
+    $(this).parent().find(".home-page-rollover").show();
+});
+
+$("#homepage-interviews-square").on("mouseleave",".home-page-rollover",function(e){
+    $(this).hide();
+    $(this).parent().find("img").show();
+});
+
+$("#homepage-interviews-square").on("click","img",function(e){
+    $(this).hide();
+    $(this).parent().find(".home-page-rollover").show();
+});
+
+$("#homepage-interviews-square").on("click",".home-page-rollover",function(e){
+    $("#interviews").click();
+});
+
+
+//square 3 - tours
+$("#homepage-tours-square").on("mouseenter","img",function(e){
+    $(this).hide();
+    $(this).parent().find(".home-page-rollover").show();
+});
+
+$("#homepage-tours-square").on("mouseleave",".home-page-rollover",function(e){
+    $(this).hide();
+    $(this).parent().find("img").show();
+});
+
+$("#homepage-tours-square").on("click","img",function(e){
+    $(this).hide();
+    $(this).parent().find(".home-page-rollover").show();
+});
+
+$("#homepage-tours-square").on("click",".home-page-rollover",function(e){
+    $("#tours").click();
+});
+
 
 //$(".map-popup").on("mouseover", "#median_household_rollover",function(e){
 //
