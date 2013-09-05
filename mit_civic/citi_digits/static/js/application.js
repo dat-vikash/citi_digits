@@ -136,7 +136,7 @@ function reShowMapPopUp(ev,feature,idx){
 
     url = getPopupUrlFrom(activeLayer,feature);
     console.log("ulr: " + url);
-    map_popups_currently_active.push(map_id);
+//    map_popups_currently_active.push(map_id);
     map_popups_currently_active_features[idx]=feature;
 
     //determine which graph to load based on active layer
