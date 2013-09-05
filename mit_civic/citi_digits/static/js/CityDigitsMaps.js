@@ -207,7 +207,7 @@ CityDigitsMap.viewSwitcher = function(){
 CityDigitsMap.onZoomIn = function(event){
     //check for neighborhood vs city levels
     console.log("zoom in: " + MY_MAP.map.getZoom());
-    if((MY_MAP.map.getZoom() + 1 >16)){
+    if((MY_MAP.map.getZoom() + 1 >=15)){
         console.log("calling view switcher");
         //neighorhood level
         CityDigitsMap.viewSwitcher();
@@ -235,7 +235,7 @@ CityDigitsMap.onZoomIn = function(event){
 CityDigitsMap.onZoomOut = function(event){
         console.log("zoom out: " + MY_MAP.map.getZoom());
 
-     if((MY_MAP.map.getZoom() + 1 >16)){
+     if((MY_MAP.map.getZoom() - 1 >=15)){
         //neighorhood level
         CityDigitsMap.viewSwitcher();
     }else{
