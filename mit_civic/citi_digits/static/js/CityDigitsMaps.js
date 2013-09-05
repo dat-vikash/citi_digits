@@ -23,6 +23,29 @@ function CityDigitsMap() {
     this.map.doubleClickZoom.enable();
     this.map.scrollWheelZoom.disable();
     this.map.gridControl.options.follow = true;
+    this.map.on("zoomend",function(){
+       console.log("zoomed calledback");
+        if((MY_MAP.map.getZoom() >=15)){
+        console.log("calling view switcher");
+        //neighorhood level
+        CityDigitsMap.viewSwitcher();
+        }else{
+        //city level
+        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+            if(WINNINGS_LAYER){
+                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+            }
+            if(SPENDINGS_LAYER){
+                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+            }
+            var layerId = $(".map-ui li.active").attr("id");
+            if(mainLayer==null){
+                CityDigitsMap.loadLayerFor(layerId);
+            }
+            updateMapUIBackToCityLevel();
+        }
+        }
+    });
 
     this.popup = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
     this.popup2 = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
@@ -207,26 +230,26 @@ CityDigitsMap.viewSwitcher = function(){
 CityDigitsMap.onZoomIn = function(event){
     //check for neighborhood vs city levels
     console.log("zoom in: " + MY_MAP.map.getZoom());
-    if((MY_MAP.map.getZoom() + 1 >=15)){
-        console.log("calling view switcher");
-        //neighorhood level
-        CityDigitsMap.viewSwitcher();
-    }else{
-        //city level
-        if(WINNINGS_LAYER || SPENDINGS_LAYER){
-            if(WINNINGS_LAYER){
-                MY_MAP.map.removeLayer(WINNINGS_LAYER);
-            }
-            if(SPENDINGS_LAYER){
-                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
-            }
-            var layerId = $(".map-ui li.active").attr("id");
-            if(mainLayer==null){
-                CityDigitsMap.loadLayerFor(layerId);
-            }
-            updateMapUIBackToCityLevel();
-        }
-    }
+//    if((MY_MAP.map.getZoom() + 1 >=15)){
+//        console.log("calling view switcher");
+//        //neighorhood level
+//        CityDigitsMap.viewSwitcher();
+//    }else{
+//        //city level
+//        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+//            if(WINNINGS_LAYER){
+//                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+//            }
+//            if(SPENDINGS_LAYER){
+//                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+//            }
+//            var layerId = $(".map-ui li.active").attr("id");
+//            if(mainLayer==null){
+//                CityDigitsMap.loadLayerFor(layerId);
+//            }
+//            updateMapUIBackToCityLevel();
+//        }
+//    }
     MY_MAP.map.zoomIn();
 }
 
@@ -235,25 +258,25 @@ CityDigitsMap.onZoomIn = function(event){
 CityDigitsMap.onZoomOut = function(event){
         console.log("zoom out: " + MY_MAP.map.getZoom());
 
-     if((MY_MAP.map.getZoom() - 1 >=15)){
-        //neighorhood level
-        CityDigitsMap.viewSwitcher();
-    }else{
-        //city level
-        if(WINNINGS_LAYER || SPENDINGS_LAYER){
-            if(WINNINGS_LAYER){
-                MY_MAP.map.removeLayer(WINNINGS_LAYER);
-            }
-            if(SPENDINGS_LAYER){
-                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
-            }
-            var layerId = $(".map-ui li.active").attr("id");
-            if(mainLayer==null){
-                CityDigitsMap.loadLayerFor(layerId);
-            }
-            updateMapUIBackToCityLevel();
-        }
-    }
+//     if((MY_MAP.map.getZoom() - 1 >=15)){
+//        //neighorhood level
+//        CityDigitsMap.viewSwitcher();
+//    }else{
+//        //city level
+//        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+//            if(WINNINGS_LAYER){
+//                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+//            }
+//            if(SPENDINGS_LAYER){
+//                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+//            }
+//            var layerId = $(".map-ui li.active").attr("id");
+//            if(mainLayer==null){
+//                CityDigitsMap.loadLayerFor(layerId);
+//            }
+//            updateMapUIBackToCityLevel();
+//        }
+//    }
     MY_MAP.map.zoomOut();
 }
 
