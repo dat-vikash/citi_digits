@@ -2523,3 +2523,8 @@ label.instructional-text{
     color: #000000;
     opacity: .5;
 }
+
+.no-space [class*="span"]{
+  margin-left: 0 !important;
+  width: 50% !important; // This is for 2 elements ONLY in the row
+}
