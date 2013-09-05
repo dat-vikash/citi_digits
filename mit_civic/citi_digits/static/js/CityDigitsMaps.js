@@ -88,7 +88,7 @@ CityDigitsMap.prototype.loadMarkers = function(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                     var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                     var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
                          '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
@@ -98,7 +98,7 @@ CityDigitsMap.prototype.loadMarkers = function(){
                 });
 
                 // Create custom popup content
-                 var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                 var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
                      '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players won <b class="win-tooltip-purple"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
@@ -128,7 +128,7 @@ CityDigitsMap.prototype.loadMarkers = function(){
                 layer.on('mouseover', function(ev) {
                 //get lat/long
                 MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
-                    var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                    var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
                         '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
@@ -138,7 +138,7 @@ CityDigitsMap.prototype.loadMarkers = function(){
                 });
 
                 // Create custom popup content
-                 var popupContent = '<button type="button" class="close div-close popup-close"><img src="/static/img/close.png"/></button>' +
+                 var popupContent = '<button type="button" class="close modal-close popup-close"><img src="/static/img/close.png"/></button>' +
                      '<div id="win-spend-tooltip"><p class="title">' + feature.properties.FIRST_Plac + '<\p>' +
             '<p class="body">On an average day at ' + feature.properties.FIRST_Plac + ' players spent <b class="spend-tooltip-green"> $' + Math.round(feature.properties.wins_ths)+'</b></p></div>';
 
