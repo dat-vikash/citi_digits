@@ -1896,6 +1896,19 @@ $(window).on("resize",function(e){
     }
 });
 
+
+$("#homepage-map-square").on("mouseenter","img",function(e){
+    console.log(" map rollover");
+    $(this).hide();
+    $(this).parent().find(".home-page-rollover").show();
+});
+//
+$("#homepage-map-square").on("mouseleave",".home-page-rollover",function(e){
+    console.log(" map mouseout");
+    $(this).hide();
+    $(this).parent().find("img").show();
+});
+
 //$(".map-popup").on("mouseover", "#median_household_rollover",function(e){
 //
 //    var showPopover = function () {
