@@ -554,7 +554,7 @@ border-bottom-left-radius: 5px;
     border: 1px solid #BBB;
     border-top-width: 1px;
     border-bottom-width: 1px;
-
+    border-radius: 5px;
 }
 
 .map-ui #VIEWS_INTERVIEWS hr{
