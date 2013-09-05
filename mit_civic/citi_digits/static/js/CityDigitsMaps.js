@@ -23,6 +23,27 @@ function CityDigitsMap() {
     this.map.doubleClickZoom.enable();
     this.map.scrollWheelZoom.disable();
     this.map.gridControl.options.follow = true;
+    this.map.on("zoomend",function(){
+        if((MY_MAP.map.getZoom() >=15)){
+        //neighorhood level
+        CityDigitsMap.viewSwitcher();
+        }else{
+        //city level
+        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+            if(MY_MAP.map.hasLayer(WINNINGS_LAYER)){
+                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+            }
+            if(MY_MAP.map.hasLayer(SPENDINGS_LAYER)){
+                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+            }
+            var layerId = $(".map-ui li.active").attr("id");
+            if(mainLayer==null){
+                CityDigitsMap.loadLayerFor(layerId);
+            }
+            updateMapUIBackToCityLevel();
+        }
+        }
+    });
 
     this.popup = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
     this.popup2 = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
@@ -188,17 +209,17 @@ CityDigitsMap.loadLayerFor = function(layerId){
 CityDigitsMap.viewSwitcher = function(){
     //get active layer
     var layerId = $(".map-ui li.active").attr("id");
-    console.log("LAYERID: " + layerId);
     if($.inArray(layerId,['AVG_WIN','AVG_SPEND','NET_GAIN_LOSS'])>-1){
         if(mainLayer!=null){
             MY_MAP.map.removeLayer(mainLayer);
             mainLayer = null;
         }
-        if(layerId == "AVG_WIN" && !WINNINGS_LAYER){
+        console.log(WINNINGS_LAYER);
+        if(layerId == "AVG_WIN" && !MY_MAP.map.hasLayer(WINNINGS_LAYER)){
             loadAvgWinningsMarkers();
-        }else if(layerId=="AVG_SPEND" && !SPENDINGS_LAYER){
+        }else if(layerId=="AVG_SPEND" && !MY_MAP.map.hasLayer(SPENDINGS_LAYER)){
             loadAvgSpendingsMarkers();
-        }else if(layerId=="NET_GAIN_LOSS" && !WINNINGS_LAYER & !SPENDINGS_LAYER){
+        }else if(layerId=="NET_GAIN_LOSS" && !MY_MAP.map.hasLayer(WINNINGS_LAYER) & !MY_MAP.map.hasLayer(SPENDINGS_LAYER)){
             loadNetGainLossMarkers();
         }
     }
@@ -207,26 +228,26 @@ CityDigitsMap.viewSwitcher = function(){
 CityDigitsMap.onZoomIn = function(event){
     //check for neighborhood vs city levels
     console.log("zoom in: " + MY_MAP.map.getZoom());
-    if((MY_MAP.map.getZoom() + 1 >16)){
-        console.log("calling view switcher");
-        //neighorhood level
-        CityDigitsMap.viewSwitcher();
-    }else{
-        //city level
-        if(WINNINGS_LAYER || SPENDINGS_LAYER){
-            if(WINNINGS_LAYER){
-                MY_MAP.map.removeLayer(WINNINGS_LAYER);
-            }
-            if(SPENDINGS_LAYER){
-                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
-            }
-            var layerId = $(".map-ui li.active").attr("id");
-            if(mainLayer==null){
-                CityDigitsMap.loadLayerFor(layerId);
-            }
-            updateMapUIBackToCityLevel();
-        }
-    }
+//    if((MY_MAP.map.getZoom() + 1 >=15)){
+//        console.log("calling view switcher");
+//        //neighorhood level
+//        CityDigitsMap.viewSwitcher();
+//    }else{
+//        //city level
+//        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+//            if(WINNINGS_LAYER){
+//                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+//            }
+//            if(SPENDINGS_LAYER){
+//                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+//            }
+//            var layerId = $(".map-ui li.active").attr("id");
+//            if(mainLayer==null){
+//                CityDigitsMap.loadLayerFor(layerId);
+//            }
+//            updateMapUIBackToCityLevel();
+//        }
+//    }
     MY_MAP.map.zoomIn();
 }
 
@@ -235,25 +256,25 @@ CityDigitsMap.onZoomIn = function(event){
 CityDigitsMap.onZoomOut = function(event){
         console.log("zoom out: " + MY_MAP.map.getZoom());
 
-     if((MY_MAP.map.getZoom() + 1 >16)){
-        //neighorhood level
-        CityDigitsMap.viewSwitcher();
-    }else{
-        //city level
-        if(WINNINGS_LAYER || SPENDINGS_LAYER){
-            if(WINNINGS_LAYER){
-                MY_MAP.map.removeLayer(WINNINGS_LAYER);
-            }
-            if(SPENDINGS_LAYER){
-                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
-            }
-            var layerId = $(".map-ui li.active").attr("id");
-            if(mainLayer==null){
-                CityDigitsMap.loadLayerFor(layerId);
-            }
-            updateMapUIBackToCityLevel();
-        }
-    }
+//     if((MY_MAP.map.getZoom() - 1 >=15)){
+//        //neighorhood level
+//        CityDigitsMap.viewSwitcher();
+//    }else{
+//        //city level
+//        if(WINNINGS_LAYER || SPENDINGS_LAYER){
+//            if(WINNINGS_LAYER){
+//                MY_MAP.map.removeLayer(WINNINGS_LAYER);
+//            }
+//            if(SPENDINGS_LAYER){
+//                MY_MAP.map.removeLayer(SPENDINGS_LAYER);
+//            }
+//            var layerId = $(".map-ui li.active").attr("id");
+//            if(mainLayer==null){
+//                CityDigitsMap.loadLayerFor(layerId);
+//            }
+//            updateMapUIBackToCityLevel();
+//        }
+//    }
     MY_MAP.map.zoomOut();
 }
 
