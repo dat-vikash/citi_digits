@@ -339,7 +339,6 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
         MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
 //        //display popup
-        console.log(MY_MAP.popup._isOpen + " - " + ($.inArray(feature.properties.N_Name,open_tooltips)<0));
         if (!MY_MAP.popup._isOpen){
             MY_MAP.popup.openOn(MY_MAP.map);
         }else{
