@@ -387,7 +387,7 @@ function drawPercentIncomeGraphForExplain(medianIncome){
     //draw graph
      var chart = d3.select("#mapPopupModal #explain-chart #explain-chart-chart").append("svg")
      .attr("class", "chart-percent-explain")
-     .attr("width", 580)
+     .attr("width", 595)
      .attr("height", 60);
 
 
