@@ -338,9 +338,13 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         //get lat/long
         MY_MAP.popup.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
         MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
-        //display popup
-        if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
-
+//        //display popup
+        if (!MY_MAP.popup._isOpen){
+            MY_MAP.popup.openOn(MY_MAP.map);
+        }else{
+            MY_MAP.map.closePopup();
+        }
+//
         });
 
     layer.on("mouseout",function resetHighlight(e) {
@@ -354,7 +358,9 @@ CityDigitsMap.onEachFeature = function(feature,layer){
                 MY_MAP.popup.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
 
         //display popup
-        if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
+       if (!MY_MAP.popup._isOpen && ($.inArray(feature.properties.N_Name,open_tooltips)<0)){
+           MY_MAP.popup.openOn(MY_MAP.map);
+       }
     });
 
     layer.on("click",function(ev){
@@ -401,16 +407,19 @@ CityDigitsMap.onEachFeature = function(feature,layer){
         }
 
          if (!MY_MAP.map.hasLayer(MY_MAP.popup2) && MY_MAP.last_map_popup_loaded!="popup2"){
+             //clear old tooltip
+             open_tooltips.shift();
             //get lat/long
             MY_MAP.popup2.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
             MY_MAP.popup2.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
-
+            open_tooltips.push(feature.properties.N_Name);
             //display popup
             MY_MAP.map.addLayer(MY_MAP.popup2);
             MY_MAP.last_map_popup_loaded="popup2";
             }else{
                  MY_MAP.popup3.setLatLng(MY_MAP.map.layerPointToLatLng(ev.layerPoint));
                 MY_MAP.popup3.setContent('<div class="rollover-tooltip">'+feature.properties.N_Name + '</div>');
+             open_tooltips.push(feature.properties.N_Name);
                 MY_MAP.map.addLayer(MY_MAP.popup3);
                 MY_MAP.last_map_popup_loaded="popup3";
             }
