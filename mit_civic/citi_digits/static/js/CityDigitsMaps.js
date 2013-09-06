@@ -383,9 +383,12 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             });
 
         }else{
+            map_popups_currently_active.shift();
             //clear borough
             console.log("SELECTED BOUROUGHS: ");
             console.log(MY_SELECTED_BOROUGHS);
+            //unbind
+
             var event = MY_SELECTED_BOROUGHS.shift();
             if(event!=null){
               var resetLayer = event.originalLayer;

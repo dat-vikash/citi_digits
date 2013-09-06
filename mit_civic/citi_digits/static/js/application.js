@@ -119,6 +119,8 @@ function showMapPopUp(ev,feature){
             }
 
         map_popups[idx].show();
+        map_popups[idx].unbind("click");
+
         map_popups[idx].on("click",".div-close",function(event){
             var myName = map_popups[idx].find("#map-popup-header p").text();
             map_popups[idx].innerHTML="";
@@ -145,7 +147,6 @@ function showMapPopUp(ev,feature){
             var resetLayer = event1.originalLayer;
             resetLayer.resetStyle(event1);
             MY_SELECTED_BOROUGHS.splice(bIdx,1);
-            map_popups[idx].unbind("click");
             if(idx==0){
                 MY_MAP.map.removeLayer(MY_MAP.popup2);
             }else{
