@@ -11,6 +11,7 @@ var map_popups = [];
 var map_popups_currently_active = [];
 var map_count = 0;
 var last_map_popup_loaded = null;
+var open_tooltips = [];
 var map_popups_currently_active_features = [];
 var reshow_previous_layer = null;
 var mainLayer = null;
@@ -179,10 +180,7 @@ function reShowMapPopUp(ev,feature,idx){
 }
 
 function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
-    console.log("IN HERE");
     var data = [500,medianIncome,percentIncome];
-    console.log(data);
-
     //draw top tooltip
     $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + Math.round(data[1].toFixed(1)) + "</b> <a href='#' id='median_household_rollover'>median household</a> income per day.");
 
@@ -286,9 +284,7 @@ function drawNetGainLossGraph(popupId,winnings,spendings, net){
 
 
 function drawPercentIncomeGraphForExplain(medianIncome){
-    console.log("IN HERE");
     var data = [500,medianIncome];
-    console.log(data);
 
     //draw top tooltip
     $("#mapPopupModal #explain-chart #explain-chart-text").append("<b class='blue-2'>$" + data[1] + "</b> median household income per day.");
@@ -492,23 +488,7 @@ $("#add-interview").click(function(ev){
 $("#add-tour").click(function(ev){
    ev.preventDefault();  //prevent navigation
    var url = $(this).data("form"); //get the form url
-    console.log("ADD TOUR");
    $("#addTour").load(url, function() { // load the url into the modal
-//            $(this).modal('show').css({
-//                 'overflow-y':'scroll',
-//                 width: '100%',
-//                 'max-width':'95%',
-//                  height:'100%',
-//                    'max-height':'95%',
-//                    'top':'1%',
-//                  'margin-left': function () {
-//                      if ($(window).width() < 934){
-//                          return window.pageXOffset;
-//                      }else{
-//                        return window.pageXOffset-($(this).width() / 2);
-//                      }
-//                    }
-//    }); // display the modal on url load
    }); //display modal
     $("#addTour").show();
     $("#tour-grid").hide();
@@ -571,17 +551,14 @@ function error(msg) {
 }
 
 function loadMapThumb(){
-        console.log("oneasdfa");
 
     var interview_thumb_map = L.mapbox.map('map-thumb', 'sw2279.NYCLotto');
     var markerLayer = L.mapbox.markerLayer();
 
-    console.log("one");
     //get lat/long from hidden divs
     var lat = $("#lat").html();
     var long = $("#long").html();
     var team = $("#team-name").html();
-    console.log(lat + "_" + long+"_"+team);
     var geoJson = [{
                 type: "Feature",
                 geometry: {
@@ -608,19 +585,6 @@ function loadMapThumb(){
             });
             markerLayer.setGeoJSON(geoJson);
             interview_thumb_map.addLayer(markerLayer);
-        console.log("two");
-
-//    // Set a custom icon on each marker based on feature properties
-//            interview_thumb_map.markerLayer.on('layeradd', function(e) {
-//                var marker = e.layer,
-//                    feature = marker.feature;
-//
-//                marker.setIcon(L.icon(feature.properties.icon));
-//            });
-//    interview_thumb_map.fitBounds(interview_thumb_map.markerLayer.getBounds());
-//    interview_thumb_map.markerLayer.setGeoJSON(geoJson).add;
-
-
 
 
 }
@@ -631,7 +595,6 @@ function geoLocationMe(interviewType){
          interview_thumb_map.locate();
         //get student's team
         var team = $("#addInterviewModal #team").val();
-        console.log("team :" + "/static/img/playermarker_" + team.toLowerCase() + ".png");
         var slug = "";
         if (interviewType == "player"){
             slug = "playermarker_";
@@ -639,7 +602,6 @@ function geoLocationMe(interviewType){
         if(interviewType == "retailer"){
             slug = "retailermarker_";
         }
-        console.log("slug:" + slug);
         // Once we've got a position, zoom and center the map
         // on it, and add a single marker.
         interview_thumb_map.on('locationfound', function(e) {
@@ -742,28 +704,24 @@ $("#addInterviewModal").on("change", "input[name=sellLotteryTickets]:radio", fun
 );
 
 $("#addInterviewModal").on("change", "input[name=whyOrWhyNot]:file", function(ev){
-    console.log("whwy or why not");
      //update the no file chosen field
      $(this).parent().parent().find(".no-file-chosen").html($(this).val());
     }
 );
 
 $("#addInterviewModal").on("change", "input[name=wonJackpotQuestion]:file", function(ev){
-    console.log("whwy or why not");
      //update the no file chosen field
      $(this).parent().parent().find(".no-file-chosen").html($(this).val());
     }
 );
 
 $("#addInterviewModal").on("change", "input[name=photo]:file", function(ev){
-    console.log("whwy or why not");
      //update the no file chosen field
      $(this).parent().parent().find(".no-file-chosen").html($(this).val());
     }
 );
 
 $("#addInterviewModal").on("change", "input[name=goodForNeighborhoodQuestion]:file", function(ev){
-    console.log("whwy or why not");
      //update the no file chosen field
      $(this).parent().parent().find(".no-file-chosen").html($(this).val());
     }
@@ -859,7 +817,6 @@ $('#signUpModal').on("click", ".remove_student", function (ev) {
 });
 
 $('#signUpModal').on("click", ".delete_team", function (ev) {
-    console.log("remove");
     $(this).closest('div').remove();
 });
 
@@ -874,9 +831,6 @@ $('#signUpModal').on("click", ".submit", function (ev) {
     var values = {};
     values = $('#sign_up_form').serializeArray();
 
-
-    console.log("VALUES!");
-    console.log(values);
 
     //do post
     $.ajax({
@@ -911,9 +865,6 @@ $('#loginModal').on("click", ".submit", function (ev) {
     var values = {};
     values = $('#login_form').serializeArray();
 
-
-    console.log("VALUES!");
-    console.log(values);
 
     //do post
     $.ajax({
@@ -967,7 +918,6 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
 
 $(".map-popup").on("click", "#math_explain", function (ev) {
     ev.preventDefault(); // prevent navigation
-    console.log("clearing html");
 
     var url = $(this).data("form"); //get the form url
     $("#mapPopupModal").load(url,function() { // load the url into the modal
@@ -988,7 +938,6 @@ $(".map-popup").on("click", "#math_explain", function (ev) {
         drawPercentIncomeGraphForExplain($("#median_income_value").val());
     });
     $("#mapPopupModal").on("hidden",function(){
-        console.log("im closed");
         $("#mapPopupModal").empty();
         $("#mapPopupModal").unbind("shown");
         $("#mapPopupModal").unbind("hidden");
@@ -1000,7 +949,6 @@ $(".map-popup").on("click", "#math_explain", function (ev) {
 
 $(".map-popup").on("click", "#not_all_equal", function (ev) {
     ev.preventDefault(); // prevent navigation
-    console.log("not all equal clicked");
 
     var url = $(this).data("form"); //get the form url
     $("#mapPopupModal").load(url,function() { // load the url into the modal
@@ -1025,7 +973,6 @@ $(".map-popup").on("click", "#not_all_equal", function (ev) {
 });
     });
     $("#mapPopupModal").on("hidden",function(){
-        console.log("im closed");
         $("#mapPopupModal").empty();
         $("#mapPopupModal").unbind("shown");
         $("#mapPopupModal").unbind("hidden");
