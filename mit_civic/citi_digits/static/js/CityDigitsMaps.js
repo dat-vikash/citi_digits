@@ -371,7 +371,9 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             console.log("SELECTED BOUROUGHS1: ");
             console.log(MY_SELECTED_BOROUGHS);
             var targetToPush = ev.target;
+            ev['originalLayer'] = mainLayer;
             targetToPush['originalLayer'] = mainLayer;
+            targetToPush['N_NAME'] = feature.properties.N_Name;
             MY_SELECTED_BOROUGHS.push(targetToPush);
             //highlight current layer
             layer.setStyle({
@@ -381,12 +383,18 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             });
 
         }else{
+            map_popups_currently_active.shift();
             //clear borough
             console.log("SELECTED BOUROUGHS: ");
             console.log(MY_SELECTED_BOROUGHS);
+            //unbind
+
             var event = MY_SELECTED_BOROUGHS.shift();
-            var resetLayer = event.originalLayer;
+            if(event!=null){
+              var resetLayer = event.originalLayer;
             resetLayer.resetStyle(event);
+            }
+
 
             //highlight current layer
             layer.setStyle({
@@ -395,7 +403,9 @@ CityDigitsMap.onEachFeature = function(feature,layer){
             opacity: 1
             });
             var targetToPush = ev.target;
+            ev['originalLayer'] = mainLayer;
             targetToPush['originalLayer'] = mainLayer;
+            targetToPush['N_NAME'] = feature.properties.N_Name;
             MY_SELECTED_BOROUGHS.push(targetToPush);
             //remove popup
             if (MY_MAP.last_map_popup_loaded=="popup2"){
