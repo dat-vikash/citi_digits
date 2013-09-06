@@ -121,7 +121,8 @@ function showMapPopUp(ev,feature){
         map_popups[idx].show();
         map_popups[idx].unbind("click");
 
-        map_popups[idx].on("click",".div-close",function(event){
+        map_popups[idx].on("click","button.div-close",function(event){
+            console.log("got click event");
             var myName = map_popups[idx].find("#map-popup-header p").text();
             map_popups[idx].innerHTML="";
             map_popups[idx].hide();
@@ -153,6 +154,72 @@ function showMapPopUp(ev,feature){
                 MY_MAP.map.removeLayer(MY_MAP.popup3);
             }
         });
+
+        $(".map-popup").on("click", "#math_explain", function (ev) {
+        ev.preventDefault(); // prevent navigation
+
+        var url = $(this).data("form"); //get the form url
+        $("#mapPopupModal").load(url,function() { // load the url into the modal
+                $(this).modal('show').css({
+                     width: '90%',
+                     'max-width':'90%',
+                      height:'100%',
+                        'max-height':'85%',
+                        'top':'1%',
+                     'background-color':'#00c9c8',
+                      'margin-left': function () {
+                return window.pageXOffset-($(this).width() / 2);
+            }
+        }); // display the modal on url load
+       });
+
+        $("#mapPopupModal").on("shown",function(){
+            drawPercentIncomeGraphForExplain($("#median_income_value").val());
+        });
+        $("#mapPopupModal").on("hidden",function(){
+            $("#mapPopupModal").empty();
+            $("#mapPopupModal").unbind("shown");
+            $("#mapPopupModal").unbind("hidden");
+
+        });
+        return false;
+    });
+
+
+    $(".map-popup").on("click", "#not_all_equal", function (ev) {
+        ev.preventDefault(); // prevent navigation
+
+        var url = $(this).data("form"); //get the form url
+        $("#mapPopupModal").load(url,function() { // load the url into the modal
+                $(this).modal('show').css({
+                     width: '90%',
+                     'max-width':'90%',
+                      height:'100%',
+                        'max-height':'85%',
+                        'top':'1%',
+                      'margin-left': function () {
+                return window.pageXOffset-($(this).width() / 2);
+            },
+                    'background-color':'#9518ed'
+        }); // display the modal on url load
+       });
+
+
+        $("#mapPopupModal").on("shown",function(){
+            $(".not-equal-rollover").on("mouseover",function(e){
+        var content = "<div id='img-tooltip'><img src='/static/img/dollar.png'> = $100<br><img src='/static/img/smiley.png'> = 100 people</div>";
+       $(this).tooltip({html:true,title:content,background:'#ffffff'});
+    });
+        });
+        $("#mapPopupModal").on("hidden",function(){
+            $("#mapPopupModal").empty();
+            $("#mapPopupModal").unbind("shown");
+            $("#mapPopupModal").unbind("hidden");
+
+        });
+        return false;
+    });
+
     }
 }
 
