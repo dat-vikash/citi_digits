@@ -119,11 +119,39 @@ function showMapPopUp(ev,feature){
             }
 
         map_popups[idx].show();
+        map_popups[idx].unbind("click");
+
         map_popups[idx].on("click",".div-close",function(event){
-        map_popups[idx].innerHTML="";
-        map_popups[idx].hide();
-        map_popups_currently_active.shift();
-        map_popups_currently_active_features[idx] = null;
+            var myName = map_popups[idx].find("#map-popup-header p").text();
+            map_popups[idx].innerHTML="";
+            map_popups[idx].hide();
+            map_popups_currently_active.shift();
+            console.log(map_popups_currently_active_features);
+            map_popups_currently_active_features[idx] = null;
+         //deselect tile
+//            MY_SELECTED_BOROUGHS[idx].originalLayer.resetStyle(ev);
+         //get index of current feature
+            console.log(MY_SELECTED_BOROUGHS);
+            var bLen = MY_SELECTED_BOROUGHS.length;
+            var bIdx = 0;
+            for(var i=0; i < bLen; i++){
+                console.log(myName + " = " + MY_SELECTED_BOROUGHS[i].N_NAME);
+                if(myName==MY_SELECTED_BOROUGHS[i].N_NAME){
+                    console.log("found!");
+                    bIdx = i;
+                }
+            }
+            console.log(MY_SELECTED_BOROUGHS);
+            console.log(bIdx);
+             var event1 = MY_SELECTED_BOROUGHS[bIdx];
+            var resetLayer = event1.originalLayer;
+            resetLayer.resetStyle(event1);
+            MY_SELECTED_BOROUGHS.splice(bIdx,1);
+            if(idx==0){
+                MY_MAP.map.removeLayer(MY_MAP.popup2);
+            }else{
+                MY_MAP.map.removeLayer(MY_MAP.popup3);
+            }
         });
     }
 }
