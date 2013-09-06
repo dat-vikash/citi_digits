@@ -13,14 +13,14 @@
             <br>
             <table class="math-table-center">
                 <tr>
-                    <td><b class="spent-blue">{{ spent|floatformat:2 }}</b> spent on lottery tickets</td>
+                    <td><div style="width: 255px"><b class="spent-blue">${{ spent|floatformat:2 }}</b> spent on lottery tickets</div></td>
                     <td><img src="{{ STATIC_URL }}/img/math-explain-question-mark.png"/> spent on lottery tickets</td>
                 </tr>
                 <tr>
                     <td colspan="2"><img src="{{ STATIC_URL }}/img/equals_bar.png"></td>
                 </tr>
                 <tr>
-                    <td>every <b class="spent-blue">$100</b> earned </td>
+                    <td><div style="width: 255px">every <b class="spent-blue">$100</b> earned</div></td>
                     <td><b class="spent-blue"> ${{ income|floatformat:2 }} </b> earned</td>
                 </tr>
             </table>
