@@ -50,5 +50,51 @@ Production setup
                : install app dependencies
                     $ python setup.py install
 
+               : install mod_wsgi for apache
+                    $ sudo aptitude install libapache2-mod-python libapache2-mod-wsgi
+
+               : create media directory and backup directory
+                    $ mkdir media; mkdir media/backup ; chmod a+rw media
+
+               : add project apache config (below)
+
+
+
+
+Apache config
+=============
+
+##############################
+## City Digits WSGI         ##
+##############################
+
+Alias /favicon.ico /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/citi_digits/static/favicon.ico
+
+AliasMatch ^/([^/]*\.css) /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/citi_digits/static/css/$1
+
+Alias /media/  /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/media/
+Alias /static/ /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/citi_digits/static/
+
+<Directory /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/citi_digits/static>
+Order deny,allow
+Allow from all
+</Directory>
+
+<Directory /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/media>
+Order deny,allow
+Allow from all
+</Directory>
+
+WSGIScriptAlias /citydigits /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/mit_civic/wsgi.py
+WSGIPythonPath /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic:/afs/athena.mit.edu/user/v/d/vdat/.virtualenv/city_digits/lib/python2.6/site-packages
+#WSGIPythonPath /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic
+
+
+<Directory /afs/athena.mit.edu/user/v/d/vdat/app/citi_digits/mit_civic/mit_civic>
+<Files wsgi.py>
+Order deny,allow
+Allow from all
+</Files>
+</Directory>
 
 
