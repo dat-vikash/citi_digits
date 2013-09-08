@@ -58,6 +58,30 @@ Production setup
 
                : add project apache config (below)
 
+               : install mysql (pw: citydigits)
+                    $ sudo apt-get install mysql-server
+
+               : secure mysql server (answer yes to all questions)
+                    $ mysql_secure_installation
+
+               : create database and project user
+                    $ mysql -u root -p
+                    mysql> create database citi_digits;
+                    mysql> grant all on citi_digits.* to 'city_user' identified by 'Eo@_rKR7)ZohFWT';
+
+               : update settings.py with db user and password
+
+               : set upstream repo (this will allow client to fetch updates from developers github)
+                    $ git remote add upstream https://github.com/datvikash/citi_digits.git
+
+                : install dateutil.parser
+                    $ sudo pip install python-dateutil --upgrade
+
+               : do initial setup
+                    $ python manage.py syncdb
+                    $ python manage.py migrate citi_digits
+                    $ python manage.py import_old_data
+
 
 
 
