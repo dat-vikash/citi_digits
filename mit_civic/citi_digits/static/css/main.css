@@ -1180,8 +1180,7 @@ background-color: #fbc5ed;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
     color: #FFFFFF;
-    text-decoration: underline;
-    margin-top: 2%;
+    margin-top: 31px;
 
 }
 
@@ -1731,6 +1730,7 @@ margin-right: 8%;
     margin-left: 8%;
 margin-right: 8%;
     margin-top: 1%;
+    line-height: 110%;
 }
 
 .explain-text-odd{
@@ -1750,6 +1750,7 @@ margin-right: 8%;
     margin-left: 8%;
 margin-right: 8%;
     margin-top: 2%;
+    padding-top: 8px;
 }
 
 .math-table-center{
