@@ -1,6 +1,6 @@
 import os
 from django.core.management.base import BaseCommand, CommandError
-from citi_digits.models import School, Teacher, CityDigitsUser, Team, Student, InterviewPlayer, Interview, Location
+from citi_digits.models import School, Teacher, CityDigitsUser, Team, Student, InterviewPlayer, Interview, Location, InterviewRetailer
 from citi_digits.service import MembershipService
 import csv
 import urllib2
@@ -207,29 +207,130 @@ class Command(BaseCommand):
 
         return entity.id
 
+    def create_retailer_interview(self,row,students):
+        """
+        """
+        name = row[3]
+        do_you_sell = 1
 
-    def create_interview(self,id, row,students):
+        #why or why not audio
+        #download audio to directory
+        why_why_not_path = ""
+
+
+        #customers in a day
+        customers_in_a_day = row[4]
+
+        #percentage buy lotto
+        percentage_buy_lotto = row[5]
+
+        #amount of tickets bought per visit
+        amount_tickets_per_visit = row[6]
+        if(amount_tickets_per_visit=="1 ticket"):
+            amount_tickets_per_visit="1-TICKET"
+        if(amount_tickets_per_visit=="2-5 tickets"):
+            amount_tickets_per_visit="2-5-TICKETS"
+        if(amount_tickets_per_visit=="6-10 tickets"):
+            amount_tickets_per_visit="6-10-TICKETS"
+        if(amount_tickets_per_visit=="11 or more tickets"):
+            amount_tickets_per_visit="11-OR-MORE-TICKETS"
+        if(amount_tickets_per_visit=="2-5 tickets; 11 or more tickets"):
+            amount_tickets_per_visit="11-OR-MORE-TICKETS"
+
+        #ahy or why not 2 audio
+        good_for_neighborhood_path = ""
+        if(row[7]!="" and row[7]!="[no response recorded]"):
+            try:
+                request_end = row[7].find('"',89)
+                url = row[7][89:request_end]
+                request = urllib2.Request(url)
+                response = urllib2.urlopen(request)
+
+                #grab the data
+                data = response.read()
+                filename = url.split('/')[len(url.split('/'))-1]
+                good_for_neighborhood_path = "backup/" + filename;
+                jackpot_audio = open(SETTINGS.MEDIA_ROOT + "/backup/" + filename, "wb")
+                jackpot_audio.write(data)    # was data2
+                jackpot_audio.close()
+            except Exception as e:
+                print "GOOD FOR NEIGHBORHOOD EXCPETION: " + e.message
+
+        #photo
+        photo_path = ""
+        if(row[8]!=""):
+            url = row[8]
+            try:
+                request = urllib2.Request(url)
+                response = urllib2.urlopen(request)
+
+                #grab the data
+                data = response.read()
+                filename = url.split('/')[len(url.split('/'))-1]
+                photo_path = "backup/" + filename;
+                photo = open(SETTINGS.MEDIA_ROOT + "/backup/" + filename, "wb")
+                photo.write(data)    # was data2
+                photo.close()
+            except Exception as e:
+                print e
+                print url
+
+        #create interview
+        entity = InterviewRetailer(storeName=name,
+                                     do_you_sell_lottery_tickets=do_you_sell,
+                                     why_or_why_not_audio=why_why_not_path,
+                                     customers_in_a_day=customers_in_a_day,
+                                     percentage_buy_lottery_tickets=float(percentage_buy_lotto if percentage_buy_lotto!="" else 0),
+                                     amount_tickets_bought_per_visit=amount_tickets_per_visit,
+                                     why_or_why_not_lottery_neighborhood_audio=good_for_neighborhood_path,
+                                     photo=photo_path)
+        entity.save()
+
+        return entity.id
+
+
+
+    def create_interview(self,id, row,students, type):
         """
         """
         stud = None
+        lat = None
+        long = None
+        address = None
         #determine student
-        if(row[14]=="Pink"):
-            stud = students[0]
-        if(row[14]=="Red"):
-            stud = students[1]
-        if(row[14]=="Blue"):
-            stud = students[2]
-        if(row[14]=="Green"):
-            stud = students[3]
+        if(type=="PLAYER"):
+            if(row[14]=="Pink"):
+                stud = students[0]
+            if(row[14]=="Red"):
+                stud = students[1]
+            if(row[14]=="Blue"):
+                stud = students[2]
+            if(row[14]=="Green"):
+                stud = students[3]
+            lat = row[12]
+            long = row[13]
+            address = row[11]
+        if(type=="RETAILER"):
+            if(row[12]=="Pink"):
+                stud = students[0]
+            if(row[12]=="Red"):
+                stud = students[1]
+            if(row[12]=="Blue"):
+                stud = students[2]
+            if(row[12]=="Green"):
+                stud = students[3]
+            lat = row[10]
+            long = row[11]
+            address = row[9]
 
         #create location
-        location = Location(latitude=row[12], longitude=row[13],
-                                    address=row[11])
+        location = Location(latitude=lat, longitude=long,
+                                    address=address)
         location.save()
 
 
         #Create interview
-        interview = Interview(student=stud, location=location, interviewType="PLAYER", entityId=id,created_at=parse(row[0]).strftime("%Y-%m-%d %H:%M:%S"))
+        interview = Interview(student=stud, location=location, interviewType=type, entityId=id,created_at=parse(row[0]).strftime("%Y-%m-%d %H:%M:%S"))
         interview.save()
 
     def create_interviews(self,students):
@@ -237,14 +338,23 @@ class Command(BaseCommand):
 
         """
         __location__ = os.path.realpath(os.path.join(os.getcwd(), os.path.dirname(__file__)))
-        #open csv export
+        #open player csv export
         with open(os.path.join(__location__, 'exported_data.csv'), 'rb') as f:
             reader = csv.reader(f)
             for row in reader:
                 #create player interview
                 id = self.create_player_interview(row,students)
                 #create interview
-                self.create_interview(id,row,students)
+                self.create_interview(id,row,students,"PLAYER")
+
+        #open retailer csv export
+        with open(os.path.join(__location__, 'exported_data_retailer.csv'), 'rb') as f:
+            reader = csv.reader(f)
+            for row in reader:
+                #create player interview
+                id = self.create_retailer_interview(row,students)
+                #create interview
+                self.create_interview(id,row,students,"RETAILER")
 
     def handle(self, *args, **options):
         print "CREATING SCHOOL......"
