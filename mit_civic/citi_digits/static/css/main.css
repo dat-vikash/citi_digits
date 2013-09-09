@@ -1172,7 +1172,6 @@ background-color: #fbc5ed;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
     color: #FFFFFF;
-    text-decoration: underline;
     margin-top: 2%;
 
 }
@@ -2585,4 +2584,9 @@ label.instructional-text{
 .no-space [class*="span"]{
   margin-left: 0 !important;
   width: 50% !important; // This is for 2 elements ONLY in the row
+}
+
+span.underline{
+    border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
 }
