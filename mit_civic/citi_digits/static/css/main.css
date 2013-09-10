@@ -1160,6 +1160,7 @@ background-color: #fbc5ed;
 #mapPopupModal .not-all-equal-odd{
     background-color: #b0b6bd;
     text-align: center;
+    padding-bottom: 9px;
 }
 
 #mapPopupModal .not-all-equal-even{
