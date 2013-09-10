@@ -2130,7 +2130,7 @@ padding-bottom: 2%;
 }
 
 #tourPreview #tour-image img.tour-img{
-    height: 330px;
+    /*height: 330px;*/
     width: 100%;
 
 }
