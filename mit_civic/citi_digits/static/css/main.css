@@ -450,11 +450,16 @@ width: 100%;
     list-type: none;
     margin: 0;
     margin-left: -12%;
-    border: 1px solid #BBB;
+    border-bottom: 1px solid #BBB;
     border-top-width: 1px;
     border-bottom-width: 1px;
     padding: 10px;
 }
+
+.map-ui ul li.first{
+    border-top: 1px solid #BBBBBB;
+}
+
 .map-ui a {
     font-family:"Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     display: block;
