@@ -1207,7 +1207,6 @@ padding-bottom: 2%;
 #interviews-tab .interview-header p{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
-    text-decoration: underline;
     color: #3f3f3f;
     text-align: center;
 
@@ -2597,5 +2596,10 @@ label.instructional-text{
 
 span.underline{
     border-bottom: 1px solid #ffffff;
+    padding-bottom: 5px;
+}
+
+span.underline-black{
+    border-bottom: 1px solid #3f3f3f;
     padding-bottom: 5px;
 }
