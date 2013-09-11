@@ -677,7 +677,7 @@ def __paginatatedEntities(entity,page):
     """
     entities = None
     #pages per page
-    paginator = Paginator(entity,9)
+    paginator = Paginator(entity,12)
 
     #pagination
     try:
