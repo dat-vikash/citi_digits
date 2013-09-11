@@ -2009,7 +2009,7 @@ padding-top: 10px;
 {
 position: relative;
 width: 620px;
-min-height: 250px;
+min-height: 250px !important;
 padding: 0px;
 background: greenyellow;
 -webkit-border-radius: 10px;
