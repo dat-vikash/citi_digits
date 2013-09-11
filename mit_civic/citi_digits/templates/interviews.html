@@ -66,7 +66,11 @@
                 <p class="interviewee-name">{{ interview.getInterview.storeName }}</p>
             {% endif %}
             <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
-            <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team">
+            {% if interview.interviewType == "PLAYER" %}
+                <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team">
+            {% else %}
+                <img src="{{ STATIC_URL }}/img/retailermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team">
+            {% endif %}
             <p class="interviewee-by-description"><b>By:</b> {{ interview.student.team.name }} team,{{ interview.student.team.teacher.className }}
             <br>
             {{ interview.created_at|date:"M d, Y" }}</p>
