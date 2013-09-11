@@ -11,15 +11,12 @@
       </ol>
       <!-- Carousel items -->
       <div class="carousel-inner container">
-        <div class="active item container" id="tour-preview-cover">
-            <div id="tour-slide-cover-photo" class="row-fluid"><img class="cover-photo" src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}"></div>
-            <div id="tour-slide-team-info" class="row-fluid"><div class="span2"><img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}"></div>
-                <div class="span10"><p class="tour-paragraph-detail"><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p></div>
-            </div>
-
-        </div>
         {% for slide in tour.getTourSlides  %}
+        {% if forloop.first %}
+        <div class="active item container">
+        {% else %}
         <div class="item container">
+        {% endif %}
             <div class="row-fluid" id="student-blurb">
                 <div class="container-fluid">
                     <div class="span2 tour-details-team-photo-div"><img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}"></div>
