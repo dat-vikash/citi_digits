@@ -3,12 +3,6 @@
 </button>
 <div class="modal-body" style="height: 630px">
     <div id="myCarousel" class="carousel slide" data-interval="false">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        {% for i in tour.getTourSlides  %}
-                <li data-target="#myCarousel" data-slide-to="{{ i }}"></li>
-        {% endfor %}
-      </ol>
       <!-- Carousel items -->
       <div class="carousel-inner container">
         {% for slide in tour.getTourSlides  %}
