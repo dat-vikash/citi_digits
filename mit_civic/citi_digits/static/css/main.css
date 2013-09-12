@@ -1215,14 +1215,16 @@ padding-bottom: 2%;
 
 #interviews-tab #interview-content p.interviewee-name{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
-    font-size: 18px;
+    font-size: 16px;
     color: #3f3f3f;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 #interviews-tab #interview-content div.interview-stub {
     display: inline-block;
     width: 300px;
-    height: 380px;
+    height: 410px;
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 3%;
@@ -1240,7 +1242,7 @@ padding-bottom: 2%;
     width: 31px;
     float: left;
     margin-left: 4%;
-    margin-top: 2%;
+    padding-top: 15px;
 }
 
 #interviews-tab #interview-content p.interviewee-by-description{
@@ -1248,6 +1250,9 @@ padding-bottom: 2%;
     font-size: 12px;
     color: #555555;
     text-align: left;
+    line-height: 110%;
+    padding-top: 15px;
+    padding-bottom: 15px;
 }
 
 #interview-details-comments{
