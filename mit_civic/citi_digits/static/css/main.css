@@ -1221,9 +1221,8 @@ padding-bottom: 2%;
 
 #interviews-tab #interview-content div.interview-stub {
     display: inline-block;
-    width: 235px;
-    height: 295px;
-    /*width: 30%;*/
+    width: 300px;
+    height: 380px;
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 3%;
@@ -1232,8 +1231,8 @@ padding-bottom: 2%;
 }
 
 #interviews-tab #interview-content img.interviewee-photo{
-    height: 219px;
-    width: 219px;
+    height: 100%;
+    width: 100%;
 }
 
 #interviews-tab #interview-content img.interviewee-team{
