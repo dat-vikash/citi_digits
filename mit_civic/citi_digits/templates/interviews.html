@@ -65,7 +65,7 @@
             {% else %}
                 <p class="interviewee-name">{{ interview.getInterview.storeName }}</p>
             {% endif %}
-            <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
+            <div style="height: 280px; width: 280px; margin: auto"><img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo"></div>
             {% if interview.interviewType == "PLAYER" %}
                 <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team">
             {% else %}
