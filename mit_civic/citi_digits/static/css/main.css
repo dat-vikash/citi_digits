@@ -1315,7 +1315,6 @@ display: inline-block;
     color: #3f3f3f;
     margin-top: 25px;
     margin-bottom: 25px;
-    text-decoration: underline;
 }
 
 #interview-details p.interview-details-label{
@@ -2597,10 +2596,10 @@ label.instructional-text{
 
 span.underline{
     border-bottom: 1px solid #ffffff;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
 
 span.underline-black{
     border-bottom: 1px solid #3f3f3f;
-    padding-bottom: 5px;
+    padding-bottom: 0px;
 }
