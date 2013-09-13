@@ -1,3 +1,4 @@
+{% load image_tags %}
 <div class="interview-header">
 <p><span class="underline-black">Interviews</span></p>
 </div><!-- interview-header -->
@@ -65,7 +66,7 @@
             {% else %}
                 <p class="interviewee-name">{{ interview.getInterview.storeName }}</p>
             {% endif %}
-            <div style="height: 280px; width: 280px; margin: auto"><img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo"></div>
+            <div style="height: 280px; width: 280px; margin: auto; overflow: hidden;"><img src="{{ interview.getInterview.photo|crop:"280x280" }}" class="interviewee-photo"></div>
             {% if interview.interviewType == "PLAYER" %}
                 <img src="{{ STATIC_URL }}/img/playermarker_{{ interview.student.team.name.lower }}.png" class="interviewee-team">
             {% else %}
