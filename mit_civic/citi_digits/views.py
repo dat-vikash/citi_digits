@@ -2,6 +2,7 @@ from decimal import Decimal
 import json
 from random import randint
 import django
+from django.contrib.auth.models import AnonymousUser
 from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db import transaction
 from django.forms.util import ErrorList
@@ -486,18 +487,24 @@ def comment(request,id):
     """
       Posts a comment to an interview
     """
+    current_user = request.user
     if request.method == 'POST':
         #get variables
         print request.POST
         name = request.POST.get('name',None)
         message = escape(request.POST.get('comment',''))
-        print "NAME: " + name
+        klass = None
 
         if name is not None:
             #get interview
             interview = Interview.objects.get(pk=id)
+            #determine class based on logged in user
+            if(isinstance(current_user,AnonymousUser)):
+                klass = ""
+            else:
+                klass = Student.objects.get(id=current_user.entityId).team.teacher.className
             #create comment
-            comment = InterviewComment(name=name,comment=message,interview=interview)
+            comment = InterviewComment(name=name,comment=message,interview=interview, commenterClass=klass)
             #persist comment
             comment.save()
             #get comments

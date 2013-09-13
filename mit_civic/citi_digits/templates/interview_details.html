@@ -80,9 +80,11 @@
                 <div class="row-fluid">
                     <b class="comment-name">{{ comment.name }}</b>
                 </div>
+                {% if comment.commterClass|length > 0 %}
                 <div class="row-fluid">
-                    {{ comment.interview.student.team.teacher.className }}
+                    {{ comment.commenterClass }}
                 </div>
+                {% endif %}
                 <div class="row-fluid">
                     {{ comment.created_at|date:"M d, Y" }}
                 </div>
