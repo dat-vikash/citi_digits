@@ -2515,7 +2515,7 @@ b.net-loss-purple{
     box-shadow: 2px 2px 15px;
     left: 15px;
 }
-.citydigits-zoomer #zoom-out{
+.citydigits-zoomer #zoom-in{
     margin-left: -5px;
 }
 .citydigits-zoomer #zoom-out:hover{
