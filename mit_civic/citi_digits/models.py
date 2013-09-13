@@ -148,7 +148,7 @@ class InterviewComment(models.Model):
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True,null=False)
     interview = models.ForeignKey(Interview)
-    commenterClass = models.CharField(max_length=255,null=True)
+    commenterClass = models.CharField(max_length=255,null=True,default="")
 
 
 class Tour(models.Model):
