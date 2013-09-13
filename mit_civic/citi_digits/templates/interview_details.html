@@ -2,7 +2,11 @@
     <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
 <div id="interview-details-header" class="interview-detail-team-{{ interview.student.team.name.lower }}">
+    {% if interview.interviewType == "PLAYER" %}
     <img src="{{ STATIC_URL }}img/interview-details-icon.png" class="interviewee-team ">
+    {% else %}
+    <img src="{{ STATIC_URL }}img/interview-details-retailers-icon.png" class="interviewee-team ">
+    {% endif %}
     <p class="interviewee-by-description "><b>By:</b> {{ interview.student.team.name }} team,{{ interview.student.team.teacher.className }}
     <br>
     {{ interview.created_at }}</p>
