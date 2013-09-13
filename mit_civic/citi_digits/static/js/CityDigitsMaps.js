@@ -45,9 +45,9 @@ function CityDigitsMap() {
         }
     });
 
-    this.popup = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
-    this.popup2 = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
-    this.popup3 = new L.Popup({ autoPan: false, maxWidth:250, closeButton:false });
+    this.popup = new L.Popup({ autoPan: false, maxWidth:250, minWidth: 110, minHeight: 50,closeButton:false });
+    this.popup2 = new L.Popup({ autoPan: false, maxWidth:250,minWidth: 110, minHeight: 30, closeButton:false });
+    this.popup3 = new L.Popup({ autoPan: false, maxWidth:250,minWidth: 110, minHeight: 30, closeButton:false });
     this.popup_previous_name = "";
 
     //Layers
