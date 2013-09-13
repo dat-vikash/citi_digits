@@ -122,3 +122,9 @@ Allow from all
 </Directory>
 
 
+
+pip uninstall PIL
+apt-get install libjpeg-dev
+apt-get install zlib1g-dev
+apt-get install libpng12-dev
+pip install PIL
