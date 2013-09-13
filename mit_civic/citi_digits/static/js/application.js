@@ -1373,7 +1373,11 @@ function loadInterviews(interviewType){
                 //display popup
                 if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
 
-                $(".leaflet-popup-content-wrapper").css('border','3px solid #00ec66');
+                $(".leaflet-popup-content-wrapper").css('height','90');
+                $(".leaflet-popup-content-wrapper").css('width','250px');
+                $(".leaflet-popup-content").css('line-height','normal');
+                $(".leaflet-popup-content").css('margin','0px');
+
             });
 
             markerLayer.on('mouseout',function(e){
