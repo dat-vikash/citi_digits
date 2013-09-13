@@ -1371,12 +1371,11 @@ function loadInterviews(interviewType){
                     + '</div></div>';
                 MY_MAP.popup.setContent(popupContent);
                 //display popup
-                if (!MY_MAP.popup._isOpen) MY_MAP.popup.openOn(MY_MAP.map);
-
-                $(".leaflet-popup-content-wrapper").css('height','90');
-                $(".leaflet-popup-content-wrapper").css('width','250px');
+                if (!MY_MAP.popup._isOpen){
+                    MY_MAP.popup.openOn(MY_MAP.map);
                 $(".leaflet-popup-content").css('line-height','normal');
                 $(".leaflet-popup-content").css('margin','0px');
+                }
 
             });
 
@@ -1384,6 +1383,8 @@ function loadInterviews(interviewType){
                 //reset any styling and close popup
                  $(".leaflet-popup-content-wrapper").css('border','');
                  if (MY_MAP.popup._isOpen) MY_MAP.map.closePopup(MY_MAP.popup);
+                $(".leaflet-popup-content").css('line-height','');
+                $(".leaflet-popup-content").css('margin','');
             });
 
 
