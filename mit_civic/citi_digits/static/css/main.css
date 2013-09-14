@@ -2148,8 +2148,7 @@ padding-bottom: 2%;
     color: #ffffff;
     font-size: 30px;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
-    text-decoration: underline;
-    text-decoration-color: #FFFFFF;
+    padding-bottom: 13px;
 }
 
 #about-container p.about-body {
@@ -2167,8 +2166,8 @@ padding-top: 1%;
     color: #ffffff;
     font-size: 24px;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
-    text-decoration: underline;
-    text-decoration-color: #FFFFFF;
+    /*text-decoration: underline;*/
+    /*text-decoration-color: #FFFFFF;*/
 }
 
 #home-page-container #homepage-interviews-square{
