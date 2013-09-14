@@ -2157,6 +2157,7 @@ padding-bottom: 2%;
     padding-left: 3%;
 padding-right: 3%;
 padding-top: 1%;
+    line-height: 120%;
 }
 
 #about-container p.about-header-sub,
@@ -2164,10 +2165,8 @@ padding-top: 1%;
     padding-top: 1%;
     padding-bottom: 1%;
     color: #ffffff;
-    font-size: 24px;
+    font-size: 22px;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
-    /*text-decoration: underline;*/
-    /*text-decoration-color: #FFFFFF;*/
 }
 
 #home-page-container #homepage-interviews-square{
