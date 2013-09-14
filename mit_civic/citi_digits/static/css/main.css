@@ -1844,17 +1844,17 @@ z-index: 0;
 
 #addTour .even{
     background-color: #b0b6bd;
-    padding:2%;
+    padding-left: 50px;
 
 }
 
 #addTour .odd{
     background-color: #8d9297;
-    padding:2%;
+    padding-left:50px;
 }
 
 #addTour #workflow-tour{
-    padding: 2%;
+    padding: 50px;
     height: 95%;
 }
 
