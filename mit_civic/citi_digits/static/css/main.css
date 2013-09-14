@@ -2160,10 +2160,19 @@ padding-top: 1%;
     line-height: 120%;
 }
 
+#about-container p.about-body a:link {
+    color: #ffffff;
+}
+
+#about-container p.about-body a:visited {
+    color: #ffffff;
+}
+
+
 #about-container p.about-header-sub,
 #about-container p.about-header-sub a{
     padding-top: 1%;
-    padding-bottom: 1%;
+    /*padding-bottom: 1%;*/
     color: #ffffff;
     font-size: 22px;
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
