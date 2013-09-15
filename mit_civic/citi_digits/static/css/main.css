@@ -2065,7 +2065,7 @@ padding-bottom: 2%;
 }
 
 #tours-tab #tour-content div.tour-stub #tour-stub-cover-photo{
-    margin: 1%;
+    padding-top: 5px;
 }
 
 #tours-tab #tour-content div.tour-stub #tour-stub-cover-photo img.cover-photo{
@@ -2099,7 +2099,7 @@ padding-bottom: 2%;
 #tours-tab #tour-content div.tour-stub #tour-stub-student-blurb img.team-photo{
     width: 66px;
     height: 66px;
-    margin-left: 3px;
+    margin-left: -10px;
 }
 
 
