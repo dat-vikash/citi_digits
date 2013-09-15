@@ -22,7 +22,7 @@
         </label>
     </div>
     <div class=" styled-select2 pull-right input-append input-prepend">
-        <label class="styled-select2-label" onclick="expandSelect('class')"><b>Class: </b></label>
+        <label class="styled-select2-label" for="class"><b>Class: </b></label>
         <select id="class" class="interview-toolbar large"  name="class">
             {%  if toolbar.searchClass == 'ALL' %}
                 <option value="ALL"selected>ALL</option>
@@ -40,7 +40,7 @@
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
     <div class=" styled-select2 pull-right input-append input-prepend">
-        <label class="styled-select2-label"><b>Team: </b></label>
+        <label class="styled-select2-label" for="team"><b>Team: </b></label>
         <select id="team" class="interview-toolbar"  name="team">
             {% if toolbar.searchTeam == 'ALL' %}
                 <option value="ALL" selected>ALL</option>
