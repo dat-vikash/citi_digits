@@ -1,6 +1,6 @@
 {% for comment in comments %}
         <div class="row">
-            <div class="span3 comment-info">
+            <div class="span2 comment-info">
                 <div class="row-fluid">
                     <b class="comment-name">{{ comment.name }}</b>
                 </div>
@@ -13,7 +13,7 @@
                     {{ comment.created_at|date:"M d, Y" }}
                 </div>
             </div>
-            <div class="span7 comment-text">
+            <div class="span8 comment-text">
                 {{ comment.comment }}
             </div>
             <div class="span2"></div>
