@@ -58,7 +58,7 @@
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
 </div><!-- toolbar-->
-<div id="interview-content" class="container">
+<div id="interview-content" class="container" style="text-align: center;">
     {% for interview in interviews %}
         <div class="interview-stub row-fluid" id="{{ interview.id }}">
             {% if interview.interviewType == 'PLAYER' %}
