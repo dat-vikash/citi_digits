@@ -2049,10 +2049,8 @@ padding-bottom: 2%;
 #tours-tab  .tour-header p{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
-    text-decoration: underline;
     color: #3f3f3f;
     text-align: center;
-
 }
 
 
@@ -2276,6 +2274,11 @@ padding-top: 1%;
     color: #3f3f3f;
 }
 
+#interview-pagination a.pagination-active-page{
+    color: blue;
+}
+
+
 #interview-pagination  #pagination-next-page{
     margin-left: 3%;
 }
@@ -2295,6 +2298,10 @@ padding-top: 1%;
 #tour-pagination a{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #3f3f3f;
+}
+
+#tour-pagination a.pagination-active-page{
+    color: blue;
 }
 
 #tour-pagination  #pagination-next-page{
@@ -2624,4 +2631,15 @@ span.underline-black{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #3f3f3f;
     font-size: 12px;
+}
+
+#city_digits_footer{
+    background-color: #ffffff;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #b0b6bd;
+    font-size: 16px;
+    text-align: left;
+    height: 40px;
+    line-height: 2.5em;
+    padding-left: 30px;
 }
