@@ -2057,7 +2057,7 @@ padding-bottom: 2%;
 #tours-tab #tour-content div.tour-stub {
     display: inline-block;
     width: 300px;
-    height: 235px;
+    /*height: 235px;*/
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 1%;
@@ -2069,8 +2069,8 @@ padding-bottom: 2%;
 }
 
 #tours-tab #tour-content div.tour-stub #tour-stub-cover-photo img.cover-photo{
-    height: 152px;
-    width: 98%;
+    /*height: 152px;*/
+    /*width: 98%;*/
 }
 
 

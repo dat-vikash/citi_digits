@@ -1,3 +1,4 @@
+{% load image_tags %}
 <div class="tour-header">
 <p><span class="underline-black">Tours</span></p>
 </div><!-- interview-header -->
@@ -38,7 +39,7 @@
     {% for tour in tours %}
         <div class="tour-stub row-fluid" id="{{ tour.id }}" style="cursor: pointer;">
             <div class="container" >
-                <div id="tour-stub-cover-photo" class="row-fluid"><img class="cover-photo" src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}"></div>
+                <div id="tour-stub-cover-photo" class="row-fluid"><img class="cover-photo" src="{{ tour.coverPhoto|cropWidth:"280" }}"></div>
                 <div id="tour-stub-student-blurb" class="row-fluid">
                     <div class="span4">
                         <img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}">
