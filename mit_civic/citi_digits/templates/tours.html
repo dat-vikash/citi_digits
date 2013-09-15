@@ -3,7 +3,7 @@
 </div><!-- interview-header -->
 <div id="toolbar" class="container-fluid">
     <div class="styled-select2 input-append pull-left input-prepend">
-    <label class="styled-select2-label"><b>Sort By: </b></label>
+    <label class="styled-select2-label" for="date-sort"><b>Sort By: </b></label>
         <select id="date-sort" class="tour-toolbar"  name="date-sort">
             {% if toolbar.sortDate == "DESC" %}
                 <option value="DESC" selected>Date Desc</option>
@@ -16,7 +16,7 @@
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
     <div class="styled-select2 input-append input-prepend pull-left">
-    <label class="styled-select2-label"><b>Class: </b></label>
+    <label class="styled-select2-label" for="class-sort"><b>Class: </b></label>
         <select id="class-sort" class="tour-toolbar large"  name="class-sort">
              {%  if toolbar.searchClass == 'ALL' %}
                 <option value="ALL"selected>ALL</option>
