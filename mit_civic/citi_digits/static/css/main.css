@@ -1672,6 +1672,7 @@ z-index: 0;
    border-radius: 0;
    height: 27px;
    -webkit-appearance: none;
+    box-shadow: 5px 5px 5px #3f3f3f;
    }
 
 .styled-select2 select.large {
@@ -1713,6 +1714,7 @@ display: inline;
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #555555;
     margin-right: -1px;
+    box-shadow: 5px 5px 5px #3f3f3f;
 }
 
 

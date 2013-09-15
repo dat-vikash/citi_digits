@@ -22,7 +22,7 @@
         </label>
     </div>
     <div class=" styled-select2 pull-right input-append input-prepend">
-        <label class="styled-select2-label"><b>Class: </b></label>
+        <label class="styled-select2-label" onclick="expandSelect('class')"><b>Class: </b></label>
         <select id="class" class="interview-toolbar large"  name="class">
             {%  if toolbar.searchClass == 'ALL' %}
                 <option value="ALL"selected>ALL</option>
