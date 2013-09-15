@@ -42,7 +42,7 @@
                 <div id="tour-stub-cover-photo" class="row-fluid" style="margin: auto;"><img class="cover-photo" src="{{ tour.coverPhoto|cropWidth:"280" }}"></div>
                 <div id="tour-stub-student-blurb" class="row-fluid">
                     <div class="span4">
-                        <img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}">
+                        <img class="team-photo" src="{{ tour.teamPhoto|crop:"85x85" }}">
                     </div>
                     <div class="span7" style="line-height: 110%;">
                         <p><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p>
