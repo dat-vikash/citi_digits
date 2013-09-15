@@ -2611,3 +2611,17 @@ span.underline-black{
     border-bottom: 1px solid #3f3f3f;
     padding-bottom: 0px;
 }
+
+.popover.left .arrow{
+    top:12% !important;
+}
+.popover.left .arrow:after {
+    border-left-color: #8d9297;
+}
+
+.popover{
+    background-color: #8d9297;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 12px;
+}
