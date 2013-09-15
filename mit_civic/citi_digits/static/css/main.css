@@ -1986,26 +1986,26 @@ padding-top: 10px;
 }
 
 .bubble-tour-preview-text p.blurb{
-     font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
+     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #3f3f3f;
     font-size: 20px;
     text-align: left;
-    padding-left: 20px;
-    padding-top: 20px;
-    padding-right: 20px;
+    /*padding-left: 20px;*/
+    /*padding-top: 20px;*/
+    /*padding-right: 20px;*/
 }
 
 .bubble-tour-preview-text p.audio{
-    padding-left: 20px;
+    /*padding-left: 20px;*/
 }
 
 .bubble-tour-preview-text p.link{
      font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #ffffff;
-    font-size: 20px;
+    font-size: 16px;
     text-align: left;
-    padding-left: 20px;
-    padding-right: 20px;
+    /*padding-left: 20px;*/
+    /*padding-right: 20px;*/
     vertical-align: bottom;
 }
 
@@ -2014,13 +2014,14 @@ padding-top: 10px;
 position: relative;
 width: 620px;
 min-height: 250px !important;
-padding: 0px;
-background: greenyellow;
+padding: 30px;
+background: #00ec66;
 -webkit-border-radius: 10px;
 -moz-border-radius: 10px;
 border-radius: 10px;
     margin-top: 20px;
     display: inline-block;
+    line-height: 115%;
 }
 
 .bubble-tour-preview-text:after
@@ -2031,7 +2032,7 @@ top: 59px;
 left: -15px;
 border-style: solid;
 border-width: 15px 15px 15px 0;
-border-color: transparent greenyellow;
+border-color: transparent #00ec66;
 display: block;
 width: 0;
 z-index: 1;
