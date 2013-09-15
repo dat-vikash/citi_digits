@@ -2274,6 +2274,11 @@ padding-top: 1%;
     color: #3f3f3f;
 }
 
+#interview-pagination a.pagination-active-page{
+    color: blue;
+}
+
+
 #interview-pagination  #pagination-next-page{
     margin-left: 3%;
 }
@@ -2293,6 +2298,10 @@ padding-top: 1%;
 #tour-pagination a{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #3f3f3f;
+}
+
+#tour-pagination a.pagination-active-page{
+    color: blue;
 }
 
 #tour-pagination  #pagination-next-page{

@@ -88,7 +88,7 @@
 
         <span class="current">
             {% for pageNum in pages_to_display %}
-                 {% if pageNum == tours.number %}
+                 {% if pageNum == interviews.number %}
                      <a class="pagination-page pagination-active-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
                  {% else %}
                      <a class="pagination-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
