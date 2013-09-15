@@ -17,7 +17,7 @@
         <p class="interviewee-name-details"><span class="underline-black">{{ interview.getInterview.firstName }}</span></p>
     </div><!-- name -->
     <div class="row-fluid">
-    <div class="span5">
+    <div class="span5" style="padding-left: 7px;">
         <p class="interview-details-label">Do you ever buy lottery tickets?</p>
         <p>{{ interview.getInterview.do_you_ever_buy_lottery_tickets|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">Why or why not?</p>
@@ -31,10 +31,10 @@
         <p class="interview-details-label">What would you do if you won the jackpot?</p>
         <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.jackpot_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
-    <div class="span4">
+    <div class="span5">
         <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
     </div><!-- image -->
-    <div id="map-thumb" class="span3">
+    <div id="map-thumb" class="span2">
         <div id="long" class="hidden">{{ long }}</div>
         <div id="lat" class="hidden">{{ lat }}</div>
         <div id="team-name" class="hidden">{{ interview.student.team.name.lower }}</div>
@@ -45,7 +45,7 @@
         <p class="interviewee-name-details"><span class="underline-black">{{ interview.getInterview.storeName }}</span></p>
     </div><!-- name -->
     <div class="row-fluid">
-    <div class="span5">
+    <div class="span5" style="padding-left: 7px;">
         <p class="interview-details-label">Do you sell lottery tickets?</p>
         <p>{{ interview.getInterview.do_you_sell_lottery_tickets|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">Why or why not?</p>
@@ -59,10 +59,10 @@
         <p class="interview-details-label">Do you think the lottery is good for this neighborhood? Why or why not?</p>
         <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_lottery_neighborhood_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
-    <div class="span4">
+    <div class="span5">
         <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
     </div><!-- image -->
-    <div id="map-thumb" class="span3">
+    <div id="map-thumb" class="span2">
         <div id="long" class="hidden">{{ long }}</div>
         <div id="lat" class="hidden">{{ lat }}</div>
         <div id="team-name" class="hidden">{{ interview.student.team.name.lower }}</div>
@@ -80,7 +80,7 @@
     <div id="comments-list" class="container">
        {% for comment in comments %}
         <div class="row">
-            <div class="span3 comment-info">
+            <div class="span2 comment-info">
                 <div class="row-fluid">
                     <b class="comment-name">{{ comment.name }}</b>
                 </div>
@@ -93,7 +93,7 @@
                     {{ comment.created_at|date:"M d, Y" }}
                 </div>
             </div>
-            <div class="span7 comment-text">
+            <div class="span8 comment-text">
                 {{ comment.comment }}
             </div>
             <div class="span2"></div>
@@ -104,18 +104,18 @@
     <p class="comment-header">Leave a Comment</p>
     <form id="comment-form">
         <div class="row-fluid">
-            <div class="span3"></div>
-            <div class="span7"><input type="text" id="comment-name" placeholder="Name" style="width: 95%"></div>
+            <div class="span2"></div>
+            <div class="span8"><input type="text" id="comment-name" placeholder="Name" style="width: 95%"></div>
             <div class="span2"></div>
         </div>
         <div class="row-fluid">
-            <div class="span3"></div>
-            <div class="span7"><textarea id="comment-message" placeholder="Comment" style="width: 95%; height: 150px" ></textarea></div>
+            <div class="span2"></div>
+            <div class="span8"><textarea id="comment-message" placeholder="Comment" style="width: 95%; height: 150px" ></textarea></div>
             <div class="span2"></div>
         </div>
         <div class="row-fluid">
-            <div class="span3"></div>
-            <div class="span7"><button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true" style="float: left">Submit</button></div>
+            <div class="span2"></div>
+            <div class="span8"><button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true" style="float: left">Submit</button></div>
             <div class="span2"></div>
         </div>
 

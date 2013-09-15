@@ -1338,7 +1338,7 @@ display: inline-block;
 #interview-details #map-thumb {
 height: 160px;
 width: 160px;
-margin-left: 12px;
+margin-left: -19px;
 }
 
 #interview-details-comments p.comment-header{
@@ -1720,7 +1720,7 @@ display: inline;
 
 .comment-info {
     text-align: left;
-    margin-left: 5%;
+   padding-left: 50px;
 }
 
 .explain-text {
