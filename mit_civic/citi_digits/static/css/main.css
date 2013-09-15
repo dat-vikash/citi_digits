@@ -2625,3 +2625,11 @@ span.underline-black{
     color: #3f3f3f;
     font-size: 12px;
 }
+
+#city_digits_footer{
+    background-color: #ffffff;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #3f3f3f;
+    font-size: 16px;
+    text-align: left;
+}
