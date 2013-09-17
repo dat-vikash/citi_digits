@@ -358,12 +358,10 @@ function drawNetGainLossGraph(popupId,winnings,spendings, net){
      .data(data)
    .enter().append("circle")
   .attr("cx", 60)
-                       .attr("cy", 60)
-                      .attr("r", x)
-         .style("opacity", function(d,i){if(i<3){return .5;}})
-        .style("stroke", "white")
-     .style("stroke-width",1)
-                       .style("fill", function(d,i){ if (i==4){return "#9518ed"}else if(i==3){return "#00ec66"}else{return "#b0b6bd"}});
+   .attr("cy", 60)
+  .attr("r", x)
+    .style("opacity", function(d,i){if(i<3){return .5;}})
+   .style("fill", function(d,i){ if (i==4){return "#9518ed"}else if(i==3){return "#00ec66"}else{return "#b0b6bd"}});
 
     // Labels for each circle
      chart.selectAll("text")
