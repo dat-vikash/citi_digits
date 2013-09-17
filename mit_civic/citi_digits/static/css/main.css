@@ -2673,3 +2673,10 @@ span.underline-black{
 .marker-cluster-large div {
     background-color: gray;
 }
+
+#create-tour-success {
+    text-align: center;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #ffffff;
+    font-size: 22px;
+}
