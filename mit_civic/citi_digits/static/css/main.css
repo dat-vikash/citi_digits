@@ -616,6 +616,7 @@ border-bottom-left-radius: 5px;
 
 .map-ui #map-view-level div p{
     display: inline;
+    font-size: 12px;
 }
 
 .map-ui #map-legend-street{
