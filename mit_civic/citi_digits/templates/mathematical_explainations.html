@@ -62,17 +62,17 @@
                     <td><br/></td>
                 </tr>
                 <tr>
-                    <td><b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets</td>
-                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-top.png" class="percent-income-365"></td>
-                    <td><b class="spent-blue">${{ yearSpent|floatformat:2 }}</b> spent on lottery tickets</td>
+                    <td style="vertical-align: bottom;"> <b class="spent-blue" style="padding-bottom: 5px;">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets</td>
+                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-top.png" class="percent-income-365" style="padding-bottom: 20px! important;"></td>
+                    <td style="vertical-align: bottom;"><b class="spent-blue" style="padding-right: 10px; padding-bottom: 5px;">${{ yearSpent|floatformat:2 }}</b> spent on lottery tickets</td>
                 </tr>
                 <tr>
                     <td colspan="3"><img src="{{ STATIC_URL }}/img/equals_bar.png"></td>
                 </tr>
                 <tr>
-                    <td><b class="spent-blue"> ${{ income|floatformat:2 }} </b> earned</td>
-                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-bottom.png" class="percent-income-365"></td>
-                    <td><b class="spent-blue"> ${{ yearEarned|floatformat:2 }} </b> earned</td>
+                    <td style="vertical-align: top"><b class="spent-blue" > ${{ income|floatformat:2 }} </b> earned</td>
+                    <td><img src="{{ STATIC_URL }}/img/percent-income-365-bottom.png" class="percent-income-365" style="padding-top: 20px !important;"></td>
+                    <td style="vertical-align: top;"><b class="spent-blue"> ${{ yearEarned|floatformat:2 }} </b> earned</td>
                 </tr>
             </table>
             <br>
