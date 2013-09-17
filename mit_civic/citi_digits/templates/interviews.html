@@ -60,7 +60,7 @@
 </div><!-- toolbar-->
 <div id="interview-content" class="container" style="text-align: center;">
     {% for interview in interviews %}
-        <div class="interview-stub row-fluid" id="{{ interview.id }}">
+        <div class="interview-stub row-fluid" id="{{ interview.id }}" style="cursor: pointer;">
             {% if interview.interviewType == 'PLAYER' %}
                 <p class="interviewee-name">{{ interview.getInterview.firstName }}</p>
             {% else %}
