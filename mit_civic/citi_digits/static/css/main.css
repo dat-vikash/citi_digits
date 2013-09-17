@@ -2647,3 +2647,27 @@ span.underline-black{
     line-height: 2.5em;
     padding-left: 30px;
 }
+
+.marker-cluster-medium {
+    background-color: gray;
+}
+
+.marker-cluster-medium div {
+    background-color: gray;
+}
+
+.marker-cluster-small {
+    background-color: gray;
+}
+
+.marker-cluster-small div {
+    background-color: gray;
+}
+
+.marker-cluster-large {
+    background-color: gray;
+}
+
+.marker-cluster-large div {
+    background-color: gray;
+}
