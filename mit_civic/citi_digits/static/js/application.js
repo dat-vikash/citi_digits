@@ -429,7 +429,7 @@ function drawPercentIncomeGraphForExplain(medianIncome){
      .attr("x", x)
         .attr("dx",-10)
      .attr("y", 27)
-     .attr("dy", 7)
+     .attr("dy", 13)
         .attr("text-anchor", "start")
      .text(function(d,i){ if(i%2==0 && i!=0){return "$"+d;}});
 
