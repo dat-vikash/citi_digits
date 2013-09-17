@@ -165,7 +165,7 @@ function showMapPopUp(ev,feature){
                      'max-width':'90%',
                       height:'100%',
                         'max-height':'85%',
-                        'top':'1%',
+                        'top':'30px',
                      'background-color':'#00c9c8',
                       'margin-left': function () {
                 return window.pageXOffset-($(this).width() / 2);
@@ -196,7 +196,7 @@ function showMapPopUp(ev,feature){
                      'max-width':'90%',
                       height:'100%',
                         'max-height':'85%',
-                        'top':'1%',
+                        'top':'30px',
                       'margin-left': function () {
                 return window.pageXOffset-($(this).width() / 2);
             },
@@ -1030,7 +1030,7 @@ $(".map-popup").on("click", "#math_explain", function (ev) {
                  'max-width':'90%',
                   height:'100%',
                     'max-height':'85%',
-                    'top':'1%',
+                    'top':'30px',
                  'background-color':'#00c9c8',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
@@ -1061,7 +1061,7 @@ $(".map-popup").on("click", "#not_all_equal", function (ev) {
                  'max-width':'90%',
                   height:'100%',
                     'max-height':'85%',
-                    'top':'1%',
+                    'top':'30px',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
         },
