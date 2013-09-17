@@ -610,8 +610,11 @@ border-bottom-left-radius: 5px;
 
 .map-ui #map-view-level div.active{
     border-style:solid;
-    border-width: 3px;
+    border-width: 1px;
     border-color: #000000;
+      -moz-box-sizing:    border-box;
+   -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
 }
 
 .map-ui #map-view-level div p{
