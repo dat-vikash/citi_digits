@@ -1109,6 +1109,7 @@ background-color: #fbc5ed;
     font-size: 13px;
     color: #3F3F3F;
     margin-top: 15%;
+    padding-right: 15px;
 }
 
 #map-popup-footer button.form_button{
@@ -2386,6 +2387,7 @@ img.percent-income-365{
     margin-top: 5%;
     line-height: normal;
     text-align: left;
+    padding-right: 10px;
 }
 
 .map-popup #map-popup-description p.description b.blue{
