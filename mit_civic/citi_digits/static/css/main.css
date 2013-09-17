@@ -2361,7 +2361,7 @@ padding-top: 1%;
 }
 
 .chart-percent-explain rect {
-   stroke: white;
+   /*stroke: white;*/
  }
 
 .chart-percent-explain rect:nth-child(1){
