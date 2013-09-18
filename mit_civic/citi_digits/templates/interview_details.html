@@ -74,8 +74,10 @@
 <br/>
 </div><!-- interview details -->
 <div id="interview-details-comments" class="">
+    {% if comments.count > 0 %}
     <br/>
     <p class="comment-header">Comments</p>
+    {% endif %}
     <br/>
     <div id="comments-list" class="container">
        {% for comment in comments %}
