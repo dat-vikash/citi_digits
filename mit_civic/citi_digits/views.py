@@ -549,6 +549,7 @@ def tour(request):
 
             #create tour slides
             slideIdx=1
+            defaultCoverPhoto = slideFormset.forms[0].cleaned_data['image']
             for slide in slideFormset.forms:
                 TourSlide(photo=slide.cleaned_data['image'],text=slide.cleaned_data['text'],
                           link=slide.cleaned_data['link'],tour=newTour,sequence=slideIdx,audio=slide.cleaned_data['audio']).save()
@@ -557,6 +558,11 @@ def tour(request):
                     newTour.coverPhoto = slide.cleaned_data['image']
                     newTour.save()
                 slideIdx= slideIdx + 1
+
+            if not newTour.coverPhoto:
+                newTour.coverPhoto = defaultCoverPhoto
+                newTour.save()
+
 
 
              #return response
