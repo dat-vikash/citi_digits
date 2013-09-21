@@ -802,7 +802,7 @@ $("#addInterviewModal").on("change", "input[name=sellLotteryTickets]:radio", fun
             //NO
             $("#customersPerDay").hide();
             $("#percentageCustomers").hide();
-            $("#amountPerVisit").show();
+            $("#amountPerVisit").hide();
         }
     }
 );
