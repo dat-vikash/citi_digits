@@ -155,7 +155,10 @@ function showMapPopUp(ev,feature){
             }
         });
 
-        $(".map-popup").on("click", "#math_explain", function (ev) {
+         map_popups[idx].off("click","#math_explain");
+
+       map_popups[idx].on("click", "#math_explain", function (ev) {
+            console.log("click for math explain");
         ev.preventDefault(); // prevent navigation
 
         var url = $(this).data("form"); //get the form url
@@ -175,6 +178,7 @@ function showMapPopUp(ev,feature){
 
         $("#mapPopupModal").on("shown",function(){
             drawPercentIncomeGraphForExplain($("#median_income_value").val());
+            $("#mapPopupModal").unbind("shown");
         });
         $("#mapPopupModal").on("hidden",function(){
             $("#mapPopupModal").empty();
@@ -186,7 +190,7 @@ function showMapPopUp(ev,feature){
     });
 
 
-    $(".map-popup").on("click", "#not_all_equal", function (ev) {
+    map_popups[idx].on("click", "#not_all_equal", function (ev) {
         ev.preventDefault(); // prevent navigation
 
         var url = $(this).data("form"); //get the form url
@@ -388,6 +392,7 @@ function drawNetGainLossGraph(popupId,winnings,spendings, net){
 
 
 function drawPercentIncomeGraphForExplain(medianIncome){
+    console.log("drawing graph");
     var data = [500,medianIncome];
 
     //draw top tooltip
@@ -1020,36 +1025,6 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
 });
 
 
-$(".map-popup").on("click", "#math_explain", function (ev) {
-    ev.preventDefault(); // prevent navigation
-
-    var url = $(this).data("form"); //get the form url
-    $("#mapPopupModal").load(url,function() { // load the url into the modal
-            $(this).modal('show').css({
-                 width: '90%',
-                 'max-width':'90%',
-                  height:'100%',
-                    'max-height':'85%',
-                    'top':'30px',
-                 'background-color':'#00c9c8',
-                  'margin-left': function () {
-            return window.pageXOffset-($(this).width() / 2);
-        }
-    }); // display the modal on url load
-   });
-
-    $("#mapPopupModal").on("shown",function(){
-        drawPercentIncomeGraphForExplain($("#median_income_value").val());
-    });
-    $("#mapPopupModal").on("hidden",function(){
-        $("#mapPopupModal").empty();
-        $("#mapPopupModal").unbind("shown");
-        $("#mapPopupModal").unbind("hidden");
-
-    });
-    return false;
-});
-
 
 $(".map-popup").on("click", "#not_all_equal", function (ev) {
     ev.preventDefault(); // prevent navigation
@@ -1266,30 +1241,6 @@ $("#map-nav").on("click",".turn_on_class_interviews", function(e){
     loadInterviews(className);
 });
 
-//$("#map-nav").on("change","#turn_on_retailer_interviews", function(e){
-//    //toggle player interviews on the map
-//    if ($("#turn_on_retailer_interviews").is(":checked")){
-//        console.log("ADDING RETAILER LAYER");
-//        loadInterviews("RETAILER");
-//    }else{
-//      //remove layer
-//        console.log("REMOVING RETAILER LAYER");
-//        MY_MAP.map.removeLayer(RETAILER_LAYER);
-////         MY_MAP.map.getLaye
-//
-//    }
-//});
-
-//function loadGraph(){
-//
-//    //get div
-////    / Creates canvas 640 × 480 at 10, 50
-//var r = Raphael("map-popup-graphic", 193, 20);
-//// Creates pie chart at with center at 145, 200,
-//// radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
-//r.barchart(0,0,230,30,[10]);
-//
-//}
 
 $('#interviewDetails').on("click", "button", function(event) {
     event.preventDefault();
