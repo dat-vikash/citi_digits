@@ -4,8 +4,8 @@ function CityDigitsMap() {
     this.neighborhoodLayer = null;
 
     //load map
-//    var basemap = "sw2279.NYCLotto";
-    var basemap = "sw2279.map-x3k7qi26";
+    var basemap = "sw2279.NYCLotto";
+//    var basemap = "sw2279.map-x3k7qi26";     // this is a test map to allow testing in areas outside nyc
 
     //where brooklyn at?!40.7429 N, 73.9188
     this.map = L.mapbox.map('map', basemap,{minZoom:11,maxZoom:16,zoomControl:false}).setView([40.7429,-73.9188], 13);
