@@ -151,6 +151,7 @@ function showMapPopUp(ev,feature){
                 MY_MAP.map.removeLayer(MY_MAP.popup2);
             }else{
                 MY_MAP.map.removeLayer(MY_MAP.popup3);
+                map_count = map_count - 1;
             }
         });
 
