@@ -559,7 +559,14 @@ $(".map-ui").on("click","a", function (e) {
  $(".membership-logout").click(function(ev) {
         ev.preventDefault(); // prevent navigation
         var url = $(this).data("form"); // get the form url
-        $("#loginModal").load(url); // display the modal on url load
+        $.ajax({
+        type: 'GET',
+        url: url,
+        success: function(data){
+            console.log("logout successful");
+            location.reload(true);
+        }
+        });
         return false; // prevent the click propagation
  });
 
