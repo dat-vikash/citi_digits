@@ -1075,6 +1075,9 @@ $("#interviews").click(function(e){
     $("#main-container").css('background-color','#b0b6bd');
     $("body").css('background-color','#b0b6bd');
 
+    //show footer
+    $("#city_digits_footer").show();
+
 
 });
 
@@ -1082,6 +1085,9 @@ $("#about").click(function(e){
     //hidden interview button
     $("#add-interview").parent().attr({'class':'hidden'});
     $("#add-tour").parent().attr({'class':'hidden'});
+
+    //show footer
+    $("#city_digits_footer").show();
 
     //load in content
     $.ajax({
@@ -1113,7 +1119,9 @@ $("#tours").click(function(e){
     $("#addTour").hide();
     $("#tour-grid").show();
     $("#main-container").css('background-color','#b0b6bd');
-    $("body").css('background-color','#b0b6bd');
+    $("body").css('background-color','#b0b6bd')
+    //show footer
+    $("#city_digits_footer").show();
 });
 
 
@@ -1123,6 +1131,8 @@ $("#main-map").click(function(e){
     $("#add-tour").parent().attr({'class':'hidden'});
     $("#main-container").css('background-color','#b0b6bd');
     $("body").css('background-color','#b0b6bd');
+    //hide footer
+    $("#city_digits_footer").hide();
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
@@ -2006,54 +2016,3 @@ $("#homepage-tours-square").on("click","img",function(e){
 $("#homepage-tours-square").on("click",".home-page-rollover",function(e){
     $("#tours").click();
 });
-
-
-
-
-//$(".map-popup").on("mouseover", "#median_household_rollover",function(e){
-//
-//    var showPopover = function () {
-//
-//    $(this).popover('show').css('top','50px');
-//}
-//, hidePopover = function () {
-//    $(this).popover('hide');
-//};
-//
-//   console.log("MOUSE OVER");
-//    var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
-//        "whether or not they are related. To come up with the <b>daily household income</b>, the income each" +
-//        " person in the household earns per day is added together.<br> " +
-//        "A neighborhood's <b>median household income</b> means that half of the households in that neighborhood earn more and half of the households earn less.</div>";
-//    $("#median_household_rollover").tooltip({html:true,title:titleTxt,placement:'left'});
-//});
-//
-//$(".map-ui-popup-2").on("mouseover", "#median_household_rollover",function(e){
-//
-//    var showPopover = function () {
-//
-//    $(this).popover('show').css('top','50px');
-//}
-//, hidePopover = function () {
-//    $(this).popover('hide');
-//};
-//
-//   console.log("MOUSE OVER");
-//    var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
-//        "whether or not they are related. To come up with the <b>daily household income</b>, the income each" +
-//        " person in the household earns per day is added together.<br> " +
-//        "A neighborhood's <b>median household income</b> means that half of the households in that neighborhood earn more and half of the households earn less.</div>";
-//    $("#median_household_rollover").tooltip({html:true,title:titleTxt,placement:'left'});
-//});
-
-//$("#map-popup-1").on("mouseover","#median_household_rollover", function(event) {
-//    console.log("MOCING");
-//    console.log($("#tooltip-percent-income"));
-//    $("#map-popup-1 #tooltip-percent-income").css({
-//        top: event.pageY + 50 + "px",
-//        left: event.pageX + 5 + "px"
-//    }).show();
-//}).bind("mouseout", function() {
-//    $("#tooltip-percent-income").hide();
-//});
-
