@@ -155,7 +155,10 @@ function showMapPopUp(ev,feature){
             }
         });
 
-        $(".map-popup").on("click", "#math_explain", function (ev) {
+         map_popups[idx].off("click","#math_explain");
+
+       map_popups[idx].on("click", "#math_explain", function (ev) {
+            console.log("click for math explain");
         ev.preventDefault(); // prevent navigation
 
         var url = $(this).data("form"); //get the form url
@@ -165,7 +168,7 @@ function showMapPopUp(ev,feature){
                      'max-width':'90%',
                       height:'100%',
                         'max-height':'85%',
-                        'top':'1%',
+                        'top':'30px',
                      'background-color':'#00c9c8',
                       'margin-left': function () {
                 return window.pageXOffset-($(this).width() / 2);
@@ -175,6 +178,7 @@ function showMapPopUp(ev,feature){
 
         $("#mapPopupModal").on("shown",function(){
             drawPercentIncomeGraphForExplain($("#median_income_value").val());
+            $("#mapPopupModal").unbind("shown");
         });
         $("#mapPopupModal").on("hidden",function(){
             $("#mapPopupModal").empty();
@@ -186,7 +190,7 @@ function showMapPopUp(ev,feature){
     });
 
 
-    $(".map-popup").on("click", "#not_all_equal", function (ev) {
+    map_popups[idx].on("click", "#not_all_equal", function (ev) {
         ev.preventDefault(); // prevent navigation
 
         var url = $(this).data("form"); //get the form url
@@ -196,7 +200,7 @@ function showMapPopUp(ev,feature){
                      'max-width':'90%',
                       height:'100%',
                         'max-height':'85%',
-                        'top':'1%',
+                        'top':'30px',
                       'margin-left': function () {
                 return window.pageXOffset-($(this).width() / 2);
             },
@@ -358,12 +362,10 @@ function drawNetGainLossGraph(popupId,winnings,spendings, net){
      .data(data)
    .enter().append("circle")
   .attr("cx", 60)
-                       .attr("cy", 60)
-                      .attr("r", x)
-         .style("opacity", function(d,i){if(i<3){return .5;}})
-        .style("stroke", "white")
-     .style("stroke-width",1)
-                       .style("fill", function(d,i){ if (i==4){return "#9518ed"}else if(i==3){return "#00ec66"}else{return "#b0b6bd"}});
+   .attr("cy", 60)
+  .attr("r", x)
+    .style("opacity", function(d,i){if(i<3){return .5;}})
+   .style("fill", function(d,i){ if (i==4){return "#9518ed"}else if(i==3){return "#00ec66"}else{return "#b0b6bd"}});
 
     // Labels for each circle
      chart.selectAll("text")
@@ -390,6 +392,7 @@ function drawNetGainLossGraph(popupId,winnings,spendings, net){
 
 
 function drawPercentIncomeGraphForExplain(medianIncome){
+    console.log("drawing graph");
     var data = [500,medianIncome];
 
     //draw top tooltip
@@ -431,7 +434,7 @@ function drawPercentIncomeGraphForExplain(medianIncome){
      .attr("x", x)
         .attr("dx",-10)
      .attr("y", 27)
-     .attr("dy", 7)
+     .attr("dy", 13)
         .attr("text-anchor", "start")
      .text(function(d,i){ if(i%2==0 && i!=0){return "$"+d;}});
 
@@ -556,7 +559,14 @@ $(".map-ui").on("click","a", function (e) {
  $(".membership-logout").click(function(ev) {
         ev.preventDefault(); // prevent navigation
         var url = $(this).data("form"); // get the form url
-        $("#loginModal").load(url); // display the modal on url load
+        $.ajax({
+        type: 'GET',
+        url: url,
+        success: function(data){
+            console.log("logout successful");
+            location.reload(true);
+        }
+        });
         return false; // prevent the click propagation
  });
 
@@ -804,7 +814,7 @@ $("#addInterviewModal").on("change", "input[name=sellLotteryTickets]:radio", fun
             //NO
             $("#customersPerDay").hide();
             $("#percentageCustomers").hide();
-            $("#amountPerVisit").show();
+            $("#amountPerVisit").hide();
         }
     }
 );
@@ -1022,36 +1032,6 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
 });
 
 
-$(".map-popup").on("click", "#math_explain", function (ev) {
-    ev.preventDefault(); // prevent navigation
-
-    var url = $(this).data("form"); //get the form url
-    $("#mapPopupModal").load(url,function() { // load the url into the modal
-            $(this).modal('show').css({
-                 width: '90%',
-                 'max-width':'90%',
-                  height:'100%',
-                    'max-height':'85%',
-                    'top':'1%',
-                 'background-color':'#00c9c8',
-                  'margin-left': function () {
-            return window.pageXOffset-($(this).width() / 2);
-        }
-    }); // display the modal on url load
-   });
-
-    $("#mapPopupModal").on("shown",function(){
-        drawPercentIncomeGraphForExplain($("#median_income_value").val());
-    });
-    $("#mapPopupModal").on("hidden",function(){
-        $("#mapPopupModal").empty();
-        $("#mapPopupModal").unbind("shown");
-        $("#mapPopupModal").unbind("hidden");
-
-    });
-    return false;
-});
-
 
 $(".map-popup").on("click", "#not_all_equal", function (ev) {
     ev.preventDefault(); // prevent navigation
@@ -1063,7 +1043,7 @@ $(".map-popup").on("click", "#not_all_equal", function (ev) {
                  'max-width':'90%',
                   height:'100%',
                     'max-height':'85%',
-                    'top':'1%',
+                    'top':'30px',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
         },
@@ -1102,6 +1082,9 @@ $("#interviews").click(function(e){
     $("#main-container").css('background-color','#b0b6bd');
     $("body").css('background-color','#b0b6bd');
 
+    //show footer
+    $("#city_digits_footer").show();
+
 
 });
 
@@ -1109,6 +1092,9 @@ $("#about").click(function(e){
     //hidden interview button
     $("#add-interview").parent().attr({'class':'hidden'});
     $("#add-tour").parent().attr({'class':'hidden'});
+
+    //show footer
+    $("#city_digits_footer").show();
 
     //load in content
     $.ajax({
@@ -1140,7 +1126,9 @@ $("#tours").click(function(e){
     $("#addTour").hide();
     $("#tour-grid").show();
     $("#main-container").css('background-color','#b0b6bd');
-    $("body").css('background-color','#b0b6bd');
+    $("body").css('background-color','#b0b6bd')
+    //show footer
+    $("#city_digits_footer").show();
 });
 
 
@@ -1150,6 +1138,8 @@ $("#main-map").click(function(e){
     $("#add-tour").parent().attr({'class':'hidden'});
     $("#main-container").css('background-color','#b0b6bd');
     $("body").css('background-color','#b0b6bd');
+    //hide footer
+    $("#city_digits_footer").hide();
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
@@ -1268,30 +1258,6 @@ $("#map-nav").on("click",".turn_on_class_interviews", function(e){
     loadInterviews(className);
 });
 
-//$("#map-nav").on("change","#turn_on_retailer_interviews", function(e){
-//    //toggle player interviews on the map
-//    if ($("#turn_on_retailer_interviews").is(":checked")){
-//        console.log("ADDING RETAILER LAYER");
-//        loadInterviews("RETAILER");
-//    }else{
-//      //remove layer
-//        console.log("REMOVING RETAILER LAYER");
-//        MY_MAP.map.removeLayer(RETAILER_LAYER);
-////         MY_MAP.map.getLaye
-//
-//    }
-//});
-
-//function loadGraph(){
-//
-//    //get div
-////    / Creates canvas 640 × 480 at 10, 50
-//var r = Raphael("map-popup-graphic", 193, 20);
-//// Creates pie chart at with center at 145, 200,
-//// radius 100 and data: [55, 20, 13, 32, 5, 1, 2]
-//r.barchart(0,0,230,30,[10]);
-//
-//}
 
 $('#interviewDetails').on("click", "button", function(event) {
     event.preventDefault();
@@ -2057,54 +2023,3 @@ $("#homepage-tours-square").on("click","img",function(e){
 $("#homepage-tours-square").on("click",".home-page-rollover",function(e){
     $("#tours").click();
 });
-
-
-
-
-//$(".map-popup").on("mouseover", "#median_household_rollover",function(e){
-//
-//    var showPopover = function () {
-//
-//    $(this).popover('show').css('top','50px');
-//}
-//, hidePopover = function () {
-//    $(this).popover('hide');
-//};
-//
-//   console.log("MOUSE OVER");
-//    var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
-//        "whether or not they are related. To come up with the <b>daily household income</b>, the income each" +
-//        " person in the household earns per day is added together.<br> " +
-//        "A neighborhood's <b>median household income</b> means that half of the households in that neighborhood earn more and half of the households earn less.</div>";
-//    $("#median_household_rollover").tooltip({html:true,title:titleTxt,placement:'left'});
-//});
-//
-//$(".map-ui-popup-2").on("mouseover", "#median_household_rollover",function(e){
-//
-//    var showPopover = function () {
-//
-//    $(this).popover('show').css('top','50px');
-//}
-//, hidePopover = function () {
-//    $(this).popover('hide');
-//};
-//
-//   console.log("MOUSE OVER");
-//    var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
-//        "whether or not they are related. To come up with the <b>daily household income</b>, the income each" +
-//        " person in the household earns per day is added together.<br> " +
-//        "A neighborhood's <b>median household income</b> means that half of the households in that neighborhood earn more and half of the households earn less.</div>";
-//    $("#median_household_rollover").tooltip({html:true,title:titleTxt,placement:'left'});
-//});
-
-//$("#map-popup-1").on("mouseover","#median_household_rollover", function(event) {
-//    console.log("MOCING");
-//    console.log($("#tooltip-percent-income"));
-//    $("#map-popup-1 #tooltip-percent-income").css({
-//        top: event.pageY + 50 + "px",
-//        left: event.pageX + 5 + "px"
-//    }).show();
-//}).bind("mouseout", function() {
-//    $("#tooltip-percent-income").hide();
-//});
-

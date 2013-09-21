@@ -58,9 +58,9 @@
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
 </div><!-- toolbar-->
-<div id="interview-content" class="container">
+<div id="interview-content" class="container" style="text-align: center;">
     {% for interview in interviews %}
-        <div class="interview-stub row-fluid" id="{{ interview.id }}">
+        <div class="interview-stub row-fluid" id="{{ interview.id }}" style="cursor: pointer;">
             {% if interview.interviewType == 'PLAYER' %}
                 <p class="interviewee-name">{{ interview.getInterview.firstName }}</p>
             {% else %}
@@ -88,7 +88,7 @@
 
         <span class="current">
             {% for pageNum in pages_to_display %}
-                 {% if pageNum == tours.number %}
+                 {% if pageNum == interviews.number %}
                      <a class="pagination-page pagination-active-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
                  {% else %}
                      <a class="pagination-page" href="#" data-form="{{ pageNum }}">{{ pageNum }}</a>
@@ -101,3 +101,7 @@
         {% endif %}
     </span>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>

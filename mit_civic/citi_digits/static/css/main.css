@@ -610,12 +610,16 @@ border-bottom-left-radius: 5px;
 
 .map-ui #map-view-level div.active{
     border-style:solid;
-    border-width: 3px;
-    border-color: #000000;
+    border-width: 1px;
+    border-color: #3f3f3f;
+      -moz-box-sizing:    border-box;
+   -webkit-box-sizing: border-box;
+    box-sizing:        border-box;
 }
 
 .map-ui #map-view-level div p{
     display: inline;
+    font-size: 12px;
 }
 
 .map-ui #map-legend-street{
@@ -1105,6 +1109,7 @@ background-color: #fbc5ed;
     font-size: 13px;
     color: #3F3F3F;
     margin-top: 15%;
+    padding-right: 15px;
 }
 
 #map-popup-footer button.form_button{
@@ -1345,6 +1350,8 @@ margin-left: 12px;
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     font-size: 22px;
     color: #FFFFFF;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 /*
@@ -1550,7 +1557,7 @@ border: #9518ed solid 2px;
 -moz-border-radius: 4px;
 border-radius: 4px;
     margin-left: 7%;
-    margin-top: -35%;
+    margin-top: -37%;
     line-height: normal;
 }
 
@@ -1804,7 +1811,7 @@ border: #025FF1 solid 2px;
 -webkit-border-radius: 4px;
 -moz-border-radius: 4px;
 border-radius: 4px;
-    margin-left: 40%;
+    margin-left: 29%;
 }
 
 .bubble-explain-chart-text :after
@@ -2049,17 +2056,15 @@ padding-bottom: 2%;
 #tours-tab  .tour-header p{
     font-family: "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     font-size: 30px;
-    text-decoration: underline;
     color: #3f3f3f;
     text-align: center;
-
 }
 
 
 #tours-tab #tour-content div.tour-stub {
     display: inline-block;
-    width: 235px;
-    height: 235px;
+    width: 300px;
+    /*height: 235px;*/
     background-color: #ffffff;
     border-radius: 5px;
     margin-top: 1%;
@@ -2067,12 +2072,12 @@ padding-bottom: 2%;
 }
 
 #tours-tab #tour-content div.tour-stub #tour-stub-cover-photo{
-    margin: 1%;
+    padding-top: 5px;
 }
 
 #tours-tab #tour-content div.tour-stub #tour-stub-cover-photo img.cover-photo{
-    height: 152px;
-    width: 98%;
+    /*height: 152px;*/
+    /*width: 98%;*/
 }
 
 
@@ -2101,7 +2106,7 @@ padding-bottom: 2%;
 #tours-tab #tour-content div.tour-stub #tour-stub-student-blurb img.team-photo{
     width: 66px;
     height: 66px;
-    margin-left: 3px;
+    margin-left: -10px;
 }
 
 
@@ -2276,6 +2281,11 @@ padding-top: 1%;
     color: #3f3f3f;
 }
 
+#interview-pagination a.pagination-active-page{
+    color: blue;
+}
+
+
 #interview-pagination  #pagination-next-page{
     margin-left: 3%;
 }
@@ -2295,6 +2305,10 @@ padding-top: 1%;
 #tour-pagination a{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #3f3f3f;
+}
+
+#tour-pagination a.pagination-active-page{
+    color: blue;
 }
 
 #tour-pagination  #pagination-next-page{
@@ -2349,7 +2363,7 @@ padding-top: 1%;
 }
 
 .chart-percent-explain rect {
-   stroke: white;
+   /*stroke: white;*/
  }
 
 .chart-percent-explain rect:nth-child(1){
@@ -2368,13 +2382,14 @@ padding-top: 1%;
 }
 
 img.percent-income-365{
-    margin-left: 22px;
+
 }
 
 .map-popup #map-popup-description{
     margin-top: 5%;
     line-height: normal;
     text-align: left;
+    padding-right: 10px;
 }
 
 .map-popup #map-popup-description p.description b.blue{
@@ -2624,4 +2639,46 @@ span.underline-black{
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #3f3f3f;
     font-size: 12px;
+}
+
+#city_digits_footer{
+    background-color: #ffffff;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #b0b6bd;
+    font-size: 13px;
+    text-align: left;
+    height: 40px;
+    line-height: 2.9em;
+    padding-left: 30px;
+}
+
+.marker-cluster-medium {
+    background-color: gray;
+}
+
+.marker-cluster-medium div {
+    background-color: gray;
+}
+
+.marker-cluster-small {
+    background-color: gray;
+}
+
+.marker-cluster-small div {
+    background-color: gray;
+}
+
+.marker-cluster-large {
+    background-color: gray;
+}
+
+.marker-cluster-large div {
+    background-color: gray;
+}
+
+#create-tour-success {
+    text-align: center;
+    font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
+    color: #ffffff;
+    font-size: 22px;
 }

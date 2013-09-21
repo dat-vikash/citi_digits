@@ -1,5 +1,6 @@
+{% load image_tags %}
 <div class="tour-header">
-<p>Tours</p>
+<p><span class="underline-black">Tours</span></p>
 </div><!-- interview-header -->
 <div id="toolbar" class="container-fluid">
     <div class="styled-select2 input-append pull-left input-prepend">
@@ -34,16 +35,21 @@
         <img class="dropdown-caret" src="{{ STATIC_URL }}/img/select_arrow.png">
     </div>
 </div><!-- toolbar-->
-<div id="tour-content" class="container">
+<div id="tour-content" class="container" style="text-align: center;">
     {% for tour in tours %}
-        <div class="tour-stub row-fluid" id="{{ tour.id }}">
+        <div class="tour-stub row-fluid" id="{{ tour.id }}" style="cursor: pointer;">
             <div class="container" >
-                <div id="tour-stub-cover-photo" class="row-fluid"><img class="cover-photo" src="{{ MEDIA_URL }}/{{ tour.coverPhoto }}"></div>
+                <div id="tour-stub-cover-photo" class="row-fluid" style="margin: auto;">
+                    {% if tour.coverPhoto %}
+                    <img class="cover-photo" src="{{ tour.coverPhoto|cropWidth:"280" }}"></div>
+                    {% else %}
+                    <img class="cover-photo" src=""></div>
+                    {% endif %}
                 <div id="tour-stub-student-blurb" class="row-fluid">
                     <div class="span4">
-                        <img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}">
+                        <img class="team-photo" src="{{ tour.teamPhoto|crop:"85x85" }}">
                     </div>
-                    <div class="span7" >
+                    <div class="span7" style="line-height: 110%;">
                         <p><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p>
                         <br>
                         <p>{{ tour.created_at|date:"M d, Y" }}</p>
@@ -76,3 +82,7 @@
         {% endif %}
     </span>
 </div>
+<br/>
+<br/>
+<br/>
+<br/>
