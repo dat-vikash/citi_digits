@@ -325,11 +325,9 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
      .text(function(d,i){ if(i%2==0 && i!=0){return "$"+d;}});
 
     //draw bottom tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + data[2].toFixed(2) + "%</b> income spent on lottery (or $" +Math.round(data[2].toFixed(0)) +
-    " out of every $100.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + data[2].toFixed(2) + "%</b> of income spent on lottery");
 
     $(".map-popup").on("click", "#median_household_rollover",function(e){
-    console.log("opoup");
         var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
         "whether or not they are related. To come up with the <b>daily household income</b>, the income each" +
         " person in the household earns per day is added together.<br><br/> " +

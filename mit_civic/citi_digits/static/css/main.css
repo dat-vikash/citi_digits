@@ -1503,7 +1503,7 @@ border: #025FF1 solid 2px;
 -moz-border-radius: 4px;
 border-radius: 4px;
     margin-left: 7%;
-    line-height: normal;
+    line-height: 2.6em;
 }
 
 .bubble-percent_income_graph_text:after
