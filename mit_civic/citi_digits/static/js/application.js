@@ -1231,7 +1231,6 @@ $("#map-nav").on("change",".map-ui-interviews", function(e){
     //toggle player interviews on the map
     //remove previous layer
     if(MARKER_LAYER!=null){
-        console.log("clearing layer");
         MY_MAP.map.removeLayer(MARKER_LAYER);
     }
     if(player && retailer){
