@@ -526,7 +526,7 @@ $(".map-ui").on("click","a", function (e) {
                   width: '95%',
                   'max-width': '95%',
                   height:'95%',
-                    'top':'1%',
+                    'top':'30px',
                   'margin-left': function () {
                         return window.pageXOffset-($(this).width() / 2);
                     },
@@ -545,7 +545,7 @@ $(".map-ui").on("click","a", function (e) {
                  'max-width':'400px',
                   height:'100%',
                     'max-height':'320px',
-                    'top':'1%',
+                    'top':'30px',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
         }
