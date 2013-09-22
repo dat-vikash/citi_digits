@@ -103,6 +103,7 @@
            <br>
      {% endfor %}
     </div>
+   {% if user.is_authenticated %}
     <p class="comment-header">Leave a Comment</p>
     <form id="comment-form">
         <div class="row-fluid">
@@ -120,8 +121,8 @@
             <div class="span7"><button id="comment-submit" class="btn submit interview-button" data-form="/interview/{{ interview.id }}/comment/" aria-hidden="true" style="float: left; margin-left: 15px;">Submit</button></div>
             <div class="span2"></div>
         </div>
-
-    </form>
+    </form><!-- comment-form -->
+   {% endif %}
 <br/>
 <br/>
 </div><!-- interview comments -->

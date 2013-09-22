@@ -1266,6 +1266,7 @@ padding-bottom: 2%;
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     font-size: 13px;
     color: #555555;
+    height: 100%;
 }
 
 #interview-details-comments #comments-list .comment-text {
