@@ -1697,17 +1697,21 @@ z-index: 0;
    }
 
 .dropdown-caret {
-    margin-left: -15%;
+    margin-left: -10%;
 position: relative;
 height: 15px;
 top: 3px;
+    background-color: white;
+    z-index: 101;
 }
 
 .dropdown-caret-login {
-    margin-left: -22px;
+    margin-left: -19px;
 position: relative;
 height: 15px;
 top: 8px;
+    background-color: white;
+    z-index: 101;
 }
 
 
