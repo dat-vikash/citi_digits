@@ -1020,6 +1020,7 @@ $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
             }else{
             //update view
          $("#addInterviewModal #workflow").hide();
+         $("#addInterviewModal").find(".interview-header").hide();
          $("#addInterviewModal #success-message").show();}
         },
         error: function(data){
