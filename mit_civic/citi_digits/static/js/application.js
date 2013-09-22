@@ -325,8 +325,8 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
      .text(function(d,i){ if(i%2==0 && i!=0){return "$"+d;}});
 
     //draw bottom tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + data[2].toFixed(1) + "%</b> income spent on lottery (or $" +Math.round(data[2].toFixed(0)) +
-    "out of every $100.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + data[2].toFixed(2) + "%</b> income spent on lottery (or $" +Math.round(data[2].toFixed(0)) +
+    " out of every $100.");
 
     $(".map-popup").on("click", "#median_household_rollover",function(e){
     console.log("opoup");
