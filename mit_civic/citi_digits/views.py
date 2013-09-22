@@ -440,8 +440,7 @@ def interviewList(request,offset):
 
 
     #get interviews
-    print kwargs
-    interviews = Interview.objects.filter(**kwargs)
+    interviews = Interview.objects.filter(**kwargs).order_by("-created_at")
 
     #get teams
     teams =  Team.objects.values_list('name', flat=True).order_by('name').distinct()
@@ -466,7 +465,6 @@ def interviewList(request,offset):
 
 
     #render
-    print toolbar
     return render_to_response('interviews.html',{'interviews':interviews,'teams':teams, 'classes':classes,
                                                  'toolbar':toolbar,'pages_to_display':pagesToDisplay},context_instance=RequestContext(request))
 
