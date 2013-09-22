@@ -1149,7 +1149,7 @@ $("#interviews-tab").on("click",".interview-stub",function(event){
                  'max-width':'95%',
                   height:'95%',
                     'max-height':'95%',
-                    'top':'1%',
+                    'top':'30px',
                   'margin-left': function () {
             return window.pageXOffset-($(this).width() / 2);
         }
