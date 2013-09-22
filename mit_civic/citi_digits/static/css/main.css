@@ -1698,9 +1698,9 @@ z-index: 0;
 
 .dropdown-caret {
     margin-left: -10%;
-position: relative;
-height: 15px;
-top: 3px;
+    position: relative;
+    height: 15px;
+    top: 3px;
     background-color: white;
     z-index: 101;
 }
