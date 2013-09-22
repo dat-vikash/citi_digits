@@ -1283,8 +1283,8 @@ interview-details-comments b.comment-name{
 }
 
 #interviewDetails {
-    overflow-y: scroll;
-    overflow-x: hidden;
+    /*overflow-y: scroll;*/
+    /*overflow-x: hidden;*/
 }
 
 #interview-details-header p.interviewee-by-description{
