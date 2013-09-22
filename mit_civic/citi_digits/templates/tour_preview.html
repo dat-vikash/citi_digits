@@ -1,25 +1,16 @@
 <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
         <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
-<div class="modal-body no-scroll">
-    <div id="myCarousel" class="carousel slide">
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        {% for i in slides  %}
-                <li data-target="#myCarousel" data-slide-to="{{ i }}"></li>
-        {% endfor %}
-      </ol>
+<div class="modal-body" style="height: 630px;">
+    <div id="myCarousel" class="carousel slide" data-interval="false">
       <!-- Carousel items -->
       <div class="carousel-inner container">
-        <div class="active item container" id="tour-preview-cover">
-            <div id="tour-preview-cover-photo" class="row-fluid"><img class="cover-photo"></div>
-            <div id="tour-preview-team-info" class="row-fluid"><div class="span2"><img class="team-photo"></div>
-                <div class="span10"><p class="tour-paragraph-detail">Author and Class info</p></div>
-            </div>
-
-        </div>
         {% for i in slides  %}
-        <div class="item container" id="tour-preview-slide-{{ i }}">
+            {% if forloop.first %}
+                <div class="item container active" id="tour-preview-slide-{{ i }}">
+            {% else %}
+                <div class="item container" id="tour-preview-slide-{{ i }}">
+            {% endif %}
             <div class="row-fluid" id="student-blurb">
              <div class="container-fluid">
                 <div class="span2 tour-details-team-photo-div"><img class="team-photo"></div>
@@ -38,7 +29,7 @@
         {% endfor %}
       </div>
       <!-- Carousel nav -->
-      <a class="carousel-control left" href="#myCarousel" data-slide="prev">&lsaquo;</a>
-      <a class="carousel-control right" href="#myCarousel" data-slide="next">&rsaquo;</a>
+      <a class="carousel-control left hide" href="#myCarousel" data-slide="prev" style="background: none;border: none;"><img src="{{ STATIC_URL }}/img/tour_slideshowarrow_back.png"/></a>
+      <a class="carousel-control right" href="#myCarousel" data-slide="next" style="background: none;border: none;"><img src="{{ STATIC_URL }}/img/tour_slideshowarrow_forward.png"/></a>
     </div>
 </div>
