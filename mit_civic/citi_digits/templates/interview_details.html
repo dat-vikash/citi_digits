@@ -1,3 +1,4 @@
+{% load image_tags %}
 <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
     <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
@@ -33,7 +34,7 @@
         <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.jackpot_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
     <div class="span4">
-        <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
+        <img src="{{ interview.getInterview.photo|crop:"282x282" }}" class="interviewee-photo">
     </div><!-- image -->
     <div id="map-thumb" class="span3">
         <div id="long" class="hidden">{{ long }}</div>
@@ -61,7 +62,7 @@
         <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_lottery_neighborhood_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
     <div class="span4">
-        <img src="{{ MEDIA_URL }}/{{ interview.getInterview.photo }}" class="interviewee-photo">
+        <img src="{{ interview.getInterview.photo|crop:"282x282" }}" class="interviewee-photo">
     </div><!-- image -->
     <div id="map-thumb" class="span3">
         <div id="long" class="hidden">{{ long }}</div>
