@@ -1,3 +1,4 @@
+{% load image_tags %}
 <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
         <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
@@ -13,7 +14,7 @@
         {% endif %}
             <div class="row-fluid" id="student-blurb">
                 <div class="container-fluid">
-                    <div class="span2 tour-details-team-photo-div"><img class="team-photo" src="{{ MEDIA_URL }}/{{ tour.teamPhoto }}"></div>
+                    <div class="span2 tour-details-team-photo-div"><img class="team-photo" src="{{tour.teamPhoto|crop:"110x110" }}"></div>
                     <div class="span10 bubble-tour-preview-text">
                         <p class="blurb">{{ slide.text }}</p>
                         {% if slide.audio != "" %}
