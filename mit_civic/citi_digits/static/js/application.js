@@ -1257,7 +1257,7 @@ $("#map-nav").on("click",".turn_on_class_interviews", function(e){
 });
 
 
-$('#interviewDetails').on("click", "button", function(event) {
+$('#interviewDetails').on("click", "#comment-submit", function(event) {
     event.preventDefault();
 //    get request url
     var request_url = $(this).data("form");
