@@ -27,6 +27,11 @@ var VIEW_ALL_SCHOOLS_IS_OPEN = false;
 var MY_SELECTED_BOROUGHS = [];
 L_PREFER_CANVAS = true; // experimental
 
+
+/*
+  This function is called when the page DOM has loaded. It enables 'back' button, sets up the map
+  and map popups.
+ */
 $().ready(new function(){
 
     // add a hash to the URL when the user clicks on a tab
@@ -62,6 +67,12 @@ $().ready(new function(){
 //    loadInterviews();
 });
 
+/*
+  This function shows the map popups. It uses a counter to determine which popup to load (there are 2).
+  It does a check to determine if a neighborhood is already displayed to verify the same neighborhood is not displayed
+  twice. It then loads the respective popup for the currently active layer and binds the needed
+  events to the respective popups.
+ */
 function showMapPopUp(ev,feature){
     console.log(feature);
     var idx= null;
@@ -117,9 +128,12 @@ function showMapPopUp(ev,feature){
                 break;
             }
 
+        //show popup
         map_popups[idx].show();
+        //unbind previous click events
         map_popups[idx].unbind("click");
 
+        //bind click event for close icon
         map_popups[idx].on("click","button.div-close",function(event){
             console.log("got click event");
             var myName = map_popups[idx].find("#map-popup-header p").text();
@@ -128,9 +142,8 @@ function showMapPopUp(ev,feature){
             map_popups_currently_active.shift();
             console.log(map_popups_currently_active_features);
             map_popups_currently_active_features[idx] = null;
-         //deselect tile
-//            MY_SELECTED_BOROUGHS[idx].originalLayer.resetStyle(ev);
-         //get index of current feature
+
+            //get index of current feature
             console.log(MY_SELECTED_BOROUGHS);
             var bLen = MY_SELECTED_BOROUGHS.length;
             var bIdx = 0;
@@ -155,8 +168,10 @@ function showMapPopUp(ev,feature){
             }
         });
 
-         map_popups[idx].off("click","#math_explain");
+        //unbind click event for explaination button
+       map_popups[idx].off("click","#math_explain");
 
+        //bind click event for explaination button
        map_popups[idx].on("click", "#math_explain", function (ev) {
             console.log("click for math explain");
         ev.preventDefault(); // prevent navigation
@@ -176,6 +191,7 @@ function showMapPopUp(ev,feature){
         }); // display the modal on url load
        });
 
+           //bind shown event
         $("#mapPopupModal").on("shown",function(){
             drawPercentIncomeGraphForExplain($("#median_income_value").val());
             $("#mapPopupModal").unbind("shown");
@@ -189,7 +205,7 @@ function showMapPopUp(ev,feature){
         return false;
     });
 
-
+    //add click event for explaination
     map_popups[idx].on("click", "#not_all_equal", function (ev) {
         ev.preventDefault(); // prevent navigation
 
@@ -227,7 +243,9 @@ function showMapPopUp(ev,feature){
     }
 }
 
-
+/*
+  This function is called when a popup is currently active. It updates the popup based on the new layer.
+ */
 function reShowMapPopUp(ev,feature,idx){
     //get which layer is active
     var activeLayer = $(".map-ui li.active").attr("id");
@@ -278,6 +296,9 @@ function reShowMapPopUp(ev,feature,idx){
 
 }
 
+/*
+  This function draws the % Income graph for the map popup as an SVG.
+ */
 function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
     var data = [500,medianIncome,percentIncome];
     //draw top tooltip
@@ -340,7 +361,9 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
 
 }
 
-
+/*
+  This function draws the Net Gain/Loss for the map popup as an SVG.
+ */
 function drawNetGainLossGraph(popupId,winnings,spendings, net){
     data = [8000,4000,1000,spendings,winnings];
         //draw top tooltip
@@ -388,7 +411,9 @@ function drawNetGainLossGraph(popupId,winnings,spendings, net){
 
 }
 
-
+/*
+  This function draws the % Income graph for the math explaination as an SVG.
+ */
 function drawPercentIncomeGraphForExplain(medianIncome){
     console.log("drawing graph");
     var data = [500,medianIncome];
@@ -484,6 +509,9 @@ function getPopupUrlFrom(activeLayer,feature){
             feature.properties.Daily_Sale+"/"+feature.properties.Daily_Win+"/"+feature.properties.Daily_Inco+"/"+feature.properties.Net_Win +"/" + feature.id +"/";
 }
 
+/*
+  This function handles switching between layers.
+ */
 $(".map-ui").on("click","a", function (e) {
     e.preventDefault();
     //turn off any unwanted layers
@@ -664,6 +692,9 @@ function error(msg) {
   console.log(msg);
 }
 
+/*
+  This function loads the map thumbnail
+ */
 function loadMapThumb(){
 
     var interview_thumb_map = L.mapbox.map('map-thumb', 'sw2279.NYCLotto');
@@ -703,6 +734,9 @@ function loadMapThumb(){
 
 }
 
+/*
+  This function initiates an HTML 5 geo location request.
+ */
 function geoLocationMe(interviewType){
     if (navigator.geolocation) {
         var interview_thumb_map = L.mapbox.map('interview-map-thumb', 'sw2279.NYCLotto');
