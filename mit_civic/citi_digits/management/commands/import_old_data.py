@@ -9,9 +9,12 @@ from django.conf import settings as SETTINGS
 
 __author__ = 'vikash'
 
+"""
+  This Management command loads the exported data from the previous application.
+"""
 class Command(BaseCommand):
-    args = '<poll_id poll_id ...>'
-    help = 'Closes the specified poll for voting'
+    args = ''
+    help = ''
 
     def create_school(self):
         """
@@ -41,6 +44,12 @@ class Command(BaseCommand):
                                                                                      "citydigits"),
                                           entityId=teacher.id, is_active=True)
         cityUser.save()
+
+        cityUserAdmin = CityDigitsUser(role="TEACHER", username="sew@mit.edu",
+                                          password=MembershipService.encryptPassword("sew@mit.edu",
+                                                                                     "citydigits"),
+                                          entityId=teacher.id, is_active=True, is_admin=True, is_staff=True, is_superuser=True)
+        cityUserAdmin.save()
 
     def create_teams(self,teacher):
         """
