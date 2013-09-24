@@ -39,7 +39,7 @@ class Command(BaseCommand):
         cityUser = CityDigitsUser(role="TEACHER", username=teacher.email,
                                           password=MembershipService.encryptPassword(teacher.email,
                                                                                      "citydigits"),
-                                          entityId=teacher.id)
+                                          entityId=teacher.id, is_active=True)
         cityUser.save()
 
     def create_teams(self,teacher):
@@ -73,7 +73,7 @@ class Command(BaseCommand):
         student1.save()
         #create auth user for student
         authUser1 = CityDigitsUser(role="STUDENT", username=student1.firstName, password=password,
-                                  entityId=student1.id)
+                                  entityId=student1.id,is_active=True)
         authUser1.save()
 
 
@@ -85,7 +85,7 @@ class Command(BaseCommand):
         student2.save()
         #create auth user for student
         authUser2 = CityDigitsUser(role="STUDENT", username=student2.firstName, password=password,
-                                  entityId=student2.id)
+                                  entityId=student2.id, is_active=True)
         authUser2.save()
 
 
@@ -97,7 +97,7 @@ class Command(BaseCommand):
         student3.save()
         #create auth user for student
         authUser3= CityDigitsUser(role="STUDENT", username=student3.firstName, password=password,
-                                  entityId=student3.id)
+                                  entityId=student3.id, is_active=True)
         authUser3.save()
 
 
@@ -109,7 +109,7 @@ class Command(BaseCommand):
         student4.save()
         #create auth user for student
         authUser4 = CityDigitsUser(role="STUDENT", username=student4.firstName, password=password,
-                                  entityId=student4.id)
+                                  entityId=student4.id, is_active=True)
         authUser4.save()
 
 
