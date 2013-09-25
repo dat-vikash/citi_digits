@@ -10,8 +10,8 @@
         <div class="bubble-percent_income_graph_text " id="percent_income_graph_text"></div>
     </div>
     <div id="map-popup-description">
-        <p class="description">Players in {{ neighborhood }}, on average, spend <b class="blue">{{ percent|floatformat:2 }}%</b> of their income on lottery
-        tickets. This means they spend ${{ amountSpent|floatformat:2 }} of every $100 earned on lottery tickets.</p>
+        <p class="description">Players in {{ neighborhood }}, on average, spend <b class="blue">{{ percent|floatformat:1 }}%</b> of their income on lottery
+        tickets. This means they spend ${{ amountSpent|floatformat:1 }}0 of every $100 earned on lottery tickets.</p>
     </div>
     <div id="map-popup-footer">
         <button class="btn form_button" id="math_explain" aria-hidden="true" data-form="/mathematical_explain/{{ neighborhoodUrl }}/{{ amountSpent }}/{{ income }}/">How much is that?</button>
