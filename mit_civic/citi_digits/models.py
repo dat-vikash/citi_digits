@@ -1,5 +1,6 @@
-from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager, _user_has_module_perms
 from django.db import models
+from django.conf import  settings as SETTINGS
 
 # Create your models here.
 class School(models.Model):
@@ -50,6 +51,9 @@ class CityDigitsUserManager(BaseUserManager):
         user = self.create_user(role, username,
                                 password)
         user.is_admin = True
+        user.is_staff = True
+        user.is_active = True
+        user.is_superuser = True
         user.save()
         return user
 
@@ -60,7 +64,9 @@ class CityDigitsUser(AbstractBaseUser):
     # password = models.CharField(max_length=128,null=False)
     entityId = models.IntegerField(null=False)
     is_admin = models.BooleanField(default=False)
-    is_active = models.BooleanField(default=True)
+    is_active = models.BooleanField(default=False)
+    is_staff = models.BooleanField(default=False)
+    is_superuser = models.BooleanField(default=False)
 
     USERNAME_FIELD = "username"
 
@@ -82,6 +88,32 @@ class CityDigitsUser(AbstractBaseUser):
             return True
         else:
             return False
+
+    def has_perm(perm,obj):
+        return True
+
+    def has_perms(self, perm_list, obj=None):
+        """
+        Returns True if the user has each of the specified permissions. If
+        object is passed, it checks if the user has all required perms for this
+        object.
+        """
+        # for perm in perm_list:
+        #     if not self.has_perm(perm, obj):
+        #         return False
+        return True
+
+    def has_module_perms(self, app_label):
+        """
+        Returns True if the user has any permissions in the given app label.
+        Uses pretty much the same logic as has_perm, above.
+        """
+        # Active superusers have all permissions.
+        if self.is_active and self.is_superuser:
+            return True
+
+        return _user_has_module_perms(self, app_label)
+
 
 
 class Location(models.Model):
