@@ -1167,7 +1167,7 @@ $("#tours").click(function(e){
 
 $("#main-map").click(function(e){
     //hidden interview button
-    $("#add-interview").parent().attr({'class':'hidden'});
+    $("#add-interview").parent().attr({'class':''});
     $("#add-tour").parent().attr({'class':'hidden'});
     $("#main-container").css('background-color','#b0b6bd');
     $("body").css('background-color','#b0b6bd');
