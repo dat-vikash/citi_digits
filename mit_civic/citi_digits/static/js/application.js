@@ -1177,6 +1177,8 @@ $("#main-map").click(function(e){
     $("body").css('background-color','#b0b6bd');
     //hide footer
     $("#city_digits_footer").hide();
+    //force map redraw
+    MY_MAP.resizeMap();
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
