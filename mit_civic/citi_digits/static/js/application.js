@@ -1326,7 +1326,7 @@ $('#interviewDetails').on("click", "#comment-submit", function(event) {
 
 function loadInterviews(interviewType){
     var geoJson = null;
-    var url = 'interview/geoJson/';
+    var url = 'citydigits/interview/geoJson/';
     if (interviewType != null){
         url =  'interview/geoJson/?type=' + interviewType;
     }
