@@ -704,6 +704,10 @@ function loadMapThumb(){
     var lat = $("#lat").html();
     var long = $("#long").html();
     var team = $("#team-name").html();
+
+    //determine type
+    var markerType = $("#interview-type-marker").html();
+
     var geoJson = [{
                 type: "Feature",
                 geometry: {
@@ -713,7 +717,7 @@ function loadMapThumb(){
                 "properties": {
                     "title": "Interview",
                     "icon": {
-                        "iconUrl": "/static/img/playermarker_" + team.toLowerCase() +".png",
+                        "iconUrl": "/static/img/"+ markerType + "marker_" + team.toLowerCase() +".png",
                         "iconSize": [50, 50], // size of the icon
                         "iconAnchor": [25, 25], // point of the icon which will correspond to marker's location
                         "popupAnchor": [0, -25]  // point from which the popup should open relative to the iconAnchor
@@ -1334,8 +1338,6 @@ function loadInterviews(interviewType){
         type:'GET',
         url: url,
         success: function(data){
-            console.log("GOT INTERVIEW DATA");
-            console.log(data);
             geoJson = data;
             var markers = new L.MarkerClusterGroup();
             var markerLayer = L.mapbox.markerLayer();
@@ -1370,10 +1372,7 @@ function loadInterviews(interviewType){
             markerLayer.on('mouseover',function(e){
                var marker = e.layer;
                 feature = marker.feature;
-                console.log("hello");
-                console.log(e);
                 MY_MAP.popup.setLatLng(e.latlng);
-                console.log("1");
                 var popupContent = '<div class="interview-tooltip row-fluid"><div class="span4">' + '<img src="/media/' + feature.properties.photo + '"/></div>' +
                     '<div class="span8">'+ '<p class="interview-rollover-name">'+ feature.properties.name +'</p>' +
                     '<p class="interview-rollover-about"><b>By: </b>'+ feature.properties.team  + ' Team, ' + feature.properties.class  + '</p>'
