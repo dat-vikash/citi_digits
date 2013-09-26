@@ -302,7 +302,7 @@ function reShowMapPopUp(ev,feature,idx){
 function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
     var data = [500,medianIncome,percentIncome];
     //draw top tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + Math.round(data[1].toFixed(1)) + "</b> <a href='#' id='median_household_rollover'>median household</a> income per day.");
+    $("#map-popup-" + popupId + " #map-popup-graphic #median_income_graph_text").append("<b>$" + (Math.round(data[1]/10)*10) + "</b> <a href='#' id='median_household_rollover'>median household</a> income per day.");
 
     //draw graph
      var chart = d3.select("#map-popup-" + popupId + " #map-popup-graphic-holder").append("svg")
@@ -346,7 +346,7 @@ function drawPercentIncomeGraph(popupId,percentIncome,medianIncome){
      .text(function(d,i){ if(i%2==0 && i!=0){return "$"+d;}});
 
     //draw bottom tooltip
-    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + data[2].toFixed(2) + "%</b> of income spent on lottery");
+    $("#map-popup-" + popupId + " #map-popup-graphic #percent_income_graph_text").append("<b class='blue'>" + roundToHalf(data[2]) + "%</b> of income spent on lottery");
 
     $(".map-popup").on("click", "#median_household_rollover",function(e){
         var titleTxt = "<div id='percent-income-rollover'> <b>Household</b> means all people age 15 or older who live in the same housing unit " +
@@ -419,7 +419,7 @@ function drawPercentIncomeGraphForExplain(medianIncome){
     var data = [500,medianIncome];
 
     //draw top tooltip
-    $("#mapPopupModal #explain-chart #explain-chart-text").append("<b class='blue-2'>$" + data[1] + "</b> median household income per day.");
+    $("#mapPopupModal #explain-chart #explain-chart-text").append("<b class='blue-2'>$" + (Math.round(data[1]/10)*10) + "</b> median household income per day.");
 
     //draw graph
      var chart = d3.select("#mapPopupModal #explain-chart #explain-chart-chart").append("svg")
@@ -2060,3 +2060,18 @@ $("#homepage-tours-square").on("click",".home-page-rollover",function(e){
 $("#city-digits-logo").on("click",function(e){
    $("#main-map").click();
 });
+
+/*
+   This funciton rounds to the nearest .5
+ */
+function roundToHalf(value) {
+   var converted = parseFloat(value);
+   var decimal = (converted - parseInt(converted, 10));
+   decimal = Math.round(decimal * 10);
+   if (decimal == 5) { return (parseInt(converted, 10)+0.5); }
+   if ( (decimal < 3) || (decimal > 7) ) {
+      return Math.round(converted);
+   } else {
+      return (parseInt(converted, 10)+0.5);
+   }
+}
