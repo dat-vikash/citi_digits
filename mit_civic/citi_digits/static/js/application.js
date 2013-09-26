@@ -1176,7 +1176,7 @@ $("#main-map").click(function(e){
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
-   var url = "/interview/" + $(this).attr("id") + "/"; //interview id from div#id
+   var url = "citydigits/interview/" + $(this).attr("id") + "/"; //interview id from div#id
     $("#interviewDetails").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '95%',
