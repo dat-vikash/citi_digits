@@ -1631,7 +1631,7 @@ function loadAvgSpendingsMarkers(){
 function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,team,klass){
     $.ajax({
         type: 'GET',
-        url: 'interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
+        url: 'citydigits/interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
         success: function(data){
             $("#interviews-tab").html(data);
 
@@ -1642,7 +1642,7 @@ function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,t
 function loadToursWithPagination(offset,date,klass){
     $.ajax({
         type: 'GET',
-        url: 'tour/list/'+offset+'/?sort-date=' + date + "&sort-class="+klass,
+        url: 'citydigits/tour/list/'+offset+'/?sort-date=' + date + "&sort-class="+klass,
         success: function(data){
             $("#tours-tab #tour-grid").html(data);
 
