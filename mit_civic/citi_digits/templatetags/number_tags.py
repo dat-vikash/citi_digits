@@ -19,4 +19,13 @@ def roundToHalf(number):
         return int(convertedNumber) + .5
 
 
+def roundToTen(number):
+    """
+     Rounds to nearest 10
+    """
+    number = float(number)
+    return round(number/10) * 10
+
+
 register.filter('roundToHalf', roundToHalf)
+register.filter('roundToTen',roundToTen)

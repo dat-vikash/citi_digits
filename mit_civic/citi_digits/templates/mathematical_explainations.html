@@ -1,3 +1,4 @@
+{%  load number_tags %}
 <button type="button" class="close modal-close" data-dismiss="modal" aria-hidden="true">
         <img src="{{ STATIC_URL }}/img/close.png"/>
 </button>
@@ -8,12 +9,12 @@
     <div id="workflow">
         <br>
         <div class="even">
-            <p class="explain-text">In {{ neighborhood }}, players spent ${{ spent|floatformat:2  }} of every $100 earned on lottery tickets.The median
-            househould earns ${{ income|floatformat:2 }} in a day.</p>
+            <p class="explain-text">In {{ neighborhood }}, players spent ${{ spent|roundToHalf|floatformat:2  }} of every $100 earned on lottery tickets.The median
+            household earns ${{ income|roundToTen|floatformat:0 }} in a day.</p>
             <br>
             <table class="math-table-center">
                 <tr>
-                    <td><div style="width: 255px"><b class="spent-blue">${{ spent|floatformat:2 }}</b> spent on lottery tickets</div></td>
+                    <td><div style="width: 255px"><b class="spent-blue">${{ spent|roundToHalf|floatformat:2  }}</b> spent on lottery tickets</div></td>
                     <td><img src="{{ STATIC_URL }}/img/math-explain-question-mark.png"/> spent on lottery tickets</td>
                 </tr>
                 <tr>
@@ -21,7 +22,7 @@
                 </tr>
                 <tr>
                     <td><div style="width: 255px">every <b class="spent-blue">$100</b> earned</div></td>
-                    <td><b class="spent-blue"> ${{ income|floatformat:2 }} </b> earned</td>
+                    <td><b class="spent-blue"> ${{ income|roundToTen|floatformat:0 }} </b> earned</td>
                 </tr>
             </table>
             <br>

@@ -419,7 +419,7 @@ function drawPercentIncomeGraphForExplain(medianIncome){
     var data = [500,medianIncome];
 
     //draw top tooltip
-    $("#mapPopupModal #explain-chart #explain-chart-text").append("<b class='blue-2'>$" + data[1] + "</b> median household income per day.");
+    $("#mapPopupModal #explain-chart #explain-chart-text").append("<b class='blue-2'>$" + (Math.round(data[1]/10)*10) + "</b> median household income per day.");
 
     //draw graph
      var chart = d3.select("#mapPopupModal #explain-chart #explain-chart-chart").append("svg")
