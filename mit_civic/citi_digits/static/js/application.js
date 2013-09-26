@@ -2054,3 +2054,7 @@ $("#homepage-tours-square").on("click","img",function(e){
 $("#homepage-tours-square").on("click",".home-page-rollover",function(e){
     $("#tours").click();
 });
+
+$("#city-digits-logo").on("click",function(e){
+   $("#main-map").click();
+});
