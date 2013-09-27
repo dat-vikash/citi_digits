@@ -547,7 +547,7 @@ $(".map-ui").on("click","a", function (e) {
  */
  $(".membership").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the  form url
+        var url = RELATIVE_URL + $(this).data("form"); // get the  form url
         $("#signUpModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
                   width: '95%',
@@ -565,7 +565,7 @@ $(".map-ui").on("click","a", function (e) {
 
  $(".membership-login").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the  form url
+        var url = RELATIVE_URL + $(this).data("form"); // get the  form url
         $("#loginModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
@@ -583,7 +583,7 @@ $(".map-ui").on("click","a", function (e) {
 
  $(".membership-logout").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the form url
+        var url = RELATIVE_URL + $(this).data("form"); // get the form url
         $.ajax({
         type: 'GET',
         url: url,
@@ -601,8 +601,7 @@ $(".map-ui").on("click","a", function (e) {
 
 $("#add-interview").click(function(ev){
    ev.preventDefault();  //prevent navigation
-   var url = $(this).data("form"); //get the form url
-    console.log("ADD INTERVIEW");
+   var url = RELATIVE_URL + $(this).data("form"); //get the form url
    $("#addInterviewModal").load(url, function() { // load the url into the modal
        $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
@@ -628,7 +627,7 @@ $("#add-interview").click(function(ev){
 
 $("#add-tour").click(function(ev){
    ev.preventDefault();  //prevent navigation
-   var url = $(this).data("form"); //get the form url
+   var url = RELATIVE_URL + $(this).data("form"); //get the form url
    $("#addTour").load(url, function() { // load the url into the modal
    }); //display modal
     $("#addTour").show();
@@ -644,7 +643,7 @@ $("#add-tour").click(function(ev){
 
 $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
     ev.preventDefault(); // prevent navigation
-    var url = $(this).data("form"); //get the form url
+    var url = RELATIVE_URL + $(this).data("form"); //get the form url
     $("#addInterviewModal").load(url,function() { // load the url into the modal
         $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
@@ -665,7 +664,7 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
 
 $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
     ev.preventDefault(); // prevent navigation
-    var url = $(this).data("form"); //get the form url
+    var url = RELATIVE_URL + $(this).data("form"); //get the form url
     $("#addInterviewModal").load(url,function() { // load the url into the modal
         $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
@@ -1851,7 +1850,7 @@ $("#tour-grid").on("click",".pagination-page", function(e){
 });
 
 $("#tours-tab").on("click",".tour-stub",function(event){
-   var url = "/tour/" + $(this).attr("id") + "/"; //interview id from div#id
+   var url = RELATIVE_URL + "/tour/" + $(this).attr("id") + "/"; //interview id from div#id
     $("#tourPreview").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
