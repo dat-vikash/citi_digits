@@ -41,7 +41,7 @@
             <div class="container" >
                 <div id="tour-stub-cover-photo" class="row-fluid" style="margin: auto;">
                     {% if tour.coverPhoto %}
-                    <img class="cover-photo" src="{{ tour.coverPhoto|cropWidth:"280" }}"></div>
+                    <img class="cover-photo" src="{{ tour.coverPhoto|crop:"280x280" }}"></div>
                     {% else %}
                     <img class="cover-photo" src=""></div>
                     {% endif %}
