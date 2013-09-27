@@ -35,13 +35,37 @@
                 <div id="explain-chart-text" class="bubble-explain-chart-text"></div>
                 <div id="explain-chart-chart"></div>
                 <div id="explain-chart-breakdown">
-                <p class="explain-chart-breakdown-equation">
+{#                <p class="explain-chart-breakdown-equation">#}
+                <table class="explain-chart-breakdown-equation">
+                    <tr>
                     {% for i in modCount %}
-                        <b class="spent-blue">${{ spent|roundToHalf|floatformat:2 }}</b> +
+                        <td><b class="spent-blue">${{ spent|roundToHalf|floatformat:2 }}</b></td>
+                        <td></td>
                     {% endfor %}
-                    <b class="spent-blue">${{ leftOver|floatformat:2 }}</b> =
-                    <b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets
-                </p>
+                    <td><b class="spent-blue">${{ leftOver|floatformat:2 }}</b></td>
+                    <td></td>
+                    <td style="width: 260px;"><b class="spent-blue">${{ spentOnLotto|floatformat:2 }}</b> spent on lottery tickets</td>
+                    </tr>
+                    <tr>
+                    {% for i in modCount %}
+                        <td><hr style="margin: 0px;" /></td>
+                        <td>+</td>
+                    {% endfor %}
+                    <td><hr style="margin: 0px;" /></td>
+                    <td>=</td>
+                    <td><hr style="margin: 0px;" /></td>
+                    </tr>
+                    <tr>
+                    {% for i in modCount %}
+                        <td style="width: 112px;"><b class="spent-blue">$100</b> earned</td>
+                        <td></td>
+                    {% endfor %}
+                        <td style="width: 112px;"><b class="spent-blue">${{ net|floatformat:0 }}</b> earned</td>
+                        <td></td>
+                        <td><b class="spent-blue">${{ income|roundToTen|floatformat:0 }}</b> earned</td>
+                    </tr>
+                </table>
+{#                </p>#}
                 </div>
             </div>
         <br>

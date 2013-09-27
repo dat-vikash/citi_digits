@@ -316,15 +316,17 @@ def mathExplain(request,neighborhood,spent,income):
     spent = roundToHalf(spent)
     income = roundToTen(float(income))
     modCount = divmod(float(income),100)[0]
+    modMultipler = modCount
     modCount = range(0,int(modCount))
     leftOver = float(divmod(float(income),100)[1]) / float(100) * float(spent)
     spentOnLotto = float(spent) * float(income) / float(100)
     yearSpent = spentOnLotto * 365
     yearEarned = int(income) * 365
+    net = income - modMultipler * 100
     return render_to_response('mathematical_explainations.html',{'neighborhood':neighborhood, 'spent':spent,
                                                                  'income':income,'modCount':modCount, 'yearEarned':yearEarned,
                                                                  'leftOver':leftOver,'yearSpent':yearSpent,
-                                                                 'spentOnLotto':spentOnLotto},context_instance=RequestContext(request))
+                                                                 'spentOnLotto':spentOnLotto, 'net':net},context_instance=RequestContext(request))
 
 
 def notAllEqual(request,neighborhood):
