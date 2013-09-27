@@ -2330,10 +2330,13 @@ padding-top: 1%;
 }
 }
 
-#explain-chart-breakdown p.explain-chart-breakdown-equation {
+#explain-chart-breakdown table.explain-chart-breakdown-equation {
     font-family: "Apercu Regular", Calibri, sans-serif; font-size-adjust:0.508; font-weight:normal; font-style:normal;
     color: #FFFFFF;
     font-size: 18px;
+     margin-left:auto;
+    margin-right:auto;
+    cellspacing: 10;
 }
 
 #median_household_rollover:link{
@@ -2345,12 +2348,12 @@ padding-top: 1%;
     color: #b0b6bd;
 }
 
-#explain-chart-breakdown p.explain-chart-breakdown-equation b {
+#explain-chart-breakdown table.explain-chart-breakdown-equation b {
     padding-left: 4%;
     padding-right: 4%;
 }
 
-#explain-chart-breakdown p.explain-chart-breakdown-equation b.spent-blue {
+#explain-chart-breakdown table.explain-chart-breakdown-equation b.spent-blue {
     font-family:  "Apercu Bold", Calibri, sans-serif; font-size-adjust:0.508; font-weight:bold; font-style:normal;
     color: #00c9c8;
     font-size: 22px;
