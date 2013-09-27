@@ -1256,7 +1256,6 @@ $("#interviews-tab").on("click",".pagination-page", function(e){
 
 
 $("#map-nav").on("change",".map-ui-interviews", function(e){
-    console.log("IN HERE!@#$@#$@$");
     //get checkbox values
     player = $("#turn_on_player_interviews").is(":checked");
     retailer = $("#turn_on_retailer_interviews").is(":checked");
@@ -1327,14 +1326,12 @@ function loadInterviews(interviewType){
     var geoJson = null;
     var url = RELATIVE_URL + '/interview/geoJson/';
     if (interviewType != null){
-        url =  'interview/geoJson/?type=' + interviewType;
+        url = RELATIVE_URL + '/interview/geoJson/?type=' + interviewType;
     }
     $.ajax({
         type:'GET',
         url: url,
         success: function(data){
-            console.log("GOT INTERVIEW DATA");
-            console.log(data);
             geoJson = data;
             var markers = new L.MarkerClusterGroup();
             var markerLayer = L.mapbox.markerLayer();
@@ -1348,7 +1345,7 @@ function loadInterviews(interviewType){
             markerLayer.on('click',function(e){
                   var marker = e.layer,
                     feature = marker.feature;
-                   var url = "/interview/" + feature.properties.interview_id + "/"; //interview id from div#id
+                   var url = RELATIVE_URL + "/interview/" + feature.properties.interview_id + "/"; //interview id from div#id
                     $("#interviewDetails").load(url,function() { // load the url into the modal
                             $(this).modal('show').css({
                                  width: '95%',
@@ -1369,10 +1366,7 @@ function loadInterviews(interviewType){
             markerLayer.on('mouseover',function(e){
                var marker = e.layer;
                 feature = marker.feature;
-                console.log("hello");
-                console.log(e);
                 MY_MAP.popup.setLatLng(e.latlng);
-                console.log("1");
                 var popupContent = '<div class="interview-tooltip row-fluid"><div class="span4">' + '<img src="/media/' + feature.properties.photo + '"/></div>' +
                     '<div class="span8">'+ '<p class="interview-rollover-name">'+ feature.properties.name +'</p>' +
                     '<p class="interview-rollover-about"><b>By: </b>'+ feature.properties.team  + ' Team, ' + feature.properties.class  + '</p>'
