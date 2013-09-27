@@ -174,7 +174,7 @@ function showMapPopUp(ev,feature){
             console.log("click for math explain");
         ev.preventDefault(); // prevent navigation
 
-        var url = $(this).data("form"); //get the form url
+        var url = RELATIVE_URL + $(this).data("form"); //get the form url
         $("#mapPopupModal").load(url,function() { // load the url into the modal
                 $(this).modal('show').css({
                      width: '90%',
@@ -207,7 +207,7 @@ function showMapPopUp(ev,feature){
     map_popups[idx].on("click", "#not_all_equal", function (ev) {
         ev.preventDefault(); // prevent navigation
 
-        var url = $(this).data("form"); //get the form url
+        var url = RELATIVE_URL + $(this).data("form"); //get the form url
         $("#mapPopupModal").load(url,function() { // load the url into the modal
                 $(this).modal('show').css({
                      width: '90%',
