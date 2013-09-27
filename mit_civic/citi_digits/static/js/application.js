@@ -73,7 +73,6 @@ $().ready(new function(){
   events to the respective popups.
  */
 function showMapPopUp(ev,feature){
-    console.log(feature);
     var idx= null;
     //get which layer is active
     var activeLayer = $(".map-ui li.active").attr("id");
@@ -504,7 +503,7 @@ function drawPercentIncomeGraphForExplain(medianIncome){
 
 function getPopupUrlFrom(activeLayer,feature){
         name = feature.properties.N_Name.toString().split(' ').join('_');
-        return "/popup/"+activeLayer+"/"+name+"/"+feature.properties.PERINC10+"/"+feature.properties.EV_DOL+"/" +
+        return RELATIVE_URL + "/popup/"+activeLayer+"/"+name+"/"+feature.properties.PERINC10+"/"+feature.properties.EV_DOL+"/" +
             feature.properties.Daily_Sale+"/"+feature.properties.Daily_Win+"/"+feature.properties.Daily_Inco+"/"+feature.properties.Net_Win +"/" + feature.id +"/";
 }
 

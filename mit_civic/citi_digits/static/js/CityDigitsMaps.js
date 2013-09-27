@@ -332,8 +332,6 @@ CityDigitsMap.onEachFeature = function(feature,layer){
 
         if(MY_SELECTED_BOROUGHS.length >= 0 && MY_SELECTED_BOROUGHS.length !=2){
             //only 1 selected, add another
-            console.log("SELECTED BOUROUGHS1: ");
-            console.log(MY_SELECTED_BOROUGHS);
             var targetToPush = ev.target;
             ev['originalLayer'] = mainLayer;
             targetToPush['originalLayer'] = mainLayer;
