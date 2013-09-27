@@ -1195,14 +1195,12 @@ $("#interviews-tab").on("click",".interview-stub",function(event){
 });
 
 $("#interviews-tab").on("change",".interview-toolbar", function(e){
-   console.log("CHANGE DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
                   'team':$("#interviews-tab #team").val(),
                   'class':$("#class").val()};
     var offset = 1;
-    console.log(values);
     //reload interviews
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
 });
@@ -1210,7 +1208,6 @@ $("#interviews-tab").on("change",".interview-toolbar", function(e){
 
 $("#interviews-tab").on("click","#pagination-prev-page", function(e){
     e.preventDefault();
-   console.log("prev DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
@@ -1225,14 +1222,12 @@ $("#interviews-tab").on("click","#pagination-prev-page", function(e){
 
 $("#interviews-tab").on("click","#pagination-next-page", function(e){
     e.preventDefault();
-   console.log("next DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
                   'team':$("#team").val(),
                   'class':$("#class").val()};
     var offset = $(this).data("form");
-    console.log(offset);
     //reload interviews
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
     return false;
@@ -1240,14 +1235,12 @@ $("#interviews-tab").on("click","#pagination-next-page", function(e){
 
 $("#interviews-tab").on("click",".pagination-page", function(e){
     e.preventDefault();
-   console.log("page DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
                   'team':$("#team").val(),
                   'class':$("#class").val()};
     var offset = $(this).data("form");
-    console.log(offset);
     //reload interviews
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
     return false;
@@ -1277,7 +1270,6 @@ $("#map-nav").on("change",".map-ui-interviews", function(e){
 });
 
 $("#map-nav").on("click",".turn_on_class_interviews", function(e){
-    console.log("IN HERE!@#$@#$@$");
     var className = $(this).data("form");
 
     //toggle interviews on the map
@@ -1294,7 +1286,6 @@ $('#interviewDetails').on("click", "#comment-submit", function(event) {
 //    get request url
     var request_url = $(this).data("form");
 
-    console.log("request url: " + request_url);
     // get all the inputs into an array.
     var values = {'name':$('#comment-name').val(),
                     'comment':$('#comment-message').val()};
