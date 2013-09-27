@@ -25,8 +25,7 @@ var SCREEN_HEIGHT = null;
 var CURRENT_LAYER = null;
 var VIEW_ALL_SCHOOLS_IS_OPEN = false;
 var MY_SELECTED_BOROUGHS = [];
-L_PREFER_CANVAS = true; // experimental
-
+RELATIVE_URL = '';  //for development leave this blank. For production it should be 'citydigits'
 
 /*
   This function is called when the page DOM has loaded. It enables 'back' button, sets up the map
@@ -1176,7 +1175,7 @@ $("#main-map").click(function(e){
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
-   var url = "citydigits/interview/" + $(this).attr("id") + "/"; //interview id from div#id
+   var url = RELATIVE_URL + "/interview/" + $(this).attr("id") + "/"; //interview id from div#id
     $("#interviewDetails").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '95%',
@@ -1326,7 +1325,7 @@ $('#interviewDetails').on("click", "#comment-submit", function(event) {
 
 function loadInterviews(interviewType){
     var geoJson = null;
-    var url = 'citydigits/interview/geoJson/';
+    var url = RELATIVE_URL + '/interview/geoJson/';
     if (interviewType != null){
         url =  'interview/geoJson/?type=' + interviewType;
     }
@@ -1631,7 +1630,7 @@ function loadAvgSpendingsMarkers(){
 function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,team,klass){
     $.ajax({
         type: 'GET',
-        url: 'citydigits/interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
+        url:  RELATIVE_URL + '/interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
         success: function(data){
             $("#interviews-tab").html(data);
 
@@ -1642,7 +1641,7 @@ function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,t
 function loadToursWithPagination(offset,date,klass){
     $.ajax({
         type: 'GET',
-        url: 'citydigits/tour/list/'+offset+'/?sort-date=' + date + "&sort-class="+klass,
+        url: RELATIVE_URL + '/tour/list/'+offset+'/?sort-date=' + date + "&sort-class="+klass,
         success: function(data){
             $("#tours-tab #tour-grid").html(data);
 
