@@ -25,8 +25,7 @@ var SCREEN_HEIGHT = null;
 var CURRENT_LAYER = null;
 var VIEW_ALL_SCHOOLS_IS_OPEN = false;
 var MY_SELECTED_BOROUGHS = [];
-L_PREFER_CANVAS = true; // experimental
-
+RELATIVE_URL = '';  //for development leave this blank. For production it should be 'citydigits'
 
 /*
   This function is called when the page DOM has loaded. It enables 'back' button, sets up the map
@@ -548,7 +547,7 @@ $(".map-ui").on("click","a", function (e) {
  */
  $(".membership").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the  form url
+        var url = RELATIVE_URL + $(this).data("form"); // get the  form url
         $("#signUpModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
                   width: '95%',
@@ -566,7 +565,7 @@ $(".map-ui").on("click","a", function (e) {
 
  $(".membership-login").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the  form url
+        var url = RELATIVE_URL + $(this).data("form"); // get the  form url
         $("#loginModal").load(url, function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
@@ -584,7 +583,7 @@ $(".map-ui").on("click","a", function (e) {
 
  $(".membership-logout").click(function(ev) {
         ev.preventDefault(); // prevent navigation
-        var url = $(this).data("form"); // get the form url
+        var url = RELATIVE_URL + $(this).data("form"); // get the form url
         $.ajax({
         type: 'GET',
         url: url,
@@ -602,8 +601,7 @@ $(".map-ui").on("click","a", function (e) {
 
 $("#add-interview").click(function(ev){
    ev.preventDefault();  //prevent navigation
-   var url = $(this).data("form"); //get the form url
-    console.log("ADD INTERVIEW");
+   var url = RELATIVE_URL + $(this).data("form"); //get the form url
    $("#addInterviewModal").load(url, function() { // load the url into the modal
        $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
@@ -629,7 +627,7 @@ $("#add-interview").click(function(ev){
 
 $("#add-tour").click(function(ev){
    ev.preventDefault();  //prevent navigation
-   var url = $(this).data("form"); //get the form url
+   var url = RELATIVE_URL + $(this).data("form"); //get the form url
    $("#addTour").load(url, function() { // load the url into the modal
    }); //display modal
     $("#addTour").show();
@@ -645,7 +643,7 @@ $("#add-tour").click(function(ev){
 
 $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
     ev.preventDefault(); // prevent navigation
-    var url = $(this).data("form"); //get the form url
+    var url = RELATIVE_URL + $(this).data("form"); //get the form url
     $("#addInterviewModal").load(url,function() { // load the url into the modal
         $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
@@ -666,7 +664,7 @@ $("#addInterviewModal").on("click", "#add-player-interview", function (ev) {
 
 $("#addInterviewModal").on("click", "#add-retailer-interview", function (ev) {
     ev.preventDefault(); // prevent navigation
-    var url = $(this).data("form"); //get the form url
+    var url = RELATIVE_URL + $(this).data("form"); //get the form url
     $("#addInterviewModal").load(url,function() { // load the url into the modal
         $(this).modal({backdrop:'static'});
             $(this).modal('show').css({
@@ -1136,7 +1134,7 @@ $("#about").click(function(e){
     //load in content
     $.ajax({
         type: 'GET',
-        url: 'about/',
+        url: RELATIVE_URL + '/about/',
         success: function(data){
             $("#about-tab").html(data);
             $("#main-container").css('background-color','#025ff1');
@@ -1182,7 +1180,7 @@ $("#main-map").click(function(e){
 });
 
 $("#interviews-tab").on("click",".interview-stub",function(event){
-   var url = "/interview/" + $(this).attr("id") + "/"; //interview id from div#id
+   var url = RELATIVE_URL + "/interview/" + $(this).attr("id") + "/"; //interview id from div#id
     $("#interviewDetails").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '95%',
@@ -1202,14 +1200,12 @@ $("#interviews-tab").on("click",".interview-stub",function(event){
 });
 
 $("#interviews-tab").on("change",".interview-toolbar", function(e){
-   console.log("CHANGE DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
                   'team':$("#interviews-tab #team").val(),
                   'class':$("#class").val()};
     var offset = 1;
-    console.log(values);
     //reload interviews
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
 });
@@ -1217,7 +1213,6 @@ $("#interviews-tab").on("change",".interview-toolbar", function(e){
 
 $("#interviews-tab").on("click","#pagination-prev-page", function(e){
     e.preventDefault();
-   console.log("prev DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
@@ -1232,14 +1227,12 @@ $("#interviews-tab").on("click","#pagination-prev-page", function(e){
 
 $("#interviews-tab").on("click","#pagination-next-page", function(e){
     e.preventDefault();
-   console.log("next DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
                   'team':$("#team").val(),
                   'class':$("#class").val()};
     var offset = $(this).data("form");
-    console.log(offset);
     //reload interviews
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
     return false;
@@ -1247,14 +1240,12 @@ $("#interviews-tab").on("click","#pagination-next-page", function(e){
 
 $("#interviews-tab").on("click",".pagination-page", function(e){
     e.preventDefault();
-   console.log("page DETECED");
     //get search values
     var values = {'player_interview':$("#interview_type_player").is(":checked"),
                   'retailer_interview':$("#interview_type_retailer").is(":checked"),
                   'team':$("#team").val(),
                   'class':$("#class").val()};
     var offset = $(this).data("form");
-    console.log(offset);
     //reload interviews
     loadInterviewsWithPagination(offset,values['player_interview'],values['retailer_interview'],values['team'],values['class']);
     return false;
@@ -1263,7 +1254,6 @@ $("#interviews-tab").on("click",".pagination-page", function(e){
 
 
 $("#map-nav").on("change",".map-ui-interviews", function(e){
-    console.log("IN HERE!@#$@#$@$");
     //get checkbox values
     player = $("#turn_on_player_interviews").is(":checked");
     retailer = $("#turn_on_retailer_interviews").is(":checked");
@@ -1285,7 +1275,6 @@ $("#map-nav").on("change",".map-ui-interviews", function(e){
 });
 
 $("#map-nav").on("click",".turn_on_class_interviews", function(e){
-    console.log("IN HERE!@#$@#$@$");
     var className = $(this).data("form");
 
     //toggle interviews on the map
@@ -1302,7 +1291,6 @@ $('#interviewDetails').on("click", "#comment-submit", function(event) {
 //    get request url
     var request_url = $(this).data("form");
 
-    console.log("request url: " + request_url);
     // get all the inputs into an array.
     var values = {'name':$('#comment-name').val(),
                     'comment':$('#comment-message').val()};
@@ -1332,9 +1320,9 @@ $('#interviewDetails').on("click", "#comment-submit", function(event) {
 
 function loadInterviews(interviewType){
     var geoJson = null;
-    var url = 'interview/geoJson/';
+    var url = RELATIVE_URL + '/interview/geoJson/';
     if (interviewType != null){
-        url =  'interview/geoJson/?type=' + interviewType;
+        url = RELATIVE_URL + '/interview/geoJson/?type=' + interviewType;
     }
     $.ajax({
         type:'GET',
@@ -1353,7 +1341,7 @@ function loadInterviews(interviewType){
             markerLayer.on('click',function(e){
                   var marker = e.layer,
                     feature = marker.feature;
-                   var url = "/interview/" + feature.properties.interview_id + "/"; //interview id from div#id
+                   var url = RELATIVE_URL + "/interview/" + feature.properties.interview_id + "/"; //interview id from div#id
                     $("#interviewDetails").load(url,function() { // load the url into the modal
                             $(this).modal('show').css({
                                  width: '95%',
@@ -1632,7 +1620,7 @@ function loadAvgSpendingsMarkers(){
 function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,team,klass){
     $.ajax({
         type: 'GET',
-        url: 'interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
+        url:  RELATIVE_URL + '/interview/list/'+offset+'/?player=' + playerInterview + "&retailer=" + retailerInterview + "&team=" + team + "&class="+klass,
         success: function(data){
             $("#interviews-tab").html(data);
 
@@ -1643,7 +1631,7 @@ function loadInterviewsWithPagination(offset,playerInterview,retailerInterview,t
 function loadToursWithPagination(offset,date,klass){
     $.ajax({
         type: 'GET',
-        url: 'tour/list/'+offset+'/?sort-date=' + date + "&sort-class="+klass,
+        url: RELATIVE_URL + '/tour/list/'+offset+'/?sort-date=' + date + "&sort-class="+klass,
         success: function(data){
             $("#tours-tab #tour-grid").html(data);
 
@@ -1868,7 +1856,7 @@ $("#tour-grid").on("click",".pagination-page", function(e){
 });
 
 $("#tours-tab").on("click",".tour-stub",function(event){
-   var url = "/tour/" + $(this).attr("id") + "/"; //interview id from div#id
+   var url = RELATIVE_URL + "/tour/" + $(this).attr("id") + "/"; //interview id from div#id
     $("#tourPreview").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
