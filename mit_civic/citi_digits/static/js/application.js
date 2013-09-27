@@ -975,7 +975,7 @@ $('#signUpModal').on("click", ".delete_team", function (ev) {
 $('#signUpModal').on("click", ".submit", function (ev) {
     ev.preventDefault(); // prevent navigation
     //get request url
-    var request_url = $('#sign_up_form').attr('action');
+    var request_url = RELATIVE_URL + $('#sign_up_form').attr('action');
     // get all the inputs into an array.
     var values = {};
     values = $('#sign_up_form').serializeArray();
@@ -1009,7 +1009,7 @@ $('#signUpModal').on("click", ".submit", function (ev) {
 $('#loginModal').on("click", ".submit", function (ev) {
     ev.preventDefault(); // prevent navigation
     //get request url
-    var request_url = $('#login_form').attr('action');
+    var request_url = RELATIVE_URL + $('#login_form').attr('action');
     // get all the inputs into an array.
     var values = {};
     values = $('#login_form').serializeArray();
@@ -1041,7 +1041,7 @@ $('#loginModal').on("click", ".submit", function (ev) {
 $('#addInterviewModal').on("click", "#interviewSubmit", function(event) {
     event.preventDefault();
 //    get request url
-    var request_url = $('#add_interview_form').attr('action');
+    var request_url = RELATIVE_URL + $('#add_interview_form').attr('action');
 
     $("#add_interview_form").ajaxSubmit({
         url:request_url, // the file to call
