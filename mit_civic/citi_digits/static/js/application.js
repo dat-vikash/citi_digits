@@ -1131,7 +1131,7 @@ $("#about").click(function(e){
     //load in content
     $.ajax({
         type: 'GET',
-        url: 'about/',
+        url: RELATIVE_URL + '/about/',
         success: function(data){
             $("#about-tab").html(data);
             $("#main-container").css('background-color','#025ff1');
