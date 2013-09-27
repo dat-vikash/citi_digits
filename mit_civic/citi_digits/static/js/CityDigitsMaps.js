@@ -409,9 +409,8 @@ CityDigitsMap.onEachFeature = function(feature,layer){
 
 CityDigitsMap.prototype.loadLayers =  function (){
     var self = this;
-    console.log("LOADING LAYERS");
     //show map ui nav
-    $("#map-nav").load("citydigits/map/nav/");
+    $("#map-nav").load("map/nav/");
 
     //load layers
     this.PERCENT_INCOME_LAYER = L.geoJson(nyc_neighborhoods,{
