@@ -25,7 +25,7 @@ var SCREEN_HEIGHT = null;
 var CURRENT_LAYER = null;
 var VIEW_ALL_SCHOOLS_IS_OPEN = false;
 var MY_SELECTED_BOROUGHS = [];
-RELATIVE_URL = '';  //for development leave this blank. For production it should be 'citydigits'
+RELATIVE_URL = '';  //for development leave this blank. For production it should be '/citydigits'
 
 /*
   This function is called when the page DOM has loaded. It enables 'back' button, sets up the map
@@ -1462,7 +1462,6 @@ $("#map-nav").on("click","#map-street-level-view-winnings",function(e){
 
 
 $("#map-nav").on("click","#map-city-level-view-spendings",function(e){
-    console.log("fuck");
    //reset zoom to city level
     MY_MAP.map.setZoom(13);
     //clear winnings markers if any
@@ -1507,7 +1506,6 @@ $("#map-nav").on("click","#map-street-level-view-spendings",function(e){
 });
 
 $("#map-nav").on("click","#map-city-level-view-netgainloss",function(e){
-    console.log("fuck");
    //reset zoom to city level
     MY_MAP.map.setZoom(13);
     //clear winnings markers if any
@@ -1671,7 +1669,7 @@ $("#addTour").on("click","#new-tour-slide",function(event){
 $("#addTour").on("click","#save_tour_button",function(event){
    event.preventDefault();
      //get request url
-    var request_url = $('#add_tour_form').attr('action');
+    var request_url = RELATIVE_URL + $('#add_tour_form').attr('action');
     // get all the inputs into an array.
     var values = {};
     values = $('#add_tour_form').serializeArray();
@@ -1721,11 +1719,9 @@ $("#addTour").on("click","#save_preview_button",function(ev){
         };
         slides.push(slide);
     }
-    console.log(slides);
 
-    var url = $(this).data("form"); //get the form url
+    var url = RELATIVE_URL + $(this).data("form"); //get the form url
     url = url + "?slides=" + $("#add_tour_form .slide").length;
-    console.log("url:" + url);
     $("#tourPreview").load(url,function() { // load the url into the modal
             $(this).modal('show').css({
                  width: '100%',
