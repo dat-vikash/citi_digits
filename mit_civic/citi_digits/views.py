@@ -319,7 +319,7 @@ def mathExplain(request,neighborhood,spent,income):
     modMultipler = modCount
     modCount = range(0,int(modCount))
     leftOver = float(divmod(float(income),100)[1]) / float(100) * float(spent)
-    spentOnLotto = float(spent) * float(income) / float(100)
+    spentOnLotto = Decimal(str(spent)) * Decimal(str(income)) / Decimal(str(100))
     yearSpent = spentOnLotto * 365
     yearEarned = int(income) * 365
     net = income - modMultipler * 100
