@@ -1288,7 +1288,7 @@ $("#map-nav").on("click",".turn_on_class_interviews", function(e){
 $('#interviewDetails').on("click", "#comment-submit", function(event) {
     event.preventDefault();
 //    get request url
-    var request_url = $(this).data("form");
+    var request_url = RELATIVE_URL + $(this).data("form");
 
     // get all the inputs into an array.
     var values = {'name':$('#comment-name').val(),
