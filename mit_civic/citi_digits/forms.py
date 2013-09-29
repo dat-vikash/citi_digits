@@ -34,7 +34,7 @@ class PlayerInterviewForm(forms.Form):
     mostWonAmount = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 90%;'}),required=False)
     averageSpentOnLotteryPerWeek = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 90%;'}),required=False)
     wonJackpotQuestion = forms.FileField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}),required=False)
-    photo = forms.ImageField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}),required=False)
+    photo = forms.ImageField(widget=forms.FileInput(attrs={'class':'add-media-styled-button'}),required=True)
     location = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=False)
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
@@ -49,7 +49,7 @@ class RetailerInterviewForm(forms.Form):
                                                                              ('6-10-TICKETS','6-10 tickets'),('11-OR-MORE-TICKETS',
                                                                               '11 or more tickets')))
     goodForNeighborhoodQuestion = forms.FileField(required=False)
-    photo = forms.ImageField(required=False)
+    photo = forms.ImageField(required=True)
     location = forms.CharField(widget=forms.TextInput(attrs={'style':'width: 100%;'}),required=False)
     latitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
     longitude = forms.CharField(widget=forms.HiddenInput(),required=False,initial=0)
