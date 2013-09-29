@@ -20,7 +20,7 @@
                         {% if slide.audio != "" %}
                             <p class="audio"><audio src="{{ MEDIA_URL }}/{{ slide.audio }}" preload="auto" controls="" id="slide-audio"></audio></p>
                         {% endif %}
-                        <p class="link">{{ slide.link }}</p>
+                        <p class="link"><a href="{{ slide.link }}">{{ slide.link }}</a></p>
                     </div>
                 </div>
             </div>
