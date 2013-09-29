@@ -658,7 +658,8 @@ def tourDetails(request,id):
     Loads tour details
     """
     tour = Tour.objects.get(pk=id)
-    return render_to_response('tour_details.html',{'tour':tour},context_instance=RequestContext(request))
+    slideCount = len(tour.getTourSlides())
+    return render_to_response('tour_details.html',{'tour':tour,'slideCount':slideCount},context_instance=RequestContext(request))
 
 def about(request):
     return render_to_response('about.html',{},context_instance=RequestContext(request))

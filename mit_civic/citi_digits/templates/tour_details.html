@@ -14,7 +14,13 @@
         {% endif %}
             <div class="row-fluid" id="student-blurb">
                 <div class="container-fluid">
-                    <div class="span2 tour-details-team-photo-div"><img class="team-photo" src="{{tour.teamPhoto|crop:"110x110" }}"></div>
+                    <div class="span2 tour-details-team-photo-div">
+                        {% if tour.teamPhoto %}
+                        <img class="team-photo" src="{{tour.teamPhoto|crop:"110x110" }}">
+                        {% else %}
+                        <img class="team-photo" src="">
+                        {% endif %}
+                    </div>
                     <div class="span10 bubble-tour-preview-text">
                         <p class="blurb">{{ slide.text }}</p>
                         {% if slide.audio != "" %}
@@ -32,6 +38,8 @@
       </div>
       <!-- Carousel nav -->
       <a class="carousel-control left hide" href="#myCarousel" data-slide="prev" style="background: none;border: none;"><img src="{{ STATIC_URL }}/img/tour_slideshowarrow_back.png"/></a>
+      {% if slideCount > 1 %}
       <a class="carousel-control right" href="#myCarousel" data-slide="next" style="background: none;border: none;"><img src="{{ STATIC_URL }}/img/tour_slideshowarrow_forward.png"/></a>
+      {% endif %}
     </div>
 </div>

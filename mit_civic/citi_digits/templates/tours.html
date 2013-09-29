@@ -47,7 +47,11 @@
                     {% endif %}
                 <div id="tour-stub-student-blurb" class="row-fluid">
                     <div class="span4">
+                        {% if tour.teamPhoto %}
                         <img class="team-photo" src="{{ tour.teamPhoto|crop:"85x85" }}">
+                        {% else %}
+                        <img class="team-photo" src="">
+                        {% endif %}
                     </div>
                     <div class="span7" style="line-height: 110%;">
                         <p><b>By:</b> {{ tour.getAuthorString }}, {{ tour.student.team.teacher.className }} </p>
