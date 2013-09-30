@@ -77,11 +77,10 @@ CityDigitsMap.prototype.loadMarkers = function(){
                                         radius: radius,
                                         fillColor: "#00ec66",
                                         color: "transparent",
-                                        weight: 1,
+                                        weight: 10,
                                         opacity: 1,
                                         fillOpacity:.8,
-                                        zIndex: 101,
-                                        stroke-width: 10
+                                        zIndex: 101
                                     });
             },onEachFeature: function(feature,layer){
                 layer.on('mouseover', function(ev) {
@@ -147,11 +146,10 @@ CityDigitsMap.prototype.loadMarkers = function(){
                                         radius: radius,
                                         fillColor: "#9518ed",
                                         color: "transparent",
-                                        weight: 1,
+                                        weight: 10,
                                         opacity: 1,
                                         fillOpacity:.8,
-                                        zIndex: 99999,
-					stroke-width:10
+                                        zIndex: 99999
                                     });
             },
             onEachFeature: function(feature,layer){
