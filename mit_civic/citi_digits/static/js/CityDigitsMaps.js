@@ -80,7 +80,8 @@ CityDigitsMap.prototype.loadMarkers = function(){
                                         weight: 1,
                                         opacity: 1,
                                         fillOpacity:.8,
-                                        zIndex: 101
+                                        zIndex: 101,
+                                        stroke-width: 10
                                     });
             },onEachFeature: function(feature,layer){
                 layer.on('mouseover', function(ev) {
@@ -149,7 +150,8 @@ CityDigitsMap.prototype.loadMarkers = function(){
                                         weight: 1,
                                         opacity: 1,
                                         fillOpacity:.8,
-                                        zIndex: 99999
+                                        zIndex: 99999,
+					stroke-width:10
                                     });
             },
             onEachFeature: function(feature,layer){
