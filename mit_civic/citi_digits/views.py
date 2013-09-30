@@ -24,7 +24,7 @@ def index(request):
     """
      #get random tour
     #tourCount = Tour.objects.count()
-    #tour = None
+    tour = None
     #if(tourCount>0):
     #    tour = Tour.objects.get(pk=(randint(1,tourCount)))
 
