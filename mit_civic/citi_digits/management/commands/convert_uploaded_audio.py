@@ -16,14 +16,20 @@ class Command(BaseCommand):
         pathToAMR = os.join(dirpath,filename)
         pathToMP3 = os.join(dirpath,"%s.mp3" % (filename))
 
-        # ffmpeg -i amrfile -acodec mp3 -ab 64k .mp3file
-        call(["ffmpeg", "-i",pathToAMR,"-acodec","mp3","-ab","64k",pathToMP3])
+        # ffmpeg -i .amr -acodec libmp3lame -ab 64k test.mp3
+        call(["ffmpeg", "-i",pathToAMR,"-acodec","libmp3lame","-ab","64k",pathToMP3])
 
     def findAMRFiles(self, paths):
         for dirpath, dirnames, filenames in paths:
+            fileToProcess = None
+            alreadyEncodedFlag = False
             for filename in filenames:
                 if ".amr" in filename:
-                    self.convertAMRToMp3(dirpath,filename)
+                    fileToProcess = (dirpath,filename)
+                if ".mp3" in filename:
+                    alreadyEncodedFlag = True
+            if (alreadyEncodedFlag):
+                self.convertAMRToMp3(fileToProcess)
 
     def getDirectoryListing(self):
         """
