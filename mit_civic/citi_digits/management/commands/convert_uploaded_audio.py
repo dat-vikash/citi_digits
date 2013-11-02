@@ -16,6 +16,8 @@ class Command(BaseCommand):
         pathToAMR = os.join(dirpath,filename)
         pathToMP3 = os.join(dirpath,"%s.mp3" % (filename))
 
+        print "Creating file: " + pathToMP3
+
         # ffmpeg -i .amr -acodec libmp3lame -ab 64k test.mp3
         call(["ffmpeg", "-i",pathToAMR,"-acodec","libmp3lame","-ab","64k",pathToMP3])
 
@@ -29,6 +31,7 @@ class Command(BaseCommand):
                 if ".mp3" in filename:
                     alreadyEncodedFlag = True
             if (alreadyEncodedFlag):
+                print "Working on file: " + fileToProcess[1]
                 self.convertAMRToMp3(fileToProcess)
 
     def getDirectoryListing(self):
