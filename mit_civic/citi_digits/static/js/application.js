@@ -1900,6 +1900,18 @@ $("#tours-tab").on("click",".tour-stub",function(event){
 
         });
 
+    $("#tourPreview").on('shown',function(){
+        //get the audio element
+        var audioSlideElem = $('#slide-audio');
+
+        //why not audio
+        //determine if browser supports default audio format
+        if (audioSlideElem[0].canPlayType('audio/amr;') == ""){
+          //browser does not support amr
+          audioSlideElem[0].src=audioSlideElem[0].src.replace(".amr",".amr.mp3");
+        }
+    });
+
     $('#tourPreview').on('slid', '#myCarousel', function() {
       var $this = $(this);
 
