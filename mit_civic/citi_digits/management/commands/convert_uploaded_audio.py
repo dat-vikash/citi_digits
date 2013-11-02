@@ -39,11 +39,10 @@ class Command(BaseCommand):
             Returns a listing of the application's audio directory
         """
         for dirpath, dirnames, filenames in os.walk('../../../media/audio/'):
-            yield (dirpath, dirnames, filenames)
+            self.findAMRFiles((dirpath, dirnames, filenames))
 
     def handle(self, *args, **options):
         print "Starting audio conversions...."
-        for data in self.getDirectoryListing():
-            self.findAMRFiles(data)
+        self.getDirectoryListing()
         print "Conversion complete..."
 
