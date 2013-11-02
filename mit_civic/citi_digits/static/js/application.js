@@ -1195,6 +1195,24 @@ $("#interviews-tab").on("click",".interview-stub",function(event){
    });
     $("#interviewDetails").on("shown",function(){
             loadMapThumb();
+        //get the audio element
+        var audioWhyNotElem = $('#why-why-not-audio');
+        var audioJackpotElem = $('#jackpot-audio');
+
+        //why not audio
+        //determine if browser supports default audio format
+        if (audioWhyNotElem[0].canPlayType('audio/amr;') == ""){
+          //browser does not support amr
+          audioWhyNotElem[0].src=audioWhyNotElem[0].src.replace(".amr",".amr.mp3");
+        }
+
+        //jackpot audio
+        //determine if browser supports default audio format
+        if (audioJackpotElem[0].canPlayType('audio/amr;') == ""){
+          //browser does not support amr
+          audioJackpotElem[0].src=audioJackpotElem[0].src.replace(".amr",".amr.mp3");
+        }
+
         });
 });
 

@@ -23,7 +23,7 @@
         <p class="interview-details-label">Do you ever buy lottery tickets?</p>
         <p>{{ interview.getInterview.do_you_ever_buy_lottery_tickets|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">Why or why not?</p>
-        <p><audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio></p>
+        <p><audio id="why-why-not-audio" src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio></p>
         <p class="interview-details-label">Have you ever won the lottery?</p>
         <p>{{ interview.getInterview.have_you_ever_won_the_lottery|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">What is the most you've ever won?</p>
@@ -31,7 +31,7 @@
         <p class="interview-details-label">How much do you spend on lottery in an average week?</p>
         <p>${{ interview.getInterview.money_spent_on_lottery_in_average_week }}</p>
         <p class="interview-details-label">What would you do if you won the jackpot?</p>
-        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.jackpot_audio }}" preload="auto" controls></audio>
+        <audio id="jackpot-audio" src="{{ MEDIA_URL }}/{{ interview.getInterview.jackpot_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
     <div class="span4">
         <img src="{{ interview.getInterview.photo|crop:"282x282" }}" class="interviewee-photo">
@@ -52,7 +52,7 @@
         <p class="interview-details-label">Do you sell lottery tickets?</p>
         <p>{{ interview.getInterview.do_you_sell_lottery_tickets|yesno:"Yes,No" }}</p>
         <p class="interview-details-label">Why or why not?</p>
-        <p><audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio></p>
+        <p><audio id="why-why-not-audio" src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_audio }}" preload="auto" controls></audio></p>
         <p class="interview-details-label">About how many customers do you have in an average day?</p>
         <p>{{ interview.getInterview.customers_in_a_day}}</p>
         <p class="interview-details-label">What percentage of your customers buy lottery tickets?</p>
@@ -60,7 +60,7 @@
         <p class="interview-details-label">About how many tickets do people usually buy in one visit?</p>
         <p>{{ interview.getInterview.amount_tickets_bought_per_visit }}</p>
         <p class="interview-details-label">Do you think the lottery is good for this neighborhood? Why or why not?</p>
-        <audio src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_lottery_neighborhood_audio }}" preload="auto" controls></audio>
+        <audio id="jackpot-audio" src="{{ MEDIA_URL }}/{{ interview.getInterview.why_or_why_not_lottery_neighborhood_audio }}" preload="auto" controls></audio>
     </div><!-- form questions-->
     <div class="span4">
         <img src="{{ interview.getInterview.photo|crop:"282x282" }}" class="interviewee-photo">
