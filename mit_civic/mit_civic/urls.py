@@ -44,3 +44,5 @@ if settings.DEBUG:
         url(r'^media/(.*)$', 'django.views.static.serve',
                     {'document_root': settings.MEDIA_ROOT}),
     )
+
+handler500 = 'citi_digits.views.server_error'
